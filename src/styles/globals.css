@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 16 16 18;
+  --fg: 238 238 240;
+  --muted: 140 140 150;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-neutral-950 text-neutral-100 antialiased;
+}
+.prose {
+  @apply prose-invert;
+}
