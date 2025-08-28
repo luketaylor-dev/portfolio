@@ -27,7 +27,7 @@ export default function ContactPage() {
         message: formData.get("message"),
       };
 
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,13 +35,15 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setIsSubmitSuccessful(true);
         formRef.current?.reset();
         // Hide success message after 5 seconds
         setTimeout(() => setIsSubmitSuccessful(false), 5000);
       } else {
-        throw new Error("Failed to send message");
+        throw new Error(result.error || "Failed to send message");
       }
     } catch (error) {
       console.error("Error sending message:", error);
