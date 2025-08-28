@@ -1,15 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = () => {
+    console.log("Toggle menu clicked, current state:", isOpen);
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    console.log("Close menu clicked");
+    setIsOpen(false);
+  };
 
   const navItems = [
     { href: "/", label: "Home", icon: Home },
@@ -17,6 +28,17 @@ export default function MobileNav() {
     { href: "/about", label: "About", icon: User },
     { href: "/contact", label: "Contact", icon: Mail },
   ];
+
+  // Don't render anything until mounted to avoid hydration issues
+  if (!mounted) {
+    return (
+      <button className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors">
+        <Menu className="w-5 h-5" />
+      </button>
+    );
+  }
+
+  console.log("MobileNav render - isOpen:", isOpen);
 
   return (
     <>
@@ -31,37 +53,122 @@ export default function MobileNav() {
 
       {/* Mobile menu overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          {/* Backdrop */}
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 9999,
+          }}
+        >
+          {/* Full screen backdrop */}
           <div
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+            }}
             onClick={closeMenu}
           />
 
           {/* Menu panel */}
-          <div className="absolute right-0 top-0 h-full w-80 bg-neutral-950/95 border-l border-purple-800/50 backdrop-blur-md">
-            <div className="p-6 space-y-8">
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "320px",
+              height: "100%",
+              backgroundColor: "#0a0a0a",
+              borderLeft: "1px solid #581c87",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+              zIndex: 1,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div
+              style={{
+                padding: "24px",
+                color: "white",
+                backgroundColor: "#0a0a0a",
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               {/* Header */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-2">
-                    <span className="text-white font-bold text-lg">LT</span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: "32px",
+                }}
+              >
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "12px" }}
+                >
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "12px",
+                      background: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
+                      padding: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: "18px",
+                      }}
+                    >
+                      LT
+                    </span>
                   </div>
-                  <span className="font-bold text-xl text-white">
+                  <span
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                    }}
+                  >
                     Luke Taylor
                   </span>
                 </div>
                 <button
                   onClick={closeMenu}
-                  className="p-2 rounded-lg text-purple-300 hover:bg-purple-900/20 transition-colors"
+                  style={{
+                    padding: "8px",
+                    borderRadius: "8px",
+                    color: "#c4b5fd",
+                    border: "none",
+                    background: "transparent",
+                    cursor: "pointer",
+                  }}
                   aria-label="Close mobile menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X size={20} />
                 </button>
               </div>
 
               {/* Navigation items */}
-              <nav className="space-y-2">
+              <nav
+                style={{
+                  marginBottom: "32px",
+                  flex: 1,
+                }}
+              >
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -69,29 +176,83 @@ export default function MobileNav() {
                       key={item.href}
                       href={item.href}
                       onClick={closeMenu}
-                      className="flex items-center gap-3 p-4 rounded-xl text-neutral-300 hover:text-purple-300 hover:bg-purple-900/20 transition-all duration-200 group"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "16px",
+                        borderRadius: "12px",
+                        color: "#d1d5db",
+                        textDecoration: "none",
+                        marginBottom: "8px",
+                        transition: "all 0.2s",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor =
+                          "rgba(88, 28, 135, 0.2)";
+                        e.currentTarget.style.color = "#c4b5fd";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "transparent";
+                        e.currentTarget.style.color = "#d1d5db";
+                      }}
                     >
-                      <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                      <span className="font-medium">{item.label}</span>
+                      <Icon size={20} />
+                      <span style={{ fontWeight: "500" }}>{item.label}</span>
                     </Link>
                   );
                 })}
               </nav>
 
               {/* CTA */}
-              <div className="pt-6 border-t border-purple-800/50">
+              <div
+                style={{
+                  marginBottom: "32px",
+                  paddingTop: "24px",
+                  borderTop: "1px solid #581c87",
+                }}
+              >
                 <Link
                   href="/contact"
                   onClick={closeMenu}
-                  className="block w-full text-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    textAlign: "center",
+                    padding: "12px 24px",
+                    background: "linear-gradient(90deg, #9333ea, #7c3aed)",
+                    borderRadius: "12px",
+                    fontWeight: "500",
+                    color: "white",
+                    textDecoration: "none",
+                    transition: "all 0.3s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 10px 25px rgba(147, 51, 234, 0.25)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 >
                   Start a Project
                 </Link>
               </div>
 
               {/* Footer info */}
-              <div className="pt-6 border-t border-purple-800/50">
-                <p className="text-xs text-neutral-500 text-center">
+              <div
+                style={{
+                  paddingTop: "24px",
+                  borderTop: "1px solid #581c87",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#6b7280",
+                    textAlign: "center",
+                  }}
+                >
                   Unity Developer crafting immersive experiences
                 </p>
               </div>

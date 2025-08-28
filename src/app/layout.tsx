@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Background gradient for all pages */}
         <div className="fixed inset-0 bg-gradient-to-br from-purple-950/20 via-neutral-950 to-purple-900/20 pointer-events-none"></div>
 
-        <header className="sticky top-0 z-50 backdrop-blur-md bg-neutral-950/80 border-b border-purple-800/30">
+        <header className="sticky top-0 z-[60] backdrop-blur-md bg-neutral-950/80 border-b border-purple-800/30">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-4">
               {/* Logo */}
