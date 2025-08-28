@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import emailjs from "@emailjs/nodejs";
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,6 +17,13 @@ export async function POST(request: NextRequest) {
     const templateId = process.env.EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.EMAILJS_PUBLIC_KEY;
 
+    console.log("EmailJS Config:", {
+      serviceId: serviceId ? "✅ Set" : "❌ Missing",
+      templateId: templateId ? "✅ Set" : "❌ Missing",
+      publicKey: publicKey ? "✅ Set" : "❌ Missing",
+      environment: process.env.NODE_ENV,
+    });
+
     if (!serviceId || !templateId || !publicKey) {
       console.error("EmailJS configuration missing");
       return NextResponse.json(
@@ -26,29 +32,46 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email using EmailJS server-side
-    const result = await emailjs.send(
-      serviceId,
-      templateId,
-      {
+    // Send email using EmailJS REST API directly
+    console.log("Attempting to send email...");
+
+    const emailjsUrl = `https://api.emailjs.com/api/v1.0/email/send`;
+    const emailData = {
+      service_id: serviceId,
+      template_id: templateId,
+      user_id: publicKey,
+      template_params: {
         user_name: name,
         user_email: email,
         message: message,
       },
-      {
-        publicKey: publicKey,
-      }
-    );
+    };
 
-    if (result.status === 200) {
+    const response = await fetch(emailjsUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+    });
+
+    console.log("EmailJS API response status:", response.status);
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log("EmailJS result:", result);
       return NextResponse.json({ success: true });
     } else {
-      throw new Error("Failed to send email");
+      const errorText = await response.text();
+      console.error("EmailJS API error:", errorText);
+      throw new Error(`EmailJS API error: ${response.status} - ${errorText}`);
     }
   } catch (error) {
     console.error("Contact form error:", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: `Internal server error: ${errorMessage}` },
       { status: 500 }
     );
   }
