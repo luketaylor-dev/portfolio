@@ -21,7 +21,11 @@ export async function POST(request: NextRequest) {
           template_id: process.env.EMAILJS_TEMPLATE_ID,
           user_id: process.env.EMAILJS_PUBLIC_KEY,
           accessToken: process.env.EMAILJS_PRIVATE_KEY, // Private key for strict mode
-          template_params: { name, email, message },
+          template_params: {
+            user_name: name,
+            user_email: email,
+            message: message,
+          },
         }),
       }
     );

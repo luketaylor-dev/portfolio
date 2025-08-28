@@ -22,8 +22,8 @@ export default function ContactPage() {
     try {
       const formData = new FormData(formRef.current!);
       const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
+        name: formData.get("user_name"),
+        email: formData.get("user_email"),
         message: formData.get("message"),
       };
 
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 Name
               </label>
               <input
-                name="name"
+                name="user_name"
                 className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
                 placeholder="Your name"
                 required
@@ -96,9 +96,9 @@ export default function ContactPage() {
                 Email
               </label>
               <input
-                name="email"
+                name="user_email"
                 type="email"
-                className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-purple-500/20 transition-all duration-200 resize-none"
                 placeholder="your.email@example.com"
                 required
               />
