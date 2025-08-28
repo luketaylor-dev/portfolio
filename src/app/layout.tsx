@@ -3,11 +3,68 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
 import MobileNav from "@/components/mobile-nav";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Luke Taylor — Unity Developer Portfolio",
   description:
     "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+  keywords: [
+    "Unity Developer",
+    "VR Development",
+    "EEG Visualization",
+    "Game Development",
+    "Virtual Reality",
+    "Brain Computer Interface",
+    "Free-to-Play Games",
+    "Casino Games",
+    "Indie Games",
+    "Unity3D",
+    "C# Development",
+    "Interactive Experiences",
+  ],
+  authors: [{ name: "Luke Taylor" }],
+  creator: "Luke Taylor",
+  publisher: "Luke Taylor",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.dibza.co.uk",
+    siteName: "Luke Taylor Portfolio",
+    title: "Luke Taylor — Unity Developer Portfolio",
+    description:
+      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+    images: [
+      {
+        url: "/images/luke-taylor-dev.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Luke Taylor - Unity Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Luke Taylor — Unity Developer Portfolio",
+    description:
+      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+    images: ["/images/luke-taylor-dev.jpg"],
+    creator: "@luketaylor_dev",
+  },
+  alternates: {
+    canonical: "https://www.dibza.co.uk",
+  },
   icons: {
     icon: "/icons/favicon.png",
     shortcut: "/icons/favicon.png",
@@ -121,6 +178,29 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </div>
               </div>
 
+              {/* Social Links */}
+              <div className="space-y-4">
+                <h3 className="font-semibold text-white">Connect</h3>
+                <div className="space-y-2">
+                  <a
+                    href="https://www.linkedin.com/in/luke-taylor-ab5080166/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://github.com/luketaylor-dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+
               {/* Contact Info */}
               <div className="space-y-4">
                 <h3 className="font-semibold text-white">Let's Connect</h3>
@@ -145,6 +225,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );

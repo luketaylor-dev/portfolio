@@ -1,7 +1,4 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Mail,
   Phone,
@@ -11,30 +8,49 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
-
-const Schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type FormData = z.infer<typeof Schema>;
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<FormData>({
-    resolver: zodResolver(Schema) as any,
-  });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
-  const onSubmit = async (data: FormData) => {
-    // Replace with your email/API integration
-    alert(
-      "Thanks! In a real app this would send an email.\n" +
-        JSON.stringify(data, null, 2)
-    );
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // EmailJS configuration - you'll need to set these up
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS configuration missing");
+      }
+
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current!,
+        publicKey
+      );
+
+      if (result.status === 200) {
+        setIsSubmitSuccessful(true);
+        formRef.current?.reset();
+        // Hide success message after 5 seconds
+        setTimeout(() => setIsSubmitSuccessful(false), 5000);
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Failed to send message. Please try again or email me directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,22 +78,17 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={onSubmit} className="space-y-6" ref={formRef}>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-white">
                 Name
               </label>
               <input
+                name="user_name"
                 className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
                 placeholder="Your name"
-                {...register("name")}
+                required
               />
-              {errors.name && (
-                <p className="text-sm text-red-400 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                  {errors.name.message}
-                </p>
-              )}
             </div>
 
             <div className="space-y-2">
@@ -85,16 +96,12 @@ export default function ContactPage() {
                 Email
               </label>
               <input
+                name="user_email"
+                type="email"
                 className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
                 placeholder="your.email@example.com"
-                {...register("email")}
+                required
               />
-              {errors.email && (
-                <p className="text-sm text-red-400 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                  {errors.email.message}
-                </p>
-              )}
             </div>
 
             <div className="space-y-2">
@@ -102,17 +109,12 @@ export default function ContactPage() {
                 Message
               </label>
               <textarea
+                name="message"
                 rows={6}
                 className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 resize-none"
                 placeholder="Tell me about your project, timeline, budget, or any questions you have..."
-                {...register("message")}
+                required
               />
-              {errors.message && (
-                <p className="text-sm text-red-400 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                  {errors.message.message}
-                </p>
-              )}
             </div>
 
             <button

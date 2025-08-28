@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@contentlayer/client": "0.3.4",
+    "@emailjs/browser": "^4.4.1",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
+    "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.18",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

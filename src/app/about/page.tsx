@@ -26,11 +26,13 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Avatar placeholder */}
+        {/* Avatar */}
         <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-2 shadow-2xl shadow-purple-500/25">
-          <div className="w-full h-full rounded-full bg-neutral-800 flex items-center justify-center">
-            <span className="text-6xl font-bold text-purple-400">LT</span>
-          </div>
+          <img
+            src="/images/luke-taylor-dev.jpg"
+            alt="Luke Taylor - Unity Developer"
+            className="w-full h-full rounded-full object-cover"
+          />
         </div>
       </section>
 
