@@ -3,9 +3,9 @@ import { allProjects } from "contentlayer/generated";
 import { ArrowRight, Play, ExternalLink, Calendar, Tag } from "lucide-react";
 
 export default function ProjectsPage() {
-  const projects = allProjects.sort(
-    (a, b) => +new Date(b.date) - +new Date(a.date)
-  );
+  const projects = allProjects
+    ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+    : [];
 
   return (
     <div className="space-y-16">
@@ -75,11 +75,13 @@ export default function ProjectsPage() {
                 <div className="space-y-2">
                   <h2 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
                     <Link
-                      href={p.url}
+                      href={p.url || `/projects/${p.slug}`}
                       className="hover:underline flex items-center gap-2"
                     >
                       {p.title}
-                      <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {p.url && (
+                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      )}
                     </Link>
                   </h2>
                   <p className="text-neutral-300 leading-relaxed">
@@ -122,10 +124,10 @@ export default function ProjectsPage() {
                 {/* View Project Button */}
                 <div className="pt-2">
                   <Link
-                    href={p.url}
+                    href={p.url || `/projects/${p.slug}`}
                     className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium text-sm group-hover:translate-x-1 transition-transform duration-200"
                   >
-                    View Project Details
+                    {p.url ? "View Project Details" : "View Project"}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

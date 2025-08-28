@@ -1,0 +1,99 @@
+---
+title: "Building a Node-Based Dialogue System in Unity"
+description: "How I created a custom conversation editor using Unity's Graph View system for branching dialogue in games"
+date: 2024-01-15
+tags: ["Unity", "C#", "Dialogue System", "Graph View", "Game Development"]
+image: "/images/dialog-system.png"
+readingTime: "5 min read"
+---
+
+# Building a Node-Based Dialogue System in Unity
+
+Creating engaging dialogue in games requires more than just good writing - it needs a robust system that can handle complex branching conversations, character relationships, and player choices. In this post, I'll walk through how I built a custom node-based dialogue editor using Unity's Graph View system.
+
+## The Challenge
+
+Traditional dialogue systems often rely on simple arrays or scriptable objects, which become unwieldy when dealing with:
+
+- Multiple conversation branches
+- Character-specific dialogue
+- Conditional responses based on game state
+- Complex dialogue trees
+
+## Why Node-Based?
+
+A node-based system provides several advantages:
+
+- **Visual representation** of conversation flow
+- **Easy to modify** without touching code
+- **Scalable** for complex dialogue structures
+- **Designer-friendly** interface
+
+## Implementation Details
+
+### Graph View Setup
+
+Unity's Graph View system provides the foundation for our node-based editor:
+
+```csharp
+public class DialogueGraphView : GraphView
+{
+    public DialogueGraphView()
+    {
+        SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
+        this.AddManipulator(new ContentDragger());
+        this.AddManipulator(new SelectionDragger());
+        this.AddManipulator(new RectangleSelector());
+    }
+}
+```
+
+### Custom Node Types
+
+I created several node types to handle different dialogue elements:
+
+- **Dialogue Node**: Contains character text and choices
+- **Choice Node**: Represents player response options
+- **Condition Node**: Handles branching logic
+- **Event Node**: Triggers game events during dialogue
+
+### Data Persistence
+
+The dialogue data is serialized to JSON, making it easy to:
+
+- Save and load conversations
+- Version control dialogue changes
+- Share dialogue between team members
+
+## Results
+
+The final system provides:
+
+- **Intuitive visual editor** for writers and designers
+- **Real-time preview** of conversation flow
+- **Easy branching** for complex dialogue trees
+- **Performance optimized** runtime execution
+
+## Lessons Learned
+
+Building this system taught me valuable lessons about:
+
+- Unity's Graph View API limitations
+- Performance optimization for large dialogue trees
+- User experience design for creative tools
+- Balancing flexibility with usability
+
+## Future Improvements
+
+Some areas I'd like to enhance:
+
+- **Character relationship tracking**
+- **Voice line integration**
+- **Localization support**
+- **Advanced condition system**
+
+This dialogue system has become a core part of my game development toolkit, and I'm excited to see how it evolves in future projects.
+
+---
+
+_What dialogue systems have you built or worked with? I'd love to hear about your experiences in the comments!_

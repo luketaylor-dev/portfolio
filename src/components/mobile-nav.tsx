@@ -23,10 +23,11 @@ export default function MobileNav() {
   };
 
   const navItems = [
-    { href: "/", label: "Home", icon: Home },
-    { href: "/projects", label: "Projects", icon: FolderOpen },
-    { href: "/about", label: "About", icon: User },
-    { href: "/contact", label: "Contact", icon: Mail },
+    { href: "/", label: "Home", icon: "🏠" },
+    { href: "/projects", label: "Projects", icon: "📁" },
+    { href: "/blog", label: "Blog", icon: "📝" },
+    { href: "/about", label: "About", icon: "👤" },
+    { href: "/contact", label: "Contact", icon: "📧" },
   ];
 
   // Don't render anything until mounted to avoid hydration issues
@@ -42,13 +43,35 @@ export default function MobileNav() {
 
   return (
     <>
-      {/* Mobile menu button */}
+      {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors"
-        aria-label="Toggle mobile menu"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "8px",
+          borderRadius: "8px",
+          color: "#d1d5db",
+          backgroundColor: "transparent",
+          border: "none",
+          cursor: "pointer",
+          transition: "all 0.2s",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "rgba(88, 28, 135, 0.2)";
+          e.currentTarget.style.color = "#c4b5fd";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "transparent";
+          e.currentTarget.style.color = "#d1d5db";
+        }}
       >
-        <Menu className="w-5 h-5" />
+        {isOpen ? (
+          <X width={24} height={24} />
+        ) : (
+          <Menu width={24} height={24} />
+        )}
       </button>
 
       {/* Mobile menu overlay */}
@@ -170,7 +193,6 @@ export default function MobileNav() {
                 }}
               >
                 {navItems.map((item) => {
-                  const Icon = item.icon;
                   return (
                     <Link
                       key={item.href}
@@ -197,7 +219,7 @@ export default function MobileNav() {
                         e.currentTarget.style.color = "#d1d5db";
                       }}
                     >
-                      <Icon size={20} />
+                      <span style={{ fontSize: "20px" }}>{item.icon}</span>
                       <span style={{ fontWeight: "500" }}>{item.label}</span>
                     </Link>
                   );
