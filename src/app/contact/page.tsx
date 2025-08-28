@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -21,23 +20,22 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      // EmailJS configuration - you'll need to set these up
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      const formData = new FormData(formRef.current!);
+      const data = {
+        name: formData.get("user_name"),
+        email: formData.get("user_email"),
+        message: formData.get("message"),
+      };
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS configuration missing");
-      }
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-      const result = await emailjs.sendForm(
-        serviceId,
-        templateId,
-        formRef.current!,
-        publicKey
-      );
-
-      if (result.status === 200) {
+      if (response.ok) {
         setIsSubmitSuccessful(true);
         formRef.current?.reset();
         // Hide success message after 5 seconds
