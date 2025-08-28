@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(req: NextRequest) {
-  if (req.method !== "POST") {
-    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
-  }
-
-  const { name, email, message } = await req.json();
+export async function POST(request: NextRequest) {
+  const { name, email, message } = await request.json();
 
   if (!name || !email || !message) {
     return NextResponse.json(

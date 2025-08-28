@@ -344,24 +344,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Environment Debug (Remove this after testing) */}
-          <div className="text-center p-4 bg-purple-900/20 border border-purple-500/30 rounded-lg max-w-md mx-auto">
-            <p className="text-sm text-purple-300">
-              <strong>Environment:</strong> {process.env.NODE_ENV}
-            </p>
-            <p className="text-sm text-purple-300">
-              <strong>URL:</strong>{" "}
-              {typeof window !== "undefined"
-                ? window.location.hostname
-                : "server-side"}
-            </p>
-            <p className="text-sm text-purple-300">
-              <strong>Vercel URL:</strong>{" "}
-              {process.env.NEXT_PUBLIC_VERCEL_URL || "not set"}
-            </p>
-            {/* Trigger redeploy for environment variables */}
-          </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Portal Chess */}
             <a
