@@ -13,6 +13,7 @@ export const Project = defineDocumentType(() => ({
     tags: { type: "list", of: { type: "string" } },
     featured: { type: "boolean", default: false },
     cover: { type: "string", required: false },
+    video: { type: "string", required: false },
   },
   computedFields: {
     slug: {

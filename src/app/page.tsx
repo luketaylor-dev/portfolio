@@ -125,46 +125,59 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {featured.map((p) => (
-              <article
-                key={p.slug}
-                className="group relative overflow-hidden rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 transition-all duration-500 hover:scale-105"
-              >
-                {/* Project Image Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-purple-800/30 to-neutral-800 flex items-center justify-center">
-                  <div className="text-center space-y-2">
-                    <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                      <Gamepad2 className="w-8 h-8 text-purple-400" />
+              <Link href={p.url} key={p.slug} className="group">
+                <article className="relative overflow-hidden rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 transition-all duration-500 hover:scale-105 cursor-pointer">
+                  {/* Project Image */}
+                  {p.cover ? (
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={p.cover}
+                        alt={`${p.title} preview`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
                     </div>
-                    <p className="text-sm text-purple-300 font-medium">
-                      Project Preview
-                    </p>
-                  </div>
-                </div>
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-purple-800/30 to-neutral-800 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                          <Gamepad2 className="w-8 h-8 text-purple-400" />
+                        </div>
+                        <p className="text-sm text-purple-300 font-medium">
+                          Project Preview
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-                    <Link href={p.url} className="hover:underline">
+                  <div className="p-6 space-y-4">
+                    <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
                       {p.title}
-                    </Link>
-                  </h3>
-                  <p className="text-neutral-300 leading-relaxed">
-                    {p.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags?.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-purple-600/20 text-purple-300 border border-purple-500/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                    </h3>
+                    <p className="text-neutral-300 leading-relaxed">
+                      {p.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {p.tags?.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 rounded-full text-xs font-medium bg-purple-600/20 text-purple-300 border border-purple-500/30"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </article>
+                    {/* View Project Button */}
+                    <div className="flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors">
+                      <span className="font-medium">View Project</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </article>
+              </Link>
             ))}
 
             {featured.length === 0 && (
@@ -198,31 +211,44 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {recent.map((p) => (
-              <article
-                key={p.slug}
-                className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105"
-              >
-                {/* Project Image Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 flex items-center justify-center">
-                  <div className="text-center space-y-2">
-                    <div className="w-12 h-12 mx-auto rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                      <Code className="w-6 h-6 text-purple-400" />
+              <Link href={p.url} key={p.slug} className="group">
+                <article className="overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  {/* Project Image */}
+                  {p.cover ? (
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={p.cover}
+                        alt={`${p.title} preview`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
                     </div>
-                    <p className="text-xs text-purple-300">Preview</p>
-                  </div>
-                </div>
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <div className="w-12 h-12 mx-auto rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                          <Code className="w-6 h-6 text-purple-400" />
+                        </div>
+                        <p className="text-xs text-purple-300">Preview</p>
+                      </div>
+                    </div>
+                  )}
 
-                <div className="p-4 space-y-3">
-                  <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors">
-                    <Link href={p.url} className="hover:underline">
+                  <div className="p-4 space-y-3">
+                    <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors">
                       {p.title}
-                    </Link>
-                  </h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">
-                    {p.description}
-                  </p>
-                </div>
-              </article>
+                    </h3>
+                    <p className="text-sm text-neutral-400 leading-relaxed">
+                      {p.description}
+                    </p>
+
+                    {/* View Project Button */}
+                    <div className="flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors">
+                      <span className="text-sm font-medium">View Project</span>
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </article>
+              </Link>
             ))}
 
             {recent.length === 0 && (

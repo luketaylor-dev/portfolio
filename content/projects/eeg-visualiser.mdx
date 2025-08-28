@@ -1,10 +1,36 @@
 ---
-title: EEG Visualiser
-description: Real-time EEG-driven visualisation in Unity with shader/particle effects, synced to live audio via Rust beat detection.
+title: EEG Visualiser (Brainrave)
+description: Brainrave – a Unity-based system that transforms real-time EEG signals and live audio into immersive audio-visual experiences.
 date: 2025-07-01
-tags: [Unity, EEG, VR, Rust, BrainFlow]
+tags: [Unity, EEG, VR, Rust, BrainFlow, VFX, Audio]
 featured: true
 cover: /images/eeg-cover.jpg
 ---
 
-This project integrates **BrainFlow** EEG inputs with Unity to drive real‑time visuals. A custom **Rust** beat detector feeds tempo and onsets over UDP so visuals track both brain data and music.
+As **Co-Founder of Brainrave**, I helped create a system that fuses **neuroscience** and **immersive entertainment**.  
+The platform captures live EEG data and translates it into dynamic visuals inside Unity, combining shader-driven effects, particle systems, and 3D brain models with reactive audio visualisation.
+
+At its core:
+
+- **EEG Integration** – EEG signals are streamed via **BrainFlow**, processed in Python for smoothing, band-pass filtering, and normalisation.
+- **Rust Beat Detection** – A custom Rust module analyses incoming audio streams, detecting beats and onsets in real time. These events are broadcast over UDP and synchronised with the EEG signal stream.
+- **Unity Visual Layer** – Unity receives both EEG and beat signals, mapping them to VFX parameters such as particle emissions, shader morphing, colour shifts, and camera motion.
+- **Adaptive VFX System** – A modular adapter system allows new visual behaviours to be added quickly, from subtle waveforms to full 3D transformations.
+
+### Why it matters
+
+Brainrave isn’t just about visuals – it’s about **connecting brain state, emotion, and music** into one cohesive performance.  
+By linking a DJ’s live set with their neural data, the project creates an **audience-facing visualisation of inner experience**, reviving live engagement in a post-COVID landscape.
+
+### Key Features
+
+- Real-time EEG-driven parameter mapping
+- Rust-based tempo & beat tracking with millisecond accuracy
+- UDP data bridge between neuroscience layer and Unity runtime
+- Shader, particle, and mesh deformation effects driven by both brainwaves and audio
+- Expandable VFX adapter framework for new creative behaviours
+- Early prototypes designed for VR and large-scale LED wall installations
+
+---
+
+This visualiser serves as the **MVP for Brainrave**, a project I co-founded, laying the groundwork for future iterations including AI-based EEG forecasting, smart-home neurointegration, and holographic displays.

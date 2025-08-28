@@ -29,29 +29,46 @@ export default function ProjectsPage() {
               key={p.slug}
               className="group relative overflow-hidden rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
             >
-              {/* Project Image/Video Placeholder */}
-              <div className="aspect-video bg-gradient-to-br from-purple-800/30 to-neutral-800 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-3">
-                    <div className="w-20 h-20 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                      <Play className="w-10 h-10 text-purple-400" />
-                    </div>
-                    <p className="text-sm text-purple-300 font-medium">
-                      Project Preview
-                    </p>
-                    <p className="text-xs text-purple-400">
-                      Image/Video Coming Soon
-                    </p>
-                  </div>
-                </div>
+              {/* Project Image/Video */}
+              {p.cover ? (
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={p.cover}
+                    alt={`${p.title} preview`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
 
-                {/* Hover overlay with play button */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-purple-600 border-4 border-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Play className="w-8 h-8 text-white ml-1" />
+                  {/* Hover overlay with play button */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-purple-600 border-4 border-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-8 h-8 text-white ml-1" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="aspect-video bg-gradient-to-br from-purple-800/30 to-neutral-800 relative overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center space-y-3">
+                      <div className="w-20 h-20 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                        <Play className="w-10 h-10 text-purple-400" />
+                      </div>
+                      <p className="text-sm text-purple-300 font-medium">
+                        Project Preview
+                      </p>
+                      <p className="text-xs text-purple-400">
+                        Image/Video Coming Soon
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Hover overlay with play button */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-purple-600 border-4 border-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-8 h-8 text-white ml-1" />
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className="p-6 space-y-4">
                 {/* Project Header */}

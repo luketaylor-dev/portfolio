@@ -8,6 +8,11 @@ export const metadata = {
   title: "Luke Taylor — Unity Developer Portfolio",
   description:
     "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+  icons: {
+    icon: "/icons/favicon.png",
+    shortcut: "/icons/favicon.png",
+    apple: "/icons/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -93,31 +93,43 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        {/* Project Media Placeholder */}
-        <div className="aspect-video rounded-2xl bg-gradient-to-br from-purple-800/30 to-neutral-800 border border-purple-800/50 overflow-hidden relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center space-y-4">
-              <div className="w-24 h-24 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                <Video className="w-12 h-12 text-purple-400" />
-              </div>
-              <div className="space-y-2">
-                <p className="text-lg text-purple-300 font-medium">
-                  Project Media
-                </p>
-                <p className="text-sm text-purple-400">
-                  Images, videos, and demos coming soon!
-                </p>
+        {/* Project Media */}
+        {project.video ? (
+          <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
+            <video
+              src={project.video}
+              controls
+              className="w-full h-full object-cover"
+              poster={project.cover}
+            />
+          </div>
+        ) : project.cover ? (
+          <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
+            <img
+              src={project.cover}
+              alt={`${project.title} preview`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="aspect-video rounded-2xl bg-gradient-to-br from-purple-800/30 to-neutral-800 border border-purple-800/50 overflow-hidden relative">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="w-24 h-24 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                  <ImageIcon className="w-12 h-12 text-purple-400" />
+                </div>
+                <div className="space-y-2">
+                  <p className="text-lg text-purple-300 font-medium">
+                    Project Media
+                  </p>
+                  <p className="text-sm text-purple-400">
+                    Add a cover image or video to your project
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-purple-600 border-4 border-white flex items-center justify-center hover:scale-110 transition-transform duration-300">
-              <Play className="w-10 h-10 text-white ml-1" />
-            </div>
-          </div>
-        </div>
+        )}
       </section>
 
       {/* Project Content */}
