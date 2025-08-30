@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { allProjects } from "contentlayer/generated";
+import { allProjects, allBlogPosts } from "contentlayer/generated";
 import {
   ArrowRight,
   Play,
@@ -39,7 +39,8 @@ export default function HomePage() {
     );
   }
 
-  const featured = allProjects.filter((p) => p.featured).slice(0, 3);
+  const featured = allProjects.filter((p) => p.featured).slice(0, 2);
+  const featuredBlog = allBlogPosts.filter((p) => p.featured).slice(0, 1);
   const recent = allProjects
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
     .slice(0, 6);
@@ -148,20 +149,22 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Featured Projects */}
+        {/* Featured Blogs & Projects */}
         <section className="py-24 space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-white flex items-center justify-center gap-3">
               <Star className="w-8 h-8 text-purple-400" />
-              Featured Projects
+              Featured Blogs & Projects
               <Star className="w-8 h-8 text-purple-400" />
             </h2>
             <p className="text-neutral-400">
-              My best work that showcases innovation and technical excellence
+              My best work and latest insights that showcase innovation and
+              technical excellence
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Featured Projects */}
             {featured.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`}>
                 <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
@@ -207,18 +210,69 @@ export default function HomePage() {
                 </article>
               </Link>
             ))}
+
+            {/* Featured Blog Post */}
+            {featuredBlog.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}>
+                <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-center space-y-2">
+                          <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                            <Code className="w-8 h-8 text-purple-400" />
+                          </div>
+                          <p className="text-sm text-purple-300 font-medium">
+                            Blog Post
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-neutral-400 leading-relaxed">
+                        {post.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                        <span className="text-sm text-neutral-400">
+                          Blog Post
+                        </span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            ))}
           </div>
 
-          {featured.length === 0 && (
+          {featured.length === 0 && featuredBlog.length === 0 && (
             <div className="col-span-3 text-center py-12">
               <p className="text-neutral-400">
                 Add{" "}
                 <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
                   featured: true
                 </code>{" "}
-                to a project in{" "}
+                to projects in{" "}
                 <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
                   /content/projects
+                </code>{" "}
+                or create blog posts in{" "}
+                <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
+                  /content/blog
                 </code>
                 .
               </p>
