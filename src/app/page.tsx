@@ -381,7 +381,7 @@ export default function HomePage() {
 
             {/* Unity Dialogue System */}
             <a
-              href="https://github.com/luketaylor-dev"
+              href="https://github.com/luketaylor-dev/DialogueSystem"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
