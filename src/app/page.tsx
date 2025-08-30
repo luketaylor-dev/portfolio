@@ -89,40 +89,77 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="group p-6 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
-                <Brain className="w-full h-full text-white" />
+            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 space-y-4">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40">
+                  <Brain className="w-full h-full text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                  EEG Visualization
+                </h3>
+                <p className="text-neutral-300 leading-relaxed text-lg">
+                  Transform brain data into stunning visual experiences that
+                  bridge the gap between neuroscience and interactive
+                  technology.
+                </p>
+                <div className="pt-4">
+                  <div className="flex items-center gap-2 text-purple-300 text-sm font-medium">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                    Real-time Processing
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                EEG Visualization
-              </h3>
-              <p className="text-neutral-400">
-                Transform brain data into stunning visual experiences
-              </p>
             </div>
 
-            <div className="group p-6 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
-                <Gamepad2 className="w-full h-full text-white" />
+            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 space-y-4">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40">
+                  <Gamepad2 className="w-full h-full text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                  VR Development
+                </h3>
+                <p className="text-neutral-300 leading-relaxed text-lg">
+                  Immersive virtual reality experiences that captivate and
+                  transport users to new worlds with cutting-edge technology.
+                </p>
+                <div className="pt-4">
+                  <div className="flex items-center gap-2 text-purple-300 text-sm font-medium">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                    Immersive Experiences
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                VR Development
-              </h3>
-              <p className="text-neutral-400">
-                Immersive virtual reality experiences that captivate
-              </p>
             </div>
 
-            <div className="group p-6 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
-                <Code className="w-full h-full text-white" />
+            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 space-y-4">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40">
+                  <Code className="w-full h-full text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                  Game Development
+                </h3>
+                <p className="text-neutral-300 leading-relaxed text-lg">
+                  High-performance free-to-play and casino games with engaging
+                  mechanics and scalable architectures.
+                </p>
+                <div className="pt-4">
+                  <div className="flex items-center gap-2 text-purple-300 text-sm font-medium">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                    Engaging Mechanics
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                Game Development
-              </h3>
-              <p className="text-neutral-400">
-                High-performance free-to-play and casino games
-              </p>
             </div>
           </div>
         </section>

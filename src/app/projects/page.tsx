@@ -1,12 +1,17 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { allProjects } from "contentlayer/generated";
 import { ArrowRight, Play, ExternalLink, Calendar, Tag } from "lucide-react";
+import { useState } from "react";
+import ProjectFilter from "@/components/project-filter";
 
 export default function ProjectsPage() {
-  const projects = allProjects
+  const allProjectsSorted = allProjects
     ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
     : [];
+
+  const [filteredProjects, setFilteredProjects] = useState(allProjectsSorted);
 
   return (
     <div className="space-y-16">
@@ -22,10 +27,18 @@ export default function ProjectsPage() {
         </p>
       </section>
 
+      {/* Filter Section */}
+      <section className="space-y-8">
+        <ProjectFilter
+          projects={allProjectsSorted}
+          onFilteredProjects={(projects) => setFilteredProjects(projects)}
+        />
+      </section>
+
       {/* Projects Grid */}
       <section className="space-y-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((p) => (
+          {filteredProjects.map((p) => (
             <article
               key={p.slug}
               className="group relative overflow-hidden rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
@@ -142,7 +155,7 @@ export default function ProjectsPage() {
             </article>
           ))}
 
-          {projects.length === 0 && (
+          {filteredProjects.length === 0 && (
             <div className="col-span-full text-center py-16">
               <div className="w-24 h-24 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mb-6">
                 <Play className="w-12 h-12 text-purple-400" />

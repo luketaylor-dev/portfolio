@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import ResumeDownload from "@/components/resume-download";
 
 export default function AboutPage() {
   return (
@@ -204,6 +205,7 @@ export default function AboutPage() {
             Get in Touch
             <ArrowRight className="w-5 h-5" />
           </Link>
+          <ResumeDownload variant="secondary" size="lg" />
           <Link
             className="inline-flex items-center gap-2 px-8 py-4 border-2 border-purple-500/50 rounded-2xl font-semibold text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 hover:scale-105"
             href="/projects"

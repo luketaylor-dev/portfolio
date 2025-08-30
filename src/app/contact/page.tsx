@@ -6,40 +6,98 @@ import {
   Send,
   CheckCircle,
   ArrowRight,
+  AlertCircle,
+  Loader2,
 } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import ResumeDownload from "@/components/resume-download";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
+
+  // Validation functions
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateField = (field: string, value: string) => {
+    switch (field) {
+      case "name":
+        return value.trim().length >= 2
+          ? null
+          : "Name must be at least 2 characters";
+      case "email":
+        return validateEmail(value)
+          ? null
+          : "Please enter a valid email address";
+      case "message":
+        return value.trim().length >= 10
+          ? null
+          : "Message must be at least 10 characters";
+      default:
+        return null;
+    }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setError(null);
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setIsSubmitting(true);
 
-    try {
-      const formData = new FormData(formRef.current!);
-      const data = {
-        name: formData.get("user_name"),
-        email: formData.get("user_email"),
-        message: formData.get("message"),
-      };
+    // Validate all fields
+    const nameError = validateField("name", formData.name);
+    const emailError = validateField("email", formData.email);
+    const messageError = validateField("message", formData.message);
 
+    if (nameError || emailError || messageError) {
+      setError(nameError || emailError || messageError);
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
       const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
 
       const result = await response.json();
 
       if (result.success) {
         setIsSubmitSuccessful(true);
-        formRef.current?.reset();
+        setFormData({ name: "", email: "", message: "" });
+        setTouched({ name: false, email: false, message: false });
         // Hide success message after 5 seconds
         setTimeout(() => setIsSubmitSuccessful(false), 5000);
       } else {
@@ -47,7 +105,9 @@ export default function ContactPage() {
       }
     } catch (error) {
       console.error("Error sending message:", error);
-      alert("Failed to send message. Please try again or email me directly.");
+      setError(
+        "Failed to send message. Please try again or email me directly."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -78,43 +138,107 @@ export default function ContactPage() {
             </p>
           </div>
 
+          {/* Success Message */}
+          {isSubmitSuccessful && (
+            <div className="p-4 rounded-xl bg-green-900/20 border border-green-500/50 text-green-300 flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <div>
+                <p className="font-medium">Message sent successfully!</p>
+                <p className="text-sm text-green-400">
+                  I'll get back to you within 24 hours.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Error Message */}
+          {error && (
+            <div className="p-4 rounded-xl bg-red-900/20 border border-red-500/50 text-red-300 flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 text-red-400" />
+              <div>
+                <p className="font-medium">Error sending message</p>
+                <p className="text-sm text-red-400">{error}</p>
+              </div>
+            </div>
+          )}
+
           <form onSubmit={onSubmit} className="space-y-6" ref={formRef}>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-white">
-                Name
+                Name *
               </label>
               <input
                 name="user_name"
-                className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                onBlur={() => handleBlur("name")}
+                className={`w-full rounded-xl bg-neutral-900/50 border px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 ${
+                  touched.name && validateField("name", formData.name)
+                    ? "border-red-500 focus:border-red-500"
+                    : "border-purple-800/50 focus:border-purple-500"
+                }`}
                 placeholder="Your name"
                 required
               />
+              {touched.name && validateField("name", formData.name) && (
+                <p className="text-sm text-red-400 flex items-center gap-1">
+                  <AlertCircle className="w-4 h-4" />
+                  {validateField("name", formData.name)}
+                </p>
+              )}
             </div>
 
             <div className="space-y-2">
               <label className="block text-sm font-medium text-white">
-                Email
+                Email *
               </label>
               <input
                 name="user_email"
                 type="email"
-                className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-purple-500/20 transition-all duration-200 resize-none"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                onBlur={() => handleBlur("email")}
+                className={`w-full rounded-xl bg-neutral-900/50 border px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 ${
+                  touched.email && validateField("email", formData.email)
+                    ? "border-red-500 focus:border-red-500"
+                    : "border-purple-800/50 focus:border-purple-500"
+                }`}
                 placeholder="your.email@example.com"
                 required
               />
+              {touched.email && validateField("email", formData.email) && (
+                <p className="text-sm text-red-400 flex items-center gap-1">
+                  <AlertCircle className="w-4 h-4" />
+                  {validateField("email", formData.email)}
+                </p>
+              )}
             </div>
 
             <div className="space-y-2">
               <label className="block text-sm font-medium text-white">
-                Message
+                Message *
               </label>
               <textarea
                 name="message"
                 rows={6}
-                className="w-full rounded-xl bg-neutral-900/50 border border-purple-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 resize-none"
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                onBlur={() => handleBlur("message")}
+                className={`w-full rounded-xl bg-neutral-900/50 border px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 resize-none ${
+                  touched.message && validateField("message", formData.message)
+                    ? "border-red-500 focus:border-red-500"
+                    : "border-purple-800/50 focus:border-purple-500"
+                }`}
                 placeholder="Tell me about your project, timeline, budget, or any questions you have..."
                 required
               />
+              {touched.message &&
+                validateField("message", formData.message) && (
+                  <p className="text-sm text-red-400 flex items-center gap-1">
+                    <AlertCircle className="w-4 h-4" />
+                    {validateField("message", formData.message)}
+                  </p>
+                )}
             </div>
 
             <button
@@ -123,7 +247,7 @@ export default function ContactPage() {
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  <Loader2 className="w-5 h-5 animate-spin" />
                   Sending Message...
                 </>
               ) : (
@@ -264,6 +388,7 @@ export default function ContactPage() {
           >
             Learn More About Me
           </Link>
+          <ResumeDownload variant="secondary" size="md" />
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"

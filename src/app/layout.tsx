@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import StructuredData from "@/components/structured-data";
 import { trackPerformance, preloadCriticalResources } from "@/lib/performance";
 import { defaultMetadata } from "@/lib/metadata";
+import ResumeDownload from "@/components/resume-download";
 
 export const metadata = {
   ...defaultMetadata,
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   Contact
                 </Link>
+                <ResumeDownload variant="secondary" size="sm" />
               </nav>
 
               {/* Mobile Navigation */}

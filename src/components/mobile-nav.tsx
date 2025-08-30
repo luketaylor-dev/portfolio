@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
+import ResumeDownload from "@/components/resume-download";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -205,6 +206,26 @@ export default function MobileNav() {
                     </Link>
                   );
                 })}
+
+                {/* Resume Download */}
+                <div
+                  style={{ paddingTop: "16px", borderTop: "1px solid #581c87" }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      padding: "16px",
+                      borderRadius: "12px",
+                      color: "#d1d5db",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    <span style={{ fontSize: "20px" }}>📄</span>
+                    <ResumeDownload variant="ghost" size="sm" />
+                  </div>
+                </div>
 
                 {/* Social Links */}
                 <div
