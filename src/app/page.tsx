@@ -195,103 +195,115 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Featured Projects */}
-            {featured.map((project) => (
-              <Link key={project.slug} href={`/projects/${project.slug}`}>
-                <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
-                    {project.cover ? (
-                      <Image
-                        src={project.cover}
-                        alt={project.title}
-                        width={400}
-                        height={225}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center space-y-2">
-                          <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                            <Gamepad2 className="w-8 h-8 text-purple-400" />
+            {featured.map((project, index) => (
+              <ScrollAnimation
+                key={project.slug}
+                direction="up"
+                delay={200 + index * 200}
+              >
+                <Link href={`/projects/${project.slug}`}>
+                  <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
+                      {project.cover ? (
+                        <Image
+                          src={project.cover}
+                          alt={project.title}
+                          width={400}
+                          height={225}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <div className="text-center space-y-2">
+                            <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                              <Gamepad2 className="w-8 h-8 text-purple-400" />
+                            </div>
+                            <p className="text-sm text-purple-300 font-medium">
+                              Project Image
+                            </p>
                           </div>
-                          <p className="text-sm text-purple-300 font-medium">
-                            Project Image
-                          </p>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-neutral-400 leading-relaxed">
-                        {project.description}
-                      </p>
+                      )}
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                        <span className="text-sm text-neutral-400">
-                          {project.featured ? "Featured" : "Project"}
-                        </span>
+                    <div className="p-6 space-y-4">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-neutral-400 leading-relaxed">
+                          {project.description}
+                        </p>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                          <span className="text-sm text-neutral-400">
+                            {project.featured ? "Featured" : "Project"}
+                          </span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
+                  </article>
+                </Link>
+              </ScrollAnimation>
             ))}
 
             {/* Featured Blog Post */}
-            {featuredBlog.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
-                    {post.image ? (
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        width={400}
-                        height={225}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center space-y-2">
-                          <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                            <Code className="w-8 h-8 text-purple-400" />
+            {featuredBlog.map((post, index) => (
+              <ScrollAnimation
+                key={post.slug}
+                direction="up"
+                delay={600 + index * 200}
+              >
+                <Link href={`/blog/${post.slug}`}>
+                  <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          width={400}
+                          height={225}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <div className="text-center space-y-2">
+                            <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                              <Code className="w-8 h-8 text-purple-400" />
+                            </div>
+                            <p className="text-sm text-purple-300 font-medium">
+                              Blog Post
+                            </p>
                           </div>
-                          <p className="text-sm text-purple-300 font-medium">
-                            Blog Post
-                          </p>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-neutral-400 leading-relaxed">
-                        {post.description}
-                      </p>
+                      )}
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                        <span className="text-sm text-neutral-400">
-                          Blog Post
-                        </span>
+                    <div className="p-6 space-y-4">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-neutral-400 leading-relaxed">
+                          {post.description}
+                        </p>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                          <span className="text-sm text-neutral-400">
+                            Blog Post
+                          </span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
+                  </article>
+                </Link>
+              </ScrollAnimation>
             ))}
           </div>
 
