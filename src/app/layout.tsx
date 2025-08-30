@@ -4,77 +4,21 @@ import Link from "next/link";
 import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
 import MobileNav from "@/components/mobile-nav";
 import { Analytics } from "@vercel/analytics/react";
+import StructuredData from "@/components/structured-data";
+import { trackPerformance, preloadCriticalResources } from "@/lib/performance";
+import { defaultMetadata } from "@/lib/metadata";
 
 export const metadata = {
-  title: "Luke Taylor — Unity Developer Portfolio",
-  description:
-    "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
-  keywords: [
-    "Unity Developer",
-    "VR Development",
-    "EEG Visualization",
-    "Game Development",
-    "Virtual Reality",
-    "Brain Computer Interface",
-    "Free-to-Play Games",
-    "Casino Games",
-    "Indie Games",
-    "Unity3D",
-    "C# Development",
-    "Interactive Experiences",
-  ],
-  authors: [{ name: "Luke Taylor" }],
-  creator: "Luke Taylor",
-  publisher: "Luke Taylor",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://www.dibza.co.uk",
-    siteName: "Luke Taylor Portfolio",
-    title: "Luke Taylor — Unity Developer Portfolio",
-    description:
-      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
-    images: [
-      {
-        url: "/images/luke-taylor-dev.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Luke Taylor - Unity Developer",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Luke Taylor — Unity Developer Portfolio",
-    description:
-      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
-    images: ["/images/luke-taylor-dev.jpg"],
-    creator: "@luketaylor_dev",
-  },
-  alternates: {
-    canonical: "https://www.dibza.co.uk",
-  },
-  icons: {
-    icon: "/icons/favicon.png",
-    shortcut: "/icons/favicon.png",
-    apple: "/icons/favicon.png",
-  },
+  ...defaultMetadata,
+  metadataBase: new URL("https://www.dibza.co.uk"),
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <StructuredData />
+      </head>
       <body className="bg-neutral-950 text-white min-h-screen antialiased">
         {/* Background gradient for all pages */}
         <div className="fixed inset-0 bg-gradient-to-br from-purple-950/20 via-neutral-950 to-purple-900/20 pointer-events-none"></div>
@@ -155,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         <footer className="relative z-10 border-t border-purple-800/30 mt-20">
           <div className="container mx-auto px-4 py-12">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Brand */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -183,6 +127,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     View Projects
                   </Link>
                   <Link
+                    href="/blog"
+                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                  >
+                    Blog
+                  </Link>
+                  <Link
                     href="/about"
                     className="block text-neutral-400 hover:text-purple-300 transition-colors"
                   >
@@ -205,16 +155,30 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     href="https://www.linkedin.com/in/luke-taylor-ab5080166/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="flex items-center gap-2 text-neutral-400 hover:text-purple-300 transition-colors"
                   >
+                    <svg
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
                     LinkedIn
                   </a>
                   <a
                     href="https://github.com/luketaylor-dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="flex items-center gap-2 text-neutral-400 hover:text-purple-300 transition-colors"
                   >
+                    <svg
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
                     GitHub
                   </a>
                 </div>
@@ -239,12 +203,42 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="border-t border-purple-800/30 mt-8 pt-8 text-center">
               <p className="text-sm text-neutral-500">
                 © {new Date().getFullYear()} Luke Taylor. All rights reserved.
-                Built with Unity, Next.js, and a lot of purple.
+                Built with Next.js, React, and a lot of purple.
               </p>
             </div>
           </div>
         </footer>
         <Analytics />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Performance monitoring
+              if (typeof window !== 'undefined') {
+                // Track Core Web Vitals
+                if ('PerformanceObserver' in window) {
+                  const observer = new PerformanceObserver((list) => {
+                    for (const entry of list.getEntries()) {
+                      if (entry.entryType === 'largest-contentful-paint') {
+                        console.log('LCP:', entry.startTime);
+                      }
+                    }
+                  });
+                  observer.observe({ entryTypes: ['largest-contentful-paint'] });
+                }
+                
+                // Preload critical images
+                const criticalImages = ['/images/luke-taylor-dev.jpg'];
+                criticalImages.forEach(src => {
+                  const link = document.createElement('link');
+                  link.rel = 'preload';
+                  link.as = 'image';
+                  link.href = src;
+                  document.head.appendChild(link);
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );

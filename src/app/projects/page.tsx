@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { allProjects } from "contentlayer/generated";
 import { ArrowRight, Play, ExternalLink, Calendar, Tag } from "lucide-react";
 
@@ -32,10 +33,13 @@ export default function ProjectsPage() {
               {/* Project Image/Video */}
               {p.cover ? (
                 <div className="aspect-video relative overflow-hidden">
-                  <img
+                  <Image
                     src={p.cover}
                     alt={`${p.title} preview`}
+                    width={400}
+                    height={225}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
                   />
 
                   {/* Hover overlay with play button */}

@@ -46,26 +46,7 @@ export default function MobileNav() {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "8px",
-          borderRadius: "8px",
-          color: "#d1d5db",
-          backgroundColor: "transparent",
-          border: "none",
-          cursor: "pointer",
-          transition: "all 0.2s",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "rgba(88, 28, 135, 0.2)";
-          e.currentTarget.style.color = "#c4b5fd";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "transparent";
-          e.currentTarget.style.color = "#d1d5db";
-        }}
+        className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors"
       >
         {isOpen ? (
           <X width={24} height={24} />

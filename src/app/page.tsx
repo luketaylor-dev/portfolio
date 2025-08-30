@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { allProjects, allBlogPosts } from "contentlayer/generated";
 import {
   ArrowRight,
@@ -11,34 +12,8 @@ import {
   Eye,
   Zap,
 } from "lucide-react";
-import { useState, useEffect } from "react";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time for demo purposes
-    const timer = setTimeout(() => setIsLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-6">
-          <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25 animate-pulse">
-            <div className="w-full h-full rounded-full bg-neutral-800"></div>
-          </div>
-          <div className="space-y-4">
-            <div className="h-8 bg-neutral-800 rounded-lg w-64 mx-auto animate-pulse"></div>
-            <div className="h-4 bg-neutral-800 rounded w-96 mx-auto animate-pulse"></div>
-            <div className="h-4 bg-neutral-800 rounded w-80 mx-auto animate-pulse"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);
   const featuredBlog = allBlogPosts.filter((p) => p.featured).slice(0, 1);
   const recent = allProjects
@@ -57,10 +32,13 @@ export default function HomePage() {
           <div className="space-y-8 max-w-4xl mx-auto px-4 relative z-10">
             {/* Avatar */}
             <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
-              <img
+              <Image
                 src="/images/luke-taylor-dev.jpg"
                 alt="Luke Taylor - Unity Developer"
+                width={128}
+                height={128}
                 className="w-full h-full rounded-full object-cover"
+                priority
               />
             </div>
 
@@ -170,10 +148,13 @@ export default function HomePage() {
                 <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
                     {project.cover ? (
-                      <img
+                      <Image
                         src={project.cover}
                         alt={project.title}
+                        width={400}
+                        height={225}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
@@ -217,10 +198,13 @@ export default function HomePage() {
                 <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
                     {post.image ? (
-                      <img
+                      <Image
                         src={post.image}
                         alt={post.title}
+                        width={400}
+                        height={225}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
@@ -297,10 +281,13 @@ export default function HomePage() {
                 <article className="group overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden">
                     {project.cover ? (
-                      <img
+                      <Image
                         src={project.cover}
                         alt={project.title}
+                        width={400}
+                        height={225}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
