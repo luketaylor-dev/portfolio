@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import ScrollAnimation from "@/components/scroll-animation";
 import ParallaxBackground from "@/components/parallax-background";
+import TypingAnimation from "@/components/typing-animation";
 
 export default function HomePage() {
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);
@@ -53,7 +54,7 @@ export default function HomePage() {
             <div className="space-y-6">
               <ScrollAnimation direction="up" delay={400}>
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
-                  Luke Taylor
+                  <TypingAnimation text="Luke Taylor" speed={150} delay={600} />
                 </h1>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={600}>
