@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { Calendar, Clock, Tag, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { MDXContent } from "@/components/mdx-content";
+import SocialShare from "@/components/social-share";
+import RelatedPosts from "@/components/related-posts";
+import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 
 interface BlogPostPageProps {
   params: {
@@ -49,20 +52,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="flex items-center gap-6 text-neutral-400">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
+              <span>{formatDate(post.date)}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4" />
               <span>
-                {new Date(post.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {post.readingTime || calculateReadingTime(post.body.raw)}
               </span>
             </div>
-            {post.readingTime && (
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{post.readingTime}</span>
-              </div>
-            )}
           </div>
 
           {/* Tags */}
@@ -102,7 +99,18 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="prose prose-invert prose-purple max-w-none">
           <MDXContent code={post.body.code} />
         </div>
+
+        {/* Social Sharing */}
+        <div className="pt-8 border-t border-neutral-800">
+          <SocialShare
+            url={`https://www.dibza.co.uk/blog/${post.slug}`}
+            title={post.title}
+          />
+        </div>
       </article>
+
+      {/* Related Posts */}
+      <RelatedPosts currentPostSlug={post.slug} allPosts={allBlogPosts || []} />
 
       {/* Navigation */}
       <div className="max-w-4xl mx-auto pt-8 border-t border-neutral-800">

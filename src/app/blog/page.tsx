@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { allBlogPosts } from "contentlayer/generated";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 
 export default function BlogPage() {
   // Check if blog posts exist and sort them by date (newest first)
@@ -47,14 +48,15 @@ export default function BlogPage() {
                     <div className="flex items-center gap-4 text-sm text-neutral-400">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4" />
-                        <span>{new Date(post.date).toLocaleDateString()}</span>
+                        <span>{formatDate(post.date)}</span>
                       </div>
-                      {post.readingTime && (
-                        <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4" />
-                          <span>{post.readingTime}</span>
-                        </div>
-                      )}
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        <span>
+                          {post.readingTime ||
+                            calculateReadingTime(post.body.raw)}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Title & Description */}
