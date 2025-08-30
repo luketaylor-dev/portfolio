@@ -73,7 +73,7 @@ export default function SocialShare({
           <Facebook className="w-4 h-4" />
         </button>
 
-        {navigator.share && (
+        {typeof navigator !== "undefined" && "share" in navigator && (
           <button
             onClick={handleNativeShare}
             className="p-2 rounded-lg bg-neutral-900/50 border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 hover:border-purple-600/50 transition-all duration-200 hover:scale-105"

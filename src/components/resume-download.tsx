@@ -16,8 +16,8 @@ export default function ResumeDownload({
 }: ResumeDownloadProps) {
   const handleDownload = () => {
     // Analytics tracking
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "download_resume", {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "download_resume", {
         event_category: "engagement",
         event_label: "resume_download",
       });

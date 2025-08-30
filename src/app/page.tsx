@@ -12,6 +12,7 @@ import {
   Eye,
   Zap,
 } from "lucide-react";
+import ScrollAnimation from "@/components/scroll-animation";
 
 export default function HomePage() {
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);
@@ -31,62 +32,74 @@ export default function HomePage() {
 
           <div className="space-y-8 max-w-4xl mx-auto px-4 relative z-10">
             {/* Avatar */}
-            <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
-              <Image
-                src="/images/luke-taylor-dev.jpg"
-                alt="Luke Taylor - Unity Developer"
-                width={128}
-                height={128}
-                className="w-full h-full rounded-full object-cover"
-                priority
-              />
-            </div>
+            <ScrollAnimation direction="up" delay={200}>
+              <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
+                <Image
+                  src="/images/luke-taylor-dev.jpg"
+                  alt="Luke Taylor - Unity Developer"
+                  width={128}
+                  height={128}
+                  className="w-full h-full rounded-full object-cover"
+                  priority
+                />
+              </div>
+            </ScrollAnimation>
 
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
-                Luke Taylor
-              </h1>
-              <p className="text-2xl md:text-3xl font-medium text-purple-200">
-                Unity Developer for VR, EEG & Free‑to‑Play
-              </p>
-              <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                I build immersive Unity projects that push boundaries — from
-                EEG‑driven visualisations and multiplayer VR experiences to
-                high‑revenue free‑to‑play poker & casino games.
-              </p>
+              <ScrollAnimation direction="up" delay={400}>
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+                  Luke Taylor
+                </h1>
+              </ScrollAnimation>
+              <ScrollAnimation direction="up" delay={600}>
+                <p className="text-2xl md:text-3xl font-medium text-purple-200">
+                  Unity Developer for VR, EEG & Free‑to‑Play
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation direction="up" delay={800}>
+                <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+                  I build immersive Unity projects that push boundaries — from
+                  EEG‑driven visualisations and multiplayer VR experiences to
+                  high‑revenue free‑to‑play poker & casino games.
+                </p>
+              </ScrollAnimation>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-              <Link
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 flex items-center gap-2"
-                href="/projects"
-              >
-                View My Work
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                className="group px-8 py-4 border-2 border-purple-500/50 rounded-2xl font-semibold text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 hover:scale-105 flex items-center gap-2"
-                href="/contact"
-              >
-                Let's Collaborate
-                <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </Link>
-            </div>
+            <ScrollAnimation direction="up" delay={1000}>
+              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <Link
+                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                  href="/projects"
+                >
+                  View My Work
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  className="group px-8 py-4 border-2 border-purple-500/50 rounded-2xl font-semibold text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                  href="/contact"
+                >
+                  Let's Collaborate
+                  <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </Link>
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
 
         {/* Skills Section */}
         <section className="py-24 space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              What I Do Best
-            </h2>
-            <p className="text-neutral-400 max-w-2xl mx-auto">
-              Specialized in cutting-edge Unity development with a focus on
-              immersive experiences
-            </p>
-          </div>
+          <ScrollAnimation direction="up">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                What I Do Best
+              </h2>
+              <p className="text-neutral-400 max-w-2xl mx-auto">
+                Specialized in cutting-edge Unity development with a focus on
+                immersive experiences
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
@@ -166,17 +179,19 @@ export default function HomePage() {
 
         {/* Featured Blogs & Projects */}
         <section className="py-24 space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white flex items-center justify-center gap-3">
-              <Star className="w-8 h-8 text-purple-400" />
-              Featured Blogs & Projects
-              <Star className="w-8 h-8 text-purple-400" />
-            </h2>
-            <p className="text-neutral-400">
-              My best work and latest insights that showcase innovation and
-              technical excellence
-            </p>
-          </div>
+          <ScrollAnimation direction="up">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white flex items-center justify-center gap-3">
+                <Star className="w-8 h-8 text-purple-400" />
+                Featured Blogs & Projects
+                <Star className="w-8 h-8 text-purple-400" />
+              </h2>
+              <p className="text-neutral-400">
+                My best work and latest insights that showcase innovation and
+                technical excellence
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Featured Projects */}
