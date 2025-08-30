@@ -13,6 +13,7 @@ import {
   Zap,
 } from "lucide-react";
 import ScrollAnimation from "@/components/scroll-animation";
+import ParallaxBackground from "@/components/parallax-background";
 
 export default function HomePage() {
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);
@@ -26,9 +27,13 @@ export default function HomePage() {
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center text-center relative pb-20">
-          {/* Floating elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          {/* Floating elements with parallax */}
+          <ParallaxBackground speed={0.3}>
+            <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+          </ParallaxBackground>
+          <ParallaxBackground speed={0.2}>
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </ParallaxBackground>
 
           <div className="space-y-8 max-w-4xl mx-auto px-4 relative z-10">
             {/* Avatar */}
@@ -47,7 +52,7 @@ export default function HomePage() {
 
             <div className="space-y-6">
               <ScrollAnimation direction="up" delay={400}>
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
                   Luke Taylor
                 </h1>
               </ScrollAnimation>
@@ -102,7 +107,7 @@ export default function HomePage() {
           </ScrollAnimation>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 hover:shadow-purple-500/20 overflow-hidden">
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 

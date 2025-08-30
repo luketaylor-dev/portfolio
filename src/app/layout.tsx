@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="flex items-center justify-between py-4">
               {/* Logo */}
               <Link href="/" className="group flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-2 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-2 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 group-hover:scale-110 transition-all duration-300">
                   <span className="text-white font-bold text-lg">LT</span>
                 </div>
                 <span className="font-bold text-xl text-white group-hover:text-purple-300 transition-colors">
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <nav className="hidden md:flex items-center gap-8">
                 <Link
                   href="/"
-                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-colors duration-200 group"
+                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-all duration-200 group hover:scale-105"
                 >
                   <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   Home

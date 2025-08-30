@@ -5,6 +5,7 @@ import { allProjects } from "contentlayer/generated";
 import { ArrowRight, Play, ExternalLink, Calendar, Tag } from "lucide-react";
 import { useState } from "react";
 import ProjectFilter from "@/components/project-filter";
+import InteractiveTooltip from "@/components/interactive-tooltip";
 
 export default function ProjectsPage() {
   const allProjectsSorted = allProjects
@@ -41,7 +42,7 @@ export default function ProjectsPage() {
           {filteredProjects.map((p) => (
             <article
               key={p.slug}
-              className="group relative overflow-hidden rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+              className="group relative overflow-hidden rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 hover:shadow-purple-500/20"
             >
               {/* Project Image/Video */}
               {p.cover ? (
@@ -124,14 +125,18 @@ export default function ProjectsPage() {
                   {p.tags && p.tags.length > 0 && (
                     <div className="flex items-center gap-2">
                       <Tag className="w-4 h-4 text-neutral-400" />
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 relative">
                         {p.tags.map((tag, i) => (
-                          <span
+                          <InteractiveTooltip
                             key={i}
-                            className="px-3 py-1 rounded-full text-xs font-medium bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600/30 transition-colors"
+                            content={`This project uses ${tag} technology`}
+                            position="top"
+                            className="z-50"
                           >
-                            {tag}
-                          </span>
+                            <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600/30 hover:scale-105 transition-all duration-200 cursor-help">
+                              {tag}
+                            </span>
+                          </InteractiveTooltip>
                         ))}
                       </div>
                     </div>
