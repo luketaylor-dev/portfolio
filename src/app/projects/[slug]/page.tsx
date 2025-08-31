@@ -9,8 +9,31 @@ import {
   Tag,
   Play,
   Image as ImageIcon,
-  Video,
   ArrowRight,
+  Zap,
+  BarChart3,
+  Users,
+  Settings,
+  Shield,
+  Globe,
+  Database,
+  Code,
+  Gamepad2,
+  Brain,
+  Smartphone,
+  Monitor,
+  Server,
+  Cloud,
+  Lock,
+  Eye,
+  Target,
+  TrendingUp,
+  Star,
+  Award,
+  Lightbulb,
+  Rocket,
+  Cpu,
+  HardDrive,
 } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -36,6 +59,59 @@ export async function generateMetadata({
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = allProjects.find((project) => project.slug === params.slug);
   if (!project) notFound();
+
+  // Function to get icon component from icon name
+  const getIconComponent = (iconName: string) => {
+    const iconMap: { [key: string]: any } = {
+      // Performance & Optimization
+      zap: Zap,
+      trendingUp: TrendingUp,
+
+      // Analytics & Data
+      barChart3: BarChart3,
+      eye: Eye,
+
+      // User & Social
+      users: Users,
+      globe: Globe,
+
+      // Security & Privacy
+      shield: Shield,
+      lock: Lock,
+
+      // Technology & Development
+      code: Code,
+      database: Database,
+      cloud: Cloud,
+      server: Server,
+      brain: Brain,
+      cpu: Cpu,
+      hardDrive: HardDrive,
+
+      // Gaming & VR
+      gamepad2: Gamepad2,
+      monitor: Monitor,
+      smartphone: Smartphone,
+
+      // Business & Monetization
+      target: Target,
+      settings: Settings,
+      calendar: Calendar,
+
+      // Quality & Testing
+      star: Star,
+      award: Award,
+
+      // Innovation & Features
+      lightbulb: Lightbulb,
+      rocket: Rocket,
+
+      // Default
+      play: Play,
+    };
+
+    return iconMap[iconName.toLowerCase()] || Play;
+  };
 
   return (
     <div className="space-y-12">
@@ -137,62 +213,46 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Project Features */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-white">Key Features</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Feature Placeholders */}
-          <Card variant="default">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4">
-              <Play className="w-full h-full text-white" />
-            </div>
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Interactive Experience
-            </h3>
-            <p className="text-neutral-400 text-sm">
-              Engaging user interactions and responsive design elements that
-              create memorable experiences.
-            </p>
-          </Card>
-
-          <Card variant="default">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4">
-              <ImageIcon className="w-full h-full text-white" />
-            </div>
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Visual Excellence
-            </h3>
-            <p className="text-neutral-400 text-sm">
-              Stunning graphics and smooth animations that bring your vision to
-              life with polish and style.
-            </p>
-          </Card>
-
-          <Card variant="default">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4">
-              <Video className="w-full h-full text-white" />
-            </div>
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Performance Optimized
-            </h3>
-            <p className="text-neutral-400 text-sm">
-              Built with performance in mind, ensuring smooth operation across
-              all devices and platforms.
-            </p>
-          </Card>
-        </div>
-      </section>
+      {project.featureTitles && project.featureTitles.length > 0 && (
+        <section className="space-y-8">
+          <h2 className="text-3xl font-bold text-white">Highlights</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {project.featureTitles.slice(0, 3).map((title, i) => {
+              const IconComponent = getIconComponent(
+                project.featureIcons?.[i] || "play"
+              );
+              const description =
+                project.featureDescriptions?.[i] ||
+                "A key feature that enhances the project's capabilities.";
+              return (
+                <Card key={i} variant="default">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4">
+                    <IconComponent className="w-full h-full text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {title}
+                  </h3>
+                  <p className="text-neutral-400 text-sm">{description}</p>
+                </Card>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Technology Stack */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-white">Technology Stack</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {["Unity", "C#", "VR/AR", "EEG Integration"].map((tech, i) => (
-            <Card key={i} variant="default" className="text-center">
-              <span className="text-purple-300 font-medium">{tech}</span>
-            </Card>
-          ))}
-        </div>
-      </section>
+      {project.technologies && project.technologies.length > 0 && (
+        <section className="space-y-8">
+          <h2 className="text-3xl font-bold text-white">Technology Stack</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {project.technologies.map((tech, i) => (
+              <Card key={i} variant="default" className="text-center">
+                <span className="text-purple-300 font-medium">{tech}</span>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="text-center space-y-6 py-16">

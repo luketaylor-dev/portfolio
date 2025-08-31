@@ -15,6 +15,14 @@ export const Project = defineDocumentType(() => ({
     cover: { type: "string", required: false },
     video: { type: "string", required: false },
     url: { type: "string", required: false },
+    featureTitles: { type: "list", of: { type: "string" }, required: false },
+    featureDescriptions: {
+      type: "list",
+      of: { type: "string" },
+      required: false,
+    },
+    featureIcons: { type: "list", of: { type: "string" }, required: false },
+    technologies: { type: "list", of: { type: "string" }, required: false },
   },
   computedFields: {
     slug: {
