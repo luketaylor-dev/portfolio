@@ -4,7 +4,6 @@ import {
   CheckCircle,
   ArrowRight,
   AlertCircle,
-  Loader2,
 } from "lucide-react";
 
 import { useRef, useState } from "react";
@@ -229,10 +228,7 @@ export default function ContactPage() {
               className="w-full"
             >
               {isSubmitting ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  Sending Message...
-                </>
+                "Sending Message..."
               ) : (
                 <>
                   <Send className="w-5 h-5" />
