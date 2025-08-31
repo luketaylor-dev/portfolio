@@ -42,6 +42,7 @@ export default function TypingAnimation({
 
       return () => clearTimeout(startTimer);
     }
+    return undefined;
   }, [delay, hasStarted]);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ export default function TypingAnimation({
     } else if (hasStarted && currentIndex >= text.length && onComplete) {
       onComplete();
     }
+    return undefined;
   }, [hasStarted, currentIndex, text, speed, onComplete]);
 
   return (

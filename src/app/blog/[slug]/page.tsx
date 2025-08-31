@@ -1,10 +1,9 @@
 import { allBlogPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import { Calendar, Clock, Tag, ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import { MDXContent } from "@/components/mdx-content";
-import SocialShare from "@/components/social-share";
-import RelatedPosts from "@/components/related-posts";
+import { Calendar, Clock, ArrowLeft } from "lucide-react";
+
+import { MdxContent, SocialShare, RelatedPosts } from "@/components/content";
+import { InteractiveButton, Badge } from "@/components/ui";
 import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 
 interface BlogPostPageProps {
@@ -32,13 +31,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     <div className="space-y-16">
       {/* Back to Blog */}
       <div className="max-w-4xl mx-auto">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
-        >
+        <InteractiveButton href="/blog" variant="ghost" size="sm">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Blog</span>
-        </Link>
+        </InteractiveButton>
       </div>
 
       {/* Article Header */}
@@ -66,12 +62,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           {post.tags && post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 rounded-full text-sm font-medium bg-purple-600/20 text-purple-300 border border-purple-500/30"
-                >
+                <Badge key={index} variant="primary">
                   {tag}
-                </span>
+                </Badge>
               ))}
             </div>
           )}
@@ -97,7 +90,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article Content */}
         <div className="prose prose-invert prose-purple max-w-none">
-          <MDXContent code={post.body.code} />
+          <MdxContent code={post.body.code} />
         </div>
 
         {/* Social Sharing */}
@@ -114,13 +107,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Navigation */}
       <div className="max-w-4xl mx-auto pt-8 border-t border-neutral-800">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
-        >
+        <InteractiveButton href="/blog" variant="ghost" size="sm">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Blog</span>
-        </Link>
+        </InteractiveButton>
       </div>
     </div>
   );

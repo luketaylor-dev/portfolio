@@ -7,8 +7,9 @@ import {
   Zap,
   ArrowRight,
 } from "lucide-react";
-import Link from "next/link";
-import ResumeDownload from "@/components/resume-download";
+
+import { ResumeDownload } from "@/components/content";
+import { InteractiveButton, Card } from "@/components/ui";
 
 export default function AboutPage() {
   return (
@@ -74,7 +75,7 @@ export default function AboutPage() {
           Areas of Expertise
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="group p-6 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105">
+          <Card variant="default" hover={true} className="group">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Brain className="w-full h-full text-white" />
             </div>
@@ -87,9 +88,9 @@ export default function AboutPage() {
               real-time visualization systems that make brain-computer
               interfaces accessible and engaging.
             </p>
-          </div>
+          </Card>
 
-          <div className="group p-6 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105">
+          <Card variant="default" hover={true} className="group">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Gamepad2 className="w-full h-full text-white" />
             </div>
@@ -102,9 +103,9 @@ export default function AboutPage() {
               experiences, I focus on performance, comfort, and creating truly
               engaging VR content.
             </p>
-          </div>
+          </Card>
 
-          <div className="group p-6 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105">
+          <Card variant="default" hover={true} className="group">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Code className="w-full h-full text-white" />
             </div>
@@ -117,7 +118,7 @@ export default function AboutPage() {
               gameplay loops, monetization strategies, and scalable
               architectures.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -127,7 +128,7 @@ export default function AboutPage() {
           What Drives Me
         </h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="space-y-4">
+          <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
                 <Trophy className="w-full h-full text-white" />
@@ -139,9 +140,9 @@ export default function AboutPage() {
               project is an opportunity to create something exceptional that
               users will love and remember.
             </p>
-          </div>
+          </Card>
 
-          <div className="space-y-4">
+          <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
                 <Zap className="w-full h-full text-white" />
@@ -153,9 +154,9 @@ export default function AboutPage() {
               me. I love taking on challenges that haven't been solved before
               and finding creative solutions.
             </p>
-          </div>
+          </Card>
 
-          <div className="space-y-4">
+          <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
                 <Users className="w-full h-full text-white" />
@@ -169,9 +170,9 @@ export default function AboutPage() {
               communication, feedback, and working together to bring the best
               ideas to life.
             </p>
-          </div>
+          </Card>
 
-          <div className="space-y-4">
+          <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
                 <Code className="w-full h-full text-white" />
@@ -183,36 +184,32 @@ export default function AboutPage() {
               non-negotiable. I believe in building things that last and can
               evolve with your needs.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="text-center space-y-6 py-16 rounded-3xl bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 border border-purple-800/50">
-        <h2 className="text-3xl font-bold text-white">
-          Ready to Work Together?
-        </h2>
-        <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-          Whether you have a specific project in mind or just want to explore
-          possibilities, I'd love to hear from you. Let's create something
-          amazing together.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
-            href="/contact"
-          >
-            Get in Touch
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-          <ResumeDownload variant="secondary" size="lg" />
-          <Link
-            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-purple-500/50 rounded-2xl font-semibold text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 hover:scale-105"
-            href="/projects"
-          >
-            View My Work
-          </Link>
-        </div>
+      <section className="text-center space-y-6 py-16">
+        <Card variant="default" className="rounded-3xl">
+          <h2 className="text-3xl font-bold text-white">
+            Ready to Work Together?
+          </h2>
+          <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
+            Whether you have a specific project in mind or just want to explore
+            possibilities, I'd love to hear from you. Let's create something
+            amazing together.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <InteractiveButton href="/contact" variant="primary" size="lg">
+              Get in Touch
+              <ArrowRight className="w-5 h-5" />
+            </InteractiveButton>
+            <ResumeDownload variant="secondary" size="lg" />
+            <InteractiveButton href="/projects" variant="secondary" size="lg">
+              View My Work
+            </InteractiveButton>
+          </div>
+        </Card>
       </section>
     </div>
   );

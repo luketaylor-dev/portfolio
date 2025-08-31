@@ -1,12 +1,13 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, ButtonHTMLAttributes } from "react";
 import Link from "next/link";
 
-interface InteractiveButtonProps {
+interface InteractiveButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   href?: string;
-  onClick?: () => void;
+  onClick?: (() => void) | undefined;
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
@@ -23,6 +24,7 @@ export default function InteractiveButton({
   className = "",
   disabled = false,
   loading = false,
+  ...buttonProps
 }: InteractiveButtonProps) {
   const baseClasses =
     "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 relative overflow-hidden group";
@@ -69,7 +71,7 @@ export default function InteractiveButton({
       <Link
         href={href}
         className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
-        onClick={onClick}
+        {...(onClick && { onClick })}
       >
         {buttonContent}
       </Link>
@@ -81,6 +83,7 @@ export default function InteractiveButton({
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
       onClick={onClick}
       disabled={disabled || loading}
+      {...buttonProps}
     >
       {buttonContent}
     </button>

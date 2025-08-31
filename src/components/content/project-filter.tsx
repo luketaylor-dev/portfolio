@@ -1,6 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { Search, Filter, X } from "lucide-react";
+import { Badge } from "@/components/ui";
 
 import { Project } from "contentlayer/generated";
 
@@ -96,13 +97,14 @@ export default function ProjectFilter({
             <button
               key={tag}
               onClick={() => toggleTag(tag)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                selectedTags.includes(tag)
-                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                  : "bg-neutral-900/50 text-neutral-300 border border-purple-800/50 hover:bg-purple-900/20 hover:border-purple-600/50"
-              }`}
+              className="transition-all duration-200"
             >
-              {tag}
+              <Badge
+                variant={selectedTags.includes(tag) ? "primary" : "secondary"}
+                className="cursor-pointer hover:scale-105"
+              >
+                {tag}
+              </Badge>
             </button>
           ))}
         </div>

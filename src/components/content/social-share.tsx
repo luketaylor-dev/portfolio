@@ -21,7 +21,7 @@ export default function SocialShare({
         shareUrl = socialShareUrls.twitter(url, title);
         break;
       case "linkedin":
-        shareUrl = socialShareUrls.linkedin(url, title);
+        shareUrl = socialShareUrls.linkedin(url);
         break;
       case "facebook":
         shareUrl = socialShareUrls.facebook(url);

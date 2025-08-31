@@ -6,14 +6,12 @@ interface AnimatedGradientTextProps {
   children: ReactNode;
   type?: "moving" | "pulsing" | "rainbow" | "shimmer";
   className?: string;
-  duration?: number;
 }
 
 export default function AnimatedGradientText({
   children,
   type = "moving",
   className = "",
-  duration = 3000,
 }: AnimatedGradientTextProps) {
   const getGradientClass = () => {
     switch (type) {

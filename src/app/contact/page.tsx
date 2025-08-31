@@ -1,17 +1,15 @@
 "use client";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Send,
   CheckCircle,
   ArrowRight,
   AlertCircle,
   Loader2,
 } from "lucide-react";
-import Link from "next/link";
+
 import { useRef, useState } from "react";
-import ResumeDownload from "@/components/resume-download";
+import { ResumeDownload } from "@/components/content";
+import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -163,87 +161,60 @@ export default function ContactPage() {
           )}
 
           <form onSubmit={onSubmit} className="space-y-6" ref={formRef}>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-white">
-                Name *
-              </label>
-              <input
-                name="user_name"
-                value={formData.name}
-                onChange={(e) => handleInputChange("name", e.target.value)}
-                onBlur={() => handleBlur("name")}
-                className={`w-full rounded-xl bg-neutral-900/50 border px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 ${
-                  touched.name && validateField("name", formData.name)
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-purple-800/50 focus:border-purple-500"
-                }`}
-                placeholder="Your name"
-                required
-              />
-              {touched.name && validateField("name", formData.name) && (
-                <p className="text-sm text-red-400 flex items-center gap-1">
-                  <AlertCircle className="w-4 h-4" />
-                  {validateField("name", formData.name)}
-                </p>
-              )}
-            </div>
+            <Input
+              label="Name *"
+              name="user_name"
+              value={formData.name}
+              onChange={(e) => handleInputChange("name", e.target.value)}
+              onBlur={() => handleBlur("name")}
+              placeholder="Your name"
+              error={
+                touched.name
+                  ? validateField("name", formData.name) || undefined
+                  : undefined
+              }
+              required
+            />
 
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-white">
-                Email *
-              </label>
-              <input
-                name="user_email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                onBlur={() => handleBlur("email")}
-                className={`w-full rounded-xl bg-neutral-900/50 border px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 ${
-                  touched.email && validateField("email", formData.email)
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-purple-800/50 focus:border-purple-500"
-                }`}
-                placeholder="your.email@example.com"
-                required
-              />
-              {touched.email && validateField("email", formData.email) && (
-                <p className="text-sm text-red-400 flex items-center gap-1">
-                  <AlertCircle className="w-4 h-4" />
-                  {validateField("email", formData.email)}
-                </p>
-              )}
-            </div>
+            <Input
+              label="Email *"
+              name="user_email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              onBlur={() => handleBlur("email")}
+              placeholder="your.email@example.com"
+              error={
+                touched.email
+                  ? validateField("email", formData.email) || undefined
+                  : undefined
+              }
+              required
+            />
 
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-white">
-                Message *
-              </label>
-              <textarea
-                name="message"
-                rows={6}
-                value={formData.message}
-                onChange={(e) => handleInputChange("message", e.target.value)}
-                onBlur={() => handleBlur("message")}
-                className={`w-full rounded-xl bg-neutral-900/50 border px-4 py-3 text-white placeholder-neutral-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 resize-none ${
-                  touched.message && validateField("message", formData.message)
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-purple-800/50 focus:border-purple-500"
-                }`}
-                placeholder="Tell me about your project, timeline, budget, or any questions you have..."
-                required
-              />
-              {touched.message &&
-                validateField("message", formData.message) && (
-                  <p className="text-sm text-red-400 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {validateField("message", formData.message)}
-                  </p>
-                )}
-            </div>
+            <Textarea
+              label="Message *"
+              name="message"
+              rows={6}
+              value={formData.message}
+              onChange={(e) => handleInputChange("message", e.target.value)}
+              onBlur={() => handleBlur("message")}
+              placeholder="Tell me about your project, timeline, budget, or any questions you have..."
+              error={
+                touched.message
+                  ? validateField("message", formData.message) || undefined
+                  : undefined
+              }
+              required
+            />
 
-            <button
+            <InteractiveButton
+              type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-4 font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+              loading={isSubmitting}
+              variant="primary"
+              size="lg"
+              className="w-full"
             >
               {isSubmitting ? (
                 <>
@@ -256,7 +227,7 @@ export default function ContactPage() {
                   Send Message
                 </>
               )}
-            </button>
+            </InteractiveButton>
 
             {isSubmitSuccessful && (
               <div className="p-4 rounded-xl bg-green-900/20 border border-green-500/30 flex items-center gap-3">
@@ -282,7 +253,7 @@ export default function ContactPage() {
               What I Specialize In
             </h2>
             <div className="space-y-4">
-              <div className="p-4 rounded-xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent">
+              <Card variant="default">
                 <h3 className="font-semibold text-white mb-2">
                   EEG Visualization
                 </h3>
@@ -290,9 +261,9 @@ export default function ContactPage() {
                   Transform brainwave data into stunning, interactive visual
                   experiences for research, education, and entertainment.
                 </p>
-              </div>
+              </Card>
 
-              <div className="p-4 rounded-xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent">
+              <Card variant="default">
                 <h3 className="font-semibold text-white mb-2">
                   VR Development
                 </h3>
@@ -300,9 +271,9 @@ export default function ContactPage() {
                   Create immersive virtual reality experiences that transport
                   users to new worlds and provide unforgettable interactions.
                 </p>
-              </div>
+              </Card>
 
-              <div className="p-4 rounded-xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent">
+              <Card variant="default">
                 <h3 className="font-semibold text-white mb-2">
                   Game Development
                 </h3>
@@ -310,7 +281,7 @@ export default function ContactPage() {
                   Build high-performance free-to-play and casino games with
                   engaging gameplay loops and scalable architectures.
                 </p>
-              </div>
+              </Card>
             </div>
           </div>
 
@@ -352,7 +323,7 @@ export default function ContactPage() {
           </div>
 
           {/* CTA */}
-          <div className="p-6 rounded-2xl bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 border border-purple-800/50 text-center space-y-4">
+          <Card variant="default" className="text-center space-y-4">
             <h3 className="text-xl font-bold text-white">
               Ready to Get Started?
             </h3>
@@ -360,43 +331,36 @@ export default function ContactPage() {
               Let's discuss your project requirements and create something
               amazing together.
             </p>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
-            >
+            <InteractiveButton href="/projects" variant="primary" size="md">
               View My Work
               <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+            </InteractiveButton>
+          </Card>
         </section>
       </div>
 
       {/* Additional Info */}
-      <section className="text-center space-y-6 py-16 rounded-3xl bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 border border-purple-800/50">
-        <h2 className="text-3xl font-bold text-white">
-          Let's Build Something Amazing
-        </h2>
-        <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-          Whether you have a fully formed concept or just a spark of an idea,
-          I'm here to help bring it to life. Let's create an experience that
-          users will love and remember.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-purple-500/50 rounded-xl font-medium text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 hover:scale-105"
-          >
-            Learn More About Me
-          </Link>
-          <ResumeDownload variant="secondary" size="md" />
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
-          >
-            See My Work
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
+      <section className="text-center space-y-6 py-16">
+        <Card variant="default" className="rounded-3xl">
+          <h2 className="text-3xl font-bold text-white">
+            Let's Build Something Amazing
+          </h2>
+          <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
+            Whether you have a fully formed concept or just a spark of an idea,
+            I'm here to help bring it to life. Let's create an experience that
+            users will love and remember.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <InteractiveButton href="/about" variant="secondary" size="md">
+              Learn More About Me
+            </InteractiveButton>
+            <ResumeDownload variant="secondary" size="md" />
+            <InteractiveButton href="/projects" variant="primary" size="md">
+              See My Work
+              <ArrowRight className="w-5 h-5" />
+            </InteractiveButton>
+          </div>
+        </Card>
       </section>
     </div>
   );

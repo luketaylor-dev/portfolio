@@ -1,15 +1,16 @@
 import "../styles/globals.css";
 import { ReactNode } from "react";
 import Link from "next/link";
-import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
-import MobileNav from "@/components/mobile-nav";
+import { Home, FolderOpen, User, Mail } from "lucide-react";
+import { MobileNav } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
-import StructuredData from "@/components/structured-data";
-import { trackPerformance, preloadCriticalResources } from "@/lib/performance";
+import { StructuredData } from "@/components/seo";
+
 import { defaultMetadata } from "@/lib/metadata";
-import ResumeDownload from "@/components/resume-download";
+import { ResumeDownload } from "@/components/content";
 import InteractiveText from "@/components/interactive-text";
-import { ErrorBoundary } from "@/components/error-boundary";
+import { ErrorBoundary } from "@/components/feedback";
+import { InteractiveButton } from "@/components/ui";
 
 export const metadata = {
   ...defaultMetadata,
@@ -55,7 +56,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               >
                 <Link
                   href="/"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Go to homepage"
                 >
                   <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -63,7 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/projects"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="View all projects"
                 >
                   <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -71,7 +72,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Read blog posts"
                 >
                   <svg
@@ -92,7 +93,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/about"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Learn more about Luke Taylor"
                 >
                   <User className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -100,7 +101,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Get in touch with Luke Taylor"
                 >
                   <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -216,12 +217,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   Ready to build something amazing together? Let's discuss your
                   next Unity project.
                 </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
-                >
+                <InteractiveButton href="/contact" variant="primary" size="md">
                   Start a Project
-                </Link>
+                </InteractiveButton>
               </div>
             </div>
 
@@ -237,7 +235,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Performance monitoring
+              // Performance monitoring and focus management
               if (typeof window !== 'undefined') {
                 // Track Core Web Vitals
                 if ('PerformanceObserver' in window) {
@@ -259,6 +257,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   link.as = 'image';
                   link.href = src;
                   document.head.appendChild(link);
+                });
+
+                // Clear focus after navigation to prevent persistent focus rings
+                document.addEventListener('click', function(e) {
+                  // If clicking on a navigation link, clear focus after a short delay
+                  if (e.target.closest('nav a')) {
+                    setTimeout(() => {
+                      if (document.activeElement && document.activeElement.tagName === 'A') {
+                        document.activeElement.blur();
+                      }
+                    }, 100);
+                  }
+                });
+
+                // Clear focus when clicking outside navigation
+                document.addEventListener('click', function(e) {
+                  if (!e.target.closest('nav')) {
+                    if (document.activeElement && document.activeElement.tagName === 'A') {
+                      document.activeElement.blur();
+                    }
+                  }
                 });
               }
             `,

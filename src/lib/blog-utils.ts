@@ -55,7 +55,7 @@ export const socialShareUrls = {
     `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       title
     )}&url=${encodeURIComponent(url)}`,
-  linkedin: (url: string, title: string) =>
+  linkedin: (url: string) =>
     `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
       url
     )}`,

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
-import ResumeDownload from "@/components/resume-download";
+import { Menu, X } from "lucide-react";
+import { ResumeDownload } from "@/components/content";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);

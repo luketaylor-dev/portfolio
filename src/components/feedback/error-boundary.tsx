@@ -1,6 +1,7 @@
 "use client";
 import { Component, ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
+import { InteractiveButton } from "@/components/ui";
 
 interface Props {
   children: ReactNode;
@@ -22,11 +23,11 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  override componentDidCatch(error: Error, errorInfo: any) {
     console.error("Error caught by boundary:", error, errorInfo);
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
         return this.props.fallback;
@@ -49,13 +50,14 @@ export class ErrorBoundary extends Component<Props, State> {
               </p>
             </div>
 
-            <button
+            <InteractiveButton
               onClick={() => window.location.reload()}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+              variant="primary"
+              size="md"
             >
               <RefreshCw className="w-4 h-4" />
               Refresh Page
-            </button>
+            </InteractiveButton>
           </div>
         </div>
       );
@@ -90,21 +92,20 @@ export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
 
         <div className="space-y-3">
           {resetError && (
-            <button
-              onClick={resetError}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl font-medium text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
-            >
+            <InteractiveButton onClick={resetError} variant="primary" size="md">
               <RefreshCw className="w-4 h-4" />
               Try Again
-            </button>
+            </InteractiveButton>
           )}
 
-          <button
+          <InteractiveButton
             onClick={() => (window.location.href = "/")}
-            className="block w-full px-6 py-3 border-2 border-purple-500/50 rounded-xl font-medium text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300"
+            variant="secondary"
+            size="md"
+            className="w-full"
           >
             Go Home
-          </button>
+          </InteractiveButton>
         </div>
       </div>
     </div>
