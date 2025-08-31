@@ -8,6 +8,7 @@ import StructuredData from "@/components/structured-data";
 import { trackPerformance, preloadCriticalResources } from "@/lib/performance";
 import { defaultMetadata } from "@/lib/metadata";
 import ResumeDownload from "@/components/resume-download";
+import InteractiveText from "@/components/interactive-text";
 
 export const metadata = {
   ...defaultMetadata,
@@ -41,21 +42,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <nav className="hidden md:flex items-center gap-8">
                 <Link
                   href="/"
-                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-all duration-200 group hover:scale-105"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
                 >
                   <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  Home
+                  <InteractiveText variant="link">Home</InteractiveText>
                 </Link>
                 <Link
                   href="/projects"
-                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-colors duration-200 group"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
                 >
                   <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  Projects
+                  <InteractiveText variant="link">Projects</InteractiveText>
                 </Link>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-colors duration-200 group"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
                 >
                   <svg
                     className="w-4 h-4 group-hover:scale-110 transition-transform"
@@ -70,21 +71,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                       d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
                     />
                   </svg>
-                  Blog
+                  <InteractiveText variant="link">Blog</InteractiveText>
                 </Link>
                 <Link
                   href="/about"
-                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-colors duration-200 group"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
                 >
                   <User className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  About
+                  <InteractiveText variant="link">About</InteractiveText>
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 text-neutral-300 hover:text-purple-300 transition-colors duration-200 group"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
                 >
                   <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  Contact
+                  <InteractiveText variant="link">Contact</InteractiveText>
                 </Link>
                 <ResumeDownload variant="secondary" size="sm" />
               </nav>

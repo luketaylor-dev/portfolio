@@ -7,14 +7,18 @@ import { Project } from "contentlayer/generated";
 interface ProjectFilterProps {
   projects: Project[];
   onFilteredProjects: (projects: Project[]) => void;
+  initialTags?: string[];
+  initialSearch?: string;
 }
 
 export default function ProjectFilter({
   projects,
   onFilteredProjects,
+  initialTags = [],
+  initialSearch = "",
 }: ProjectFilterProps) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const [selectedTags, setSelectedTags] = useState<string[]>(initialTags);
 
   // Get all unique tags from projects
   const allTags = useMemo(() => {

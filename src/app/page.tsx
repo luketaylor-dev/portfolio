@@ -15,6 +15,9 @@ import {
 import ScrollAnimation from "@/components/scroll-animation";
 import ParallaxBackground from "@/components/parallax-background";
 import TypingAnimation from "@/components/typing-animation";
+import CharacterReveal from "@/components/character-reveal";
+import AnimatedGradientText from "@/components/animated-gradient-text";
+import InteractiveText from "@/components/interactive-text";
 
 export default function HomePage() {
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);
@@ -58,8 +61,10 @@ export default function HomePage() {
                 </h1>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={600}>
-                <p className="text-2xl md:text-3xl font-medium text-purple-200">
-                  Unity Developer for VR, EEG & Free‑to‑Play
+                <p className="text-2xl md:text-3xl font-medium">
+                  <AnimatedGradientText type="moving">
+                    Unity Developer for VR, EEG & Free‑to‑Play
+                  </AnimatedGradientText>
                 </p>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={800}>
@@ -98,7 +103,12 @@ export default function HomePage() {
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                What I Do Best
+                <CharacterReveal
+                  text="What I Do Best"
+                  animation="slideUp"
+                  staggerDelay={30}
+                  delay={100}
+                />
               </h2>
               <p className="text-neutral-400 max-w-2xl mx-auto">
                 Specialized in cutting-edge Unity development with a focus on
@@ -108,7 +118,10 @@ export default function HomePage() {
           </ScrollAnimation>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 hover:shadow-purple-500/20 overflow-hidden">
+            <Link
+              href="/projects?tags=EEG"
+              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 hover:shadow-purple-500/20 overflow-hidden block"
+            >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -116,8 +129,10 @@ export default function HomePage() {
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40">
                   <Brain className="w-full h-full text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
-                  EEG Visualization
+                <h3 className="text-2xl font-bold mb-3 transition-colors duration-300">
+                  <InteractiveText variant="heading">
+                    EEG Visualization
+                  </InteractiveText>
                 </h3>
                 <p className="text-neutral-300 leading-relaxed text-lg">
                   Transform brain data into stunning visual experiences that
@@ -131,9 +146,12 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+            <Link
+              href="/projects?tags=VR"
+              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden block"
+            >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -141,8 +159,10 @@ export default function HomePage() {
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40">
                   <Gamepad2 className="w-full h-full text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
-                  VR Development
+                <h3 className="text-2xl font-bold mb-3 transition-colors duration-300">
+                  <InteractiveText variant="heading">
+                    VR Development
+                  </InteractiveText>
                 </h3>
                 <p className="text-neutral-300 leading-relaxed text-lg">
                   Immersive virtual reality experiences that captivate and
@@ -155,9 +175,12 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+            <Link
+              href="/projects?tags=Game%20Development"
+              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden block"
+            >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -165,8 +188,10 @@ export default function HomePage() {
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40">
                   <Code className="w-full h-full text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
-                  Game Development
+                <h3 className="text-2xl font-bold mb-3 transition-colors duration-300">
+                  <InteractiveText variant="heading">
+                    Game Development
+                  </InteractiveText>
                 </h3>
                 <p className="text-neutral-300 leading-relaxed text-lg">
                   High-performance free-to-play and casino games with engaging
@@ -179,7 +204,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
