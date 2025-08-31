@@ -23,6 +23,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <StructuredData />
       </head>
       <body className="bg-neutral-950 text-white min-h-screen antialiased">
+        {/* Skip to content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-purple-600 text-white rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+        >
+          Skip to main content
+        </a>
+
         {/* Background gradient for all pages */}
         <div className="fixed inset-0 bg-gradient-to-br from-purple-950/20 via-neutral-950 to-purple-900/20 pointer-events-none"></div>
 
@@ -40,30 +48,38 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </Link>
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center gap-8">
+              <nav
+                className="hidden md:flex items-center gap-8"
+                role="navigation"
+                aria-label="Main navigation"
+              >
                 <Link
                   href="/"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  aria-label="Go to homepage"
                 >
                   <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   <InteractiveText variant="link">Home</InteractiveText>
                 </Link>
                 <Link
                   href="/projects"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  aria-label="View all projects"
                 >
                   <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   <InteractiveText variant="link">Projects</InteractiveText>
                 </Link>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  aria-label="Read blog posts"
                 >
                   <svg
                     className="w-4 h-4 group-hover:scale-110 transition-transform"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -76,14 +92,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/about"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  aria-label="Learn more about Luke Taylor"
                 >
                   <User className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   <InteractiveText variant="link">About</InteractiveText>
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2"
+                  aria-label="Get in touch with Luke Taylor"
                 >
                   <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   <InteractiveText variant="link">Contact</InteractiveText>
@@ -97,7 +115,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        <main className="relative z-10 container mx-auto px-4 py-10">
+        <main
+          id="main-content"
+          className="relative z-10 container mx-auto px-4 py-10"
+        >
           <ErrorBoundary>{children}</ErrorBoundary>
         </main>
 

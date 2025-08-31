@@ -30,7 +30,11 @@ export default function HomePage() {
     <div className="relative">
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center text-center relative pb-20">
+        <section
+          className="min-h-screen flex items-center justify-center text-center relative pb-20"
+          role="banner"
+          aria-labelledby="hero-heading"
+        >
           {/* Floating elements with parallax */}
           <ParallaxBackground speed={0.3}>
             <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -56,7 +60,10 @@ export default function HomePage() {
 
             <div className="space-y-6">
               <ScrollAnimation direction="up" delay={400}>
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                <h1
+                  id="hero-heading"
+                  className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+                >
                   <TypingAnimation text="Luke Taylor" speed={150} delay={600} />
                 </h1>
               </ScrollAnimation>
@@ -99,10 +106,13 @@ export default function HomePage() {
         </section>
 
         {/* Skills Section */}
-        <section className="py-24 space-y-12">
+        <section className="py-24 space-y-12" aria-labelledby="skills-heading">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <h2
+                id="skills-heading"
+                className="text-3xl md:text-4xl font-bold text-white"
+              >
                 <CharacterReveal
                   text="What I Do Best"
                   animation="slideUp"
@@ -120,7 +130,8 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <Link
               href="/projects?tags=EEG"
-              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 hover:shadow-purple-500/20 overflow-hidden block"
+              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 hover:shadow-purple-500/20 overflow-hidden block focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+              aria-label="View EEG visualization projects"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -150,7 +161,8 @@ export default function HomePage() {
 
             <Link
               href="/projects?tags=VR"
-              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden block"
+              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden block focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+              aria-label="View VR development projects"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -179,7 +191,8 @@ export default function HomePage() {
 
             <Link
               href="/projects?tags=Game%20Development"
-              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden block"
+              className="group relative p-8 rounded-2xl border border-purple-800/50 bg-gradient-to-br from-purple-900/20 to-transparent hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden block focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+              aria-label="View game development projects"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

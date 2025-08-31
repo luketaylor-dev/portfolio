@@ -47,12 +47,15 @@ export default function MobileNav() {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors"
+        className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+        aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
       >
         {isOpen ? (
-          <X width={24} height={24} />
+          <X width={24} height={24} aria-hidden="true" />
         ) : (
-          <Menu width={24} height={24} />
+          <Menu width={24} height={24} aria-hidden="true" />
         )}
       </button>
 
@@ -83,6 +86,10 @@ export default function MobileNav() {
 
           {/* Menu panel */}
           <div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
             style={{
               position: "absolute",
               top: 0,
