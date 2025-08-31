@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { allProjects, allBlogPosts } from "contentlayer/generated";
 import { ArrowRight, Play, Star, Code, Gamepad2, Brain } from "lucide-react";
@@ -17,6 +15,10 @@ import {
   GitHubCard,
 } from "@/components/content";
 import { InteractiveButton, Card } from "@/components/ui";
+
+// Route segment config for performance
+export const revalidate = 3600; // Revalidate every hour
+export const dynamic = "force-static";
 
 export default function HomePage() {
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);

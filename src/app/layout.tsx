@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Link from "next/link";
 import { Home, FolderOpen, User, Mail } from "lucide-react";
 import { MobileNav } from "@/components/layout";
@@ -132,7 +132,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           id="main-content"
           className="relative z-10 container mx-auto px-4 py-10"
         >
-          <ErrorBoundary>{children}</ErrorBoundary>
+          <Suspense
+            fallback={
+              <div className="min-h-screen flex items-center justify-center">
+                Loading...
+              </div>
+            }
+          >
+            <ErrorBoundary>{children}</ErrorBoundary>
+          </Suspense>
         </main>
 
         <footer className="relative z-10 border-t border-purple-800/30 mt-20">

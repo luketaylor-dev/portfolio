@@ -97,7 +97,7 @@ export default function TouchButton({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}
-      {...props}
+      {...(props as any)}
     >
       {content}
     </MotionButton>

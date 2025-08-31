@@ -1,21 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import {
-  Send,
-  CheckCircle,
-  AlertCircle,
-  Loader2,
-  Upload,
-  X,
-} from "lucide-react";
-import {
-  InteractiveButton,
-  Input,
-  Textarea,
-  Card,
-  Badge,
-} from "@/components/ui";
+import { Send, CheckCircle, AlertCircle, Upload, X } from "lucide-react";
+import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
 
 interface ProjectInquiryData {
   name: string;
@@ -252,7 +239,7 @@ export default function ProjectInquiryForm({
   const nextStep = () => {
     const errors = validateStep(currentStep);
     if (errors.length > 0) {
-      setError(errors[0]);
+      setError(errors[0] || "Validation error");
       return;
     }
     const newStep = Math.min(currentStep + 1, 4);
@@ -282,7 +269,7 @@ export default function ProjectInquiryForm({
       .concat(validateStep(2))
       .concat(validateStep(3));
     if (errors.length > 0) {
-      setError(errors[0]);
+      setError(errors[0] || "Validation error");
       setIsSubmitting(false);
       return;
     }

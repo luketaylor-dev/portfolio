@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
@@ -98,10 +99,13 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </div>
         ) : project.cover ? (
           <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
-            <img
+            <Image
               src={project.cover}
               alt={`${project.title} preview`}
+              width={1200}
+              height={675}
               className="w-full h-full object-cover"
+              priority
             />
           </div>
         ) : (

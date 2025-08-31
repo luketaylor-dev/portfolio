@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Brain,
   Gamepad2,
@@ -30,10 +31,13 @@ export default function AboutPage() {
 
         {/* Avatar */}
         <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-2 shadow-2xl shadow-purple-500/25">
-          <img
+          <Image
             src="/images/luke-taylor-dev.jpg"
             alt="Luke Taylor - Unity Developer"
+            width={160}
+            height={160}
             className="w-full h-full rounded-full object-cover"
+            priority
           />
         </div>
       </section>

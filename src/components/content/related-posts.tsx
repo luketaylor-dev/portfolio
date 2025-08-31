@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { getRelatedPosts, formatDate } from "@/lib/blog-utils";
@@ -28,9 +29,11 @@ export default function RelatedPosts({
               {/* Featured Image */}
               {post.image && (
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    width={400}
+                    height={225}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

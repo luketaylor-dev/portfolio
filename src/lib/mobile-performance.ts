@@ -14,11 +14,11 @@ export function isTouchDevice(): boolean {
 
 // Check connection speed
 export function getConnectionSpeed(): "slow" | "fast" | "unknown" {
-  if (typeof navigator === "undefined" || !navigator.connection) {
+  if (typeof navigator === "undefined" || !("connection" in navigator)) {
     return "unknown";
   }
 
-  const connection = navigator.connection as any;
+  const connection = (navigator as any).connection;
 
   if (connection.effectiveType) {
     switch (connection.effectiveType) {
@@ -171,13 +171,15 @@ export function monitorMobilePerformance() {
 
   // Monitor Core Web Vitals
   if ("web-vital" in window) {
-    import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(console.log);
-      getFID(console.log);
-      getFCP(console.log);
-      getLCP(console.log);
-      getTTFB(console.log);
-    });
+    // Note: web-vitals v5 has a different API structure
+    // This is commented out until we can properly implement it
+    // import("web-vitals").then((webVitals) => {
+    //   webVitals.getCLS(console.log);
+    //   webVitals.getFID(console.log);
+    //   webVitals.getFCP(console.log);
+    //   webVitals.getLCP(console.log);
+    //   webVitals.getTTFB(console.log);
+    // });
   }
 
   // Monitor memory usage

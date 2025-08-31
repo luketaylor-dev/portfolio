@@ -24,7 +24,7 @@ export default function CharacterReveal({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry && entry.isIntersecting && !isVisible) {
           setIsVisible(true);
           setTimeout(() => {
             setVisibleChars(0);

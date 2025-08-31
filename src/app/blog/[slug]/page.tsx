@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { allBlogPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
@@ -80,10 +81,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Featured Image */}
         {post.image && (
           <div className="aspect-video overflow-hidden rounded-2xl">
-            <img
+            <Image
               src={post.image}
               alt={post.title}
+              width={1200}
+              height={675}
               className="w-full h-full object-cover"
+              priority
             />
           </div>
         )}

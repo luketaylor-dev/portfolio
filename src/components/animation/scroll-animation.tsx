@@ -26,7 +26,7 @@ export default function ScrollAnimation({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry && entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
           setHasAnimated(true);
         }
