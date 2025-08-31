@@ -78,37 +78,7 @@ export async function POST(request: NextRequest) {
       discuss: "Let's discuss",
     };
 
-    // Create email content
-    const emailBody = `
-New Project Inquiry Received
-
-Contact Information:
-- Name: ${name}
-- Email: ${email}
-${company ? `- Company: ${company}` : ""}
-
-Project Details:
-- Project Title: ${projectTitle}
-- Project Type: ${projectTypeLabels[projectType]}
-- Timeline: ${timelineLabels[timeline]}
-- Budget Range: ${budgetLabels[budgetRange]}
-
-Project Description:
-${description}
-
-${requirements ? `Technical Requirements:\n${requirements}\n` : ""}
-${referenceLinks ? `Reference Links:\n${referenceLinks}\n` : ""}
-${additionalInfo ? `Additional Information:\n${additionalInfo}\n` : ""}
-
-${
-  files.length > 0
-    ? `\nAttached Files: ${files.map((f) => f.name).join(", ")}`
-    : ""
-}
-
----
-This inquiry was submitted through your portfolio website.
-    `.trim();
+    // Note: We're now using individual template parameters instead of a single emailBody
 
     // Check if environment variables are configured
     if (
