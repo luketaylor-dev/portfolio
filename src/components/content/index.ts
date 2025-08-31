@@ -7,3 +7,4 @@ export { default as ProjectCard } from "./project-card";
 export { default as BlogCard } from "./blog-card";
 export { default as SkillCard } from "./skill-card";
 export { default as GitHubCard } from "./github-card";
+export { default as ProjectInquiryForm } from "./project-inquiry-form";

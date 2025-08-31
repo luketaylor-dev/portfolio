@@ -30,13 +30,17 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="space-y-2">
         {label && (
-          <label className="block text-sm font-medium text-white">
+          <label
+            htmlFor={props.id || props.name}
+            className="block text-sm font-medium text-white"
+          >
             {label}
           </label>
         )}
 
         <textarea
           ref={ref}
+          id={props.id || props.name}
           className={`${baseClasses} ${variantClasses[variant]} ${errorClasses} ${className}`}
           {...props}
         />

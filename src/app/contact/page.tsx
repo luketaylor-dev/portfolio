@@ -134,6 +134,18 @@ export default function ContactPage() {
               Tell me about your project, ask questions, or just say hello. I'll
               get back to you within 24 hours.
             </p>
+            <div className="p-4 bg-purple-900/20 border border-purple-500/30 rounded-lg">
+              <p className="text-sm text-purple-300 mb-2">
+                <strong>Have a detailed project?</strong>
+              </p>
+              <p className="text-xs text-purple-400 mb-3">
+                Use my structured project inquiry form for better project
+                planning and faster response times.
+              </p>
+              <InteractiveButton href="/inquire" variant="secondary" size="sm">
+                Submit Project Inquiry
+              </InteractiveButton>
+            </div>
           </div>
 
           {/* Success Message */}
