@@ -31,11 +31,11 @@ export default function InteractiveButton({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105",
+      "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
     secondary:
-      "border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 hover:scale-105",
+      "border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
     ghost:
-      "text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 hover:scale-105",
+      "text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
   };
 
   const sizeClasses = {
@@ -54,7 +54,7 @@ export default function InteractiveButton({
       <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Content */}
-      <span className="relative z-10 flex items-center gap-2">
+      <span className="relative z-10 flex items-center gap-2 group-hover:scale-105 transition-transform duration-300">
         {loading && (
           <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
         )}

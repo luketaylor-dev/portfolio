@@ -33,14 +33,14 @@ export default function ProjectCard({
       >
         <div className="space-y-4">
           {/* Project Image */}
-          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden rounded-xl">
+          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500">
             {project.cover ? (
               <Image
                 src={project.cover}
                 alt={project.title}
                 width={400}
                 height={225}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
                 loading="lazy"
               />
             ) : (
@@ -60,10 +60,10 @@ export default function ProjectCard({
           {/* Project Content */}
           <div className="space-y-3">
             <div className="space-y-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+              <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
                 {project.title}
               </h3>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
                 {project.description}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function ProjectCard({
                   </span>
                 )}
               </div>
-              <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300 ease-out" />
             </div>
           </div>
         </div>
