@@ -9,6 +9,7 @@ import { trackPerformance, preloadCriticalResources } from "@/lib/performance";
 import { defaultMetadata } from "@/lib/metadata";
 import ResumeDownload from "@/components/resume-download";
 import InteractiveText from "@/components/interactive-text";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 export const metadata = {
   ...defaultMetadata,
@@ -97,7 +98,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </header>
 
         <main className="relative z-10 container mx-auto px-4 py-10">
-          {children}
+          <ErrorBoundary>{children}</ErrorBoundary>
         </main>
 
         <footer className="relative z-10 border-t border-purple-800/30 mt-20">
