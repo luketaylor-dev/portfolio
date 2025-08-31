@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Home, FolderOpen, User, Mail } from "lucide-react";
 import { MobileNav } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/seo";
 
 import { defaultMetadata } from "@/lib/metadata";
@@ -252,6 +253,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </footer>
         <Analytics />
+        <SpeedInsights />
         <script
           dangerouslySetInnerHTML={{
             __html: `

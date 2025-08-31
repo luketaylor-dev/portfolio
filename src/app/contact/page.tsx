@@ -1,10 +1,5 @@
 "use client";
-import {
-  Send,
-  CheckCircle,
-  ArrowRight,
-  AlertCircle,
-} from "lucide-react";
+import { Send, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
 
 import { useRef, useState } from "react";
 import { ResumeDownload } from "@/components/content";
