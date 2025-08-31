@@ -79,8 +79,6 @@ export async function POST(request: NextRequest) {
     };
 
     // Create email content
-    const emailSubject = `New Project Inquiry: ${projectTitle}`;
-
     const emailBody = `
 New Project Inquiry Received
 
@@ -112,6 +110,49 @@ ${
 This inquiry was submitted through your portfolio website.
     `.trim();
 
+    // Check if environment variables are configured
+    if (
+      !process.env.EMAILJS_SERVICE_ID ||
+      !process.env.EMAILJS_PROJECT_TEMPLATE_ID ||
+      !process.env.EMAILJS_PUBLIC_KEY
+    ) {
+      console.error("Missing EmailJS environment variables");
+      return NextResponse.json(
+        { success: false, error: "Email service not configured" },
+        { status: 500 }
+      );
+    }
+
+    // Prepare EmailJS request payload
+    const emailjsPayload = {
+      service_id: process.env.EMAILJS_SERVICE_ID,
+      template_id: process.env.EMAILJS_PROJECT_TEMPLATE_ID, // New template ID
+      user_id: process.env.EMAILJS_PUBLIC_KEY,
+      accessToken: process.env.EMAILJS_PRIVATE_KEY,
+      template_params: {
+        user_name: name,
+        user_email: email,
+        company: company || "",
+        title: projectTitle, // For the subject line
+        project_title: projectTitle,
+        project_type: projectTypeLabels[projectType],
+        timeline: timelineLabels[timeline],
+        budget_range: budgetLabels[budgetRange],
+        description: description,
+        requirements: requirements || "",
+        reference_links: referenceLinks || "",
+        additional_info: additionalInfo || "",
+      },
+    };
+
+    console.log("Sending EmailJS request:", {
+      service_id: emailjsPayload.service_id,
+      template_id: emailjsPayload.template_id,
+      user_id: emailjsPayload.user_id,
+      hasAccessToken: !!emailjsPayload.accessToken,
+      project_title: emailjsPayload.template_params.project_title,
+    });
+
     // Send email using EmailJS (similar to your existing contact form)
     const emailjsResponse = await fetch(
       "https://api.emailjs.com/api/v1.0/email/send",
@@ -120,22 +161,18 @@ This inquiry was submitted through your portfolio website.
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          service_id: process.env.EMAILJS_SERVICE_ID,
-          template_id: process.env.EMAILJS_TEMPLATE_ID,
-          user_id: process.env.EMAILJS_USER_ID,
-          template_params: {
-            from_name: name,
-            from_email: email,
-            message: emailBody,
-            subject: emailSubject,
-          },
-        }),
+        body: JSON.stringify(emailjsPayload),
       }
     );
 
     if (!emailjsResponse.ok) {
-      throw new Error("Failed to send email");
+      const errorData = await emailjsResponse.json().catch(() => ({}));
+      console.error("EmailJS API error:", errorData);
+      throw new Error(
+        `EmailJS API error: ${emailjsResponse.status} ${
+          errorData.message || "Unknown error"
+        }`
+      );
     }
 
     // Log the inquiry for your records
@@ -155,7 +192,10 @@ This inquiry was submitted through your portfolio website.
       timestamp: new Date().toISOString(),
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      message: "Project inquiry sent successfully!",
+    });
   } catch (error) {
     console.error("Error processing project inquiry:", error);
     return NextResponse.json(

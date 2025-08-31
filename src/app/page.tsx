@@ -63,7 +63,7 @@ export default function HomePage() {
               <ScrollAnimation direction="up" delay={400}>
                 <h1
                   id="hero-heading"
-                  className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+                  className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 leading-tight pb-2"
                 >
                   <TypingAnimation text="Luke Taylor" speed={150} delay={600} />
                 </h1>
