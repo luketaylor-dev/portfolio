@@ -23,10 +23,14 @@ export default function GitHubCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group block ${className}`}
+      className={`group block h-full ${className}`}
     >
-      <Card variant="default" hover={true} className="cursor-pointer">
-        <div className="space-y-4">
+      <Card
+        variant="default"
+        hover={true}
+        className="cursor-pointer h-full flex flex-col"
+      >
+        <div className="space-y-4 flex flex-col h-full">
           {/* Project Icon */}
           <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 flex items-center justify-center rounded-xl">
             <div className="text-center space-y-2">
@@ -38,14 +42,14 @@ export default function GitHubCard({
           </div>
 
           {/* Project Content */}
-          <div className="space-y-3">
+          <div className="space-y-3 flex flex-col flex-grow">
             <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors">
               {title}
             </h3>
-            <p className="text-sm text-neutral-400 leading-relaxed">
+            <p className="text-sm text-neutral-400 leading-relaxed flex-grow">
               {description}
             </p>
-            <div className="flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors">
+            <div className="flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors mt-auto">
               <span className="text-sm font-medium">View on GitHub</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </div>

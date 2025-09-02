@@ -24,9 +24,9 @@ export default function BlogCard({ post, className = "" }: BlogCardProps) {
       <Card
         variant="default"
         hover={true}
-        className={`group cursor-pointer ${className}`}
+        className={`group cursor-pointer h-full flex flex-col ${className}`}
       >
-        <div className="space-y-4">
+        <div className="space-y-4 flex flex-col h-full">
           {/* Blog Image */}
           <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500">
             {post.image ? (
@@ -65,18 +65,18 @@ export default function BlogCard({ post, className = "" }: BlogCardProps) {
           </div>
 
           {/* Blog Content */}
-          <div className="space-y-3">
+          <div className="space-y-3 flex flex-col flex-grow">
             <div className="space-y-2">
               <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
                 {post.title}
               </h3>
-              <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+              <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 flex-grow">
                 {post.description}
               </p>
             </div>
 
             {/* Blog Meta */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mt-auto">
               <div className="flex items-center gap-4 text-sm text-neutral-400">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />

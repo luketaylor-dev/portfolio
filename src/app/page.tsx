@@ -309,7 +309,11 @@ export default function HomePage() {
           </ScrollAnimation>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <ScrollAnimation direction="up" delay={200}>
+            <ScrollAnimation
+              direction="up"
+              delay={200}
+              className="h-full flex flex-col"
+            >
               <GitHubCard
                 href="https://github.com/luketaylor-dev"
                 icon={<Gamepad2 className="w-8 h-8 text-purple-400" />}
@@ -318,7 +322,11 @@ export default function HomePage() {
               />
             </ScrollAnimation>
 
-            <ScrollAnimation direction="up" delay={350}>
+            <ScrollAnimation
+              direction="up"
+              delay={350}
+              className="h-full flex flex-col"
+            >
               <GitHubCard
                 href="https://github.com/luketaylor-dev/DialogueSystem"
                 icon={<Code className="w-8 h-8 text-purple-400" />}
@@ -327,7 +335,11 @@ export default function HomePage() {
               />
             </ScrollAnimation>
 
-            <ScrollAnimation direction="up" delay={500}>
+            <ScrollAnimation
+              direction="up"
+              delay={500}
+              className="h-full flex flex-col"
+            >
               <GitHubCard
                 href="https://github.com/luketaylor-dev/Portal-Chess"
                 icon={
