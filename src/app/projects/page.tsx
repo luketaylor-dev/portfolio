@@ -96,11 +96,11 @@ function ProjectsContent() {
 
         {/* CTA Section */}
         <section className="text-center space-y-6 py-16">
-          <Card variant="default" className="rounded-3xl">
-            <h2 className="text-3xl font-bold text-white">
+          <Card variant="default" className="rounded-3xl p-8">
+            <h2 className="text-3xl font-bold text-white mb-6">
               Have a Project in Mind?
             </h2>
-            <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
               Whether it's a VR experience, EEG visualization, or game
               development project, I'd love to help bring your vision to life.
               Let's create something amazing together.
