@@ -256,11 +256,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
       {/* CTA Section */}
       <section className="text-center space-y-6 py-16">
-        <Card variant="default" className="rounded-3xl">
-          <h2 className="text-3xl font-bold text-white">
+        <Card variant="default" className="rounded-3xl p-8">
+          <h2 className="text-3xl font-bold text-white mb-6">
             Inspired by This Project?
           </h2>
-          <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
             Let's work together to create something equally amazing for your
             next Unity project. Whether it's VR, EEG visualization, or game
             development, I'm here to help.
