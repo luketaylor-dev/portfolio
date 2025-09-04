@@ -42,9 +42,9 @@ export function generateMetadata(
 }
 
 export const defaultMetadata: Metadata = {
-  title: "Luke Taylor — Unity Developer Portfolio",
+  title: "Luke Taylor — From Brainwaves to Gameplay – Unity Innovation",
   description:
-    "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+    "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
   keywords: [
     "Unity Developer",
     "VR Development",
@@ -78,9 +78,9 @@ export const defaultMetadata: Metadata = {
     locale: "en_US",
     url: "https://www.dibza.co.uk",
     siteName: "Luke Taylor Portfolio",
-    title: "Luke Taylor — Unity Developer Portfolio",
+    title: "Luke Taylor — From Brainwaves to Gameplay – Unity Innovation",
     description:
-      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+      "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
     images: [
       {
         url: "/images/luke-taylor-dev.jpg",
@@ -92,9 +92,9 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Luke Taylor — Unity Developer Portfolio",
+    title: "Luke Taylor — From Brainwaves to Gameplay – Unity Innovation",
     description:
-      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+      "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
     images: ["/images/luke-taylor-dev.jpg"],
     creator: "@luketaylor_dev",
   },

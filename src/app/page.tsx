@@ -71,7 +71,7 @@ export default function HomePage() {
               <ScrollAnimation direction="up" delay={600}>
                 <p className="text-2xl md:text-3xl font-medium">
                   <AnimatedGradientText type="moving">
-                    Unity Developer for VR, EEG & Free‑to‑Play
+                    From Brainwaves to Gameplay – Unity Innovation
                   </AnimatedGradientText>
                 </p>
               </ScrollAnimation>

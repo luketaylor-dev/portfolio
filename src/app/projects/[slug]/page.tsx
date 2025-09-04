@@ -50,9 +50,24 @@ export async function generateMetadata({
   const project = allProjects.find((project) => project.slug === params.slug);
   if (!project) return {};
 
+  // Use SEO description from MDX if available, otherwise fall back to regular description
+  const seoDescription = project.seoDescription || project.description;
+
   return {
     title: `${project.title} — Luke Taylor`,
-    description: project.description,
+    description: seoDescription,
+    openGraph: {
+      title: `${project.title} — Luke Taylor`,
+      description: seoDescription,
+      type: "article",
+      images: project.cover ? [project.cover] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Luke Taylor`,
+      description: seoDescription,
+      images: project.cover ? [project.cover] : [],
+    },
   };
 }
 

@@ -59,9 +59,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-2 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 group-hover:scale-110 transition-all duration-300">
                   <span className="text-white font-bold text-lg">LT</span>
                 </div>
-                <span className="font-bold text-xl text-white group-hover:text-purple-300 transition-colors">
-                  Luke Taylor
-                </span>
+                <div className="flex flex-col">
+                  <span className="font-bold text-xl text-white group-hover:text-purple-300 transition-colors">
+                    Luke Taylor
+                  </span>
+                  <span className="text-xs text-purple-300 opacity-80">
+                    From Brainwaves to Gameplay
+                  </span>
+                </div>
               </Link>
 
               {/* Desktop Navigation */}
