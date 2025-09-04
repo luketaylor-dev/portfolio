@@ -1,7 +1,6 @@
 "use client";
 import { Send, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
-
-import { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { ResumeDownload } from "@/components/content";
 import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
 
@@ -10,6 +9,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [formStartTime, setFormStartTime] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,6 +20,22 @@ export default function ContactPage() {
     email: false,
     message: false,
   });
+  const [mounted, setMounted] = useState(false);
+
+  // Set form start time when user first interacts with the form
+  const handleFirstInteraction = () => {
+    if (formStartTime === null) {
+      setFormStartTime(Date.now());
+    }
+  };
+
+  // Handle honeypot field separately to avoid hydration issues
+  const [honeypotValue, setHoneypotValue] = useState("");
+
+  // Set mounted state to prevent hydration issues
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Validation functions
   const validateEmail = (email: string) => {
@@ -47,11 +63,13 @@ export default function ContactPage() {
   };
 
   const handleInputChange = (field: string, value: string) => {
+    handleFirstInteraction(); // Set start time on first interaction
     setFormData((prev) => ({ ...prev, [field]: value }));
     setError(null);
   };
 
   const handleBlur = (field: string) => {
+    handleFirstInteraction(); // Set start time on first interaction
     setTouched((prev) => ({ ...prev, [field]: true }));
   };
 
@@ -59,6 +77,30 @@ export default function ContactPage() {
     e.preventDefault();
     setError(null);
     setIsSubmitting(true);
+
+    // Spam protection checks
+    const currentTime = Date.now();
+    const timeSpent = formStartTime ? currentTime - formStartTime : 0;
+    const minimumTime = 3000; // 3 seconds minimum
+
+    // Check if honeypot field is filled (bots often fill all fields)
+    if (honeypotValue.trim() !== "") {
+      console.log("Spam detected: honeypot field filled");
+      setError("Invalid submission detected. Please try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Check if form was submitted too quickly (bots submit instantly)
+    // Only check if we have a start time (user has interacted with form)
+    if (formStartTime && timeSpent < minimumTime) {
+      console.log("Spam detected: form submitted too quickly", timeSpent);
+      setError(
+        "Please take a moment to review your message before submitting."
+      );
+      setIsSubmitting(false);
+      return;
+    }
 
     // Validate all fields
     const nameError = validateField("name", formData.name);
@@ -81,6 +123,7 @@ export default function ContactPage() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          website: honeypotValue, // Include honeypot value for server validation
         }),
       });
 
@@ -89,6 +132,7 @@ export default function ContactPage() {
       if (result.success) {
         setIsSubmitSuccessful(true);
         setFormData({ name: "", email: "", message: "" });
+        setHoneypotValue(""); // Reset honeypot field
         setTouched({ name: false, email: false, message: false });
         // Hide success message after 5 seconds
         setTimeout(() => setIsSubmitSuccessful(false), 5000);
@@ -98,7 +142,7 @@ export default function ContactPage() {
     } catch (error) {
       console.error("Error sending message:", error);
       setError(
-        "Failed to send message. Please try again or email me directly."
+        "Failed to send message. Please try again or email me directly at luke@dibza.co.uk"
       );
     } finally {
       setIsSubmitting(false);
@@ -213,6 +257,22 @@ export default function ContactPage() {
               }
               required
             />
+
+            {/* Honeypot field - hidden from users but visible to bots */}
+            {mounted && (
+              <div className="absolute left-[-9999px] opacity-0 pointer-events-none">
+                <Input
+                  label="Website"
+                  name="website"
+                  type="text"
+                  value={honeypotValue}
+                  onChange={(e) => setHoneypotValue(e.target.value)}
+                  placeholder="Leave this empty"
+                  autoComplete="off"
+                  tabIndex={-1}
+                />
+              </div>
+            )}
 
             <InteractiveButton
               type="submit"

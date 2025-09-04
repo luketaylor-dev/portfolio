@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { name, email, message } = await request.json();
+  const { name, email, message, website } = await request.json();
+
+  // Server-side spam protection
+  if (website && website.trim() !== "") {
+    console.log("Spam detected: honeypot field filled on server");
+    return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
+  }
 
   if (!name || !email || !message) {
     return NextResponse.json(
