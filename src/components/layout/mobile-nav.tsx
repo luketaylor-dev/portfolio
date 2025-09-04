@@ -196,6 +196,7 @@ export default function MobileNav() {
                     <Link
                       key={item.href}
                       href={item.href}
+                      prefetch={true}
                       onClick={closeMenu}
                       style={{
                         display: "flex",
@@ -320,6 +321,7 @@ export default function MobileNav() {
               >
                 <Link
                   href="/contact"
+                  prefetch={true}
                   onClick={closeMenu}
                   style={{
                     display: "block",

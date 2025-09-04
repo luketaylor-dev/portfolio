@@ -24,6 +24,7 @@ export default function SkillCard({
   return (
     <Link
       href={href}
+      prefetch={true}
       className="group block focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
       aria-label={ariaLabel}
     >

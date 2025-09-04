@@ -26,7 +26,7 @@ export default function ProjectCard({
   className = "",
 }: ProjectCardProps) {
   return (
-    <Link href={`/projects/${project.slug}`}>
+    <Link href={`/projects/${project.slug}`} prefetch={true}>
       <Card
         variant="default"
         hover={true}
