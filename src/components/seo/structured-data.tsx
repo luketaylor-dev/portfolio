@@ -5,7 +5,7 @@ export default function StructuredData() {
     name: "Luke Taylor",
     jobTitle: "Unity Developer",
     description:
-      "Unity Developer specialising in VR, EEG & Free-to-Play game development. Building immersive experiences that push boundaries.",
+      "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
     url: "https://www.dibza.co.uk",
     image: "https://www.dibza.co.uk/images/luke-taylor-dev.jpg",
     sameAs: [
@@ -21,6 +21,10 @@ export default function StructuredData() {
       "Virtual Reality",
       "Brain Computer Interface",
       "Free-to-Play Games",
+      "Casino Games",
+      "Mobile Game Development",
+      "Unity Tools Development",
+      "Neuroscience Technology",
     ],
     worksFor: {
       "@type": "Organization",
@@ -30,8 +34,17 @@ export default function StructuredData() {
       "@type": "Occupation",
       name: "Unity Developer",
       description:
-        "Specialized in cutting-edge Unity development with a focus on immersive experiences",
+        "From Brainwaves to Gameplay – Unity Innovation. Specialized in cutting-edge Unity development with a focus on immersive experiences",
     },
+    alumniOf: {
+      "@type": "Organization",
+      name: "Unity Developer Community",
+    },
+    award: [
+      "Multi-million dollar revenue from shipped F2P games",
+      "Innovative EEG visualization technology",
+      "Advanced VR development expertise",
+    ],
   };
 
   return (
