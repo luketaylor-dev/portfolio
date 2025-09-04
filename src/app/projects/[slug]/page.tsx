@@ -36,6 +36,54 @@ import {
   HardDrive,
 } from "lucide-react";
 
+// Helper function to generate structured data for projects
+function generateProjectStructuredData(project: any) {
+  const baseStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork" as const,
+    name: project.title,
+    description: project.seoDescription || project.description,
+    author: {
+      "@type": "Person",
+      name: "Luke Taylor",
+      jobTitle: "Unity Developer",
+      url: "https://www.dibza.co.uk",
+    },
+    creator: {
+      "@type": "Person",
+      name: "Luke Taylor",
+    },
+    dateCreated: project.date,
+    dateModified: project.date,
+    image: project.cover
+      ? `https://www.dibza.co.uk${project.cover}`
+      : undefined,
+    url: `https://www.dibza.co.uk/projects/${project.slug}`,
+    genre: project.tags || [],
+    keywords: project.tags?.join(", ") || "",
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    license: "https://creativecommons.org/licenses/by-nc/4.0/",
+  };
+
+  // Add SoftwareSourceCode type for technical projects
+  if (
+    project.tags?.some((tag: string) =>
+      ["Unity", "C#", "Tools", "Development"].includes(tag)
+    )
+  ) {
+    return {
+      ...baseStructuredData,
+      "@type": "SoftwareSourceCode" as const,
+      programmingLanguage: "C#",
+      runtimePlatform: "Unity",
+      codeRepository: "https://github.com/luketaylor-dev",
+    };
+  }
+
+  return baseStructuredData;
+}
+
 export async function generateStaticParams() {
   return allProjects.map((project) => ({
     slug: project.slug,
@@ -74,6 +122,9 @@ export async function generateMetadata({
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = allProjects.find((project) => project.slug === params.slug);
   if (!project) notFound();
+
+  // Generate structured data for this project
+  const projectStructuredData = generateProjectStructuredData(project);
 
   // Function to get icon component from icon name
   const getIconComponent = (iconName: string) => {
@@ -130,6 +181,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="space-y-12">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectStructuredData),
+        }}
+        suppressHydrationWarning={true}
+      />
+
       {/* Back Navigation */}
       <div className="flex items-center gap-4">
         <InteractiveButton href="/projects" variant="ghost" size="sm">
