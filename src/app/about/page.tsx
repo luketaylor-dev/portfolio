@@ -22,10 +22,12 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            I'm Luke Taylor, a passionate Unity Developer who loves pushing the
-            boundaries of what's possible in interactive experiences. From
-            brain-computer interfaces to immersive VR worlds, I'm here to turn
-            your wildest ideas into reality.
+            I’m Luke Taylor, a Unity Developer exploring the space between
+            technology and creativity. From brainwave-driven visuals to scalable
+            free-to-play systems. My work spans experimental prototypes,
+            immersive VR experiences, and commercial game development, always
+            with a focus on building tools and systems that push ideas further
+            and empower creative teams.
           </p>
         </div>
 
@@ -44,31 +46,46 @@ export default function AboutPage() {
 
       {/* Story Section */}
       <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-white text-center">My Story</h2>
+        <div className="text-center space-y-6">
+          <h2 className="text-3xl font-bold text-white">My Story</h2>
+          <p className="text-lg text-purple-300 max-w-3xl mx-auto leading-relaxed">
+            I build scalable Unity systems that help teams ship games faster and
+            with more creative freedom.
+          </p>
+        </div>
         <div className="max-w-4xl mx-auto space-y-6 text-lg text-neutral-300 leading-relaxed">
           <p>
-            My journey into Unity development started with a fascination for how
-            technology can create immersive, interactive experiences that blur
-            the line between the digital and physical worlds. What began as a
-            hobby quickly evolved into a passion for building experiences that
-            not only entertain but also educate and inspire.
+            My path into Unity began after starting out in web and mobile
+            development, but I quickly gravitated toward it out of a passion for{" "}
+            <strong className="text-purple-300">game development</strong> and
+            creating interactive experiences. Over the years, I’ve worked across
+            genres and platforms — shipping{" "}
+            <strong className="text-purple-300">mobile casino titles</strong> to
+            large audiences, prototyping VR collaboration spaces, and
+            experimenting with{" "}
+            <strong className="text-purple-300">
+              EEG-driven visual performance
+            </strong>{" "}
+            systems.
           </p>
           <p>
-            I specialize in three core areas that I believe represent the future
-            of interactive media:
-            <strong className="text-purple-300"> EEG visualization</strong> for
-            understanding the human mind,
-            <strong className="text-purple-300"> VR development</strong> for
-            creating truly immersive worlds, and{" "}
-            <strong className="text-purple-300"> game development</strong> for
-            crafting engaging experiences that millions can enjoy.
+            What ties all of this together is a drive to build{" "}
+            <strong className="text-purple-300">frameworks and tools</strong>{" "}
+            that help others create faster, smarter, and more engaging
+            experiences. Every project is an opportunity to learn, push
+            technical boundaries, and craft something that hasn’t been done
+            before — whether that’s{" "}
+            <strong className="text-purple-300">VR development</strong>,{" "}
+            <strong className="text-purple-300">game systems</strong>, or new
+            forms of{" "}
+            <strong className="text-purple-300">interactive media</strong>.
           </p>
           <p>
-            Every project I work on is an opportunity to learn something new,
-            push technical boundaries, and create something that hasn't been
-            done before. I believe in clean, maintainable code, performance
-            optimization, and most importantly, creating experiences that users
-            will remember.
+            I’m excited to keep exploring how Unity can power the next
+            generation of{" "}
+            <strong className="text-purple-300">game development</strong>,{" "}
+            <strong className="text-purple-300">VR</strong>, and{" "}
+            <strong className="text-purple-300">immersive technology</strong>.
           </p>
         </div>
       </section>
