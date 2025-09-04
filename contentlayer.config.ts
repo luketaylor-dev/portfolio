@@ -10,6 +10,7 @@ export const Project = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string", required: true },
     seoDescription: { type: "string", required: false },
+    altText: { type: "string", required: false },
     date: { type: "date", required: true },
     featured: { type: "boolean", required: false },
     tags: { type: "list", of: { type: "string" }, required: false },

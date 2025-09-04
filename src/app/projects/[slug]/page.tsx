@@ -252,7 +252,10 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
             <Image
               src={project.cover}
-              alt={`${project.title} preview`}
+              alt={
+                project.altText ||
+                `${project.title} — project preview and interface`
+              }
               width={1200}
               height={675}
               className="w-full h-full object-cover"

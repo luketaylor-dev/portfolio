@@ -9,6 +9,7 @@ interface Project {
   title: string;
   description: string;
   cover?: string | undefined;
+  altText?: string | undefined;
   date: string;
   featured?: boolean | undefined;
 }
@@ -37,7 +38,7 @@ export default function ProjectCard({
             {project.cover ? (
               <Image
                 src={project.cover}
-                alt={project.title}
+                alt={project.altText || `${project.title} — project preview`}
                 width={400}
                 height={225}
                 className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
