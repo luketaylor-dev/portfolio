@@ -32,6 +32,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
       <head>
         <StructuredData />
@@ -267,6 +270,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   link.href = src;
                   document.head.appendChild(link);
                 });
+
+                // Optimize for US performance - reduce animation complexity on slower connections
+                if ('connection' in navigator && navigator.connection) {
+                  const connection = navigator.connection as any;
+                  if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+                    document.documentElement.classList.add('reduced-motion');
+                  }
+                }
 
                 // Clear focus after navigation to prevent persistent focus rings
                 document.addEventListener('click', function(e) {
