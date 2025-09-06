@@ -1,6 +1,6 @@
 "use client";
 import { Send, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { ResumeDownload } from "@/components/content";
 import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
 
