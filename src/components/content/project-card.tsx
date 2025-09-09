@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Gamepad2, Star } from "lucide-react";
-import { Card } from "@/components/ui";
+import { Card, WebPImage } from "@/components/ui";
 
 interface Project {
   slug: string;
@@ -12,6 +11,27 @@ interface Project {
   altText?: string | undefined;
   date: string;
   featured?: boolean | undefined;
+}
+
+// Helper function to get WebP and fallback paths
+function getImagePaths(coverPath: string) {
+  // If it's already a WebP file, use it as WebP and derive PNG fallback
+  if (coverPath.endsWith('.webp')) {
+    const basePath = coverPath.replace(/\.webp$/i, '');
+    return {
+      webp: coverPath,
+      fallback: `${basePath}.png`,
+    };
+  }
+  
+  // If it's PNG/JPG, convert to WebP
+  const basePath = coverPath.replace(/\.(png|jpg|jpeg)$/i, "");
+  const extension = coverPath.match(/\.(png|jpg|jpeg)$/i)?.[1] || "png";
+
+  return {
+    webp: `${basePath}.webp`,
+    fallback: `${basePath}.${extension}`,
+  };
 }
 
 interface ProjectCardProps {
@@ -36,13 +56,13 @@ export default function ProjectCard({
           {/* Project Image */}
           <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500">
             {project.cover ? (
-              <Image
-                src={project.cover}
+              <WebPImage
+                webpSrc={getImagePaths(project.cover).webp}
+                fallbackSrc={getImagePaths(project.cover).fallback}
                 alt={project.altText || `${project.title} — project preview`}
                 width={400}
                 height={225}
                 className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
-                loading="lazy"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

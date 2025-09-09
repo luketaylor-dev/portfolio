@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
-import { InteractiveButton, Card, Badge } from "@/components/ui";
+import { InteractiveButton, Card, Badge, WebPImage } from "@/components/ui";
 import {
   ArrowLeft,
   Calendar,
@@ -35,6 +34,27 @@ import {
   Cpu,
   HardDrive,
 } from "lucide-react";
+
+// Helper function to get WebP and fallback paths
+function getImagePaths(coverPath: string) {
+  // If it's already a WebP file, use it as WebP and derive PNG fallback
+  if (coverPath.endsWith('.webp')) {
+    const basePath = coverPath.replace(/\.webp$/i, '');
+    return {
+      webp: coverPath,
+      fallback: `${basePath}.png`,
+    };
+  }
+  
+  // If it's PNG/JPG, convert to WebP
+  const basePath = coverPath.replace(/\.(png|jpg|jpeg)$/i, "");
+  const extension = coverPath.match(/\.(png|jpg|jpeg)$/i)?.[1] || "png";
+
+  return {
+    webp: `${basePath}.webp`,
+    fallback: `${basePath}.${extension}`,
+  };
+}
 
 // Helper function to generate structured data for projects
 function generateProjectStructuredData(project: any) {
@@ -244,14 +264,18 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <video
               src={project.video}
               controls
+              loop
+              muted
+              autoPlay
               className="w-full h-full object-cover"
               poster={project.cover}
             />
           </div>
         ) : project.cover ? (
           <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
-            <Image
-              src={project.cover}
+            <WebPImage
+              webpSrc={getImagePaths(project.cover).webp}
+              fallbackSrc={getImagePaths(project.cover).fallback}
               alt={
                 project.altText ||
                 `${project.title} — project preview and interface`

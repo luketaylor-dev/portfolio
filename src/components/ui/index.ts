@@ -16,6 +16,11 @@ export {
   ThumbnailImage,
 } from "./responsive-image";
 export {
+  default as WebPImage,
+  ProjectWebPImage,
+  HeroWebPImage,
+} from "./webp-image";
+export {
   default as TouchButton,
   TouchIconButton,
   TouchFloatingButton,
