@@ -5,6 +5,7 @@ export { default as Card } from "./card";
 export { default as Badge } from "./badge";
 export { default as Input } from "./input";
 export { default as Textarea } from "./textarea";
+export { default as VideoWithPlayButton } from "./video-with-play-button";
 
 // Mobile-optimized components
 export {

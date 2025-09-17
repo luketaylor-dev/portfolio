@@ -2,6 +2,7 @@ import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
 import { InteractiveButton, Card, Badge, WebPImage } from "@/components/ui";
+import VideoWithPlayButton from "@/components/ui/video-with-play-button";
 import {
   ArrowLeft,
   Calendar,
@@ -261,14 +262,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         {/* Project Media */}
         {project.video ? (
           <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
-            <video
-              src={project.video}
-              controls
-              loop
-              muted
-              autoPlay
-              className="w-full h-full object-cover"
-              poster={project.cover}
+            <VideoWithPlayButton
+              videoSrc={project.video}
+              posterSrc={project.cover || ""}
+              alt={project.altText || `${project.title} — project video`}
+              className="w-full h-full"
             />
           </div>
         ) : project.cover ? (
