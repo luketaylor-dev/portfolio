@@ -10,7 +10,6 @@ module.exports = {
         disallow: ["/admin/", "/private/"],
       },
     ],
-    additionalSitemaps: ["https://www.dibza.co.uk/sitemap.xml"],
   },
   exclude: ["/admin/*", "/private/*"],
   changefreq: "weekly",
