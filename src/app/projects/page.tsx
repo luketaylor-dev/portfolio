@@ -1,36 +1,14 @@
-"use client";
-
 import { allProjects } from "contentlayer/generated";
-import { ArrowRight, Play } from "lucide-react";
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { ProjectFilter, ProjectCard } from "@/components/content";
-import { ProjectCardSkeleton, InteractiveButton, Card } from "@/components/ui";
+import { ArrowRight } from "lucide-react";
+import { Suspense } from "react";
+import { ProjectCard } from "@/components/content";
+import { InteractiveButton, Card } from "@/components/ui";
 
 function ProjectsContent() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [allProjectsSorted, setAllProjectsSorted] = useState<any[]>([]);
-  const [filteredProjects, setFilteredProjects] = useState<any[]>([]);
-  const searchParams = useSearchParams();
-
-  // Get initial filters from URL parameters
-  const initialTags =
-    searchParams.get("tags")?.split(",").filter(Boolean) || [];
-  const initialSearch = searchParams.get("search") || "";
-
-  // Simulate loading time for better UX
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const sorted = allProjects
-        ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
-        : [];
-      setAllProjectsSorted(sorted);
-      setFilteredProjects(sorted);
-      setIsLoading(false);
-    }, 800); // 800ms loading time
-
-    return () => clearTimeout(timer);
-  }, []);
+  // Sort projects immediately on server - no client-side state needed
+  const allProjectsSorted = allProjects
+    ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+    : [];
 
   return (
     <Suspense fallback={<div className="space-y-16">Loading...</div>}>
@@ -47,50 +25,12 @@ function ProjectsContent() {
           </p>
         </section>
 
-        {/* Filter Section */}
-        <section className="space-y-8">
-          <ProjectFilter
-            projects={allProjectsSorted}
-            onFilteredProjects={(projects) => setFilteredProjects(projects)}
-            initialTags={initialTags}
-            initialSearch={initialSearch}
-          />
-        </section>
-
         {/* Projects Grid */}
         <section className="space-y-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading
-              ? // Show skeleton loading
-                Array.from({ length: 6 }).map((_, i) => (
-                  <ProjectCardSkeleton key={i} />
-                ))
-              : filteredProjects.map((p) => (
-                  <ProjectCard key={p.slug} project={p} />
-                ))}
-
-            {!isLoading && filteredProjects.length === 0 && (
-              <div className="col-span-full text-center py-16">
-                <div className="w-24 h-24 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mb-6">
-                  <Play className="w-12 h-12 text-purple-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  No Projects Found
-                </h3>
-                <p className="text-neutral-400 mb-6">
-                  No projects match your current filters. Try adjusting your
-                  search or clearing the filters.
-                </p>
-                <InteractiveButton
-                  onClick={() => (window.location.href = "/projects")}
-                  variant="primary"
-                  size="md"
-                >
-                  View All Projects
-                  <ArrowRight className="w-5 h-5" />
-                </InteractiveButton>
-              </div>
-            )}
+            {allProjectsSorted.map((p) => (
+              <ProjectCard key={p.slug} project={p} />
+            ))}
           </div>
         </section>
 

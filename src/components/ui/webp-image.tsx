@@ -91,7 +91,6 @@ export default function WebPImage({
     />
   );
 }
-
 // Specialized components for different use cases
 export function ProjectWebPImage(props: WebPImageProps) {
   return (
