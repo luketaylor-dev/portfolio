@@ -20,6 +20,35 @@ const nextConfig = {
   // Optimize for international performance
   async headers() {
     return [
+      // Ensure sitemap and robots.txt are always fresh
+      {
+        source: "/sitemap.xml",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, must-revalidate", // 1 hour
+          },
+        ],
+      },
+      {
+        source: "/sitemap-:path*.xml",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, must-revalidate", // 1 hour
+          },
+        ],
+      },
+      {
+        source: "/robots.txt",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, must-revalidate", // 1 hour
+          },
+        ],
+      },
+      // Default security headers and long-term cache for everything else
       {
         source: "/(.*)",
         headers: [

@@ -12,6 +12,8 @@
     "test:coverage": "jest --coverage",
     "postinstall": "contentlayer build",
     "content": "contentlayer build",
+    "sitemap": "next-sitemap",
+    "build:sitemap": "pnpm build && next-sitemap",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit",
     "build:analyze": "ANALYZE=true pnpm build"
