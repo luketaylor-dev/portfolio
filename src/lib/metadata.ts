@@ -144,9 +144,6 @@ export const defaultMetadata: Metadata = {
     shortcut: "/icons/favicon.png",
     apple: "/icons/favicon.png",
   },
-  verification: {
-    google: "your-google-verification-code", // Add your Google Search Console verification code
-  },
   other: {
     "theme-color": "#7c3aed", // Purple theme color
     "color-scheme": "dark",
