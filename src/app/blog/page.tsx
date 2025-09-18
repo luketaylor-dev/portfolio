@@ -1,6 +1,7 @@
 import { allBlogPosts } from "contentlayer/generated";
 import { Tag } from "lucide-react";
 import { BlogCard } from "@/components/content";
+import { Breadcrumbs } from "@/components/ui";
 
 export default function BlogPage() {
   // Check if blog posts exist and sort them by date (newest first)
@@ -12,6 +13,9 @@ export default function BlogPage() {
 
   return (
     <div className="space-y-16">
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[{ label: "Blog" }]} className="mb-8" />
+
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">

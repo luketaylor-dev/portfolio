@@ -2,7 +2,7 @@ import { allProjects } from "contentlayer/generated";
 import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
 import { ProjectCard } from "@/components/content";
-import { InteractiveButton, Card } from "@/components/ui";
+import { InteractiveButton, Card, Breadcrumbs } from "@/components/ui";
 
 function ProjectsContent() {
   // Sort projects immediately on server - no client-side state needed
@@ -13,15 +13,31 @@ function ProjectsContent() {
   return (
     <Suspense fallback={<div className="space-y-16">Loading...</div>}>
       <div className="space-y-16">
+        {/* Breadcrumbs */}
+        <Breadcrumbs items={[{ label: "Projects" }]} className="mb-8" />
+
         {/* Hero Section */}
         <section className="text-center space-y-8">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
             My Projects
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            A collection of my work in Unity development, from EEG
-            visualizations and VR experiences to engaging free-to-play games.
-            Each project represents a unique challenge and learning opportunity.
+            A collection of my work in Unity development, from{" "}
+            <a
+              href="/projects/eeg-visualiser"
+              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+            >
+              EEG visualizations
+            </a>{" "}
+            and{" "}
+            <a
+              href="/projects/vr-office"
+              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+            >
+              VR experiences
+            </a>{" "}
+            to engaging free-to-play games. Each project represents a unique
+            challenge and learning opportunity.
           </p>
         </section>
 

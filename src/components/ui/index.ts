@@ -6,6 +6,7 @@ export { default as Badge } from "./badge";
 export { default as Input } from "./input";
 export { default as Textarea } from "./textarea";
 export { default as VideoWithPlayButton } from "./video-with-play-button";
+export { default as Breadcrumbs } from "./breadcrumbs";
 
 // Mobile-optimized components
 export {

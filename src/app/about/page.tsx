@@ -12,10 +12,14 @@ import {
 
 import { ResumeDownload } from "@/components/content";
 import { InteractiveButton, Card } from "@/components/ui";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 export default function AboutPage() {
   return (
     <div className="space-y-16">
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[{ label: "About" }]} className="mb-8" />
+
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <div className="space-y-6">
@@ -63,14 +67,45 @@ export default function AboutPage() {
             I'm proud to be part of Manchester's thriving tech scene. The city's
             innovative spirit and collaborative community make it the perfect
             place for cutting-edge{" "}
-            <strong className="text-purple-300">EEG visualization</strong>,{" "}
-            <strong className="text-purple-300">VR development</strong>, and{" "}
-            <strong className="text-purple-300">game development</strong>{" "}
-            projects.
+            <a
+              href="/projects?tags=EEG"
+              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+            >
+              EEG visualization
+            </a>
+            ,{" "}
+            <a
+              href="/projects?tags=VR"
+              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+            >
+              VR development
+            </a>
+            , and{" "}
+            <a
+              href="/projects"
+              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+            >
+              game development
+            </a>{" "}
+            projects. Located in the heart of Manchester's digital district, I'm
+            perfectly positioned to serve clients across{" "}
+            <strong className="text-purple-300">M1, M2, M3, M4</strong> and
+            surrounding areas.
           </p>
           <p className="text-neutral-400 mt-4">
             Available for local Manchester projects and remote collaboration
-            worldwide.
+            worldwide. Conveniently located near{" "}
+            <strong className="text-purple-300">Manchester University</strong>{" "}
+            and the{" "}
+            <strong className="text-purple-300">Northern Quarter</strong> tech
+            hub.{" "}
+            <a
+              href="/manchester-services"
+              className="text-purple-400 hover:text-purple-300 transition-colors underline"
+            >
+              Learn more about my Manchester services
+            </a>
+            .
           </p>
         </Card>
       </section>
@@ -138,7 +173,14 @@ export default function AboutPage() {
               Transform complex brainwave data into intuitive, beautiful visual
               experiences. I've worked with various EEG devices and created
               real-time visualization systems that make brain-computer
-              interfaces accessible and engaging.
+              interfaces accessible and engaging.{" "}
+              <a
+                href="/projects/eeg-visualiser"
+                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              >
+                See my Brainrave project
+              </a>
+              .
             </p>
           </Card>
 
@@ -153,7 +195,14 @@ export default function AboutPage() {
               Create immersive virtual reality experiences that transport users
               to new worlds. From educational simulations to entertainment
               experiences, I focus on performance, comfort, and creating truly
-              engaging VR content.
+              engaging VR content.{" "}
+              <a
+                href="/projects/vr-office"
+                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              >
+                Explore my VR Office project
+              </a>
+              .
             </p>
           </Card>
 
@@ -168,7 +217,14 @@ export default function AboutPage() {
               Build high-performance games that millions can enjoy. Specializing
               in free-to-play and casino games, I focus on creating engaging
               gameplay loops, monetization strategies, and scalable
-              architectures.
+              architectures.{" "}
+              <a
+                href="/projects/poker-suite"
+                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              >
+                Check out my Ultimate X Poker project
+              </a>
+              .
             </p>
           </Card>
         </div>

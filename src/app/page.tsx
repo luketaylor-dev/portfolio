@@ -78,9 +78,21 @@ export default function HomePage() {
               <ScrollAnimation direction="up" delay={800}>
                 <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                   Manchester-based Unity developer building immersive projects
-                  that push boundaries — from EEG‑driven visualisations and
-                  multiplayer VR experiences to high‑revenue free‑to‑play poker
-                  & casino games.
+                  that push boundaries — from{" "}
+                  <a
+                    href="/projects?tags=EEG"
+                    className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                  >
+                    EEG‑driven visualisations
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="/projects?tags=VR"
+                    className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                  >
+                    multiplayer VR experiences
+                  </a>{" "}
+                  to high‑revenue free‑to‑play poker & casino games.
                 </p>
               </ScrollAnimation>
             </div>

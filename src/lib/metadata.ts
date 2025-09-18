@@ -62,6 +62,16 @@ export const defaultMetadata: Metadata = {
     "Manchester Tech Developer",
     "Manchester Interactive Media",
     "Manchester Immersive Technology",
+    "Manchester Northern Quarter Developer",
+    "MediaCityUK Unity Developer",
+    "Manchester Digital District Developer",
+    "M1 Unity Developer",
+    "M2 Unity Developer",
+    "M3 Unity Developer",
+    "M4 Unity Developer",
+    "Greater Manchester Unity Developer",
+    "Manchester Freelance Developer",
+    "Manchester Contract Unity Developer",
 
     // Generic keywords (still important!)
     "Unity Developer",

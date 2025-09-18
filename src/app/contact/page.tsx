@@ -2,7 +2,13 @@
 import { Send, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { ResumeDownload } from "@/components/content";
-import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
+import {
+  InteractiveButton,
+  Input,
+  Textarea,
+  Card,
+  Breadcrumbs,
+} from "@/components/ui";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -151,15 +157,38 @@ export default function ContactPage() {
 
   return (
     <div className="space-y-16">
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[{ label: "Contact" }]} className="mb-8" />
+
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
           Let's Connect
         </h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-          Ready to bring your Unity project to life? Whether it's VR, EEG
-          visualization, or game development, I'm here to help turn your vision
-          into reality. Let's discuss how we can work together.
+          Ready to bring your Unity project to life? Whether it's{" "}
+          <a
+            href="/projects?tags=VR"
+            className="text-purple-300 hover:text-purple-200 transition-colors underline"
+          >
+            VR
+          </a>
+          ,{" "}
+          <a
+            href="/projects?tags=EEG"
+            className="text-purple-300 hover:text-purple-200 transition-colors underline"
+          >
+            EEG visualization
+          </a>
+          , or{" "}
+          <a
+            href="/projects"
+            className="text-purple-300 hover:text-purple-200 transition-colors underline"
+          >
+            game development
+          </a>
+          , I'm here to help turn your vision into reality. Let's discuss how we
+          can work together.
         </p>
       </section>
 

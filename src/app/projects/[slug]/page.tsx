@@ -1,7 +1,13 @@
 import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
-import { InteractiveButton, Card, Badge, WebPImage } from "@/components/ui";
+import {
+  InteractiveButton,
+  Card,
+  Badge,
+  WebPImage,
+  Breadcrumbs,
+} from "@/components/ui";
 import VideoWithPlayButton from "@/components/ui/video-with-play-button";
 import {
   ArrowLeft,
@@ -202,6 +208,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="space-y-12">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: "Projects", href: "/projects" },
+          { label: project.title },
+        ]}
+        className="mb-8"
+      />
+
       {/* Structured Data */}
       <script
         type="application/ld+json"

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 
 import { MdxContent, SocialShare, RelatedPosts } from "@/components/content";
-import { InteractiveButton, Badge } from "@/components/ui";
+import { InteractiveButton, Badge, Breadcrumbs } from "@/components/ui";
 import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 
 interface BlogPostPageProps {
@@ -30,6 +30,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="space-y-16">
+      {/* Breadcrumbs */}
+      <div className="max-w-4xl mx-auto">
+        <Breadcrumbs
+          items={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
+          className="mb-8"
+        />
+      </div>
+
       {/* Back to Blog */}
       <div className="max-w-4xl mx-auto">
         <InteractiveButton href="/blog" variant="ghost" size="sm">
