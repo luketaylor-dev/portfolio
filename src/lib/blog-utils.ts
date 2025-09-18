@@ -1,5 +1,5 @@
 // Calculate reading time based on word count
-export function calculateReadingTime(content: string): string {
+export const calculateReadingTime = (content: string): string => {
   const wordsPerMinute = 200;
   const wordCount = content.split(/\s+/).length;
   const readingTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
@@ -11,7 +11,7 @@ export function calculateReadingTime(content: string): string {
 }
 
 // Format date for display
-export function formatDate(date: string): string {
+export const formatDate = (date: string): string => {
   return new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -20,7 +20,7 @@ export function formatDate(date: string): string {
 }
 
 // Get related posts based on tags
-export function getRelatedPosts(
+export const getRelatedPosts = (
   currentPostSlug: string,
   allPosts: any[],
   maxPosts: number = 3

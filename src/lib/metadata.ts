@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-export function generateMetadata(
+export const generateMetadata = (
   title: string,
   description: string,
   path: string,
