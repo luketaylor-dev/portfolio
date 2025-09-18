@@ -2,6 +2,7 @@
 import { Send, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { ResumeDownload } from "@/components/content";
+import { FormErrorBoundary } from "@/components/feedback";
 import {
   InteractiveButton,
   Input,
@@ -239,102 +240,104 @@ export default function ContactPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6" ref={formRef}>
-            <Input
-              label="Name *"
-              name="user_name"
-              value={formData.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
-              onBlur={() => handleBlur("name")}
-              placeholder="Your name"
-              error={
-                touched.name
-                  ? validateField("name", formData.name) || undefined
-                  : undefined
-              }
-              required
-            />
+          <FormErrorBoundary>
+            <form onSubmit={handleSubmit} className="space-y-6" ref={formRef}>
+              <Input
+                label="Name *"
+                name="user_name"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                onBlur={() => handleBlur("name")}
+                placeholder="Your name"
+                error={
+                  touched.name
+                    ? validateField("name", formData.name) || undefined
+                    : undefined
+                }
+                required
+              />
 
-            <Input
-              label="Email *"
-              name="user_email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              onBlur={() => handleBlur("email")}
-              placeholder="your.email@example.com"
-              error={
-                touched.email
-                  ? validateField("email", formData.email) || undefined
-                  : undefined
-              }
-              required
-            />
+              <Input
+                label="Email *"
+                name="user_email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                onBlur={() => handleBlur("email")}
+                placeholder="your.email@example.com"
+                error={
+                  touched.email
+                    ? validateField("email", formData.email) || undefined
+                    : undefined
+                }
+                required
+              />
 
-            <Textarea
-              label="Message *"
-              name="message"
-              rows={6}
-              value={formData.message}
-              onChange={(e) => handleInputChange("message", e.target.value)}
-              onBlur={() => handleBlur("message")}
-              placeholder="Tell me about your project, timeline, budget, or any questions you have..."
-              error={
-                touched.message
-                  ? validateField("message", formData.message) || undefined
-                  : undefined
-              }
-              required
-            />
+              <Textarea
+                label="Message *"
+                name="message"
+                rows={6}
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                onBlur={() => handleBlur("message")}
+                placeholder="Tell me about your project, timeline, budget, or any questions you have..."
+                error={
+                  touched.message
+                    ? validateField("message", formData.message) || undefined
+                    : undefined
+                }
+                required
+              />
 
-            {/* Honeypot field - hidden from users but visible to bots */}
-            {mounted && (
-              <div className="absolute left-[-9999px] opacity-0 pointer-events-none">
-                <Input
-                  label="Website"
-                  name="website"
-                  type="text"
-                  value={honeypotValue}
-                  onChange={(e) => setHoneypotValue(e.target.value)}
-                  placeholder="Leave this empty"
-                  autoComplete="off"
-                  tabIndex={-1}
-                />
-              </div>
-            )}
-
-            <InteractiveButton
-              type="submit"
-              disabled={isSubmitting}
-              loading={isSubmitting}
-              variant="primary"
-              size="lg"
-              className="w-full"
-            >
-              {isSubmitting ? (
-                "Sending Message..."
-              ) : (
-                <>
-                  <Send className="w-5 h-5" />
-                  Send Message
-                </>
-              )}
-            </InteractiveButton>
-
-            {isSubmitSuccessful && (
-              <div className="p-4 rounded-xl bg-green-900/20 border border-green-500/30 flex items-center gap-3">
-                <CheckCircle className="w-6 h-6 text-green-400" />
-                <div>
-                  <p className="font-medium text-green-300">
-                    Message Sent Successfully!
-                  </p>
-                  <p className="text-sm text-green-400">
-                    I'll get back to you within 24 hours.
-                  </p>
+              {/* Honeypot field - hidden from users but visible to bots */}
+              {mounted && (
+                <div className="absolute left-[-9999px] opacity-0 pointer-events-none">
+                  <Input
+                    label="Website"
+                    name="website"
+                    type="text"
+                    value={honeypotValue}
+                    onChange={(e) => setHoneypotValue(e.target.value)}
+                    placeholder="Leave this empty"
+                    autoComplete="off"
+                    tabIndex={-1}
+                  />
                 </div>
-              </div>
-            )}
-          </form>
+              )}
+
+              <InteractiveButton
+                type="submit"
+                disabled={isSubmitting}
+                loading={isSubmitting}
+                variant="primary"
+                size="lg"
+                className="w-full"
+              >
+                {isSubmitting ? (
+                  "Sending Message..."
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
+              </InteractiveButton>
+
+              {isSubmitSuccessful && (
+                <div className="p-4 rounded-xl bg-green-900/20 border border-green-500/30 flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-400" />
+                  <div>
+                    <p className="font-medium text-green-300">
+                      Message Sent Successfully!
+                    </p>
+                    <p className="text-sm text-green-400">
+                      I'll get back to you within 24 hours.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </form>
+          </FormErrorBoundary>
         </section>
 
         {/* Contact Info & CTA */}
