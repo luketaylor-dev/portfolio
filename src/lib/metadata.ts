@@ -5,7 +5,7 @@ export const generateMetadata = (
   description: string,
   path: string,
   image?: string
-): Metadata {
+): Metadata => {
   const url = `https://www.dibza.co.uk${path}`;
   const imageUrl =
     image || "https://www.dibza.co.uk/images/luke-taylor-dev.jpg";
@@ -39,7 +39,7 @@ export const generateMetadata = (
       canonical: url,
     },
   };
-}
+};
 
 export const defaultMetadata: Metadata = {
   title: "Luke Taylor — Manchester Unity Developer | EEG & VR Specialist",

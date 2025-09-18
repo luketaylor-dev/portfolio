@@ -13,6 +13,12 @@ interface Project {
   featured?: boolean | undefined;
 }
 
+interface ProjectCardProps {
+  project: Project;
+  variant?: "default" | "featured";
+  className?: string;
+}
+
 // Helper function to get WebP and fallback paths
 function getImagePaths(coverPath: string) {
   // If it's already a WebP file, use it as WebP and derive PNG fallback

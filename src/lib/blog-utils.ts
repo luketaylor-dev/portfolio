@@ -8,7 +8,7 @@ export const calculateReadingTime = (content: string): string => {
     return "1 min read";
   }
   return `${readingTimeMinutes} min read`;
-}
+};
 
 // Format date for display
 export const formatDate = (date: string): string => {
@@ -17,14 +17,14 @@ export const formatDate = (date: string): string => {
     month: "long",
     day: "numeric",
   });
-}
+};
 
 // Get related posts based on tags
 export const getRelatedPosts = (
   currentPostSlug: string,
   allPosts: any[],
   maxPosts: number = 3
-): any[] {
+): any[] => {
   const currentPost = allPosts.find((post) => post.slug === currentPostSlug);
   if (!currentPost || !currentPost.tags) return [];
 
@@ -47,7 +47,7 @@ export const getRelatedPosts = (
     .slice(0, maxPosts);
 
   return relatedPosts;
-}
+};
 
 // Social sharing URLs
 export const socialShareUrls = {
