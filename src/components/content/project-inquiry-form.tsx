@@ -252,7 +252,7 @@ export default function ProjectInquiryForm({
     setError(null);
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -695,7 +695,7 @@ export default function ProjectInquiryForm({
       )}
 
       <Card variant="default" className="p-8">
-        <form onSubmit={onSubmit} ref={formRef} noValidate>
+        <form onSubmit={handleSubmit} ref={formRef} noValidate>
           {currentStep === 1 && renderStep1()}
           {currentStep === 2 && renderStep2()}
           {currentStep === 3 && renderStep3()}

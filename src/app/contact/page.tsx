@@ -79,7 +79,7 @@ export default function ContactPage() {
     setTouched((prev) => ({ ...prev, [field]: true }));
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setIsSubmitting(true);
@@ -239,7 +239,7 @@ export default function ContactPage() {
             </div>
           )}
 
-          <form onSubmit={onSubmit} className="space-y-6" ref={formRef}>
+          <form onSubmit={handleSubmit} className="space-y-6" ref={formRef}>
             <Input
               label="Name *"
               name="user_name"
