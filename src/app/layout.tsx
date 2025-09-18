@@ -16,12 +16,26 @@ import { InteractiveButton } from "@/components/ui";
 export const metadata = {
   ...defaultMetadata,
   metadataBase: new URL("https://www.dibza.co.uk"),
+  icons: {
+    icon: [
+      { url: "/icons/favicon.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon.png", sizes: "1024x1024", type: "image/png" },
+    ],
+    shortcut: "/icons/favicon.png",
+    apple: "/icons/favicon.png",
+  },
+  manifest: "/site.webmanifest",
+};
+
+export const viewport = {
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -32,11 +46,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
-        {/* DNS prefetch for external resources */}
+        {/* DNS prefetch */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-      </head>
-      <head>
+
+        {/* Structured data */}
         <StructuredData />
       </head>
       <body className="bg-neutral-950 text-white min-h-screen antialiased">
