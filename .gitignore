@@ -5,3 +5,4 @@ node_modules
 .contentlayer
 .env.local
 .env*.local
+tsconfig.tsbuildinfo
