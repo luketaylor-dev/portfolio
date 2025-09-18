@@ -6,6 +6,7 @@ import { MobileNav } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/seo";
+import { PerformanceMonitor } from "@/components/performance";
 
 import { defaultMetadata } from "@/lib/metadata";
 import { ResumeDownload } from "@/components/content";
@@ -467,65 +468,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </footer>
         <Analytics />
         <SpeedInsights />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Performance monitoring and focus management
-              if (typeof window !== 'undefined') {
-                // Track Core Web Vitals
-                if ('PerformanceObserver' in window) {
-                  const observer = new PerformanceObserver((list) => {
-                    for (const entry of list.getEntries()) {
-                      if (entry.entryType === 'largest-contentful-paint') {
-                        console.log('LCP:', entry.startTime);
-                      }
-                    }
-                  });
-                  observer.observe({ entryTypes: ['largest-contentful-paint'] });
-                }
-                
-                // Preload critical images
-                const criticalImages = ['/images/luke-taylor-dev.jpg'];
-                criticalImages.forEach(src => {
-                  const link = document.createElement('link');
-                  link.rel = 'preload';
-                  link.as = 'image';
-                  link.href = src;
-                  document.head.appendChild(link);
-                });
-
-                // Optimize for US performance - reduce animation complexity on slower connections
-                if ('connection' in navigator && navigator.connection) {
-                  const connection = navigator.connection as any;
-                  if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
-                    document.documentElement.classList.add('reduced-motion');
-                  }
-                }
-
-                // Clear focus after navigation to prevent persistent focus rings
-                document.addEventListener('click', function(e) {
-                  // If clicking on a navigation link, clear focus after a short delay
-                  if (e.target.closest('nav a')) {
-                    setTimeout(() => {
-                      if (document.activeElement && document.activeElement.tagName === 'A') {
-                        document.activeElement.blur();
-                      }
-                    }, 100);
-                  }
-                });
-
-                // Clear focus when clicking outside navigation
-                document.addEventListener('click', function(e) {
-                  if (!e.target.closest('nav')) {
-                    if (document.activeElement && document.activeElement.tagName === 'A') {
-                      document.activeElement.blur();
-                    }
-                  }
-                });
-              }
-            `,
-          }}
-        />
+        <PerformanceMonitor />
       </body>
     </html>
   );
