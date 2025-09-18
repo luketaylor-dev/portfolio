@@ -23,13 +23,11 @@ export default function MobileNav() {
     setMounted(true);
   }, []);
 
-  const toggleMenu = () => {
-    console.log("Toggle menu clicked, current state:", isOpen);
+  const handleToggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const closeMenu = () => {
-    console.log("Close menu clicked");
+  const handleCloseMenu = () => {
     setIsOpen(false);
   };
 
@@ -50,13 +48,11 @@ export default function MobileNav() {
     );
   }
 
-  console.log("MobileNav render - isOpen:", isOpen);
-
   return (
     <>
       {/* Mobile Menu Button */}
       <button
-        onClick={toggleMenu}
+        onClick={handleToggleMenu}
         className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
         aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
         aria-expanded={isOpen}
@@ -91,7 +87,7 @@ export default function MobileNav() {
               bottom: 0,
               backgroundColor: "rgba(0, 0, 0, 0.9)",
             }}
-            onClick={closeMenu}
+            onClick={handleCloseMenu}
           />
 
           {/* Menu panel */}
@@ -169,7 +165,7 @@ export default function MobileNav() {
                   </span>
                 </div>
                 <button
-                  onClick={closeMenu}
+                  onClick={handleCloseMenu}
                   style={{
                     padding: "8px",
                     borderRadius: "8px",
@@ -197,7 +193,7 @@ export default function MobileNav() {
                       key={item.href}
                       href={item.href}
                       prefetch={true}
-                      onClick={closeMenu}
+                      onClick={handleCloseMenu}
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -253,7 +249,7 @@ export default function MobileNav() {
                     href="https://www.linkedin.com/in/luke-taylor-ab5080166/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={closeMenu}
+                    onClick={handleCloseMenu}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -283,7 +279,7 @@ export default function MobileNav() {
                     href="https://github.com/luketaylor-dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={closeMenu}
+                    onClick={handleCloseMenu}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -322,7 +318,7 @@ export default function MobileNav() {
                 <Link
                   href="/contact"
                   prefetch={true}
-                  onClick={closeMenu}
+                  onClick={handleCloseMenu}
                   style={{
                     display: "block",
                     width: "100%",

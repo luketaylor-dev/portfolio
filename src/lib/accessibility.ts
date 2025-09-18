@@ -1,7 +1,7 @@
 import { useEffect, useRef, KeyboardEvent } from "react";
 
 // Keyboard navigation utilities
-export function useKeyboardNavigation() {
+export const useKeyboardNavigation = () => {
   const containerRef = useRef<HTMLElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -47,10 +47,10 @@ export function useKeyboardNavigation() {
   };
 
   return { containerRef, handleKeyDown };
-}
+};
 
 // Focus trap utility
-export function useFocusTrap(enabled: boolean = true) {
+export const useFocusTrap = (enabled: boolean = true) => {
   const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -93,10 +93,10 @@ export function useFocusTrap(enabled: boolean = true) {
   }, [enabled]);
 
   return containerRef;
-}
+};
 
 // Skip to content utility
-export function useSkipToContent() {
+export const useSkipToContent = () => {
   const mainContentRef = useRef<HTMLElement>(null);
 
   const handleSkipToContent = () => {
@@ -104,7 +104,7 @@ export function useSkipToContent() {
   };
 
   return { mainContentRef, handleSkipToContent };
-}
+};
 
 // ARIA helpers
 export const ariaHelpers = {

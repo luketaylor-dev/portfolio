@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { ProjectCard } from "@/components/content";
 import { InteractiveButton, Card, Breadcrumbs } from "@/components/ui";
 
-function ProjectsContent() {
+const ProjectsContent = () => {
   // Sort projects immediately on server - no client-side state needed
   const allProjectsSorted = allProjects
     ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
@@ -70,7 +70,7 @@ function ProjectsContent() {
       </div>
     </Suspense>
   );
-}
+};
 
 export default function ProjectsPage() {
   return (

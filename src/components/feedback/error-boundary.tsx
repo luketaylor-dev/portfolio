@@ -72,7 +72,7 @@ interface ErrorFallbackProps {
   resetError?: () => void;
 }
 
-export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
+export const ErrorFallback = ({ error, resetError }: ErrorFallbackProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
       <div className="text-center space-y-6 max-w-md">
@@ -110,4 +110,4 @@ export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
       </div>
     </div>
   );
-}
+};

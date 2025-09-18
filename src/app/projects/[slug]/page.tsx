@@ -43,7 +43,7 @@ import {
 } from "lucide-react";
 
 // Helper function to get WebP and fallback paths
-function getImagePaths(coverPath: string) {
+const getImagePaths = (coverPath: string) => {
   // If it's already a WebP file, use it as WebP and derive PNG fallback
   if (coverPath.endsWith(".webp")) {
     const basePath = coverPath.replace(/\.webp$/i, "");
@@ -61,10 +61,10 @@ function getImagePaths(coverPath: string) {
     webp: `${basePath}.webp`,
     fallback: `${basePath}.${extension}`,
   };
-}
+};
 
 // Helper function to generate structured data for projects
-function generateProjectStructuredData(project: any) {
+const generateProjectStructuredData = (project: any) => {
   const baseStructuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork" as const,
@@ -109,7 +109,7 @@ function generateProjectStructuredData(project: any) {
   }
 
   return baseStructuredData;
-}
+};
 
 export async function generateStaticParams() {
   return allProjects.map((project) => ({

@@ -55,11 +55,11 @@ export default function MobileNavEnhanced() {
     };
   }, [isOpen]);
 
-  const toggleMenu = () => {
+  const handleToggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const closeMenu = () => {
+  const handleCloseMenu = () => {
     setIsOpen(false);
   };
 
@@ -96,7 +96,7 @@ export default function MobileNavEnhanced() {
     <>
       {/* Mobile Menu Button */}
       <button
-        onClick={toggleMenu}
+        onClick={handleToggleMenu}
         className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 active:scale-95"
         aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
         aria-expanded={isOpen}
@@ -144,7 +144,7 @@ export default function MobileNavEnhanced() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-              onClick={closeMenu}
+              onClick={handleCloseMenu}
             />
 
             {/* Menu Panel */}
@@ -182,7 +182,7 @@ export default function MobileNavEnhanced() {
                     </span>
                   </div>
                   <button
-                    onClick={closeMenu}
+                    onClick={handleCloseMenu}
                     className="p-2 rounded-lg text-purple-300 hover:bg-purple-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
                     aria-label="Close mobile menu"
                   >
@@ -201,7 +201,7 @@ export default function MobileNavEnhanced() {
                     >
                       <Link
                         href={item.href}
-                        onClick={closeMenu}
+                        onClick={handleCloseMenu}
                         className="flex items-center gap-3 p-4 rounded-xl text-neutral-300 hover:bg-purple-900/20 hover:text-purple-300 transition-all duration-200 active:scale-95 group"
                       >
                         <div className="p-2 rounded-lg bg-purple-900/20 group-hover:bg-purple-800/30 transition-colors">
@@ -249,7 +249,7 @@ export default function MobileNavEnhanced() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={closeMenu}
+                        onClick={handleCloseMenu}
                         className="flex items-center gap-3 p-3 rounded-lg text-neutral-300 hover:bg-purple-900/20 hover:text-purple-300 transition-all duration-200 active:scale-95"
                       >
                         <div className="p-2 rounded-lg bg-purple-900/20">
@@ -270,7 +270,7 @@ export default function MobileNavEnhanced() {
                 >
                   <Link
                     href="/contact"
-                    onClick={closeMenu}
+                    onClick={handleCloseMenu}
                     className="block w-full text-center py-3 px-6 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200 active:scale-95"
                   >
                     Start a Project

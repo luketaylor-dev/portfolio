@@ -18,11 +18,11 @@ const components = {
   ),
 };
 
-export function MDXContent({ code }: { code: string }) {
+export const MDXContent = ({ code }: { code: string }) => {
   const Component = useMDXComponent(code);
   return (
     <div className="prose">
       <Component components={components} />
     </div>
   );
-}
+};

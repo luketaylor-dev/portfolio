@@ -1,19 +1,19 @@
 // Mobile performance utilities
 
 // Check if device is mobile
-export function isMobile(): boolean {
+export const isMobile = (): boolean => {
   if (typeof window === "undefined") return false;
   return window.innerWidth < 768;
-}
+};
 
 // Check if device supports touch
-export function isTouchDevice(): boolean {
+export const isTouchDevice = (): boolean => {
   if (typeof window === "undefined") return false;
   return "ontouchstart" in window || navigator.maxTouchPoints > 0;
-}
+};
 
 // Check connection speed
-export function getConnectionSpeed(): "slow" | "fast" | "unknown" {
+export const getConnectionSpeed = (): "slow" | "fast" | "unknown" => {
   if (typeof navigator === "undefined" || !("connection" in navigator)) {
     return "unknown";
   }
@@ -38,7 +38,7 @@ export function getConnectionSpeed(): "slow" | "fast" | "unknown" {
   }
 
   return "unknown";
-}
+};
 
 // Check if user prefers reduced data usage
 export function prefersReducedData(): boolean {
