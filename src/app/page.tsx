@@ -77,9 +77,10 @@ export default function HomePage() {
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={800}>
                 <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                  I build immersive Unity projects that push boundaries — from
-                  EEG‑driven visualisations and multiplayer VR experiences to
-                  high‑revenue free‑to‑play poker & casino games.
+                  Manchester-based Unity developer building immersive projects
+                  that push boundaries — from EEG‑driven visualisations and
+                  multiplayer VR experiences to high‑revenue free‑to‑play poker
+                  & casino games.
                 </p>
               </ScrollAnimation>
             </div>

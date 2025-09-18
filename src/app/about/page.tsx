@@ -7,6 +7,7 @@ import {
   Users,
   Zap,
   ArrowRight,
+  Building2,
 } from "lucide-react";
 
 import { ResumeDownload } from "@/components/content";
@@ -22,12 +23,15 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            I’m Luke Taylor, a Unity Developer exploring the space between
-            technology and creativity. From brainwave-driven visuals to scalable
-            free-to-play systems. My work spans experimental prototypes,
-            immersive VR experiences, and commercial game development, always
-            with a focus on building tools and systems that push ideas further
-            and empower creative teams.
+            I'm Luke Taylor, a{" "}
+            <strong className="text-purple-300">
+              Manchester-based Unity Developer
+            </strong>{" "}
+            exploring the space between technology and creativity. From
+            brainwave-driven visuals to scalable free-to-play systems. My work
+            spans experimental prototypes, immersive VR experiences, and
+            commercial game development, always with a focus on building tools
+            and systems that push ideas further and empower creative teams.
           </p>
         </div>
 
@@ -42,6 +46,33 @@ export default function AboutPage() {
             priority
           />
         </div>
+      </section>
+
+      {/* Location Section */}
+      <section className="text-center space-y-6">
+        <Card variant="default" className="rounded-2xl p-6 max-w-2xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <Building2 className="w-full h-full text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-white">
+              Based in Manchester
+            </h2>
+          </div>
+          <p className="text-lg text-neutral-300 leading-relaxed">
+            I'm proud to be part of Manchester's thriving tech scene. The city's
+            innovative spirit and collaborative community make it the perfect
+            place for cutting-edge{" "}
+            <strong className="text-purple-300">EEG visualization</strong>,{" "}
+            <strong className="text-purple-300">VR development</strong>, and{" "}
+            <strong className="text-purple-300">game development</strong>{" "}
+            projects.
+          </p>
+          <p className="text-neutral-400 mt-4">
+            Available for local Manchester projects and remote collaboration
+            worldwide.
+          </p>
+        </Card>
       </section>
 
       {/* Story Section */}

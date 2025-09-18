@@ -52,6 +52,51 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         {/* Structured data */}
         <StructuredData />
+
+        {/* Enhanced SEO structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Luke Taylor",
+              jobTitle: "Unity Developer",
+              description:
+                "Manchester-based Unity Developer specializing in EEG visualization, VR development, and brain-computer interfaces",
+              url: "https://www.dibza.co.uk",
+              image: "https://www.dibza.co.uk/images/luke-taylor-dev.jpg",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Manchester",
+                addressCountry: "United Kingdom",
+              },
+              sameAs: [
+                "https://github.com/luketaylor",
+                "https://linkedin.com/in/luketaylor",
+              ],
+              knowsAbout: [
+                "Unity Development",
+                "EEG Visualization",
+                "VR Development",
+                "Brain Computer Interface",
+                "Neuroscience Applications",
+                "Game Development",
+                "C# Programming",
+                "Virtual Reality",
+                "Interactive Media",
+              ],
+              hasOccupation: {
+                "@type": "Occupation",
+                name: "Unity Developer",
+                description:
+                  "Specializes in EEG visualization, VR development, and immersive experiences",
+                skills:
+                  "Unity, C#, EEG, VR, Brain Computer Interface, Game Development",
+              },
+            }),
+          }}
+        />
       </head>
       <body className="bg-neutral-950 text-white min-h-screen antialiased">
         {/* Skip to content link for accessibility */}

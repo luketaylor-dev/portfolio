@@ -42,16 +42,44 @@ export function generateMetadata(
 }
 
 export const defaultMetadata: Metadata = {
-  title: "Luke Taylor — From Brainwaves to Gameplay – Unity Innovation",
+  title: "Luke Taylor — Manchester Unity Developer | EEG & VR Specialist",
   description:
-    "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
+    "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
   keywords: [
+    // Location-specific keywords
+    "Manchester Unity Developer",
+    "Manchester EEG Developer",
+    "Manchester VR Developer",
+    "Manchester Game Developer",
+    "Unity Developer Manchester",
+    "EEG Visualization Manchester",
+    "VR Development Manchester",
+    "Brain Computer Interface Manchester",
+    "Neuroscience Applications Manchester",
+    "Manchester Indie Game Developer",
+    "Manchester VR Specialist",
+    "Manchester EEG Specialist",
+    "Manchester Tech Developer",
+    "Manchester Interactive Media",
+    "Manchester Immersive Technology",
+
+    // Generic keywords (still important!)
     "Unity Developer",
+    "EEG Developer",
+    "VR Developer",
+    "Game Developer",
+    "Unity Developer UK",
+    "EEG Developer UK",
+    "VR Developer UK",
+    "Brain Computer Interface",
+    "Neuroscience Applications",
+    "Brainwave Visualization",
+    "Neural Interface Development",
+    "Unity Development",
     "VR Development",
     "EEG Visualization",
     "Game Development",
     "Virtual Reality",
-    "Brain Computer Interface",
     "Free-to-Play Games",
     "Casino Games",
     "Indie Games",
@@ -75,26 +103,26 @@ export const defaultMetadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_GB",
     url: "https://www.dibza.co.uk",
     siteName: "Luke Taylor Portfolio",
-    title: "Luke Taylor — From Brainwaves to Gameplay – Unity Innovation",
+    title: "Luke Taylor — Manchester Unity Developer | EEG & VR Specialist",
     description:
-      "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
+      "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
     images: [
       {
         url: "/images/luke-taylor-dev.jpg",
         width: 1200,
         height: 630,
-        alt: "Luke Taylor - Unity Developer",
+        alt: "Luke Taylor - Manchester Unity Developer specializing in EEG and VR",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Luke Taylor — From Brainwaves to Gameplay – Unity Innovation",
+    title: "Luke Taylor — Manchester Unity Developer | EEG & VR Specialist",
     description:
-      "Unity Developer with 7+ years' experience in F2P games, VR, EEG visualisation, and tool development. Portfolio of shipped titles and innovative prototypes.",
+      "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
     images: ["/images/luke-taylor-dev.jpg"],
     creator: "@luketaylor_dev",
   },
