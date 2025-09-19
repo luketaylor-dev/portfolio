@@ -108,6 +108,69 @@ export default function StructuredData() {
           availability: "https://schema.org/InStock",
         },
       },
+      // LocalBusiness Schema
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.dibza.co.uk/#localbusiness",
+        name: "Luke Taylor - Unity Developer Manchester",
+        description:
+          "Unity Developer Manchester services specializing in EEG visualization, VR development, and brain-computer interfaces",
+        url: "https://www.dibza.co.uk",
+        telephone: "+44-161-XXX-XXXX", // You can add your actual phone if you want
+        email: "hello@dibza.co.uk",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Manchester",
+          addressLocality: "Manchester",
+          addressRegion: "Greater Manchester",
+          addressCountry: "United Kingdom",
+          postalCode: "M1 1AA", // Generic Manchester postcode
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "53.4808",
+          longitude: "-2.2426",
+        },
+        areaServed: [
+          {
+            "@type": "City",
+            name: "Manchester",
+          },
+          {
+            "@type": "City",
+            name: "Liverpool",
+          },
+          {
+            "@type": "City",
+            name: "Leeds",
+          },
+          {
+            "@type": "City",
+            name: "Sheffield",
+          },
+          {
+            "@type": "City",
+            name: "Birmingham",
+          },
+        ],
+        serviceArea: {
+          "@type": "GeoCircle",
+          geoMidpoint: {
+            "@type": "GeoCoordinates",
+            latitude: "53.4808",
+            longitude: "-2.2426",
+          },
+          geoRadius: "50000", // 50km radius
+        },
+        priceRange: "$$",
+        currenciesAccepted: "GBP",
+        paymentAccepted: "Cash, Credit Card, Bank Transfer",
+        openingHours: "Mo-Fr 09:00-17:00",
+        sameAs: [
+          "https://github.com/luketaylor",
+          "https://linkedin.com/in/luketaylor",
+        ],
+      },
       // FAQ Schema
       {
         "@type": "FAQPage",

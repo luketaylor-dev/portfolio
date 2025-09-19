@@ -43,7 +43,7 @@ export default function AboutPage() {
         <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-2 shadow-2xl shadow-purple-500/25">
           <Image
             src="/images/luke-taylor-dev.jpg"
-            alt="Luke Taylor - Unity Developer"
+            alt="Luke Taylor - Unity Developer Manchester specializing in EEG visualization and VR development"
             width={160}
             height={160}
             className="w-full h-full rounded-full object-cover"

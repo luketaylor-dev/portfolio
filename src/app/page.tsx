@@ -50,7 +50,7 @@ export default function HomePage() {
               <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
                 <Image
                   src="/images/luke-taylor-dev.jpg"
-                  alt="Luke Taylor - Unity Developer"
+                  alt="Luke Taylor - Unity Developer Manchester specializing in EEG visualization and VR development"
                   width={128}
                   height={128}
                   className="w-full h-full rounded-full object-cover"
