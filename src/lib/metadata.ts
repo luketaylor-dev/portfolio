@@ -139,11 +139,6 @@ export const defaultMetadata: Metadata = {
   alternates: {
     canonical: "https://www.dibza.co.uk",
   },
-  icons: {
-    icon: "/icons/favicon.png",
-    shortcut: "/icons/favicon.png",
-    apple: "/icons/favicon.png",
-  },
   other: {
     "theme-color": "#7c3aed", // Purple theme color
     "color-scheme": "dark",

@@ -11,8 +11,8 @@ export default function PerformanceMonitor() {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === "largest-contentful-paint") {
-            console.log("LCP:", entry.startTime);
-            // You can send this to your analytics service
+            // LCP tracking - could be sent to analytics
+            // console.log("LCP:", entry.startTime);
           }
         }
       });
@@ -21,9 +21,9 @@ export default function PerformanceMonitor() {
 
     // Track page load time
     const handleLoad = () => {
-      const loadTime = performance.now();
-      console.log("Page load time:", loadTime);
-      // You can send this to your analytics service
+      // Page load time tracking - could be sent to analytics
+      // const loadTime = performance.now();
+      // console.log("Page load time:", loadTime);
     };
 
     window.addEventListener("load", handleLoad);

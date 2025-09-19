@@ -5,7 +5,6 @@ export async function POST(request: NextRequest) {
 
   // Server-side spam protection
   if (website && website.trim() !== "") {
-    console.log("Spam detected: honeypot field filled on server");
     return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
   }
 

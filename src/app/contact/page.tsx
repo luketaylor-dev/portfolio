@@ -92,7 +92,6 @@ export default function ContactPage() {
 
     // Check if honeypot field is filled (bots often fill all fields)
     if (honeypotValue.trim() !== "") {
-      console.log("Spam detected: honeypot field filled");
       setError("Invalid submission detected. Please try again.");
       setIsSubmitting(false);
       return;
@@ -101,7 +100,6 @@ export default function ContactPage() {
     // Check if form was submitted too quickly (bots submit instantly)
     // Only check if we have a start time (user has interacted with form)
     if (formStartTime && timeSpent < minimumTime) {
-      console.log("Spam detected: form submitted too quickly", timeSpent);
       setError(
         "Please take a moment to review your message before submitting."
       );

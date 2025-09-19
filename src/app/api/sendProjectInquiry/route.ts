@@ -115,14 +115,6 @@ export async function POST(request: NextRequest) {
       },
     };
 
-    console.log("Sending EmailJS request:", {
-      service_id: emailjsPayload.service_id,
-      template_id: emailjsPayload.template_id,
-      user_id: emailjsPayload.user_id,
-      hasAccessToken: !!emailjsPayload.accessToken,
-      project_title: emailjsPayload.template_params.project_title,
-    });
-
     // Send email using EmailJS (similar to your existing contact form)
     const emailjsResponse = await fetch(
       "https://api.emailjs.com/api/v1.0/email/send",
@@ -146,21 +138,21 @@ export async function POST(request: NextRequest) {
     }
 
     // Log the inquiry for your records
-    console.log("Project Inquiry Received:", {
-      name,
-      email,
-      company,
-      projectType: projectTypeLabels[projectType],
-      timeline: timelineLabels[timeline],
-      budgetRange: budgetLabels[budgetRange],
-      projectTitle,
-      description,
-      requirements,
-      referenceLinks,
-      additionalInfo,
-      filesCount: files.length,
-      timestamp: new Date().toISOString(),
-    });
+    // console.log("Project Inquiry Received:", {
+    //   name,
+    //   email,
+    //   company,
+    //   projectType: projectTypeLabels[projectType],
+    //   timeline: timelineLabels[timeline],
+    //   budgetRange: budgetLabels[budgetRange],
+    //   projectTitle,
+    //   description,
+    //   requirements,
+    //   referenceLinks,
+    //   additionalInfo,
+    //   filesCount: files.length,
+    //   timestamp: new Date().toISOString(),
+    // });
 
     return NextResponse.json({
       success: true,
