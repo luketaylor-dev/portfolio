@@ -9,7 +9,7 @@ export default function StructuredData() {
         name: "Luke Taylor",
         jobTitle: "Unity Developer",
         description:
-          "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
+          "Unity Developer Manchester with 7+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
         url: "https://www.dibza.co.uk",
         image: "https://www.dibza.co.uk/images/luke-taylor-dev.jpg",
         address: {
@@ -47,7 +47,7 @@ export default function StructuredData() {
         "@id": "https://www.dibza.co.uk/#organization",
         name: "Luke Taylor - Unity Developer",
         description:
-          "Manchester-based Unity development services specializing in EEG visualization, VR development, and brain-computer interfaces",
+          "Unity Developer Manchester services specializing in EEG visualization, VR development, and brain-computer interfaces",
         url: "https://www.dibza.co.uk",
         address: {
           "@type": "PostalAddress",

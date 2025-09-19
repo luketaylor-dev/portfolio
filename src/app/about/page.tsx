@@ -29,7 +29,7 @@ export default function AboutPage() {
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             I'm Luke Taylor, a{" "}
             <strong className="text-purple-300">
-              Manchester-based Unity Developer
+              Unity Developer Manchester
             </strong>{" "}
             exploring the space between technology and creativity. From
             brainwave-driven visuals to scalable free-to-play systems. My work

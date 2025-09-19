@@ -77,8 +77,8 @@ export default function HomePage() {
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={800}>
                 <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                  Manchester-based Unity developer building immersive projects
-                  that push boundaries — from{" "}
+                  Unity Developer Manchester building immersive projects that
+                  push boundaries — from{" "}
                   <a
                     href="/projects?tags=EEG"
                     className="text-purple-300 hover:text-purple-200 transition-colors underline"
