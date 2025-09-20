@@ -19,10 +19,13 @@ export const metadata = {
   metadataBase: new URL("https://www.dibza.co.uk"),
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/icons/favicon.svg", type: "image/svg+xml" },
       { url: "/icons/favicon.png", sizes: "1024x1024", type: "image/png" },
     ],
-    shortcut: "/icons/favicon.png",
+    shortcut: "/favicon.ico",
     apple: "/icons/favicon.png",
   },
   manifest: "/site.webmanifest",
@@ -50,6 +53,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* DNS prefetch */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link
+          rel="icon"
+          href="/favicon-16x16.png"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/favicon-32x32.png"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icons/favicon.png" />
 
         {/* Structured data */}
         <StructuredData />
