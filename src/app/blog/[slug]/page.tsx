@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Metadata } from "next";
+import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
 import { allBlogPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
@@ -17,6 +19,28 @@ export async function generateStaticParams() {
   return allBlogPosts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = allBlogPosts.find((post) => post.slug === params.slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return generatePageMetadata(
+    `${post.title} | Luke Taylor Blog`,
+    post.description ||
+      `Read about ${post.title} - insights from Luke Taylor's Unity development experience.`,
+    `/blog/${post.slug}`,
+    post.image
+  );
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {

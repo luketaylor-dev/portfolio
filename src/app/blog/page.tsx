@@ -1,7 +1,15 @@
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/metadata";
 import { allBlogPosts } from "contentlayer/generated";
 import { Tag } from "lucide-react";
 import { BlogCard } from "@/components/content";
 import { Breadcrumbs } from "@/components/ui";
+
+export const metadata: Metadata = generateMetadata(
+  "Blog - Luke Taylor | Unity Development Insights & Project Updates",
+  "Read insights from Luke Taylor's Unity development projects, including EEG visualization, VR development, and game development experiences. Technical deep dives and project updates.",
+  "/blog"
+);
 
 export default function BlogPage() {
   // Check if blog posts exist and sort them by date (newest first)

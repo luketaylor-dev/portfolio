@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/metadata";
 import {
   Brain,
   Gamepad2,
@@ -13,6 +15,12 @@ import {
 import { ResumeDownload } from "@/components/content";
 import { InteractiveButton, Card } from "@/components/ui";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
+
+export const metadata: Metadata = generateMetadata(
+  "About Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
+  "Learn about Luke Taylor, a Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces and immersive experiences.",
+  "/about"
+);
 
 export default function AboutPage() {
   return (

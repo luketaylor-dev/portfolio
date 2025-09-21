@@ -1,8 +1,16 @@
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/metadata";
 import { allProjects } from "contentlayer/generated";
 import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
 import { ProjectCard } from "@/components/content";
 import { InteractiveButton, Card, Breadcrumbs } from "@/components/ui";
+
+export const metadata: Metadata = generateMetadata(
+  "Projects - Luke Taylor | Unity Development Portfolio",
+  "Explore Luke Taylor's Unity development projects including EEG visualization, VR experiences, and game development. See the technical challenges and solutions behind each project.",
+  "/projects"
+);
 
 const ProjectsContent = () => {
   // Sort projects immediately on server - no client-side state needed

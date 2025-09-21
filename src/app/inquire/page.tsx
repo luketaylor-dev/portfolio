@@ -1,15 +1,12 @@
+import { Metadata } from "next";
+import { generateMetadata } from "@/lib/metadata";
 import { ProjectInquiryForm } from "@/components/content";
 
-export const metadata = {
-  title: "Project Inquiry - Luke Taylor",
-  description:
-    "Submit a detailed project inquiry for Unity development, VR experiences, EEG visualization, or game development.",
-  openGraph: {
-    title: "Project Inquiry - Luke Taylor",
-    description:
-      "Submit a detailed project inquiry for Unity development, VR experiences, EEG visualization, or game development.",
-  },
-};
+export const metadata: Metadata = generateMetadata(
+  "Project Inquiry - Luke Taylor | Unity Development Consultation",
+  "Submit a detailed project inquiry for Unity development, VR experiences, EEG visualization, or game development. Get a comprehensive proposal for your next project.",
+  "/inquire"
+);
 
 export default function InquirePage() {
   return (
