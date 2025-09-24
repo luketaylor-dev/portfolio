@@ -26,7 +26,7 @@ export default function ManchesterServicesPage() {
       <section className="text-center space-y-8">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
-            Unity Developer Manchester Services
+            Manchester Unity Development Services
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             Professional Unity development services in the heart of Manchester's
@@ -44,7 +44,7 @@ export default function ManchesterServicesPage() {
       {/* Location Benefits */}
       <section className="space-y-8">
         <h2 className="text-3xl font-bold text-white text-center">
-          Why Choose a Unity Developer Manchester?
+          Why Choose a Manchester Unity Developer?
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <Card variant="default" hover={true} className="group">

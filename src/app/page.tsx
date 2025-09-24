@@ -50,7 +50,7 @@ export default function HomePage() {
               <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
                 <Image
                   src="/images/luke-taylor-dev.jpg"
-                  alt="Luke Taylor - Unity Developer Manchester specializing in EEG visualization and VR development"
+                  alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
                   width={128}
                   height={128}
                   className="w-full h-full rounded-full object-cover"
@@ -77,8 +77,8 @@ export default function HomePage() {
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={800}>
                 <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                  Unity Developer Manchester building immersive projects that
-                  push boundaries — from{" "}
+                  A Manchester-based Unity Developer building immersive projects
+                  that push boundaries — from{" "}
                   <a
                     href="/projects?tags=EEG"
                     className="text-purple-300 hover:text-purple-200 transition-colors underline"

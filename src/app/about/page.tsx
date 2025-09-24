@@ -37,7 +37,7 @@ export default function AboutPage() {
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             I'm Luke Taylor, a{" "}
             <strong className="text-purple-300">
-              Unity Developer Manchester
+              Manchester-based Unity Developer
             </strong>{" "}
             exploring the space between technology and creativity. From
             brainwave-driven visuals to scalable free-to-play systems. My work
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-2 shadow-2xl shadow-purple-500/25">
           <Image
             src="/images/luke-taylor-dev.jpg"
-            alt="Luke Taylor - Unity Developer Manchester specializing in EEG visualization and VR development"
+            alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
             width={160}
             height={160}
             className="w-full h-full rounded-full object-cover"
