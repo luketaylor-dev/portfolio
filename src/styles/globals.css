@@ -321,10 +321,6 @@ body {
   @apply text-purple-200;
 }
 
-.prose code {
-  @apply bg-purple-900/30 text-purple-300 px-2 py-1 rounded;
-}
-
 /* Loading states */
 .loading-dots {
   display: inline-block;
@@ -371,6 +367,99 @@ body {
   .no-print {
     display: none !important;
   }
+}
+
+/* Custom Syntax Highlighter Theme - Matches site's purple palette */
+.custom-syntax-theme {
+  background: #0a0a0a !important;
+  border: 1px solid rgba(147, 51, 234, 0.3) !important;
+  border-radius: 0.75rem !important;
+}
+
+.custom-syntax-theme pre {
+  background: #0a0a0a !important;
+  color: #f5f5f5 !important;
+  margin: 0 !important;
+  padding: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace !important;
+}
+
+.custom-syntax-theme code {
+  background: transparent !important;
+  color: #f5f5f5 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace !important;
+}
+
+/* Override token colors with site's purple palette */
+.custom-syntax-theme .token.comment {
+  color: #a3a3a3 !important;
+  font-style: italic !important;
+}
+
+.custom-syntax-theme .token.keyword {
+  color: #c084fc !important;
+  font-weight: 600 !important;
+}
+
+.custom-syntax-theme .token.string {
+  color: #a855f7 !important;
+}
+
+.custom-syntax-theme .token.number {
+  color: #9333ea !important;
+}
+
+.custom-syntax-theme .token.function {
+  color: #c084fc !important;
+}
+
+.custom-syntax-theme .token.class-name {
+  color: #e5e5e5 !important;
+}
+
+.custom-syntax-theme .token.operator {
+  color: #c084fc !important;
+}
+
+.custom-syntax-theme .token.punctuation {
+  color: #f5f5f5 !important;
+}
+
+.custom-syntax-theme .token.property {
+  color: #a855f7 !important;
+}
+
+.custom-syntax-theme .token.boolean {
+  color: #c084fc !important;
+}
+
+.custom-syntax-theme .token.constant {
+  color: #9333ea !important;
+}
+
+.custom-syntax-theme .token.variable {
+  color: #e5e5e5 !important;
+}
+
+.custom-syntax-theme .token.attr-name {
+  color: #e5e5e5 !important;
+}
+
+.custom-syntax-theme .token.attr-value {
+  color: #a855f7 !important;
+}
+
+.custom-syntax-theme .token.tag {
+  color: #c084fc !important;
+}
+
+.custom-syntax-theme .token.selector {
+  color: #a855f7 !important;
 }
 
 /* Blog Prose Styles */
@@ -425,7 +514,8 @@ body {
   font-weight: 600;
 }
 
-.prose code {
+/* Inline code styles - only for non-syntax-highlighted code */
+.prose code:not([class*="language-"]) {
   background-color: rgba(88, 28, 135, 0.2);
   color: #c4b5fd;
   padding: 0.25rem 0.5rem;
@@ -434,20 +524,26 @@ body {
   border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
-.prose pre {
+/* Regular pre blocks - only for non-syntax-highlighted code */
+.prose pre:not([class*="language-"]) {
   background-color: rgba(17, 24, 39, 0.8);
   border: 1px solid rgba(88, 28, 135, 0.3);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin: 2rem 0;
   overflow-x: auto;
+  position: relative;
 }
 
-.prose pre code {
+/* Regular pre code - only for non-syntax-highlighted code */
+.prose pre:not([class*="language-"]) code {
   background: none;
   border: none;
   padding: 0;
   color: #e5e7eb;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 .prose blockquote {

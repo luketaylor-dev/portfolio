@@ -1,7 +1,7 @@
 ---
-title: "Building a Node-Based Dialogue System in Unity: A Deep Dive into the Real Implementation"
+title: "Building a Node-Based Dialogue System in Unity: The Real Implementation"
 description: "How I built a scalable, visual dialogue system with action integration, ScriptableObjects, and a custom Unity Editor tool."
-date: 2025-08-30
+date: 2025-10-01
 featured: true
 tags:
   [
@@ -16,19 +16,23 @@ image: "/images/dialog-system.png"
 readingTime: "8 min read"
 ---
 
-# Building a Node-Based Dialogue System in Unity: A Deep Dive into the Real Implementation
+# Building a Node-Based Dialogue System in Unity: The Real Story (With a Few Surprises)
 
-When I first set out to build a dialogue system for my tower defence prototype, I naively thought “hey, getting the dialogue working is probably simple.” For basic text and if statements, it would have been. But I quickly realised that approach wasn’t scalable, and went down a rabbit hole that ended with a **sophisticated node-based dialogue system** featuring a custom Unity Editor, ScriptableObject architecture, and action integration.
+When I sat down to work on a cosy little space game, I’ll be honest — I didn’t have much planned out. No grand story arcs, no massive feature list, not even a proper gameplay loop. The only thing I knew for certain? Characters would be talking. And I thought, _“Dialogue can’t be that hard, right? Let’s start there while I figure out the rest.”_
+
+Spoiler: it was not that simple. If I just needed a couple of text boxes and some if statements, sure — that would’ve been done before my coffee went cold. But once I imagined conversations branching out, choices leading to different outcomes, or dialogue triggering game events… suddenly this wasn’t “throwaway prototype code.” It was, “guess I’m building a whole editor extension now.”
+
+What started as a casual experiment quickly snowballed into a **node-based dialogue system** — complete with its own Unity Editor window, ScriptableObject-driven data, and hooks for in-game actions. In short, it turned from “something for my space game” into “a reusable framework I’d actually ship in other projects.”
 
 ---
 
 ## Results at a Glance
 
-- 🚀 **Scalable**: Tested up to 1000+ nodes and 1000+ connections with stable performance
-- 🎨 **Visual Workflow**: Full Unity Editor window with graph view, minimap, and drag-and-drop connections
-- 🔗 **Integrated Actions**: Dialogue choices can trigger in-game events (quests, shops, scene changes)
-- 🧩 **Reusable**: Designed as a generic tool, usable across multiple Unity projects
-- ⚠️ **Work in Progress**: Not quite production-ready yet, with more features planned
+- **Scalable**: Stress-tested with 1000+ nodes and 1000+ connections, still smooth.
+- **Visual Workflow**: Custom Unity Editor window with graph view, minimap, and drag-and-drop connections.
+- **Gameplay Hooks**: Dialogue choices can trigger in-game events — shops opening, quests starting, scenes switching.
+- **Reusable**: Not tied to one project, built as a general-purpose tool.
+- **Still Growing**: Plenty of features on the wishlist before I’d call it production-ready.
 
 ![Dialogue System Demo](/images/dialogue-system.gif)
 
@@ -36,103 +40,157 @@ When I first set out to build a dialogue system for my tower defence prototype, 
 
 ## Why Build a Custom Dialogue System?
 
-My initial motivation was simple: I wanted to build a game for fun. While I didn’t have the full game planned out, I knew dialogue would be a part of it, so I thought I’d start coding there while I finished fleshing out the rest of the idea.
+Honestly, I could’ve just bought one. There are plenty of dialogue packages out there. But part of me wanted to see how far I could get making my own. And since I didn’t have a fleshed-out game yet, it seemed like a good place to start.
 
-I quickly realised if statements weren’t going to work for complex dialogue. I thought some sort of visual node-based system would be easier to read and manage long-term. GraphView seemed to be something built into Unity that fit my criteria for what I wanted to build.
+Pretty quickly, I hit the wall of if statements. They’re fine until you have more than, say, two branches, and then the logic looks like spaghetti on a whiteboard. That’s when I thought, _“Wouldn’t a visual system be easier to manage?”_ Enter GraphView.
 
-The learning goals emerged as I went along:
+GraphView isn’t the most documented part of Unity, but it looked like it could give me what I wanted: a clean, visual way to lay out conversations, drag connections between nodes, and keep dialogue readable at a glance.
 
-- How a **visual node editor** could be implemented with GraphView
-- How to tie dialogue into **gameplay actions**
-- How to structure data for **scalability and maintainability**
-- What it takes to build **Unity Editor extensions** that feel professional
+So my goals evolved as I went along:
 
----
-
-## Core Architecture: ScriptableObjects over JSON
-
-I considered several options for storing dialogue data, but chose **ScriptableObjects** as the backbone of the system:
-
-- 🔎 **Inspector-friendly**: Designers can inspect, edit, and reference dialogue directly in the Unity Editor
-- 🏗 **Native references**: Keeps node connections intact without manual ID mapping
-- ⚡ **Serialization**: Built-in support for Unity’s save/load workflows
-- 🔧 **Extensibility**: Easy to add fields (like localisation or conditions) without schema migrations
-- 🔗 **Unity Integration**: ScriptableObjects integrate seamlessly into Unity workflows — loading dialogue is just a matter of using the ScriptableObject directly, rather than parsing JSON
-
-A `DSDialogueContainerSO` stores all dialogue groups, and each node is represented by a `DSDialogueSO`, keeping things modular and reusable.
+- Figure out how a **visual node editor** actually works in Unity.
+- Make dialogue tie into **gameplay actions** instead of just text on a screen.
+- Structure the data so it felt **scalable and maintainable**.
+- Learn what it takes to make **Unity Editor extensions** feel like they belong in Unity itself.
 
 ---
 
-## GraphView Implementation
+## ScriptableObjects vs JSON (And Why I Picked the First)
 
-Unity’s GraphView API formed the foundation of the editor. I considered alternatives like custom editor windows or JSON-based tools, but GraphView’s built-in panning, zooming, and native Unity feel made it worth the quirks and workarounds:
+For data storage, I debated between JSON and ScriptableObjects. JSON’s great for huge datasets and easy external editing, but I leaned into **ScriptableObjects**. Why?
 
-- **Port Management**: I had to roll a custom port creation/connection system
-- **Serialization**: Unity doesn’t natively persist GraphView state, so I built a custom save/load utility
-- **Documentation**: The lack of documentation made it difficult to understand the API’s full capabilities
-- **UI Limitations**: GraphView has restrictions like fixed port heights, which required workarounds
+- They’re inspector-friendly — you can actually see and edit dialogue directly in Unity.
+- They keep **native references** intact, no manual ID mapping.
+- They play nicely with Unity’s save/load flows.
+- Adding new fields later is painless compared to schema migrations.
+- And the integration with the rest of Unity is smooth: no parsing errors, no “oops, bad JSON,” just drop it in and go.
 
-Despite its limitations, GraphView gave me the flexibility to design a tool that felt natural inside the Unity Editor.
+So the structure looks like this: a `DSDialogueContainerSO` holds all the groups, and each node is a `DSDialogueSO`. That modular setup keeps things reusable and clean.
 
----
+Here’s a stripped-down version of the two ScriptableObjects at the heart of the system:
 
-## Action System Integration
+```csharp
+// DSDialogueContainerSO.cs
+using System.Collections.Generic;
+using DialogueSystem.Utilities;
+using UnityEngine;
 
-From the start, I wanted dialogue to be **gameplay-relevant**. I envisioned two types of actions: post-choice actions (like opening a shop) and pre-choice triggers (like quest completion that makes certain choices available).
+namespace DialogueSystem.ScriptableObjects
+{
+    public class DSDialogueContainerSO : ScriptableObject
+    {
+        [field: SerializeField] public string FileName { get; set; }
+        [field: SerializeField] public SerializableDictionary<DSDialogueGroupSO, List<DSDialogueSO>> DialogueGroups { get; set; }
+        [field: SerializeField] public List<DSDialogueSO> UngroupedDialogues { get; set; }
+    }
+}
+```
 
-I picked some generic action types that seemed useful across different games: `OpenShop`, `GiveItem`, `TriggerEvent`, etc. As development continues, I might add more actions or even support for multiple actions per choice. There’s also a custom action type for the occasional complex logic that might be needed.
+```csharp
+// DSDialogueSO.cs
+using System.Collections.Generic;
+using DialogueSystem.Data;
+using DialogueSystem.Enums;
+using UnityEngine;
 
-The main challenge was working around GraphView’s height restrictions when fitting action configuration into the small choice node area. This led to the action menu popup system.
+namespace DialogueSystem.ScriptableObjects
+{
+    public class DSDialogueSO : ScriptableObject
+    {
+        [field: SerializeField] public string DialogueName { get; set; }
+        [field: SerializeField][field: TextArea] public string DialogueSpeaker { get; set; }
+        [field: SerializeField][field: TextArea] public string Text { get; set; }
+        [field: SerializeField] public List<DSDialogueChoiceData> Choices { get; set; }
+        [field: SerializeField] public DSDialogueType DialogueType { get; set; }
+        [field: SerializeField] public bool IsStartingDialogue { get; set; }
+    }
+}
+```
 
-I kept the implementation simple: enums work perfectly for dropdowns and are easy to extend. The handler just checks which enum is coming in and calls the appropriate function. I’m planning to make the handler an abstract class so each game can implement its own action logic.
-
----
-
-## Runtime Dialogue Manager
-
-The **DialogueManager** handles runtime presentation and interaction. It displays text, speaker names, and dynamically generates player choices. Because dialogue data comes straight from ScriptableObjects, designers can update conversations without touching runtime code.
-
----
-
-## Performance & Extensibility
-
-The system remained stable even under stress testing. I started with a basic 10-node dialogue and progressively duplicated it to 50, 100, 300, and eventually 1000+ nodes with 1000+ connections. Even at this scale, I could pan, zoom, and interact with the dialogue window without performance issues. To support testing, I also built a custom debug window that reports metrics like node and connection counts.
-
-The modular ScriptableObject design makes it easy to extend. The action handler pattern means adding new functionality is straightforward — just extend the enum and implement the handler logic.
-
-Currently the system has nodes with speech and choices, and choices have actions to trigger something to happen. Future features planned include:
-
-- **Group Minimisation**: Collapse dialogue groups to reduce visual clutter in the editor
-- **Localisation**: Language-specific ScriptableObjects
-- **Conditional Dialogue**: Show/hide choices based on player state
-- **Analytics**: Track player choice patterns
-- **Voice Integration**: Automated voice line management
-
----
-
-## Case Study: Tower Defence Prototype
-
-In my tower defence prototype, the system powered character conversations and in-game shops triggered by dialogue choices. This proved the architecture could support branching quests, player progression, and gameplay-relevant dialogue — a strong foundation for more ambitious games.
-
----
-
-## Lessons Learned
-
-- **Editor Tools**: Building something that feels native to Unity requires working within GraphView’s quirks
-- **Data Structures**: ScriptableObjects are powerful but need careful reference management
-- **UX Matters**: Designing for non-developers (like my fiancée, who tested it) forced me to think carefully about usability
-- **Time Investment**: Next time, I might consider purchasing a package instead of spending all my time on a dialogue system
+This setup makes it easy to add, move, or reference dialogue data without worrying about IDs or broken links.
 
 ---
 
-## Conclusion
+## Wrestling With GraphView
 
-What began as a curiosity became a **robust, reusable tool** that enhances both development workflow and player experience.
+GraphView is both brilliant and frustrating. Brilliant, because it gave me zooming, panning, and a familiar Unity-style graph interface out of the box. Frustrating, because Unity didn’t exactly flood the internet with docs for it.
 
-For designers and writers, the system offers a visual way to craft branching conversations. For developers, it’s type-safe, extensible, and performant. And for me, it was a deep dive into building editor tools that scale beyond a single project.
+I had to solve a few things myself:
+
+- **Port Management**: Rolling a custom system for creating and connecting ports.
+- **Serialization**: GraphView doesn’t natively save state, so I hacked together my own save/load utility.
+- **UI Quirks**: Like fixed port heights that made me rethink layouts.
+
+Still, despite the quirks, it gave me the flexibility to build something that looked and felt like a proper Unity tool — not a random add-on bolted to the side.
 
 ---
 
-💡 _Have you built your own dialogue tools in Unity? I’d love to hear about your approaches, challenges, and solutions. Feel free to reach out if you want to discuss Unity editor development or dialogue systems!_
+## Making Dialogue Actually Do Something
 
-_If you’re looking for someone who can design scalable Unity tools like this, let’s talk._
+From the beginning, I didn’t just want dialogue to be text bubbles. I wanted it to actually _matter_. If a player chooses “Yes,” maybe they get an item. If they say “No,” maybe the shop closes.
+
+So I added an **action system**. There are two main types:
+
+- Post-choice actions (e.g. open a shop after selecting “Buy”).
+- Pre-choice triggers (e.g. a quest that has to be completed before the choice shows up).
+
+I kept the system simple: enums for different action types (`OpenShop`, `GiveItem`, `TriggerEvent`, etc.), and a handler that checks what’s selected and runs the logic. Down the line, I want to make the handler abstract so different games can plug in their own logic.
+
+The tricky bit was Unity’s UI — fitting all this into GraphView’s choice node without it looking like a UI crime scene. The solution was a popup action menu. Not glamorous, but it works.
+
+---
+
+## Runtime: Where the Magic Actually Happens
+
+The **DialogueManager** is what makes it all playable. It pulls the text and speaker names, generates choices on the fly, and makes sure everything reacts as expected. Because it’s ScriptableObject-driven, designers can tweak dialogue without touching runtime code.
+
+In practice, this meant I could change conversations mid-development, hit play, and see the updates instantly. No rebuilding, no re-parsing, just edit and go.
+
+---
+
+## Stress Testing and Extending
+
+I didn’t want to build something that worked for 10 nodes and then collapsed at 100. So I scaled it up gradually — 10, 50, 100, 300, and eventually 1000+ nodes with just as many connections.
+
+Performance stayed surprisingly stable. Zooming and panning still worked fine, and interacting with the graph didn’t slow down. I even built a debug window that spits out metrics like node counts and connections, just to keep tabs on it.
+
+And because of the modular ScriptableObject design, extending the system felt straightforward. Want a new action type? Add it to the enum, write the handler, done.
+
+Future plans include:
+
+- Collapsible groups for keeping the graph tidy.
+- Localisation support.
+- Conditional dialogue based on player state.
+- Analytics on choice patterns.
+- And eventually, voice integration.
+
+---
+
+## Case Study: Tower Defence RPG
+
+While this dialogue system was born out of a space game idea, I ended up testing it in a **tower defence RPG** I was building on the side. It was meant to be small, but like these things often do, it grew. The RPG needed conversations, quest dialogue, and even shops triggered by dialogue choices.
+
+This proved the system could handle branching quests, player progression, and gameplay-relevant dialogue — not just cosmetic interactions. It showed me that the framework wasn’t just theory. It worked in practice.
+
+---
+
+## What I Learned Along the Way
+
+- **Editor tools**: If you want them to feel native, you have to embrace Unity’s quirks.
+- **Data structures**: ScriptableObjects are powerful, but you need to manage references carefully.
+- **UX**: Testing with non-devs (in my case, my fiancée) exposed where the workflow wasn’t intuitive.
+- **Time investment**: Next time, I might just buy a package… but I’d miss out on the fun (and frustration) of building it myself.
+
+---
+
+## Wrapping Up
+
+What started as “let’s get some dialogue in this game” turned into a **robust, reusable system** that I’d happily use across projects.
+
+For designers and writers, it’s a visual, intuitive way to build branching conversations. For developers, it’s type-safe, extensible, and performant. For me, it was a crash course in making tools that don’t just work — they feel good to use.
+
+---
+
+_Have you built your own dialogue tools in Unity? I’d love to hear how you tackled it — what worked, what didn’t, and what you’d do differently._
+
+_And if you’re looking for someone who can design Unity tools that scale, let’s talk._
