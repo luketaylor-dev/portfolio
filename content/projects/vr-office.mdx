@@ -2,7 +2,7 @@
 title: "VR Office"
 description: "Proof-of-concept VR workspace with multi-user Netcode sync, physics-based props, and persistent environments."
 seoDescription: "Unity VR prototype of a collaborative office with Netcode multi-user sync, physics props, and persistent shared spaces."
-altText: "VR Office — virtual workspace environment with collaborative tools and 3D space"
+altText: "VR Office virtual workspace environment with collaborative tools and 3D space"
 date: "2024-01-15"
 tags:
   ["Unity", "VR", "C#", "Netcode", "Meta SDK", "Game Development", "Physics"]
@@ -13,7 +13,7 @@ featureTitles:
   ["Collaborative Workspaces", "Physics-Based Props", "Persistent Environments"]
 featureDescriptions:
   [
-    "Multi-user synchronisation with Multiplayer, enabling shared VR workspaces in real time.",
+    "Multi-user synchronisation with Netcode, enabling shared VR workspaces in real time.",
     "Interactive props like whiteboards, chairs, and tools designed with physics for tactile immersion.",
     "Early experiments with persistent environments to simulate long sessions and cross-device continuity.",
   ]
@@ -24,7 +24,7 @@ technologies:
     "C#",
     "Meta SDK",
     "XR Interaction Toolkit",
-    "Multiplayer",
+    "Netcode for GameObjects",
     "Physics Engine",
     "VR Toolkit",
   ]
@@ -32,27 +32,34 @@ technologies:
 
 # VR Office
 
-A **proof-of-concept virtual office** created in Unity to explore collaborative remote work in VR. The project combined the **Meta SDK** with Unity’s **XR Interaction Toolkit** to deliver natural input handling and spatial UI.
+A **proof-of-concept virtual office** created in Unity to test how collaborative remote work could feel inside VR.  
+The prototype combined the **Meta SDK** with Unity’s **XR Interaction Toolkit**, delivering natural input handling, object interaction, and spatial UI elements.
 
 ## Overview
 
-The VR Office was built as a technical experiment in how VR environments could extend beyond entertainment. It focused on creating a shared, interactive workspace where users could collaborate in real time.
+The VR Office was designed as an experiment in **workplace collaboration beyond traditional screens**.  
+The goal: simulate a shared 3D workspace where multiple users could interact with objects, brainstorm ideas, and experience presence together, even when apart.
 
 ## Technical Implementation
 
-- Unity + C# with Meta SDK integration
-- XR Interaction Toolkit for intuitive object interaction
-- Networking via Multiplayer
-- Physics-driven systems for immersion
+- Built in **Unity (C#)** with **Meta SDK** integration
+- **XR Interaction Toolkit** for intuitive hand/object interactions
+- **Netcode for GameObjects** for multi-user synchronisation
+- **Physics-driven props** (whiteboards, chairs, tools) for tactile immersion
+- Initial work on **persistent environments**, allowing continuity across sessions
 
 ## Why It Matters
 
-This prototype explored the potential of VR for professional collaboration, testing how immersive environments can support **productivity, creativity, and teamwork** beyond gaming.
+Remote work has become the norm, but video calls and flat screens have clear limits.  
+This project explored how immersive VR could bring back the **feeling of being in the same room**, where spatial presence and physical interaction make collaboration more engaging and memorable.
 
 ## Future Potential
 
-- Integration with real-world productivity tools (docs, cloud storage)
-- Expanded avatars and social presence systems
-- Scaling to larger teams and enterprise collaboration
+- Integration with real-world productivity tools (documents, cloud storage, whiteboarding apps)
+- Expanded avatars and social presence for richer communication
+- Scaling to support enterprise-level multi-user environments
+- Exploration of hybrid work setups blending VR with desktop collaboration
 
 ---
+
+_The VR Office serves as an early experiment in the intersection of VR and productivity, testing how game-engine technology can create practical, collaborative tools for the workplace._
