@@ -361,7 +361,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           <h2 className="text-3xl font-bold text-white">Technology Stack</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {project.technologies.map((tech, i) => (
-              <Card key={i} variant="default" className="text-center">
+              <Card
+                key={i}
+                variant="default"
+                className="text-center h-20 flex items-center justify-center"
+              >
                 <span className="text-purple-300 font-medium">{tech}</span>
               </Card>
             ))}
