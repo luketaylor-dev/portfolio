@@ -2,7 +2,7 @@
 title: "Node-Based Dialogue System"
 description: "Custom Unity editor tool for branching dialogue, enabling writers and designers to create narratives without coding."
 seoDescription: "Custom Unity tool with a visual node editor for branching dialogue, empowering designers to build narratives without code."
-altText: "Node-Based Dialogue System — Unity editor interface showing branching conversation nodes"
+altText: "Node-Based Dialogue System Unity editor interface showing branching conversation nodes"
 date: "2024-01-15"
 tags: ["Unity", "C#", "Dialogue System", "Game Development", "Tools"]
 featured: false
@@ -31,58 +31,79 @@ technologies:
 
 # Node-Based Dialogue System
 
-A comprehensive, visual node-based dialogue system for Unity that streamlines the creation of branching conversations and narrative content.
-
-## Overview
-
-This project focuses on building a robust dialogue framework inside Unity.  
-It provides a modern, node-based editor that allows writers and designers to implement and iterate on dialogue directly — without developer support.
-
-The goal was to create a tool that saves time, reduces bottlenecks, and empowers non-technical team members to build engaging interactive narratives.
-
-## Key Features
-
-### Visual Node Editor
-
-- **Drag & Drop Interface**: Intuitive creation and linking of nodes
-- **Real-time Preview**: Visualise dialogue flow instantly
-- **Node Types**: Dialogue, choices, conditions, variables, and events
-- **Auto-save**: Prevents progress loss during iteration
-
-### Advanced Dialogue Capabilities
-
-- **Branching Conversations**: Easily support complex, multi-path narratives
-- **Variable Integration**: Dynamic responses tied to game state
-- **Conditional Logic**: Unlock or hide paths based on player choices
-- **Localization Support**: Designed to handle multiple languages
-
-### Performance & Scalability
-
-- **Efficient Data Structures**: Smooth handling of large dialogue trees
-- **Memory Management**: Optimised for big narrative-driven projects
-- **Streaming Support**: Load dialogue data on demand for open-world setups
-
-## Technical Implementation
-
-- **Unity Graph View / UI Toolkit**: Custom node-based editor
-- **Scriptable Objects**: Reliable serialisation and reuse of dialogue assets
-- **Event System**: Decoupled architecture for easy integration with gameplay
-- **Extensible Framework**: Built to allow new node types to be added over time
-
-## Use Cases
-
-- **RPGs**: Dialogue-heavy quest and character interactions
-- **Visual Novels**: Non-linear, branching storylines
-- **Adventure Games**: Puzzle-driven conversations and exploration
-- **Simulation Games**: Responsive NPC interactions
-
-## Future Enhancements
-
-- **Voice Integration** for audio lines
-- **Animation Triggers** tied to dialogue events
-- **Analytics Dashboard** for tracking player decision paths
-- **Export Tools** for integration with writing software
+This is a Unity tool I built when I realised that writing dialogue with "if" statements was… well, awful.  
+What started as “I’ll just hack something together” grew into a fully-fledged, **visual node editor** that lets writers and designers build branching conversations without touching a line of code.
 
 ---
 
-_This project highlights my ability to design and deliver a complex Unity tool that improves collaboration between technical and creative teams._
+## Why This Exists
+
+The project grew out of a cosy little space game prototype. I didn’t have much mapped out, but I knew talking to characters was going to matter, so I figured I’d start there while the rest of the game was still a sketch. Pretty quickly it became obvious that a node-based system was the only sane way forward if I wanted scale, flexibility, and a tool others could actually use without swearing at me.
+
+---
+
+## Core Features
+
+### Visual Node Editor
+
+- **Drag & Drop workflow** connect nodes like you’re sketching on a whiteboard
+- **GraphView-based editor** with zoom, pan, and minimap
+- **Choice, condition, and event nodes** to handle branching logic
+- **Real-time flow previews** so you can see conversations unfold as you build them
+
+### Dialogue Logic That Plays Nice
+
+- **Branching conversations** that don’t collapse under complexity
+- **Variables and conditions** to unlock or hide choices depending on state
+- **Integrated action system** (open shop, give item, trigger quest, swap scenes)
+- **Localization-ready** so conversations aren’t locked to one language
+
+### Performance That Holds Up
+
+Stress-tested up to **1,000+ nodes and connections** in a single graph without turning Unity into molasses. ScriptableObjects keep everything light, references intact, and updates easy to manage.
+
+---
+
+## Under the Hood
+
+Here’s a peek at the backbone. These ScriptableObjects store the dialogue graphs and individual nodes.
+
+**Dialogue Container**
+
+```csharp
+// DSDialogueContainerSO.cs
+using System.Collections.Generic;
+using DialogueSystem.Utilities;
+using UnityEngine;
+
+namespace DialogueSystem.ScriptableObjects
+{
+    public class DSDialogueContainerSO : ScriptableObject
+    {
+        [field: SerializeField] public string FileName { get; set; }
+        [field: SerializeField] public SerializableDictionary<DSDialogueGroupSO, List<DSDialogueSO>> DialogueGroups { get; set; }
+        [field: SerializeField] public List<DSDialogueSO> UngroupedDialogues { get; set; }
+    }
+}
+```
+
+```csharp
+// DSDialogueSO.cs
+using System.Collections.Generic;
+using DialogueSystem.Data;
+using DialogueSystem.Enums;
+using UnityEngine;
+
+namespace DialogueSystem.ScriptableObjects
+{
+    public class DSDialogueSO : ScriptableObject
+    {
+        [field: SerializeField] public string DialogueName { get; set; }
+        [field: SerializeField][field: TextArea] public string DialogueSpeaker { get; set; }
+        [field: SerializeField][field: TextArea] public string Text { get; set; }
+        [field: SerializeField] public List<DSDialogueChoiceData> Choices { get; set; }
+        [field: SerializeField] public DSDialogueType DialogueType { get; set; }
+        [field: SerializeField] public bool IsStartingDialogue { get; set; }
+    }
+}
+```
