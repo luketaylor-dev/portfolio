@@ -18,11 +18,11 @@ readingTime: "8 min read"
 
 # Building a Node-Based Dialogue System in Unity: The Real Story (With a Few Surprises)
 
-When I sat down to work on a cosy little space game, I’ll be honest — I didn’t have much planned out. No grand story arcs, no massive feature list, not even a proper gameplay loop. The only thing I knew for certain? Characters would be talking. And I thought, _“Dialogue can’t be that hard, right? Let’s start there while I figure out the rest.”_
+When I sat down to work on a cosy little space game, I’ll be honest, I didn’t have much planned out. No grand story arcs, no massive feature list, not even a proper gameplay loop. The only thing I knew for certain? Characters would be talking. And I thought, _“Dialogue can’t be that hard, right? Let’s start there while I figure out the rest.”_
 
-Spoiler: it was not that simple. If I just needed a couple of text boxes and some if statements, sure — that would’ve been done before my coffee went cold. But once I imagined conversations branching out, choices leading to different outcomes, or dialogue triggering game events… suddenly this wasn’t “throwaway prototype code.” It was, “guess I’m building a whole editor extension now.”
+Spoiler: it was not that simple. If I just needed a couple of text boxes and some if statements, sure, that would’ve been done before my coffee went cold. But once I imagined conversations branching out, choices leading to different outcomes, or dialogue triggering game events… suddenly this wasn’t “throwaway prototype code.” It was, “guess I’m building a whole editor extension now.”
 
-What started as a casual experiment quickly snowballed into a **node-based dialogue system** — complete with its own Unity Editor window, ScriptableObject-driven data, and hooks for in-game actions. In short, it turned from “something for my space game” into “a reusable framework I’d actually ship in other projects.”
+What started as a casual experiment quickly snowballed into a **node-based dialogue system**, complete with its own Unity Editor window, ScriptableObject-driven data, and hooks for in-game actions. In short, it turned from “something for my space game” into “a reusable framework I’d actually ship in other projects.”
 
 ---
 
@@ -30,7 +30,7 @@ What started as a casual experiment quickly snowballed into a **node-based dialo
 
 - **Scalable**: Stress-tested with 1000+ nodes and 1000+ connections, still smooth.
 - **Visual Workflow**: Custom Unity Editor window with graph view, minimap, and drag-and-drop connections.
-- **Gameplay Hooks**: Dialogue choices can trigger in-game events — shops opening, quests starting, scenes switching.
+- **Gameplay Hooks**: Dialogue choices can trigger in-game events, shops opening, quests starting, scenes switching.
 - **Reusable**: Not tied to one project, built as a general-purpose tool.
 - **Still Growing**: Plenty of features on the wishlist before I’d call it production-ready.
 
@@ -59,7 +59,7 @@ So my goals evolved as I went along:
 
 For data storage, I debated between JSON and ScriptableObjects. JSON’s great for huge datasets and easy external editing, but I leaned into **ScriptableObjects**. Why?
 
-- They’re inspector-friendly — you can actually see and edit dialogue directly in Unity.
+- They’re inspector-friendly, you can actually see and edit dialogue directly in Unity.
 - They keep **native references** intact, no manual ID mapping.
 - They play nicely with Unity’s save/load flows.
 - Adding new fields later is painless compared to schema migrations.
@@ -121,7 +121,7 @@ I had to solve a few things myself:
 - **Serialization**: GraphView doesn’t natively save state, so I hacked together my own save/load utility.
 - **UI Quirks**: Like fixed port heights that made me rethink layouts.
 
-Still, despite the quirks, it gave me the flexibility to build something that looked and felt like a proper Unity tool — not a random add-on bolted to the side.
+Still, despite the quirks, it gave me the flexibility to build something that looked and felt like a proper Unity tool, not a random add-on bolted to the side.
 
 ---
 
@@ -136,7 +136,7 @@ So I added an **action system**. There are two main types:
 
 I kept the system simple: enums for different action types (`OpenShop`, `GiveItem`, `TriggerEvent`, etc.), and a handler that checks what’s selected and runs the logic. Down the line, I want to make the handler abstract so different games can plug in their own logic.
 
-The tricky bit was Unity’s UI — fitting all this into GraphView’s choice node without it looking like a UI crime scene. The solution was a popup action menu. Not glamorous, but it works.
+The tricky bit was Unity’s UI, fitting all this into GraphView’s choice node without it looking like a UI crime scene. The solution was a popup action menu. Not glamorous, but it works.
 
 ---
 
@@ -150,7 +150,7 @@ In practice, this meant I could change conversations mid-development, hit play, 
 
 ## Stress Testing and Extending
 
-I didn’t want to build something that worked for 10 nodes and then collapsed at 100. So I scaled it up gradually — 10, 50, 100, 300, and eventually 1000+ nodes with just as many connections.
+I didn’t want to build something that worked for 10 nodes and then collapsed at 100. So I scaled it up gradually, 10, 50, 100, 300, and eventually 1000+ nodes with just as many connections.
 
 Performance stayed surprisingly stable. Zooming and panning still worked fine, and interacting with the graph didn’t slow down. I even built a debug window that spits out metrics like node counts and connections, just to keep tabs on it.
 
@@ -170,7 +170,7 @@ Future plans include:
 
 While this dialogue system was born out of a space game idea, I ended up testing it in a **tower defence RPG** I was building on the side. It was meant to be small, but like these things often do, it grew. The RPG needed conversations, quest dialogue, and even shops triggered by dialogue choices.
 
-This proved the system could handle branching quests, player progression, and gameplay-relevant dialogue — not just cosmetic interactions. It showed me that the framework wasn’t just theory. It worked in practice.
+This proved the system could handle branching quests, player progression, and gameplay-relevant dialogue, not just cosmetic interactions. It showed me that the framework wasn’t just theory. It worked in practice.
 
 ---
 
@@ -187,10 +187,10 @@ This proved the system could handle branching quests, player progression, and ga
 
 What started as “let’s get some dialogue in this game” turned into a **robust, reusable system** that I’d happily use across projects.
 
-For designers and writers, it’s a visual, intuitive way to build branching conversations. For developers, it’s type-safe, extensible, and performant. For me, it was a crash course in making tools that don’t just work — they feel good to use.
+For designers and writers, it’s a visual, intuitive way to build branching conversations. For developers, it’s type-safe, extensible, and performant. For me, it was a crash course in making tools that don’t just work, they feel good to use.
 
 ---
 
-_Have you built your own dialogue tools in Unity? I’d love to hear how you tackled it — what worked, what didn’t, and what you’d do differently._
+_Have you built your own dialogue tools in Unity? I’d love to hear how you tackled it, what worked, what didn’t, and what you’d do differently._
 
 _And if you’re looking for someone who can design Unity tools that scale, let’s talk._
