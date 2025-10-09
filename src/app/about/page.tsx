@@ -98,11 +98,11 @@ export default function AboutPage() {
             projects. Located in the heart of Manchester's digital district, I'm
             perfectly positioned to serve clients across{" "}
             <strong className="text-purple-300">M1, M2, M3, M4</strong> and
-            surrounding areas.
+            surrounding areas, as well as clients throughout the UK.
           </p>
           <p className="text-neutral-400 mt-4">
-            Available for local Manchester projects and remote collaboration
-            worldwide. Conveniently located near{" "}
+            Available for local Manchester projects, UK-wide collaboration, and
+            remote work worldwide. Conveniently located near{" "}
             <strong className="text-purple-300">Manchester University</strong>{" "}
             and the{" "}
             <strong className="text-purple-300">Northern Quarter</strong> tech
@@ -313,7 +313,8 @@ export default function AboutPage() {
           <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
             Whether you have a specific project in mind or just want to explore
             possibilities, I'd love to hear from you. Let's create something
-            amazing together.
+            amazing together. Available for projects across the UK and remote
+            collaboration worldwide.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <InteractiveButton href="/contact" variant="primary" size="lg">

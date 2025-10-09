@@ -92,7 +92,8 @@ export default function HomePage() {
                   >
                     multiplayer VR experiences
                   </a>{" "}
-                  to high‑revenue free‑to‑play poker & casino games.
+                  to high‑revenue free‑to‑play poker & casino games. Serving
+                  clients across the UK and beyond.
                 </p>
               </ScrollAnimation>
             </div>
@@ -283,7 +284,8 @@ export default function HomePage() {
               <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
                 Let's collaborate on your next Unity project. Whether it's VR,
                 EEG visualization, or game development, I'm here to bring your
-                vision to life.
+                vision to life. Available for projects across the UK and remote
+                collaboration worldwide.
               </p>
               <InteractiveButton href="/contact" variant="primary" size="lg">
                 Start a Project

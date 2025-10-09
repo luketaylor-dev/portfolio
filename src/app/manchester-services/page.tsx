@@ -36,7 +36,7 @@ export default function ManchesterServicesPage() {
             <strong className="text-purple-300">
               brain-computer interfaces
             </strong>{" "}
-            for clients across the North West and beyond.
+            for clients across the North West, UK-wide, and beyond.
           </p>
         </div>
       </section>
@@ -74,6 +74,7 @@ export default function ManchesterServicesPage() {
               Easily accessible from Manchester city centre and surrounding
               areas. Available for in-person meetings and collaborative sessions
               across the North West, including Liverpool, Leeds, and Sheffield.
+              Also available for UK-wide projects and remote collaboration.
             </p>
           </Card>
 
@@ -205,7 +206,8 @@ export default function ManchesterServicesPage() {
           </h2>
           <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
             Let's discuss your Unity development needs. Available for in-person
-            meetings across the North West or remote collaboration worldwide.
+            meetings across the North West, UK-wide projects, or remote
+            collaboration worldwide.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a

@@ -60,7 +60,18 @@ export default function StructuredData() {
           "Leeds",
           "Sheffield",
           "Birmingham",
+          "London",
+          "Bristol",
+          "Newcastle",
+          "Nottingham",
+          "Cardiff",
+          "Edinburgh",
+          "Glasgow",
           "United Kingdom",
+          "England",
+          "Scotland",
+          "Wales",
+          "Northern Ireland",
         ],
         serviceType: [
           "Unity Development",
@@ -96,7 +107,18 @@ export default function StructuredData() {
           "Leeds",
           "Sheffield",
           "Birmingham",
+          "London",
+          "Bristol",
+          "Newcastle",
+          "Nottingham",
+          "Cardiff",
+          "Edinburgh",
+          "Glasgow",
           "United Kingdom",
+          "England",
+          "Scotland",
+          "Wales",
+          "Northern Ireland",
         ],
         serviceType: "Software Development",
         category: "Technology Services",
@@ -152,6 +174,34 @@ export default function StructuredData() {
             "@type": "City",
             name: "Birmingham",
           },
+          {
+            "@type": "City",
+            name: "London",
+          },
+          {
+            "@type": "City",
+            name: "Bristol",
+          },
+          {
+            "@type": "City",
+            name: "Newcastle",
+          },
+          {
+            "@type": "City",
+            name: "Nottingham",
+          },
+          {
+            "@type": "City",
+            name: "Cardiff",
+          },
+          {
+            "@type": "City",
+            name: "Edinburgh",
+          },
+          {
+            "@type": "City",
+            name: "Glasgow",
+          },
         ],
         serviceArea: {
           "@type": "GeoCircle",
@@ -160,7 +210,7 @@ export default function StructuredData() {
             latitude: "53.4808",
             longitude: "-2.2426",
           },
-          geoRadius: "50000", // 50km radius
+          geoRadius: "200000", // 200km radius - covers most of UK
         },
         priceRange: "$$",
         currenciesAccepted: "GBP",
@@ -189,7 +239,7 @@ export default function StructuredData() {
             name: "Do you work with clients outside Manchester?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, I work with clients across the North West including Liverpool, Leeds, Sheffield, and Birmingham. I also offer remote collaboration services worldwide.",
+              text: "Yes, I work with clients across the UK including London, Birmingham, Liverpool, Leeds, Sheffield, Bristol, Newcastle, Nottingham, Cardiff, Edinburgh, and Glasgow. I also offer remote collaboration services worldwide.",
             },
           },
           {
