@@ -10,13 +10,12 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-  generateEtags: false,
+  generateEtags: true,
   // Optimize for international performance
   async headers() {
     return [
@@ -48,7 +47,7 @@ const nextConfig = {
           },
         ],
       },
-      // Default security headers and long-term cache for everything else
+      // Default security headers for all routes (no aggressive HTML caching)
       {
         source: "/(.*)",
         headers: [
@@ -60,10 +59,22 @@ const nextConfig = {
             key: "X-Frame-Options",
             value: "DENY",
           },
+        ],
+      },
+      // Long-term caching for Next.js build assets
+      {
+        source: "/_next/static/(.*)",
+        headers: [
           {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
+        ],
+      },
+      // Long-term caching for Next Image optimizer responses
+      {
+        source: "/_next/image(.*)",
+        headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
