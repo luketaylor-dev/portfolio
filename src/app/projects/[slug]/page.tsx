@@ -127,6 +127,9 @@ export async function generateMetadata({
 
   // Use SEO description from MDX if available, otherwise fall back to regular description
   const seoDescription = project.seoDescription || project.description;
+  const ogImage = project.cover
+    ? `https://www.dibza.co.uk${project.cover}`
+    : `https://www.dibza.co.uk/og?title=${encodeURIComponent(project.title)}`;
 
   return {
     title: `${project.title} — Luke Taylor`,
@@ -135,13 +138,13 @@ export async function generateMetadata({
       title: `${project.title} — Luke Taylor`,
       description: seoDescription,
       type: "article",
-      images: project.cover ? [project.cover] : [],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.title} — Luke Taylor`,
       description: seoDescription,
-      images: project.cover ? [project.cover] : [],
+      images: [ogImage],
     },
   };
 }

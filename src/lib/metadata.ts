@@ -6,9 +6,13 @@ export const generateMetadata = (
   path: string,
   image?: string
 ): Metadata => {
-  const url = `https://www.dibza.co.uk${path}`;
-  const imageUrl =
-    image || `https://www.dibza.co.uk/og?title=${encodeURIComponent(title)}`;
+  const baseUrl = "https://www.dibza.co.uk";
+  const url = `${baseUrl}${path}`;
+  const imageUrl = image
+    ? image.startsWith("http")
+      ? image
+      : `${baseUrl}${image.startsWith("/") ? image : `/${image}`}`
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
