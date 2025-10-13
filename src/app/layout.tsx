@@ -117,6 +117,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/blog"
+                  prefetch={false}
                   className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Read blog posts"
                 >
@@ -125,7 +126,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/about"
-                  prefetch={true}
+                  prefetch={false}
                   className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Learn more about Luke Taylor"
                 >
@@ -134,7 +135,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </Link>
                 <Link
                   href="/contact"
-                  prefetch={true}
+                  prefetch={false}
                   className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Get in touch with Luke Taylor"
                 >
@@ -190,25 +191,28 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <div className="space-y-2">
                   <Link
                     href="/projects"
-                    prefetch={true}
+                    prefetch={false}
                     className="block text-neutral-400 hover:text-purple-300 transition-colors"
                   >
                     View Projects
                   </Link>
                   <Link
                     href="/blog"
+                    prefetch={false}
                     className="block text-neutral-400 hover:text-purple-300 transition-colors"
                   >
                     Blog
                   </Link>
                   <Link
                     href="/about"
+                    prefetch={false}
                     className="block text-neutral-400 hover:text-purple-300 transition-colors"
                   >
                     About Me
                   </Link>
                   <Link
                     href="/contact"
+                    prefetch={false}
                     className="block text-neutral-400 hover:text-purple-300 transition-colors"
                   >
                     Get in Touch

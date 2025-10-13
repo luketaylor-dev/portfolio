@@ -1,4 +1,5 @@
 import Image from "next/image";
+import avatarImg from "@/../public/images/luke-taylor-dev.jpg";
 import { allProjects, allBlogPosts } from "contentlayer/generated";
 import { ArrowRight, Play, Star, Code, Gamepad2, Brain } from "lucide-react";
 import {
@@ -49,7 +50,7 @@ export default function HomePage() {
             <ScrollAnimation direction="up" delay={200}>
               <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
                 <Image
-                  src="/images/luke-taylor-dev.jpg"
+                  src={avatarImg}
                   alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
                   width={128}
                   height={128}
