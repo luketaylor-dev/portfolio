@@ -16,6 +16,13 @@ export default function ParallaxBackground({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Respect prefers-reduced-motion: disable parallax if user prefers reduced motion
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
     const handleScroll = () => {
       if (ref.current) {
         const scrolled = window.pageYOffset;
@@ -31,7 +38,7 @@ export default function ParallaxBackground({
   return (
     <div
       ref={ref}
-      className={`absolute inset-0 pointer-events-none ${className}`}
+      className={`absolute inset-0 pointer-events-none motion-reduce:transform-none ${className}`}
       style={{
         willChange: "transform",
       }}

@@ -21,6 +21,10 @@ export default function TypingAnimation({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const prefersReduced =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   useEffect(() => {
     // Reset state when text changes
@@ -34,6 +38,13 @@ export default function TypingAnimation({
   }, [text]);
 
   useEffect(() => {
+    if (prefersReduced) {
+      setDisplayText(text);
+      setHasStarted(true);
+      setCurrentIndex(text.length);
+      onComplete?.();
+      return;
+    }
     if (!hasStarted) {
       const startTimer = setTimeout(() => {
         setHasStarted(true);
@@ -43,7 +54,7 @@ export default function TypingAnimation({
       return () => clearTimeout(startTimer);
     }
     return undefined;
-  }, [delay, hasStarted]);
+  }, [delay, hasStarted, prefersReduced, text, onComplete]);
 
   useEffect(() => {
     if (hasStarted && currentIndex < text.length) {
@@ -66,7 +77,7 @@ export default function TypingAnimation({
   return (
     <span className={className}>
       {displayText}
-      <span className="animate-pulse">|</span>
+      <span className="motion-reduce:hidden animate-pulse">|</span>
     </span>
   );
 }

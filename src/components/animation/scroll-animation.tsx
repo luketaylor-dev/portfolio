@@ -24,6 +24,17 @@ export default function ScrollAnimation({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Respect prefers-reduced-motion: render visible without animation
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      setIsVisible(true);
+      setHasAnimated(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry && entry.isIntersecting && !hasAnimated) {

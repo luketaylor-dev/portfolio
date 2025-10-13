@@ -38,10 +38,10 @@ export default function HomePage() {
         >
           {/* Floating elements with parallax */}
           <ParallaxBackground speed={0.3}>
-            <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
           </ParallaxBackground>
           <ParallaxBackground speed={0.2}>
-            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none delay-1000"></div>
           </ParallaxBackground>
 
           <div className="space-y-8 max-w-4xl mx-auto px-4 relative z-10">
@@ -63,7 +63,7 @@ export default function HomePage() {
               <ScrollAnimation direction="up" delay={400}>
                 <h1
                   id="hero-heading"
-                  className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 leading-tight pb-2"
+                  className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 motion-reduce:transform-none transition-transform duration-300 leading-tight pb-2"
                 >
                   <TypingAnimation text="Luke Taylor" speed={150} delay={600} />
                 </h1>

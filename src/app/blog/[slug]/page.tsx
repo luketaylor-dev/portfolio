@@ -54,6 +54,36 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="space-y-16">
+      {/* Structured Data: BlogPosting */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description:
+              post.description ||
+              `Insights from Luke Taylor's Unity development: ${post.title}`,
+            image: post.image
+              ? [`https://www.dibza.co.uk${post.image}`]
+              : undefined,
+            datePublished: post.date,
+            dateModified: post.date,
+            url: `https://www.dibza.co.uk/blog/${post.slug}`,
+            author: { "@type": "Person", name: "Luke Taylor" },
+            publisher: {
+              "@type": "Organization",
+              name: "Luke Taylor — Portfolio",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.dibza.co.uk/icons/favicon.png",
+              },
+            },
+          }),
+        }}
+        suppressHydrationWarning={true}
+      />
       {/* Breadcrumbs */}
       <div className="max-w-4xl mx-auto">
         <Breadcrumbs

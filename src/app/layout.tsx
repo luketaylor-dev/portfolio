@@ -13,6 +13,9 @@ import { ResumeDownload } from "@/components/content";
 import InteractiveText from "@/components/interactive-text";
 import { ErrorBoundary } from "@/components/feedback";
 import { InteractiveButton } from "@/components/ui";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata = {
   ...defaultMetadata,
@@ -37,23 +40,8 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${inter.className} scroll-smooth`}>
       <head>
-        {/* Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-        {/* DNS prefetch */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link

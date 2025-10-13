@@ -13,6 +13,33 @@ export const metadata: Metadata = generateMetadata(
 export default function ManchesterServicesPage() {
   return (
     <div className="space-y-16">
+      {/* Structured Data: Service (Manchester services) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Unity Development Services (Manchester)",
+            description:
+              "EEG visualization, VR development, and brain-computer interface projects for clients in Manchester and across the UK.",
+            provider: {
+              "@type": "Person",
+              name: "Luke Taylor",
+              url: "https://www.dibza.co.uk",
+            },
+            areaServed: ["Manchester", "North West", "United Kingdom"],
+            serviceType: [
+              "EEG Visualization",
+              "VR Development",
+              "Unity Development",
+              "Game Development",
+            ],
+            url: "https://www.dibza.co.uk/manchester-services",
+          }),
+        }}
+        suppressHydrationWarning={true}
+      />
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[
@@ -197,6 +224,95 @@ export default function ManchesterServicesPage() {
           </div>
         </Card>
       </section>
+
+      {/* FAQ Section (visible content) */}
+      <section className="space-y-8">
+        <h2 className="text-3xl font-bold text-white text-center">FAQ</h2>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <Card variant="default" className="p-6 space-y-3">
+            <h3 className="text-lg font-semibold text-white">
+              Do you work with clients outside Manchester?
+            </h3>
+            <p className="text-neutral-400">
+              Yes. I collaborate across the UK and remotely worldwide. In-person
+              sessions are available across the North West.
+            </p>
+          </Card>
+          <Card variant="default" className="p-6 space-y-3">
+            <h3 className="text-lg font-semibold text-white">
+              What industries do you support?
+            </h3>
+            <p className="text-neutral-400">
+              Games, research, education, events, and creative tech—especially
+              projects involving Unity, EEG/BCI, or VR.
+            </p>
+          </Card>
+          <Card variant="default" className="p-6 space-y-3">
+            <h3 className="text-lg font-semibold text-white">
+              Can you integrate EEG hardware and SDKs?
+            </h3>
+            <p className="text-neutral-400">
+              Yes. Experience includes BrainFlow and custom data pipelines for
+              real‑time visualisation and interaction.
+            </p>
+          </Card>
+          <Card variant="default" className="p-6 space-y-3">
+            <h3 className="text-lg font-semibold text-white">
+              How do we start a project?
+            </h3>
+            <p className="text-neutral-400">
+              Reach out via the contact page with goals, timeline, and any
+              reference material. I’ll propose a clear next step.
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Do you work with clients outside Manchester?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. I collaborate across the UK and remotely worldwide. In-person sessions are available across the North West.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What industries do you support?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Games, research, education, events, and creative tech—especially projects involving Unity, EEG/BCI, or VR.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can you integrate EEG hardware and SDKs?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Experience includes BrainFlow and custom data pipelines for real‑time visualisation and interaction.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How do we start a project?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Reach out via the contact page with goals, timeline, and any reference material. I’ll propose a clear next step.",
+                },
+              },
+            ],
+          }),
+        }}
+        suppressHydrationWarning={true}
+      />
 
       {/* CTA Section */}
       <section className="text-center space-y-6 py-16">
