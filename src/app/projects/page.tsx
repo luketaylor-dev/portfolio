@@ -12,6 +12,10 @@ export const metadata: Metadata = generateMetadata(
   "/projects"
 );
 
+// Prefer static rendering with periodic ISR for predictable performance
+export const revalidate = 3600; // 1 hour
+export const dynamic = "force-static";
+
 const ProjectsContent = () => {
   // Sort projects immediately on server - no client-side state needed
   const allProjectsSorted = allProjects

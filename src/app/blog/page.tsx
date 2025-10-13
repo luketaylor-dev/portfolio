@@ -11,6 +11,10 @@ export const metadata: Metadata = generateMetadata(
   "/blog"
 );
 
+// Prefer static rendering with periodic ISR for predictable performance
+export const revalidate = 3600; // 1 hour
+export const dynamic = "force-static";
+
 export default function BlogPage() {
   // Check if blog posts exist and sort them by date (newest first)
   const sortedPosts = allBlogPosts
