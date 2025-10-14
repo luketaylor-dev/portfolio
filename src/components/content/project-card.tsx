@@ -20,27 +20,6 @@ interface ProjectCardProps {
   className?: string;
 }
 
-// Helper function to get WebP and fallback paths
-const getImagePaths = (coverPath: string) => {
-  // If it's already a WebP file, use it as WebP and derive PNG fallback
-  if (coverPath.endsWith(".webp")) {
-    const basePath = coverPath.replace(/\.webp$/i, "");
-    return {
-      webp: coverPath,
-      fallback: `${basePath}.png`,
-    };
-  }
-
-  // If it's PNG/JPG, convert to WebP
-  const basePath = coverPath.replace(/\.(png|jpg|jpeg)$/i, "");
-  const extension = coverPath.match(/\.(png|jpg|jpeg)$/i)?.[1] || "png";
-
-  return {
-    webp: `${basePath}.webp`,
-    fallback: `${basePath}.${extension}`,
-  };
-};
-
 interface ProjectCardProps {
   project: Project;
   variant?: "default" | "featured";

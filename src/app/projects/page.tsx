@@ -16,11 +16,21 @@ export const metadata: Metadata = generateMetadata(
 export const revalidate = 3600; // 1 hour
 export const dynamic = "force-static";
 
+const PAGE_SIZE = 9;
+
 const ProjectsContent = () => {
   // Sort projects immediately on server - no client-side state needed
   const allProjectsSorted = allProjects
     ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
     : [];
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(allProjectsSorted.length / PAGE_SIZE)
+  );
+  const currentPage = 1; // Root /projects is page 1
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageProjects = allProjectsSorted.slice(start, start + PAGE_SIZE);
 
   return (
     <Suspense fallback={<div className="space-y-16">Loading...</div>}>
@@ -56,10 +66,64 @@ const ProjectsContent = () => {
         {/* Projects Grid */}
         <section className="space-y-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allProjectsSorted.map((p) => (
+            {pageProjects.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}
           </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <nav
+              className="flex items-center justify-center gap-2 mt-6"
+              aria-label="Projects pagination"
+            >
+              <a
+                href={
+                  currentPage > 1 ? `/projects/page/${currentPage - 1}` : "#"
+                }
+                aria-disabled={currentPage === 1}
+                className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                  currentPage === 1
+                    ? "opacity-50 pointer-events-none"
+                    : "hover:bg-purple-600/10"
+                }`}
+              >
+                Previous
+              </a>
+              {Array.from({ length: totalPages }).map((_, i) => {
+                const page = i + 1;
+                const isActive = page === currentPage;
+                return (
+                  <a
+                    key={page}
+                    href={page === 1 ? "/projects" : `/projects/page/${page}`}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                      isActive
+                        ? "bg-purple-600/20 text-purple-200"
+                        : "hover:bg-purple-600/10"
+                    }`}
+                  >
+                    {page}
+                  </a>
+                );
+              })}
+              <a
+                href={
+                  currentPage < totalPages
+                    ? `/projects/page/${currentPage + 1}`
+                    : "#"
+                }
+                aria-disabled={currentPage === totalPages}
+                className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                  currentPage === totalPages
+                    ? "opacity-50 pointer-events-none"
+                    : "hover:bg-purple-600/10"
+                }`}
+              >
+                Next
+              </a>
+            </nav>
+          )}
         </section>
 
         {/* CTA Section */}
