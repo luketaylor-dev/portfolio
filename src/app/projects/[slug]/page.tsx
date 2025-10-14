@@ -1,13 +1,8 @@
 import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
-import {
-  InteractiveButton,
-  Card,
-  Badge,
-  WebPImage,
-  Breadcrumbs,
-} from "@/components/ui";
+import { InteractiveButton, Card, Badge, Breadcrumbs } from "@/components/ui";
+import Image from "next/image";
 import VideoWithPlayButton from "@/components/ui/video-with-play-button";
 import {
   ArrowLeft,
@@ -65,6 +60,7 @@ const getImagePaths = (coverPath: string) => {
 
 // Helper function to generate structured data for projects
 const generateProjectStructuredData = (project: any) => {
+  // Base CreativeWork schema
   const baseStructuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork" as const,
@@ -92,6 +88,21 @@ const generateProjectStructuredData = (project: any) => {
     isAccessibleForFree: true,
     license: "https://creativecommons.org/licenses/by-nc/4.0/",
   };
+
+  // Add VideoObject if project has video
+  if (project.video) {
+    return {
+      ...baseStructuredData,
+      "@type": "VideoObject" as const,
+      contentUrl: `https://www.dibza.co.uk${project.video}`,
+      embedUrl: `https://www.dibza.co.uk${project.video}`,
+      thumbnailUrl: project.cover
+        ? `https://www.dibza.co.uk${project.cover}`
+        : undefined,
+      uploadDate: project.date,
+      duration: "PT5M", // Default 5 minutes, adjust as needed
+    };
+  }
 
   // Add SoftwareSourceCode type for technical projects
   if (
@@ -289,15 +300,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </div>
         ) : project.cover ? (
           <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
-            <WebPImage
-              webpSrc={getImagePaths(project.cover).webp}
-              fallbackSrc={getImagePaths(project.cover).fallback}
+            <Image
+              src={project.cover}
               alt={
                 project.altText ||
                 `${project.title} — project preview and interface`
               }
               width={1200}
               height={675}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
               className="w-full h-full object-cover"
               priority
             />

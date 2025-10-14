@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { ArrowRight, Gamepad2, Star } from "lucide-react";
-import { Card, WebPImage } from "@/components/ui";
+import { Card } from "@/components/ui";
+import Image from "next/image";
 
 interface Project {
   slug: string;
@@ -62,12 +63,12 @@ export default function ProjectCard({
           {/* Project Image */}
           <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500">
             {project.cover ? (
-              <WebPImage
-                webpSrc={getImagePaths(project.cover).webp}
-                fallbackSrc={getImagePaths(project.cover).fallback}
+              <Image
+                src={project.cover}
                 alt={project.altText || `${project.title} — project preview`}
                 width={400}
                 height={225}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
               />
             ) : (
