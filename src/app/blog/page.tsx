@@ -22,6 +22,10 @@ export default function BlogPage() {
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
       )
     : [];
+  const PAGE_SIZE = 9;
+  const totalPages = Math.max(1, Math.ceil(sortedPosts.length / PAGE_SIZE));
+  const currentPage = 1;
+  const pagePosts = sortedPosts.slice(0, PAGE_SIZE);
 
   return (
     <div className="space-y-16">
@@ -41,9 +45,9 @@ export default function BlogPage() {
 
       {/* Blog Posts Grid */}
       <section className="space-y-12">
-        {sortedPosts.length > 0 ? (
+        {pagePosts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {sortedPosts.map((post) => (
+            {pagePosts.map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}
           </div>
@@ -60,6 +64,50 @@ export default function BlogPage() {
               projects and development experiences!
             </p>
           </div>
+        )}
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <nav
+            className="flex items-center justify-center gap-2"
+            aria-label="Blog pagination"
+          >
+            <a
+              href="#"
+              aria-disabled
+              className="px-3 py-2 rounded-lg border border-purple-700/40 text-sm opacity-50 pointer-events-none"
+            >
+              Previous
+            </a>
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const page = i + 1;
+              const isActive = page === currentPage;
+              return (
+                <a
+                  key={page}
+                  href={page === 1 ? "/blog" : `/blog/page/${page}`}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                    isActive
+                      ? "bg-purple-600/20 text-purple-200"
+                      : "hover:bg-purple-600/10"
+                  }`}
+                >
+                  {page}
+                </a>
+              );
+            })}
+            <a
+              href={totalPages > 1 ? "/blog/page/2" : "#"}
+              aria-disabled={totalPages <= 1}
+              className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                totalPages <= 1
+                  ? "opacity-50 pointer-events-none"
+                  : "hover:bg-purple-600/10"
+              }`}
+            >
+              Next
+            </a>
+          </nav>
         )}
       </section>
     </div>
