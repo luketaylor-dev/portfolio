@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ResponsiveImage from "../responsive-image";
 import TouchButton from "../touch-button";
 import { mobilePerformanceUtils } from "@/lib/mobile-performance";
 
@@ -130,56 +129,6 @@ describe("Mobile Performance Utilities", () => {
       const settings = mobilePerformanceUtils.getImageOptimizationSettings();
       expect(settings.quality).toBe(60);
     });
-  });
-});
-
-describe("ResponsiveImage", () => {
-  it("renders with default props", () => {
-    render(
-      <ResponsiveImage
-        src="/test-image.jpg"
-        alt="Test image"
-        width={800}
-        height={600}
-      />
-    );
-
-    const image = screen.getByAltText("Test image");
-    expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src");
-  });
-
-  it("renders with error state", () => {
-    render(
-      <ResponsiveImage
-        src="/invalid-image.jpg"
-        alt="Invalid image"
-        width={800}
-        height={600}
-      />
-    );
-
-    // Simulate error by triggering onError
-    const image = screen.getByAltText("Invalid image");
-    fireEvent.error(image);
-
-    expect(screen.getByText("Image not available")).toBeInTheDocument();
-  });
-
-  it("renders with interactive mode", () => {
-    render(
-      <ResponsiveImage
-        src="/test-image.jpg"
-        alt="Interactive image"
-        width={800}
-        height={600}
-        interactive={true}
-      />
-    );
-
-    const image = screen.getByAltText("Interactive image");
-    expect(image).toBeInTheDocument();
-    expect(image.closest("div")).toHaveClass("overflow-hidden", "rounded-lg");
   });
 });
 

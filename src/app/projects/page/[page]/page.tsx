@@ -3,6 +3,7 @@ import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
 import { allProjects } from "contentlayer/generated";
 import { ProjectCard } from "@/components/content";
 import { Breadcrumbs } from "@/components/ui";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
 export const dynamic = "force-static";
@@ -39,6 +40,9 @@ export default function ProjectsPaged({
     ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
     : [];
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+  if (pageNum > totalPages) {
+    notFound();
+  }
   const currentPage = Math.min(pageNum, totalPages);
   const start = (currentPage - 1) * PAGE_SIZE;
   const pageProjects = sorted.slice(start, start + PAGE_SIZE);

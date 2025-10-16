@@ -9,19 +9,7 @@ export { default as VideoWithPlayButton } from "./video-with-play-button";
 export { default as Breadcrumbs } from "./breadcrumbs";
 
 // Mobile-optimized components
-export {
-  default as ResponsiveImage,
-  HeroImage,
-  ProjectImage,
-  BlogImage,
-  AvatarImage,
-  ThumbnailImage,
-} from "./responsive-image";
-export {
-  default as WebPImage,
-  ProjectWebPImage,
-  HeroWebPImage,
-} from "./webp-image";
+
 export {
   default as TouchButton,
   TouchIconButton,

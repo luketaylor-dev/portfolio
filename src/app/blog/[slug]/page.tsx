@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+import dialogSystemImg from "@/../public/images/dialog-system.png";
 import { Metadata } from "next";
 import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
 import { allBlogPosts } from "contentlayer/generated";
@@ -51,6 +52,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  // Map known images to static imports for blur placeholders
+  const staticImageMap: Record<string, StaticImageData> = {
+    "/images/dialog-system.png": dialogSystemImg,
+  };
+  const staticImg = post.image ? staticImageMap[post.image] : undefined;
 
   return (
     <div className="space-y-16">
@@ -144,11 +151,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {post.image && (
           <div className="aspect-video overflow-hidden rounded-2xl">
             <Image
-              src={post.image}
+              src={staticImg || post.image}
               alt={post.title}
               width={1200}
               height={675}
+              sizes="(max-width: 768px) 100vw, 1200px"
               className="w-full h-full object-cover"
+              placeholder={staticImg ? "blur" : "empty"}
               priority
             />
           </div>
