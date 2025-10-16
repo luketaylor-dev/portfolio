@@ -50,7 +50,7 @@ export default function AboutPage() {
         {/* Avatar */}
         <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-2 shadow-2xl shadow-purple-500/25">
           <Image
-            src="/images/luke-taylor-dev.jpg"
+            src="/images/luke-taylor-dev.webp"
             alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
             width={160}
             height={160}
