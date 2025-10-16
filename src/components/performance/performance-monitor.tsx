@@ -29,7 +29,7 @@ export default function PerformanceMonitor() {
     window.addEventListener("load", handleLoad);
 
     // Preload critical images
-    const criticalImages = ["/images/luke-taylor-dev.jpg"];
+    const criticalImages = ["/images/luke-taylor-dev.webp"];
     criticalImages.forEach((src) => {
       const link = document.createElement("link");
       link.rel = "preload";

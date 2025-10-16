@@ -97,7 +97,7 @@ export function preloadCriticalResources() {
 
   const criticalResources = [
     "/fonts/inter-var.woff2",
-    "/images/luke-taylor-dev.jpg",
+    "/images/luke-taylor-dev.webp",
   ];
 
   criticalResources.forEach((resource) => {

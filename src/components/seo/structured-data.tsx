@@ -11,7 +11,7 @@ export default function StructuredData() {
         description:
           "Unity Developer Manchester with 7+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
         url: "https://www.dibza.co.uk",
-        image: "https://www.dibza.co.uk/images/luke-taylor-dev.jpg",
+        image: "https://www.dibza.co.uk/images/luke-taylor-dev.webp",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Manchester",

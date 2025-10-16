@@ -29,7 +29,7 @@ export const preloadCriticalResources = () => {
   if (typeof window !== "undefined") {
     // Preload critical images
     const criticalImages = [
-      "/images/luke-taylor-dev.jpg",
+      "/images/luke-taylor-dev.webp",
       // Add other critical images here
     ];
 
