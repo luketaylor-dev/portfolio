@@ -12,7 +12,9 @@ const components = {
       alt={alt || "Image"}
       width={width}
       height={height}
+      sizes="(max-width: 768px) 100vw, 800px"
       className="rounded-lg shadow-lg my-8"
+      loading="lazy"
       {...props}
     />
   ),

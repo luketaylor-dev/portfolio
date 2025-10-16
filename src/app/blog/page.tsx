@@ -47,8 +47,8 @@ export default function BlogPage() {
       <section className="space-y-12">
         {pagePosts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pagePosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
+            {pagePosts.map((post, idx) => (
+              <BlogCard key={post.slug} post={post} priority={idx < 3} />
             ))}
           </div>
         ) : (

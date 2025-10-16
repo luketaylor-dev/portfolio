@@ -16,13 +16,13 @@ export default function AnimatedGradientText({
   const getGradientClass = () => {
     switch (type) {
       case "moving":
-        return "bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent animate-gradient-x";
+        return "bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent md:animate-gradient-x motion-reduce:animate-none";
       case "pulsing":
-        return "bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent animate-pulse";
+        return "bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent md:animate-pulse motion-reduce:animate-none";
       case "rainbow":
-        return "bg-gradient-to-r from-purple-400 via-pink-500 via-yellow-500 via-green-500 via-blue-500 to-purple-400 bg-clip-text text-transparent animate-gradient-x";
+        return "bg-gradient-to-r from-purple-400 via-pink-500 via-yellow-500 via-green-500 via-blue-500 to-purple-400 bg-clip-text text-transparent md:animate-gradient-x motion-reduce:animate-none";
       case "shimmer":
-        return "bg-gradient-to-r from-transparent via-purple-400 to-transparent bg-clip-text text-transparent animate-shimmer";
+        return "bg-gradient-to-r from-transparent via-purple-400 to-transparent bg-clip-text text-transparent md:animate-shimmer motion-reduce:animate-none";
       default:
         return "bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent";
     }

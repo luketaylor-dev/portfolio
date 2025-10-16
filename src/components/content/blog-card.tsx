@@ -16,9 +16,14 @@ interface BlogPost {
 interface BlogCardProps {
   post: BlogPost;
   className?: string;
+  priority?: boolean;
 }
 
-export default function BlogCard({ post, className = "" }: BlogCardProps) {
+export default function BlogCard({
+  post,
+  className = "",
+  priority = false,
+}: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`}>
       <Card
@@ -38,6 +43,7 @@ export default function BlogCard({ post, className = "" }: BlogCardProps) {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
                 loading="lazy"
+                priority={priority}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

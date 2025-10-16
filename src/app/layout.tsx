@@ -271,7 +271,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
 
             <div className="border-t border-purple-800/30 mt-8 pt-8 text-center">
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-400">
                 © {new Date().getFullYear()} Luke Taylor. All rights reserved.
                 Built with Next.js, React, and a lot of purple.
               </p>
