@@ -70,10 +70,15 @@ export default function HomePage() {
                 </h1>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={600}>
-                <p className="text-2xl md:text-3xl font-medium">
-                  <AnimatedGradientText type="moving">
+                <p className="text-xl md:text-3xl font-medium">
+                  <span className="md:hidden bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
                     From Brainwaves to Gameplay – Unity Innovation
-                  </AnimatedGradientText>
+                  </span>
+                  <span className="hidden md:inline">
+                    <AnimatedGradientText type="moving">
+                      From Brainwaves to Gameplay – Unity Innovation
+                    </AnimatedGradientText>
+                  </span>
                 </p>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={800}>

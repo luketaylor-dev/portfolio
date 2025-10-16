@@ -85,10 +85,10 @@ export const defaultMetadata: Metadata = {
       "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
     images: [
       {
-        url: "/images/luke-taylor-dev.jpg",
+        url: "https://www.dibza.co.uk/og?title=Luke%20Taylor%20%E2%80%94%20Unity%20Developer%20Manchester",
         width: 1200,
         height: 630,
-        alt: "Luke Taylor - Manchester Unity Developer specializing in EEG and VR",
+        alt: "Luke Taylor — Unity Developer Manchester",
       },
     ],
   },
@@ -97,7 +97,9 @@ export const defaultMetadata: Metadata = {
     title: "Luke Taylor — Unity Developer Manchester | EEG & VR Specialist",
     description:
       "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
-    images: ["/images/luke-taylor-dev.jpg"],
+    images: [
+      "https://www.dibza.co.uk/og?title=Luke%20Taylor%20%E2%80%94%20Unity%20Developer%20Manchester",
+    ],
     creator: "@luketaylor_dev",
   },
   alternates: {

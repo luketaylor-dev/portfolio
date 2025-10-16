@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const components = {
-  img: ({ src, alt, width = 800, height = 600, ...props }: any) => (
+  img: ({ src, alt, width = 800, height = 600, priority, ...props }: any) => (
     <Image
       src={src}
       alt={alt || "Image"}
@@ -14,7 +14,7 @@ const components = {
       height={height}
       sizes="(max-width: 768px) 100vw, 800px"
       className="rounded-lg shadow-lg my-8"
-      loading="lazy"
+      priority={priority}
       {...props}
     />
   ),

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { formatDate } from "@/lib/blog-utils";
 import { Card } from "@/components/ui";
 
 interface BlogPost {
@@ -42,7 +43,6 @@ export default function BlogCard({
                 height={225}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
-                loading="lazy"
                 priority={priority}
               />
             ) : (
@@ -87,7 +87,7 @@ export default function BlogCard({
               <div className="flex items-center gap-4 text-sm text-neutral-400">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  <span>{new Date(post.date).toLocaleDateString()}</span>
+                  <span>{formatDate(post.date)}</span>
                 </div>
                 {post.readingTime && (
                   <div className="flex items-center gap-1">
