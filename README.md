@@ -1,172 +1,128 @@
-# 🚀 Luke Taylor's Portfolio - Unity Developer
+# Portfolio (Next.js 14, TypeScript, Tailwind, Contentlayer)
 
-A stunning, modern portfolio website showcasing Unity development expertise in VR, EEG visualization, and game development. Built with Next.js 14, TypeScript, Tailwind CSS, and a beautiful purple theme.
+Production-grade portfolio site. This README is for contributors or anyone new to the codebase.
 
-## ✨ What's New & Improved
+## Tech stack
 
-### 🎨 **Complete Visual Overhaul**
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Contentlayer (MDX content)
+- Vercel (recommended)
 
-- **Purple Theme**: Your favorite color integrated throughout the design
-- **Gradient Backgrounds**: Beautiful purple gradients and glass morphism effects
-- **Modern Typography**: Large, bold headings with gradient text effects
-- **Enhanced Spacing**: Better visual hierarchy and breathing room
+## Requirements
 
-### 🏠 **Homepage Transformation**
+- Node.js 18+
+- pnpm 8+
 
-- **Hero Section**: Full-screen hero with animated floating elements and avatar placeholder
-- **Skills Showcase**: Interactive cards for EEG, VR, and Game Development
-- **Featured Projects**: Enhanced project cards with image placeholders and hover effects
-- **Recent Work**: Grid layout with better visual presentation
-- **Call-to-Action**: Engaging CTA sections throughout the page
+## Setup
 
-### 🧭 **Navigation & Layout**
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Sticky Header**: Backdrop blur effect with purple accents
-- **Mobile Navigation**: Slide-out mobile menu with smooth animations
-- **Enhanced Footer**: Three-column layout with quick links and contact info
-- **Responsive Design**: Mobile-first approach with better breakpoints
+Dev server: http://localhost:3000
 
-### 👤 **About Page Enhancement**
+If content doesn’t appear:
 
-- **Personal Story**: More engaging and personal content
-- **Expertise Grid**: Visual representation of your skills
-- **Values Section**: What drives you as a developer
-- **Professional CTA**: Multiple ways to engage
+```bash
+pnpm content
+```
 
-### 📁 **Projects Page Redesign**
+## Scripts
 
-- **Hero Introduction**: Better context and description
-- **Enhanced Cards**: Image/video placeholders with hover effects
-- **Project Meta**: Dates, tags, and better information hierarchy
-- **Interactive Elements**: Hover states and smooth transitions
+- dev: next dev (runs Contentlayer via predev)
+- build: next build (runs Contentlayer via prebuild)
+- start: next start
+- lint: next lint
+- test: jest
+- test:watch: jest --watch
+- test:coverage: jest --coverage
+- type-check: tsc --noEmit
+- content: contentlayer build
+- sitemap: next-sitemap
+- build:sitemap: pnpm build && next-sitemap
+- analyze: ANALYZE=true next build
 
-### 📞 **Contact Page Upgrade**
+## Structure
 
-- **Better Form**: Enhanced styling with purple accents
-- **Specialization Info**: What you do best
-- **Why Choose You**: Key selling points
-- **Multiple CTAs**: Various ways to engage
+```
+src/
+  app/                # App Router routes
+  components/         # UI, content, animation, layout, SEO
+  lib/                # utils, metadata, performance helpers
+  styles/             # Tailwind globals
+content/
+  blog/               # MDX posts
+  projects/           # MDX projects
+public/               # static assets
+```
 
-### 🎬 **Project Detail Pages**
+## Content authoring (MDX)
 
-- **Media Support**: Placeholders for images, videos, and demos
-- **Enhanced Layout**: Better typography and spacing
-- **Feature Highlights**: Key project features
-- **Technology Stack**: Visual representation of tech used
+- Add posts: `content/blog/*.mdx`
+- Add projects: `content/projects/*.mdx`
+- Types/schema: `contentlayer.config.ts`
 
-### 🎭 **Animations & Interactions**
+Rebuild content:
 
-- **Hover Effects**: Scale, color, and shadow transitions
-- **Smooth Animations**: CSS transitions and transforms
-- **Micro-interactions**: Small details that enhance UX
-- **Loading States**: Better form and button feedback
+```bash
+pnpm content
+```
 
-### 🎨 **Design System**
+## Environment
 
-- **Purple Color Palette**: Consistent theme throughout
-- **Component Library**: Reusable button and card styles
-- **Typography Scale**: Better font hierarchy
-- **Spacing System**: Consistent margins and padding
+Email/inquiry endpoints require secrets. See:
 
-## 🛠 **Technical Improvements**
+- `SECURE_EMAIL_SETUP.md`
+- `SECURE_EMAILJS_SETUP.md`
+- `PROJECT_INQUIRY_SYSTEM.md`
 
-### **Performance**
+Common vars (examples):
 
-- Optimized CSS with custom properties
-- Smooth scrolling and transitions
-- Responsive image placeholders
-- Better loading states
+- Email provider/API credentials
+- SITE_URL (for sitemap)
 
-### **Accessibility**
+## Development
 
-- Better contrast ratios
-- Focus states for keyboard navigation
-- ARIA labels for mobile menu
-- Semantic HTML structure
+```bash
+pnpm dev        # start dev server
+pnpm lint       # eslint
+pnpm test       # unit tests
+pnpm type-check # TS checks
+```
 
-### **Responsiveness**
+## Build & deploy
 
-- Mobile-first design approach
-- Touch-friendly interactions
-- Adaptive layouts for all screen sizes
-- Mobile navigation component
+```bash
+pnpm build
+pnpm start      # serve production build locally
+```
 
-## 🚀 **Ready for Content**
+Deploy on Vercel by pushing to the default branch. Generate sitemap when needed:
 
-### **Image & Video Integration**
+```bash
+pnpm build:sitemap
+```
 
-- Placeholder areas ready for your photos
-- Video support for EEG visualizer demo
-- Project screenshots and gameplay footage
-- Personal photos and branding
+## Performance notes
 
-### **Content Management**
+- Images: Next/Image with webp/avif; tune `quality`/`sizes` per use.
+- Animations: CSS-first; non-critical effects deferred off the critical path.
+- Source maps disabled in production; use `ANALYZE=true` for bundle insights.
 
-- MDX support for rich project content
-- Easy to add new projects
-- Tag system for categorization
-- Featured project highlighting
+## Accessibility
 
-### **Future Enhancements**
+- Semantic markup, focus styles, ARIA for nav.
+- Respects reduced motion where appropriate.
 
-- Blog section for Unity development insights
-- Portfolio filtering by technology
-- Client testimonials section
-- Project case studies
+## Troubleshooting
 
-## 🎯 **Getting Started**
+- Content not rendering: `pnpm content`, then restart dev server.
+- Type errors: `pnpm type-check`.
+- Sitemap: ensure config exists, run `pnpm build:sitemap`.
 
-1. **Install Dependencies**
+## License
 
-   ```bash
-   pnpm install
-   ```
-
-2. **Run Development Server**
-
-   ```bash
-   pnpm dev
-   ```
-
-3. **Add Your Content**
-
-   - Replace avatar placeholders with your photos
-   - Add project images and videos
-   - Update project descriptions in MDX files
-   - Customize colors if desired
-
-4. **Deploy**
-   - Ready for Vercel, Netlify, or any hosting platform
-   - Optimized for performance and SEO
-
-## 🌟 **Key Features**
-
-- **Modern Design**: Beautiful purple theme with glass morphism
-- **Responsive**: Works perfectly on all devices
-- **Fast**: Optimized performance and smooth animations
-- **Accessible**: WCAG compliant with proper contrast
-- **SEO Ready**: Meta tags and structured data
-- **Easy to Update**: Simple content management
-- **Professional**: Perfect for client presentations
-
-## 🎨 **Design Features**
-
-This portfolio showcases my development approach:
-
-- **Purple Theme**: My signature color throughout the design
-- **Unity Focus**: Highlighting my game development expertise
-- **Professional Tone**: Business-ready for client presentations
-- **Personal Brand**: Consistent visual identity and messaging
-
-## 🚀 **Portfolio Goals**
-
-This portfolio is designed to:
-
-- **Impress Clients**: Professional design that builds trust
-- **Showcase Work**: Beautiful presentation of my projects
-- **Generate Leads**: Clear calls-to-action for new business
-- **Build Brand**: Consistent purple theme and professional appearance
-
-The design is modern, engaging, and perfectly suited for a Unity developer who wants to stand out in the industry!
-
----
+Private. All rights reserved.
