@@ -13,6 +13,7 @@ import {
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  const successMessageRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -123,6 +124,14 @@ export default function ContactForm() {
       setIsSubmitSuccessful(true);
       setFormData({ name: "", email: "", message: "" });
       setTouched({ name: false, email: false, message: false });
+      
+      // Scroll to success message
+      setTimeout(() => {
+        successMessageRef.current?.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "start" 
+        });
+      }, 100);
     } catch (err) {
       setError(
         err instanceof Error
@@ -162,8 +171,13 @@ export default function ContactForm() {
       <section className="max-w-2xl mx-auto">
         <Card className="p-8 space-y-8">
           {isSubmitSuccessful ? (
-            <div className="text-center space-y-6">
-              <div className="w-16 h-16 mx-auto rounded-full bg-green-500/20 flex items-center justify-center">
+            <div 
+              ref={successMessageRef}
+              className="text-center space-y-6 animate-fade-in"
+              role="alert"
+              aria-live="polite"
+            >
+              <div className="w-16 h-16 mx-auto rounded-full bg-green-500/20 flex items-center justify-center ring-4 ring-green-500/20">
                 <CheckCircle className="w-8 h-8 text-green-400" />
               </div>
               <div className="space-y-2">
@@ -323,10 +337,12 @@ export default function ContactForm() {
                     size="lg"
                     disabled={!isFormValid || isSubmitting}
                     className="flex-1"
+                    aria-busy={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
+                        <span className="sr-only">Sending message, please wait...</span>
                         Sending...
                       </>
                     ) : (

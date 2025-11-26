@@ -253,6 +253,10 @@ body {
   animation: shimmer 2s infinite;
 }
 
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
 /* Gradient text utilities */
 .gradient-text {
   background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #d1d5db 100%);

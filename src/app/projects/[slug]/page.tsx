@@ -211,16 +211,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <div className="space-y-12">
-      {/* Breadcrumbs */}
-      <Breadcrumbs
-        items={[
-          { label: "Projects", href: "/projects" },
-          { label: project.title },
-        ]}
-        className="mb-8"
-      />
-
+    <div className="space-y-16">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -230,8 +221,19 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         suppressHydrationWarning={true}
       />
 
+      {/* Breadcrumbs */}
+      <div className="max-w-4xl mx-auto">
+        <Breadcrumbs
+          items={[
+            { label: "Projects", href: "/projects" },
+            { label: project.title },
+          ]}
+          className="mb-8"
+        />
+      </div>
+
       {/* Back Navigation */}
-      <div className="flex items-center gap-4">
+      <div className="max-w-4xl mx-auto">
         <InteractiveButton href="/projects" variant="ghost" size="sm">
           <ArrowLeft className="w-5 h-5" />
           Back to Projects
@@ -239,7 +241,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       </div>
 
       {/* Project Header */}
-      <section className="space-y-8">
+      <section className="max-w-4xl mx-auto space-y-8">
         <div className="space-y-6">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
@@ -326,7 +328,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Project Content */}
-      <section className="space-y-8">
+      <section className="max-w-4xl mx-auto space-y-8">
         <div className="prose prose-lg max-w-none">
           <MdxContent code={project.body.code} />
         </div>
@@ -334,7 +336,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
       {/* Project Features */}
       {project.featureTitles && project.featureTitles.length > 0 && (
-        <section className="space-y-8">
+        <section className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-3xl font-bold text-white">Highlights</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.featureTitles.slice(0, 3).map((title, i) => {
@@ -362,7 +364,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
       {/* Technology Stack */}
       {project.technologies && project.technologies.length > 0 && (
-        <section className="space-y-8">
+        <section className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-3xl font-bold text-white">Technology Stack</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {project.technologies.map((tech, i) => (
@@ -379,7 +381,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       )}
 
       {/* CTA Section */}
-      <section className="text-center space-y-6 py-16">
+      <section className="max-w-4xl mx-auto text-center space-y-6 py-16">
         <Card variant="default" className="rounded-3xl p-8">
           <h2 className="text-3xl font-bold text-white mb-6">
             Inspired by This Project?

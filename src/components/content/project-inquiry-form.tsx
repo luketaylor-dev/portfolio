@@ -29,6 +29,7 @@ export default function ProjectInquiryForm({
 }: ProjectInquiryFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const successMessageRef = useRef<HTMLDivElement>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
@@ -314,8 +315,16 @@ export default function ProjectInquiryForm({
         setCurrentStep(1);
         onSuccess?.();
 
-        // Hide success message after 5 seconds
-        setTimeout(() => setIsSubmitSuccessful(false), 5000);
+        // Scroll to success message
+        setTimeout(() => {
+          successMessageRef.current?.scrollIntoView({ 
+            behavior: "smooth", 
+            block: "start" 
+          });
+        }, 100);
+        
+        // Hide success message after 10 seconds (increased from 5)
+        setTimeout(() => setIsSubmitSuccessful(false), 10000);
       } else {
         throw new Error(result.error || "Failed to send project inquiry");
       }
@@ -669,8 +678,13 @@ export default function ProjectInquiryForm({
 
       {/* Success Message */}
       {isSubmitSuccessful && (
-        <div className="p-6 rounded-xl bg-green-900/20 border border-green-500/50 text-green-300 flex items-center gap-3 mb-6">
-          <CheckCircle className="w-6 h-6 text-green-400" />
+        <div 
+          ref={successMessageRef}
+          className="p-6 rounded-xl bg-green-900/20 border-2 border-green-500/50 text-green-300 flex items-center gap-3 mb-6 animate-fade-in shadow-lg shadow-green-500/20"
+          role="alert"
+          aria-live="polite"
+        >
+          <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
           <div>
             <p className="font-medium text-lg">
               Project inquiry sent successfully!
@@ -736,9 +750,13 @@ export default function ProjectInquiryForm({
                 loading={isSubmitting}
                 variant="primary"
                 size="lg"
+                aria-busy={isSubmitting}
               >
                 {isSubmitting ? (
-                  "Sending Inquiry..."
+                  <>
+                    <span className="sr-only">Sending inquiry, please wait...</span>
+                    Sending Inquiry...
+                  </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
