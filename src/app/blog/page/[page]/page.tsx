@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
-import { allBlogPosts } from "contentlayer/generated";
+import { getAllBlogPosts } from "@/lib/content";
 import { BlogCard } from "@/components/content";
 import { Breadcrumbs } from "@/components/ui";
 import { notFound } from "next/navigation";
@@ -11,6 +11,7 @@ export const dynamic = "force-static";
 const PAGE_SIZE = 9;
 
 export async function generateStaticParams() {
+  const allBlogPosts = getAllBlogPosts();
   const totalPages = Math.max(1, Math.ceil(allBlogPosts.length / PAGE_SIZE));
   return Array.from({ length: totalPages - 1 }).map((_, i) => ({
     page: String(i + 2),
@@ -32,6 +33,7 @@ export async function generateMetadata({
 
 export default function BlogPaged({ params }: { params: { page: string } }) {
   const pageNum = Math.max(1, Number(params.page) || 1);
+  const allBlogPosts = getAllBlogPosts();
   const sorted = allBlogPosts
     ? allBlogPosts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
     : [];

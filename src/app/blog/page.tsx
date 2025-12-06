@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
-import { allBlogPosts } from "contentlayer/generated";
+import { getAllBlogPosts } from "@/lib/content";
 import { Tag } from "lucide-react";
 import { BlogCard } from "@/components/content";
 import { Breadcrumbs } from "@/components/ui";
@@ -17,6 +17,7 @@ export const dynamic = "force-static";
 
 export default function BlogPage() {
   // Check if blog posts exist and sort them by date (newest first)
+  const allBlogPosts = getAllBlogPosts();
   const sortedPosts = allBlogPosts
     ? allBlogPosts.sort(
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()

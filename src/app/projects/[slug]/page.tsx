@@ -1,11 +1,8 @@
-import { allProjects } from "contentlayer/generated";
+import { getAllProjects, getProjectBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
 import { InteractiveButton, Card, Badge, Breadcrumbs } from "@/components/ui";
-import Image, { StaticImageData } from "next/image";
-import brainraveImg from "@/../public/images/brainrave.webp";
-import officeVrImg from "@/../public/images/office-vr.webp";
-import dialogSystemImg from "@/../public/images/dialog-system.png";
+import Image from "next/image";
 import VideoWithPlayButton from "@/components/ui/video-with-play-button";
 import {
   ArrowLeft,
@@ -105,17 +102,25 @@ const generateProjectStructuredData = (project: any) => {
 };
 
 export async function generateStaticParams() {
-  return allProjects.map((project) => ({
-    slug: project.slug,
-  }));
+  try {
+    const allProjects = getAllProjects();
+    return allProjects.map((project) => ({
+      slug: project.slug,
+    }));
+  } catch (error) {
+    console.error("Error generating static params:", error);
+    return [];
+  }
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }> | { slug: string };
 }) {
-  const project = allProjects.find((project) => project.slug === params.slug);
+  // Handle params as either Promise or direct object (Next.js 16 compatibility)
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const project = getProjectBySlug(resolvedParams.slug);
   if (!project) return {};
 
   // Use SEO description from MDX if available, otherwise fall back to regular description
@@ -142,20 +147,25 @@ export async function generateMetadata({
   };
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = allProjects.find((project) => project.slug === params.slug);
-  if (!project) notFound();
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }> | { slug: string };
+}) {
+  // Handle params as either Promise or direct object (Next.js 16 compatibility)
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const project = getProjectBySlug(resolvedParams.slug);
+
+  if (!project) {
+    console.error("Project not found for slug:", resolvedParams.slug);
+    notFound();
+  }
 
   // Generate structured data for this project
   const projectStructuredData = generateProjectStructuredData(project);
 
-  // Static image map to enable blur placeholders for known covers
-  const staticCoverMap: Record<string, StaticImageData> = {
-    "/images/brainrave.webp": brainraveImg,
-    "/images/office-vr.webp": officeVrImg,
-    "/images/dialog-system.png": dialogSystemImg,
-  };
-  const staticCover = project.cover ? staticCoverMap[project.cover] : undefined;
+  // Note: Using direct paths for images from public folder
+  const staticCover = undefined; // Removed static imports - using direct paths instead
 
   // Function to get icon component from icon name
   const getIconComponent = (iconName: string) => {
@@ -293,7 +303,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         ) : project.cover ? (
           <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
             <Image
-              src={staticCover || project.cover}
+              src={project.cover || ""}
               alt={
                 project.altText ||
                 `${project.title} — project preview and interface`
@@ -302,7 +312,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               height={675}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
               className="w-full h-full object-cover"
-              placeholder={staticCover ? "blur" : "empty"}
               priority
             />
           </div>
@@ -330,7 +339,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       {/* Project Content */}
       <section className="max-w-4xl mx-auto space-y-8">
         <div className="prose prose-lg max-w-none">
-          <MdxContent code={project.body.code} />
+          <MdxContent source={project.body.raw} />
         </div>
       </section>
 

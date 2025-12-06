@@ -1,9 +1,10 @@
-"use client";
 import * as React from "react";
 import Image from "next/image";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const components = {
   img: ({ src, alt, width = 800, height = 600, priority, ...props }: any) => (
@@ -78,12 +79,19 @@ const components = {
   },
 };
 
-export const MDXContent = ({ code }: { code: string }) => {
-  const Component = useMDXComponent(code);
-
+export const MDXContent = ({ source }: { source: string }) => {
   return (
-    <div className="prose">
-      <Component components={components} />
-    </div>
+    <MDXRemote
+      source={source}
+      components={components}
+      options={{
+        mdxOptions: {
+          rehypePlugins: [
+            rehypeSlug,
+            [rehypeAutolinkHeadings, { behavior: "wrap" }],
+          ],
+        },
+      }}
+    />
   );
 };

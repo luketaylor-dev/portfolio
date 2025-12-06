@@ -1,8 +1,7 @@
-import Image, { StaticImageData } from "next/image";
-import dialogSystemImg from "@/../public/images/dialog-system.png";
+import Image from "next/image";
 import { Metadata } from "next";
 import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
-import { allBlogPosts } from "contentlayer/generated";
+import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 
@@ -10,24 +9,25 @@ import { MdxContent, SocialShare, RelatedPosts } from "@/components/content";
 import { InteractiveButton, Badge, Breadcrumbs } from "@/components/ui";
 import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 export async function generateStaticParams() {
-  return allBlogPosts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const allBlogPosts = getAllBlogPosts();
+    return allBlogPosts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error("Error generating static params for blog:", error);
+    return [];
+  }
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }> | { slug: string };
 }): Promise<Metadata> {
-  const post = allBlogPosts.find((post) => post.slug === params.slug);
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const post = getBlogPostBySlug(resolvedParams.slug);
 
   if (!post) {
     return {
@@ -44,20 +44,20 @@ export async function generateMetadata({
   );
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = allBlogPosts
-    ? allBlogPosts.find((post) => post.slug === params.slug)
-    : undefined;
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }> | { slug: string };
+}) {
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const post = getBlogPostBySlug(resolvedParams.slug);
 
   if (!post) {
     notFound();
   }
 
-  // Map known images to static imports for blur placeholders
-  const staticImageMap: Record<string, StaticImageData> = {
-    "/images/dialog-system.png": dialogSystemImg,
-  };
-  const staticImg = post.image ? staticImageMap[post.image] : undefined;
+  // Note: Using direct paths for images from public folder
+  const staticImg = undefined; // Removed static imports - using direct paths instead
 
   return (
     <div className="space-y-16">
@@ -151,13 +151,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {post.image && (
           <div className="aspect-video overflow-hidden rounded-2xl">
             <Image
-              src={staticImg || post.image}
+              src={post.image || ""}
               alt={post.title}
               width={1200}
               height={675}
               sizes="(max-width: 768px) 100vw, 1200px"
               className="w-full h-full object-cover"
-              placeholder={staticImg ? "blur" : "empty"}
               priority
             />
           </div>
@@ -165,7 +164,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article Content */}
         <div className="prose prose-invert prose-purple max-w-none">
-          <MdxContent code={post.body.code} />
+          <MdxContent source={post.body.raw} />
         </div>
 
         {/* Social Sharing */}
@@ -178,7 +177,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
 
       {/* Related Posts */}
-      <RelatedPosts currentPostSlug={post.slug} allPosts={allBlogPosts || []} />
+      <RelatedPosts currentPostSlug={post.slug} allPosts={getAllBlogPosts()} />
 
       {/* Navigation */}
       <div className="max-w-4xl mx-auto pt-8 border-t border-neutral-800">

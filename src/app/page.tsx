@@ -1,6 +1,5 @@
 import Image from "next/image";
-import avatarImg from "@/../public/images/luke-taylor-dev.webp";
-import { allProjects, allBlogPosts } from "contentlayer/generated";
+import { getAllProjects, getAllBlogPosts } from "@/lib/content";
 import {
   ArrowRight,
   Play,
@@ -30,6 +29,8 @@ export const revalidate = 3600; // Revalidate every hour
 export const dynamic = "force-static";
 
 export default function HomePage() {
+  const allProjects = getAllProjects();
+  const allBlogPosts = getAllBlogPosts();
   const featured = allProjects.filter((p) => p.featured).slice(0, 2);
   const featuredBlog = allBlogPosts.filter((p) => p.featured).slice(0, 1);
   const recent = allProjects
@@ -58,7 +59,7 @@ export default function HomePage() {
             <ScrollAnimation direction="up" delay={200}>
               <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
                 <Image
-                  src={avatarImg}
+                  src="/images/luke-taylor-dev.webp"
                   alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
                   width={128}
                   height={128}

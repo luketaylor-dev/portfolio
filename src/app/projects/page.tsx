@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
-import { allProjects } from "contentlayer/generated";
+import { getAllProjects } from "@/lib/content";
 import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
 import { ProjectCard } from "@/components/content";
@@ -20,6 +20,7 @@ const PAGE_SIZE = 9;
 
 const ProjectsContent = () => {
   // Sort projects immediately on server - no client-side state needed
+  const allProjects = getAllProjects();
   const allProjectsSorted = allProjects
     ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
     : [];

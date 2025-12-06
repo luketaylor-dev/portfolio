@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
-import { allProjects } from "contentlayer/generated";
+import { getAllProjects } from "@/lib/content";
 import { ProjectCard } from "@/components/content";
 import { Breadcrumbs } from "@/components/ui";
 import { notFound } from "next/navigation";
@@ -11,6 +11,7 @@ export const dynamic = "force-static";
 const PAGE_SIZE = 9;
 
 export async function generateStaticParams() {
+  const allProjects = getAllProjects();
   const totalPages = Math.max(1, Math.ceil(allProjects.length / PAGE_SIZE));
   return Array.from({ length: totalPages - 1 }).map((_, i) => ({
     page: String(i + 2), // pages start at 2 here
@@ -36,6 +37,7 @@ export default function ProjectsPaged({
   params: { page: string };
 }) {
   const pageNum = Math.max(1, Number(params.page) || 1);
+  const allProjects = getAllProjects();
   const sorted = allProjects
     ? allProjects.sort((a, b) => +new Date(b.date) - +new Date(a.date))
     : [];

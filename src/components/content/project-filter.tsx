@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { Search, Filter, X } from "lucide-react";
 import { Badge } from "@/components/ui";
 
-import { Project } from "contentlayer/generated";
+import { Project } from "@/lib/content";
 
 interface ProjectFilterProps {
   projects: Project[];
