@@ -164,9 +164,6 @@ export default async function ProjectPage({
   // Generate structured data for this project
   const projectStructuredData = generateProjectStructuredData(project);
 
-  // Note: Using direct paths for images from public folder
-  const staticCover = undefined; // Removed static imports - using direct paths instead
-
   // Function to get icon component from icon name
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: any } = {

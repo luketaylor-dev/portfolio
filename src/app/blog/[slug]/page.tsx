@@ -56,9 +56,6 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  // Note: Using direct paths for images from public folder
-  const staticImg = undefined; // Removed static imports - using direct paths instead
-
   return (
     <div className="space-y-16">
       {/* Structured Data: BlogPosting */}
