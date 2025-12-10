@@ -21,7 +21,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "types": ["contentlayer/client"],
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],

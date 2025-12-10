@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TouchButton from "../touch-button";
 import { mobilePerformanceUtils } from "@/lib/mobile-performance";
