@@ -1,4 +1,3 @@
-import * as React from "react";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

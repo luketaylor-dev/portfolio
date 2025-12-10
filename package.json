@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm type-check && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.10.2",
+    "@eslint/eslintrc": "^3.3.3",
     "@hookform/resolvers": "^5.2.1",
     "@next/bundle-analyzer": "^15.5.2",
     "@tailwindcss/typography": "^0.5.16",
@@ -56,6 +57,11 @@
     "@types/node": "^20.11.20",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.8",
+    "eslint-plugin-unused-imports": "^4.3.0",
     "jest": "^30.1.1",
     "jest-axe": "^10.0.0",
     "jest-environment-jsdom": "^30.1.1",
