@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { ReactNode, Suspense } from "react";
 import Link from "next/link";
 import { Home, FolderOpen, User, Mail, FileText } from "lucide-react";
-import { MobileNav } from "@/components/layout";
+import { MobileNavEnhanced } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/seo";
@@ -146,7 +146,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </nav>
 
               {/* Mobile Navigation */}
-              <MobileNav />
+              <MobileNavEnhanced />
             </div>
           </div>
         </header>

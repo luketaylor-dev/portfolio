@@ -1,13 +1,13 @@
-# Portfolio (Next.js 14, TypeScript, Tailwind, Contentlayer)
+# Portfolio (Next.js 16, TypeScript, Tailwind)
 
 Production-grade portfolio site. This README is for contributors or anyone new to the codebase.
 
 ## Tech stack
 
-- Next.js 14 (App Router)
+- Next.js 16 (App Router)
 - TypeScript
 - Tailwind CSS
-- Contentlayer (MDX content)
+- gray-matter + next-mdx-remote (MDX content)
 - Vercel (recommended)
 
 ## Requirements
@@ -24,23 +24,18 @@ pnpm dev
 
 Dev server: http://localhost:3000
 
-If content doesn’t appear:
 
-```bash
-pnpm content
-```
 
 ## Scripts
 
-- dev: next dev (runs Contentlayer via predev)
-- build: next build (runs Contentlayer via prebuild)
+- dev: next dev
+- build: next build
 - start: next start
 - lint: next lint
 - test: jest
 - test:watch: jest --watch
 - test:coverage: jest --coverage
 - type-check: tsc --noEmit
-- content: contentlayer build
 - sitemap: next-sitemap
 - build:sitemap: pnpm build && next-sitemap
 - analyze: ANALYZE=true next build
@@ -51,7 +46,7 @@ pnpm content
 src/
   app/                # App Router routes
   components/         # UI, content, animation, layout, SEO
-  lib/                # utils, metadata, performance helpers
+  lib/                # utils, metadata, content loading, performance helpers
   styles/             # Tailwind globals
 content/
   blog/               # MDX posts
@@ -61,15 +56,10 @@ public/               # static assets
 
 ## Content authoring (MDX)
 
+Content is loaded via `src/lib/content.ts` using gray-matter. No build step required.
+
 - Add posts: `content/blog/*.mdx`
 - Add projects: `content/projects/*.mdx`
-- Types/schema: `contentlayer.config.ts`
-
-Rebuild content:
-
-```bash
-pnpm content
-```
 
 ## Environment
 
@@ -119,7 +109,6 @@ pnpm build:sitemap
 
 ## Troubleshooting
 
-- Content not rendering: `pnpm content`, then restart dev server.
 - Type errors: `pnpm type-check`.
 - Sitemap: ensure config exists, run `pnpm build:sitemap`.
 
