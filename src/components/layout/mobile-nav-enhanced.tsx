@@ -2,17 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import {
-  Menu,
-  X,
-  Home,
-  FolderOpen,
-  User,
-  Mail,
-  FileText,
-  Linkedin,
-  Github,
-} from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
+import { navItems, socialLinks } from "@/lib/navigation";
 import { ResumeDownload } from "@/components/content";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -62,27 +53,6 @@ export default function MobileNavEnhanced() {
   const handleCloseMenu = () => {
     setIsOpen(false);
   };
-
-  const navItems = [
-    { href: "/", label: "Home", icon: Home },
-    { href: "/projects", label: "Projects", icon: FolderOpen },
-    { href: "/blog", label: "Blog", icon: FileText },
-    { href: "/about", label: "About", icon: User },
-    { href: "/contact", label: "Contact", icon: Mail },
-  ];
-
-  const socialLinks = [
-    {
-      href: "https://www.linkedin.com/in/luke-taylor-ab5080166/",
-      label: "LinkedIn",
-      icon: <Linkedin className="w-5 h-5" />,
-    },
-    {
-      href: "https://github.com/luketaylor-dev",
-      label: "GitHub",
-      icon: <Github className="w-5 h-5" />,
-    },
-  ];
 
   if (!mounted) {
     return (
@@ -205,7 +175,7 @@ export default function MobileNavEnhanced() {
                         className="flex items-center gap-3 p-4 rounded-xl text-neutral-300 hover:bg-primary-900/20 hover:text-primary-300 transition-all duration-200 active:scale-95 group"
                       >
                         <div className="p-2 rounded-lg bg-primary-900/20 group-hover:bg-primary-800/30 transition-colors">
-                          <item.icon className="w-5 h-5" />
+                          <item.icon className="w-5 h-5" aria-hidden />
                         </div>
                         <span className="font-medium">{item.label}</span>
                       </Link>
@@ -238,27 +208,30 @@ export default function MobileNavEnhanced() {
                   <h3 className="text-sm font-medium text-neutral-400 mb-3">
                     Connect
                   </h3>
-                  {socialLinks.map((link, index) => (
-                    <motion.div
-                      key={link.href}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.45 + index * 0.05 }}
-                    >
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={handleCloseMenu}
-                        className="flex items-center gap-3 p-3 rounded-lg text-neutral-300 hover:bg-primary-900/20 hover:text-primary-300 transition-all duration-200 active:scale-95"
+                  {socialLinks.map((link, index) => {
+                    const Icon = link.icon;
+                    return (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.45 + index * 0.05 }}
                       >
-                        <div className="p-2 rounded-lg bg-primary-900/20">
-                          {link.icon}
-                        </div>
-                        <span className="font-medium">{link.label}</span>
-                      </a>
-                    </motion.div>
-                  ))}
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={handleCloseMenu}
+                          className="flex items-center gap-3 p-3 rounded-lg text-neutral-300 hover:bg-primary-900/20 hover:text-primary-300 transition-all duration-200 active:scale-95"
+                        >
+                          <div className="p-2 rounded-lg bg-primary-900/20">
+                            <Icon className="w-5 h-5" aria-hidden />
+                          </div>
+                          <span className="font-medium">{link.label}</span>
+                        </a>
+                      </motion.div>
+                    );
+                  })}
                 </motion.div>
 
                 {/* CTA */}
