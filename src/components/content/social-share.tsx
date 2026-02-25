@@ -1,6 +1,7 @@
 "use client";
 import { Twitter, Linkedin, Facebook, Share2 } from "lucide-react";
 import { socialShareUrls } from "@/lib/blog-utils";
+import { logger } from "@/lib/logger";
 
 interface SocialShareProps {
   url: string;
@@ -39,7 +40,7 @@ export default function SocialShare({
           url,
         });
       } catch (error) {
-        console.log("Error sharing:", error);
+        logger.error("Error sharing:", error);
       }
     }
   };

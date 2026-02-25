@@ -1,3 +1,5 @@
+import { logger } from "./logger";
+
 // Performance monitoring utilities
 export const trackPerformance = () => {
   if (typeof window !== "undefined") {
@@ -6,8 +8,7 @@ export const trackPerformance = () => {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === "largest-contentful-paint") {
-            console.log("LCP:", entry.startTime);
-            // You can send this to your analytics service
+            logger.log("LCP:", entry.startTime);
           }
         }
       });
@@ -18,8 +19,7 @@ export const trackPerformance = () => {
     // Track page load time
     window.addEventListener("load", () => {
       const loadTime = performance.now();
-      console.log("Page load time:", loadTime);
-      // You can send this to your analytics service
+      logger.log("Page load time:", loadTime);
     });
   }
 };
