@@ -23,7 +23,7 @@ export default function Breadcrumbs({
       >
         <Link
           href="/"
-          className="flex items-center hover:text-purple-300 transition-colors"
+          className="flex items-center hover:text-primary-300 transition-colors"
           aria-label="Home"
         >
           <Home className="w-4 h-4" />
@@ -35,7 +35,7 @@ export default function Breadcrumbs({
             {item.href ? (
               <Link
                 href={item.href}
-                className="hover:text-purple-300 transition-colors"
+                className="hover:text-primary-300 transition-colors"
               >
                 {item.label}
               </Link>

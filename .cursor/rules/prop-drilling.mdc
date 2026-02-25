@@ -19,12 +19,7 @@ Use Context API when:
 - State is frequently accessed by many components
 - State is relatively stable (doesn't change frequently)
 
-Examples:
-
-- Search/filter state (browse page)
-- Auth state (user, token)
-- Theme preferences
-- Toast notifications
+Examples: theme, search/filter state, form context
 
 ## When to Pass Props
 
@@ -39,26 +34,23 @@ Pass props directly when:
 **Good**: Pass only needed fields
 
 ```typescript
-<ArtistCard
-  name={artist.name}
-  city={artist.city}
-  styles={artist.styles}
+<ProjectCard
+  title={project.title}
+  slug={project.slug}
+  description={project.description}
 />
 ```
 
-**Avoid**: Passing entire objects unnecessarily
+**Avoid**: Passing entire objects when only a few fields are needed
 
 ```typescript
-<ArtistCard artist={artist} /> // Only if all fields are needed
+<ProjectCard project={project} /> // Only if most fields are used
 ```
 
 **Good**: Use Context for shared state
 
 ```typescript
-// contexts/browse/search-context.tsx
 const SearchContext = createContext();
-
-// Use in components
 const { filters, updateFilters } = useSearchContext();
 ```
 
@@ -66,9 +58,7 @@ const { filters, updateFilters } = useSearchContext();
 
 ```typescript
 <Card>
-  <CardHeader>
-    <CardTitle>{title}</CardTitle>
-  </CardHeader>
+  <CardHeader title={title} />
   <CardContent>{children}</CardContent>
 </Card>
 ```

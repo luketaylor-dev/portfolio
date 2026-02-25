@@ -72,19 +72,19 @@ export default function ProjectFilter({
           placeholder="Search projects..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-12 pr-4 py-3 bg-neutral-900/50 border border-purple-800/50 rounded-xl text-white placeholder-neutral-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+          className="w-full pl-12 pr-4 py-3 bg-neutral-900/50 border border-primary-800/50 rounded-xl text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-200"
         />
       </div>
 
       {/* Tags Filter */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <Filter className="w-5 h-5 text-purple-400" />
+          <Filter className="w-5 h-5 text-primary-400" />
           <h3 className="font-semibold text-white">Filter by Tags</h3>
           {(searchTerm || selectedTags.length > 0) && (
             <button
               onClick={clearFilters}
-              className="ml-auto flex items-center gap-1 px-3 py-1 text-sm text-neutral-400 hover:text-purple-300 transition-colors"
+              className="ml-auto flex items-center gap-1 px-3 py-1 text-sm text-neutral-400 hover:text-primary-300 transition-colors"
             >
               <X className="w-4 h-4" />
               Clear

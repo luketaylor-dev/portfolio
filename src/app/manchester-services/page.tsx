@@ -52,15 +52,15 @@ export default function ManchesterServicesPage() {
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
             Manchester Unity Development Services
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             Professional Unity development services in the heart of Manchester's
             tech scene. Specializing in cutting-edge{" "}
-            <strong className="text-purple-300">EEG visualization</strong>,{" "}
-            <strong className="text-purple-300">VR development</strong>, and{" "}
-            <strong className="text-purple-300">
+            <strong className="text-primary-300">EEG visualization</strong>,{" "}
+            <strong className="text-primary-300">VR development</strong>, and{" "}
+            <strong className="text-primary-300">
               brain-computer interfaces
             </strong>{" "}
             for clients across the North West, UK-wide, and beyond.
@@ -75,7 +75,7 @@ export default function ManchesterServicesPage() {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Building2 className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -83,15 +83,15 @@ export default function ManchesterServicesPage() {
             </h3>
             <p className="text-neutral-400 leading-relaxed">
               Based in Manchester's thriving digital district, close to{" "}
-              <strong className="text-purple-300">Manchester University</strong>
-              , <strong className="text-purple-300">MediaCityUK</strong>, and
-              the <strong className="text-purple-300">Northern Quarter</strong>{" "}
+              <strong className="text-primary-300">Manchester University</strong>
+              , <strong className="text-primary-300">MediaCityUK</strong>, and
+              the <strong className="text-primary-300">Northern Quarter</strong>{" "}
               tech community.
             </p>
           </Card>
 
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <MapPin className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -106,7 +106,7 @@ export default function ManchesterServicesPage() {
           </Card>
 
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Users className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -114,9 +114,9 @@ export default function ManchesterServicesPage() {
             </h3>
             <p className="text-neutral-400 leading-relaxed">
               Connected to Manchester's vibrant tech community, including{" "}
-              <strong className="text-purple-300">startups</strong>,{" "}
-              <strong className="text-purple-300">universities</strong>, and{" "}
-              <strong className="text-purple-300">innovation hubs</strong>.
+              <strong className="text-primary-300">startups</strong>,{" "}
+              <strong className="text-primary-300">universities</strong>, and{" "}
+              <strong className="text-primary-300">innovation hubs</strong>.
             </p>
           </Card>
         </div>
@@ -130,7 +130,7 @@ export default function ManchesterServicesPage() {
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Zap className="w-full h-full text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">
@@ -143,7 +143,7 @@ export default function ManchesterServicesPage() {
               processing and visualization systems.{" "}
               <a
                 href="/projects/eeg-visualiser"
-                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                className="text-primary-300 hover:text-primary-200 transition-colors underline"
               >
                 See my EEG Visualiser project
               </a>
@@ -153,7 +153,7 @@ export default function ManchesterServicesPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Building2 className="w-full h-full text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">
@@ -165,7 +165,7 @@ export default function ManchesterServicesPage() {
               market. From educational simulations to entertainment experiences.{" "}
               <a
                 href="/projects/vr-office"
-                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                className="text-primary-300 hover:text-primary-200 transition-colors underline"
               >
                 Check out my VR Office project
               </a>
@@ -328,13 +328,13 @@ export default function ManchesterServicesPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40"
+              className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40"
             >
               Get in Touch
             </a>
             <a
               href="/projects"
-              className="inline-flex items-center justify-center px-8 py-3 border border-purple-600 text-purple-300 font-semibold rounded-xl hover:bg-purple-600/10 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-3 border border-primary-600 text-primary-300 font-semibold rounded-xl hover:bg-primary-600/10 transition-all duration-300"
             >
               View My Work
             </a>

@@ -75,10 +75,10 @@ export default function BlogPaged({ params }: { params: { page: string } }) {
                 : "#"
             }
             aria-disabled={currentPage === 1}
-            className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+            className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
               currentPage === 1
                 ? "opacity-50 pointer-events-none"
-                : "hover:bg-purple-600/10"
+                : "hover:bg-primary-600/10"
             }`}
           >
             Previous
@@ -92,10 +92,10 @@ export default function BlogPaged({ params }: { params: { page: string } }) {
                 key={page}
                 href={href}
                 aria-current={isActive ? "page" : undefined}
-                className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
                   isActive
-                    ? "bg-purple-600/20 text-purple-200"
-                    : "hover:bg-purple-600/10"
+                    ? "bg-primary-600/20 text-primary-200"
+                    : "hover:bg-primary-600/10"
                 }`}
               >
                 {page}
@@ -107,10 +107,10 @@ export default function BlogPaged({ params }: { params: { page: string } }) {
               currentPage < totalPages ? `/blog/page/${currentPage + 1}` : "#"
             }
             aria-disabled={currentPage === totalPages}
-            className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+            className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
               currentPage === totalPages
                 ? "opacity-50 pointer-events-none"
-                : "hover:bg-purple-600/10"
+                : "hover:bg-primary-600/10"
             }`}
           >
             Next

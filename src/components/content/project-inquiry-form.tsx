@@ -346,7 +346,7 @@ export default function ProjectInquiryForm({
           <div
             className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
               step <= currentStep
-                ? "bg-purple-600 text-white"
+                ? "bg-primary-600 text-white"
                 : "bg-neutral-700 text-neutral-400"
             }`}
           >
@@ -355,7 +355,7 @@ export default function ProjectInquiryForm({
           {step < 4 && (
             <div
               className={`w-12 h-1 mx-2 ${
-                step < currentStep ? "bg-purple-600" : "bg-neutral-700"
+                step < currentStep ? "bg-primary-600" : "bg-neutral-700"
               }`}
             />
           )}
@@ -438,7 +438,7 @@ export default function ProjectInquiryForm({
                 key={type.value}
                 className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${
                   formData.projectType === type.value
-                    ? "border-purple-500 bg-purple-900/20"
+                    ? "border-primary-500 bg-primary-900/20"
                     : "border-neutral-700 hover:border-neutral-600"
                 }`}
               >
@@ -456,7 +456,7 @@ export default function ProjectInquiryForm({
                   <div
                     className={`w-4 h-4 rounded-full border-2 mt-0.5 ${
                       formData.projectType === type.value
-                        ? "border-purple-500 bg-purple-500"
+                        ? "border-primary-500 bg-primary-500"
                         : "border-neutral-500"
                     }`}
                   >
@@ -486,7 +486,7 @@ export default function ProjectInquiryForm({
             <select
               value={formData.timeline}
               onChange={(e) => handleInputChange("timeline", e.target.value)}
-              className="w-full p-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white focus:border-purple-500 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white focus:border-primary-500 focus:outline-none"
               aria-label="Timeline"
             >
               <option value="">Select timeline</option>
@@ -507,7 +507,7 @@ export default function ProjectInquiryForm({
             <select
               value={formData.budgetRange}
               onChange={(e) => handleInputChange("budgetRange", e.target.value)}
-              className="w-full p-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white focus:border-purple-500 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white focus:border-primary-500 focus:outline-none"
               aria-label="Budget Range"
             >
               <option value="">Select budget range</option>
@@ -627,7 +627,7 @@ export default function ProjectInquiryForm({
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
               <Upload className="w-4 h-4" />
               Upload Files

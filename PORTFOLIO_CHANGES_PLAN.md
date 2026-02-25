@@ -196,6 +196,32 @@ Show Blender as a supporting skill for game dev. Hobby level, not a service offe
 
 ---
 
+## Phase 8.5: Text Component Migration (In Progress)
+
+Adopted from .cursor rules. Migrate remaining pages to use the Text component.
+
+### Completed
+
+- Created `src/components/atoms/text.tsx` with variants (heading1–4, paragraph, small, mini)
+- Added primary color abstraction (Tailwind + globals.css)
+- Replaced all `purple-*` with `primary-*` across codebase
+- Homepage (`src/app/page.tsx`) fully migrated to Text component
+
+### Remaining
+
+Replace raw `h1`, `h2`, `h3`, `h4`, `p`, `span` with `<Text>` in:
+
+- `src/app/about/page.tsx`
+- `src/app/contact/contact-form.tsx`
+- `src/app/inquire/page.tsx`
+- `src/app/projects/page.tsx`, `[slug]/page.tsx`, `page/[page]/page.tsx`
+- `src/app/blog/page.tsx`, `[slug]/page.tsx`, `page/[page]/page.tsx`
+- `src/app/manchester-services/page.tsx`
+- `src/app/layout.tsx` (footer)
+- Components: project-card, blog-card, skill-card, github-card, breadcrumbs, etc.
+
+---
+
 ## Phase 9: Visual Overhaul & Possible shadcn/ui Migration (Future)
 
 A larger refactor is being considered — changing the site's looks significantly. If doing a big visual overhaul anyway, consider migrating to **shadcn/ui** as part of it.
@@ -299,3 +325,48 @@ Recommendations gathered from common portfolio patterns and gaps identified in t
 - [ ] **Phase 10:** Optional: Cmd+K search for projects + blog
 - [ ] **Phase 10:** Optional: Human-readable `/sitemap` page
 - [ ] **Phase 10:** Optional: Swap syntax highlighter for lighter option (Shiki/Prism)
+
+---
+
+## Appendix A: .cursor Rules Audit
+
+**Important:** The current `.cursor/rules/` files appear to be migrated from a different project (Client.Operations). Many rules reference paths and components that don't exist in this portfolio. Below: (1) which rules don't apply, (2) which apply and current compliance, (3) recommended actions.
+
+### A.1 Rules that DON'T apply (project-specific)
+
+| Rule file | Why it doesn't apply |
+|-----------|----------------------|
+| **components.mdc** | References `Text` component, `FormFieldWrapper`, `Dialog` in `molecules/` — none exist. Portfolio uses raw `h1`/`h2`/`p` and different structure. |
+| **styling.mdc** | Requires `bg-primary-500` / `bg-primary-600/90`. Portfolio uses `purple-500`, `purple-600` — no `primary` abstraction. |
+| **routing.mdc** | Requires `ROUTES` from constants — portfolio uses hardcoded paths. |
+| **api.mdc** | API client generation, Swagger — portfolio has no generated API client. |
+| **data-handling.mdc** | Requires `day.js`, mappers in `api/mappers/` — portfolio uses `new Date()`, no mappers. |
+| **hooks.mdc** | React Query mutation hooks — portfolio doesn't use React Query. |
+| **api-regeneration-workflow**, **ef-migrations**, **after-backend-api-changes** | Backend-specific; no relevance. |
+| **documentation.mdc** | References `Client.Operations/documentation/` — doesn't exist. |
+
+### A.2 Rules that apply — current compliance
+
+| Rule | Requirement | Status |
+|------|-------------|--------|
+| **react-patterns: Server/Client** | Prefer server components | OK — pages are server; interactive parts isolated |
+| **react-patterns: Named imports** | Use `import { useState } from "react"`, never `import * as React` | Violation: `contact-form.tsx` uses `import React, { useRef, useState }` |
+| **types: No enums** | Use union types instead of `enum` | OK — no enums |
+| **code-quality: Comments** | Avoid obvious comments | Violation: Many `{/* Hero Section */}` etc. in about, skeleton-loader |
+| **file-naming: kebab-case** | Files in kebab-case | OK — most files follow |
+| **file-naming: Component folders** | Each component in own folder with index | N/A — portfolio uses flat structure; large refactor to adopt |
+| **components: const + type** | Use `const ComponentName = () => {}` and `type` for props | N/A — portfolio uses `function` and `interface`; Next.js pages may use `export default function` |
+| **data-handling: new Date()** | Use day.js | Violation: `layout.tsx` uses `new Date().getFullYear()` |
+
+### A.3 Recommended actions
+
+1. **contact-form.tsx:** Change to `import { useRef, useState, useEffect } from "react"`; use direct `useEffect` calls.
+2. **Comments:** Remove or reduce obvious section comments; keep only "why" comments.
+3. **new Date():** For copyright year, either keep (acceptable) or add day.js.
+4. **Portfolio-specific rules:** Consider adding `.cursor/rules/portfolio.mdc` tailored to this codebase; archive or scope Client.Operations rules if they're for another project.
+
+### A.4 Checklist
+
+- [ ] Fix `contact-form.tsx` React import (named imports only)
+- [ ] Remove or reduce obvious section comments
+- [ ] Decide: portfolio-specific rules vs adapt to current rules

@@ -10,8 +10,8 @@ describe("InteractiveButton", () => {
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass(
       "bg-gradient-to-r",
-      "from-purple-600",
-      "to-purple-700"
+      "from-primary-600",
+      "to-primary-700"
     );
   });
 
@@ -29,8 +29,8 @@ describe("InteractiveButton", () => {
     );
     expect(screen.getByRole("button")).toHaveClass(
       "bg-gradient-to-r",
-      "from-purple-600",
-      "to-purple-700"
+      "from-primary-600",
+      "to-primary-700"
     );
 
     rerender(
@@ -38,11 +38,11 @@ describe("InteractiveButton", () => {
     );
     expect(screen.getByRole("button")).toHaveClass(
       "border-2",
-      "border-purple-500/50"
+      "border-primary-500/50"
     );
 
     rerender(<InteractiveButton variant="ghost">Ghost</InteractiveButton>);
-    expect(screen.getByRole("button")).toHaveClass("text-purple-300");
+    expect(screen.getByRole("button")).toHaveClass("text-primary-300");
   });
 
   it("renders different sizes correctly", () => {

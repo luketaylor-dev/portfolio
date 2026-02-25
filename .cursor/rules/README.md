@@ -12,20 +12,20 @@ The single `.cursorrules` file (1110 lines) has been refactored into focused `.m
 
 ## Rule Files
 
-- **file-naming.mdc** - File naming conventions and component structure
-- **components.mdc** - Component patterns (Text component, Dialogs, syntax)
+- **file-naming.mdc** - File naming (kebab-case)
+- **components.mdc** - Component patterns (Text component, syntax)
 - **react-patterns.mdc** - Server/Client components, React imports
 - **code-quality.mdc** - Code comments and quality guidelines
 - **documentation.mdc** - Documentation organization
-- **data-handling.mdc** - Date handling and data mapping
-- **api.mdc** - API client generation and error handling
-- **api-regeneration-workflow.mdc** - Workflow for regenerating client API after backend changes
-- **types.mdc** - TypeScript type conventions (enums, unions)
+- **data-handling.mdc** - Types, form data, mapping
+- **types.mdc** - TypeScript conventions (union types over enums)
 - **routing.mdc** - Route constants and navigation
-- **hooks.mdc** - Mutation hooks and side effects
-- **styling.mdc** - Styling conventions (selected states, hover states)
+- **hooks.mdc** - useEffect and useMemo guidance
+- **styling.mdc** - Styling conventions (primary palette, selected/hover)
+- **prop-drilling.mdc** - Prop passing and Context usage
+- **context7.mdc** - Use Context7 for library/framework docs
+- **pnpm.mdc** - Package manager (pnpm only)
 
 ## Reference
 
 The old `.cursorrules` file has been backed up as `.cursorrules.old` for reference.
-

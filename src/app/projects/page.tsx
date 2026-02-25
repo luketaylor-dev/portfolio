@@ -41,21 +41,21 @@ const ProjectsContent = () => {
 
         {/* Hero Section */}
         <section className="text-center space-y-8">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
             My Projects
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             A collection of my work in Unity development, from{" "}
             <a
               href="/projects/eeg-visualiser"
-              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              className="text-primary-300 hover:text-primary-200 transition-colors underline"
             >
               EEG visualizations
             </a>{" "}
             and{" "}
             <a
               href="/projects/vr-office"
-              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              className="text-primary-300 hover:text-primary-200 transition-colors underline"
             >
               VR experiences
             </a>{" "}
@@ -82,10 +82,10 @@ const ProjectsContent = () => {
                   currentPage > 1 ? `/projects/page/${currentPage - 1}` : "#"
                 }
                 aria-disabled={currentPage === 1}
-                className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
                   currentPage === 1
                     ? "opacity-50 pointer-events-none"
-                    : "hover:bg-purple-600/10"
+                    : "hover:bg-primary-600/10"
                 }`}
               >
                 Previous
@@ -98,10 +98,10 @@ const ProjectsContent = () => {
                     key={page}
                     href={page === 1 ? "/projects" : `/projects/page/${page}`}
                     aria-current={isActive ? "page" : undefined}
-                    className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                    className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
                       isActive
-                        ? "bg-purple-600/20 text-purple-200"
-                        : "hover:bg-purple-600/10"
+                        ? "bg-primary-600/20 text-primary-200"
+                        : "hover:bg-primary-600/10"
                     }`}
                   >
                     {page}
@@ -115,10 +115,10 @@ const ProjectsContent = () => {
                     : "#"
                 }
                 aria-disabled={currentPage === totalPages}
-                className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
                   currentPage === totalPages
                     ? "opacity-50 pointer-events-none"
-                    : "hover:bg-purple-600/10"
+                    : "hover:bg-primary-600/10"
                 }`}
               >
                 Next

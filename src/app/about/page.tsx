@@ -31,12 +31,12 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
             About Me
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             I'm Luke Taylor, a{" "}
-            <strong className="text-purple-300">
+            <strong className="text-primary-300">
               Manchester-based Unity Developer
             </strong>{" "}
             exploring the space between technology and creativity. From
@@ -48,7 +48,7 @@ export default function AboutPage() {
         </div>
 
         {/* Avatar */}
-        <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-2 shadow-2xl shadow-purple-500/25">
+        <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 p-2 shadow-2xl shadow-primary-500/25">
           <Image
             src="/images/luke-taylor-dev.webp"
             alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
@@ -64,7 +64,7 @@ export default function AboutPage() {
       <section className="text-center space-y-6">
         <Card variant="default" className="rounded-2xl p-6 max-w-2xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
               <Building2 className="w-full h-full text-white" />
             </div>
             <h2 className="text-2xl font-bold text-white">
@@ -77,39 +77,39 @@ export default function AboutPage() {
             place for cutting-edge{" "}
             <a
               href="/projects?tags=EEG"
-              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              className="text-primary-300 hover:text-primary-200 transition-colors underline"
             >
               EEG visualization
             </a>
             ,{" "}
             <a
               href="/projects?tags=VR"
-              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              className="text-primary-300 hover:text-primary-200 transition-colors underline"
             >
               VR development
             </a>
             , and{" "}
             <a
               href="/projects"
-              className="text-purple-300 hover:text-purple-200 transition-colors underline"
+              className="text-primary-300 hover:text-primary-200 transition-colors underline"
             >
               game development
             </a>{" "}
             projects. Located in the heart of Manchester's digital district, I'm
             perfectly positioned to serve clients across{" "}
-            <strong className="text-purple-300">M1, M2, M3, M4</strong> and
+            <strong className="text-primary-300">M1, M2, M3, M4</strong> and
             surrounding areas, as well as clients throughout the UK.
           </p>
           <p className="text-neutral-400 mt-4">
             Available for local Manchester projects, UK-wide collaboration, and
             remote work worldwide. Conveniently located near{" "}
-            <strong className="text-purple-300">Manchester University</strong>{" "}
+            <strong className="text-primary-300">Manchester University</strong>{" "}
             and the{" "}
-            <strong className="text-purple-300">Northern Quarter</strong> tech
+            <strong className="text-primary-300">Northern Quarter</strong> tech
             hub.{" "}
             <a
               href="/manchester-services"
-              className="text-purple-400 hover:text-purple-300 transition-colors underline"
+              className="text-primary-400 hover:text-primary-300 transition-colors underline"
             >
               Learn more about my Manchester services
             </a>
@@ -122,7 +122,7 @@ export default function AboutPage() {
       <section className="space-y-8">
         <div className="text-center space-y-6">
           <h2 className="text-3xl font-bold text-white">My Story</h2>
-          <p className="text-lg text-purple-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-primary-300 max-w-3xl mx-auto leading-relaxed">
             I build scalable Unity systems that help teams ship games faster and
             with more creative freedom.
           </p>
@@ -131,35 +131,35 @@ export default function AboutPage() {
           <p>
             My path into Unity began after starting out in web and mobile
             development, but I quickly gravitated toward it out of a passion for{" "}
-            <strong className="text-purple-300">game development</strong> and
+            <strong className="text-primary-300">game development</strong> and
             creating interactive experiences. Over the years, I’ve worked across
             genres and platforms, shipping{" "}
-            <strong className="text-purple-300">mobile casino titles</strong> to
+            <strong className="text-primary-300">mobile casino titles</strong> to
             large audiences, prototyping VR collaboration spaces, and
             experimenting with{" "}
-            <strong className="text-purple-300">
+            <strong className="text-primary-300">
               EEG-driven visual performance
             </strong>{" "}
             systems.
           </p>
           <p>
             What ties all of this together is a drive to build{" "}
-            <strong className="text-purple-300">frameworks and tools</strong>{" "}
+            <strong className="text-primary-300">frameworks and tools</strong>{" "}
             that help others create faster, smarter, and more engaging
             experiences. Every project is an opportunity to learn, push
             technical boundaries, and craft something that hasn’t been done
             before, whether that’s{" "}
-            <strong className="text-purple-300">VR development</strong>,{" "}
-            <strong className="text-purple-300">game systems</strong>, or new
+            <strong className="text-primary-300">VR development</strong>,{" "}
+            <strong className="text-primary-300">game systems</strong>, or new
             forms of{" "}
-            <strong className="text-purple-300">interactive media</strong>.
+            <strong className="text-primary-300">interactive media</strong>.
           </p>
           <p>
             I’m excited to keep exploring how Unity can power the next
             generation of{" "}
-            <strong className="text-purple-300">game development</strong>,{" "}
-            <strong className="text-purple-300">VR</strong>, and{" "}
-            <strong className="text-purple-300">immersive technology</strong>.
+            <strong className="text-primary-300">game development</strong>,{" "}
+            <strong className="text-primary-300">VR</strong>, and{" "}
+            <strong className="text-primary-300">immersive technology</strong>.
           </p>
         </div>
       </section>
@@ -171,7 +171,7 @@ export default function AboutPage() {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Brain className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -184,7 +184,7 @@ export default function AboutPage() {
               interfaces accessible and engaging.{" "}
               <a
                 href="/projects/eeg-visualiser"
-                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                className="text-primary-300 hover:text-primary-200 transition-colors underline"
               >
                 See my Brainrave project
               </a>
@@ -193,7 +193,7 @@ export default function AboutPage() {
           </Card>
 
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Gamepad2 className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -206,7 +206,7 @@ export default function AboutPage() {
               engaging VR content.{" "}
               <a
                 href="/projects/vr-office"
-                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                className="text-primary-300 hover:text-primary-200 transition-colors underline"
               >
                 Explore my VR Office project
               </a>
@@ -215,7 +215,7 @@ export default function AboutPage() {
           </Card>
 
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
               <Code className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -228,7 +228,7 @@ export default function AboutPage() {
               architectures.{" "}
               <a
                 href="/projects/poker-suite"
-                className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                className="text-primary-300 hover:text-primary-200 transition-colors underline"
               >
                 Check out my Ultimate X Poker project
               </a>
@@ -246,7 +246,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Trophy className="w-full h-full text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">Excellence</h3>
@@ -260,7 +260,7 @@ export default function AboutPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Zap className="w-full h-full text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">Innovation</h3>
@@ -274,7 +274,7 @@ export default function AboutPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Users className="w-full h-full text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">
@@ -290,7 +290,7 @@ export default function AboutPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Code className="w-full h-full text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white">Quality</h3>

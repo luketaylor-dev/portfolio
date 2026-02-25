@@ -66,7 +66,7 @@ export default function InteractiveTooltip({
       {children}
       {isVisible && (
         <div
-          className="px-3 py-2 text-sm text-white bg-neutral-900/95 backdrop-blur-sm border border-purple-500/30 rounded-lg shadow-lg whitespace-nowrap transition-all duration-200"
+          className="px-3 py-2 text-sm text-white bg-neutral-900/95 backdrop-blur-sm border border-primary-500/30 rounded-lg shadow-lg whitespace-nowrap transition-all duration-200"
           style={{
             ...tooltipStyle,
             animation: "fadeIn 0.2s ease-out",
@@ -75,7 +75,7 @@ export default function InteractiveTooltip({
           {content}
           {/* Arrow */}
           <div
-            className={`absolute w-2 h-2 bg-neutral-900/95 border-purple-500/30 transform rotate-45 ${
+            className={`absolute w-2 h-2 bg-neutral-900/95 border-primary-500/30 transform rotate-45 ${
               position === "top"
                 ? "top-full left-1/2 -translate-x-1/2 border-t-0 border-l-0"
                 : position === "bottom"

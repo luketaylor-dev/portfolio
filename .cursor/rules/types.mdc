@@ -4,8 +4,6 @@
 
 - **NEVER use TypeScript enums** - Use string literal union types instead (e.g., `'New' | 'Viewed' | 'Unread'` instead of `enum EnquiryStatus`)
 - **ALWAYS use union types for fixed sets of string values** - Union types are more idiomatic TypeScript and don't generate runtime code
-- **API client generation uses `--union-enums` flag** - The generated API client will use union types instead of enums
-
 ### Why Avoid Enums:
 
 1. **No runtime code** - Union types are compile-time only, enums generate JavaScript code
@@ -18,12 +16,12 @@
 **Good: Using union types**
 
 ```typescript
-type EnquiryStatus = "New" | "Viewed" | "Unread" | "Archived";
-type ColourMode = "Colour" | "BlackGrey";
+type ButtonVariant = "primary" | "secondary" | "ghost";
+type Status = "draft" | "published" | "archived";
 
-function updateStatus(status: EnquiryStatus) {
+function updateStatus(status: Status) {
   // Use string literals directly
-  if (status === "Viewed") {
+  if (status === "published") {
     // ...
   }
 }
@@ -32,16 +30,14 @@ function updateStatus(status: EnquiryStatus) {
 **Bad: Using enums**
 
 ```typescript
-enum EnquiryStatus {
-  New = 0,
-  Viewed = 1,
-  Unread = 2,
-  Archived = 3,
+enum Status {
+  Draft = "draft",
+  Published = "published",
+  Archived = "archived",
 }
 
-function updateStatus(status: EnquiryStatus) {
-  // Need to import and use enum values
-  if (status === EnquiryStatus.Viewed) {
+function updateStatus(status: Status) {
+  if (status === Status.Published) {
     // ...
   }
 }
@@ -51,12 +47,8 @@ function updateStatus(status: EnquiryStatus) {
 
 1. **NEVER** use TypeScript `enum` keyword in new code
 2. **ALWAYS** use string literal union types for fixed sets of values
-3. **ALWAYS** ensure API client generation uses `--union-enums` flag
-4. **ALWAYS** convert any existing enum usage to union types when encountered
-5. Generated API types will use union types, so code should match that pattern
+3. **ALWAYS** convert any existing enum usage to union types when encountered
 
 ## Scope
 
-These rules apply to:
-
-- All TypeScript type definitions throughout the frontend project
+Applies to: All TypeScript in `src/`

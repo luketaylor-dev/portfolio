@@ -106,7 +106,7 @@ export const defaultMetadata: Metadata = {
     canonical: "https://www.dibza.co.uk",
   },
   other: {
-    "theme-color": "#7c3aed", // Purple theme color
+    "theme-color": "#9333ea", // Primary theme color (primary-600)
     "color-scheme": "dark",
   },
 };

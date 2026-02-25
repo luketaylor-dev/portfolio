@@ -38,16 +38,16 @@
 
   /* High contrast mode support */
   @media (prefers-contrast: high) {
-    .bg-purple-600 {
-      background-color: #7c3aed !important;
+    .bg-primary-600 {
+      background-color: #7e22ce !important;
     }
 
-    .text-purple-300 {
-      color: #a78bfa !important;
+    .text-primary-300 {
+      color: #d8b4fe !important;
     }
 
-    .border-purple-500 {
-      border-color: #8b5cf6 !important;
+    .border-primary-500 {
+      border-color: #a855f7 !important;
     }
   }
 
@@ -84,17 +84,17 @@
   --muted: 140 140 150;
 
   /* Purple theme colors */
-  --purple-50: 250 245 255;
-  --purple-100: 243 232 255;
-  --purple-200: 233 213 255;
-  --purple-300: 216 180 254;
-  --purple-400: 192 132 252;
-  --purple-500: 168 85 247;
-  --purple-600: 147 51 234;
-  --purple-700: 126 34 206;
-  --purple-800: 107 33 168;
-  --purple-900: 88 28 135;
-  --purple-950: 59 7 100;
+  --primary-50: 250 245 255;
+  --primary-100: 243 232 255;
+  --primary-200: 233 213 255;
+  --primary-300: 216 180 254;
+  --primary-400: 192 132 252;
+  --primary-500: 168 85 247;
+  --primary-600: 147 51 234;
+  --primary-700: 126 34 206;
+  --primary-800: 107 33 168;
+  --primary-900: 88 28 135;
+  --primary-950: 59 7 100;
 }
 
 html,
@@ -141,7 +141,7 @@ body {
 
 /* Enhanced focus states */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950;
 }
 
 /* Custom animations */
@@ -195,6 +195,16 @@ body {
   }
 }
 
+@keyframes pulse-primary {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 @keyframes glow {
   0%,
   100% {
@@ -238,8 +248,8 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-pulse-purple {
-  animation: pulse-purple 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.animate-pulse-primary {
+  animation: pulse-primary 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .animate-shimmer {
@@ -265,7 +275,7 @@ body {
   background-clip: text;
 }
 
-.gradient-text-purple {
+.gradient-text-primary {
   background: linear-gradient(135deg, #f3f4f6 0%, #e9d5ff 50%, #c084fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -287,20 +297,20 @@ body {
 
 /* Enhanced button styles */
 .btn-primary {
-  @apply bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105;
+  @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-all duration-300 hover:scale-105;
 }
 
 .btn-secondary {
-  @apply border-2 border-purple-500/50 text-purple-300 px-6 py-3 rounded-xl font-semibold hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 hover:scale-105;
+  @apply border-2 border-primary-500/50 text-primary-300 px-6 py-3 rounded-xl font-semibold hover:bg-primary-500/10 hover:border-primary-400 transition-all duration-300 hover:scale-105;
 }
 
 /* Card styles */
 .card {
-  @apply rounded-2xl border border-purple-800/50 bg-gradient-to-br from-neutral-900 to-purple-900/20 hover:border-purple-600/50 hover:bg-purple-900/30 transition-all duration-300 hover:scale-105;
+  @apply rounded-2xl border border-primary-800/50 bg-gradient-to-br from-neutral-900 to-primary-900/20 hover:border-primary-600/50 hover:bg-primary-900/30 transition-all duration-300 hover:scale-105;
 }
 
 .card-hover {
-  @apply hover:shadow-2xl hover:shadow-purple-500/10;
+  @apply hover:shadow-2xl hover:shadow-primary-500/10;
 }
 
 /* Prose styles */
@@ -318,11 +328,11 @@ body {
 }
 
 .prose a {
-  @apply text-purple-400 hover:text-purple-300;
+  @apply text-primary-400 hover:text-primary-300;
 }
 
 .prose strong {
-  @apply text-purple-200;
+  @apply text-primary-200;
 }
 
 /* Loading states */
@@ -373,7 +383,7 @@ body {
   }
 }
 
-/* Custom Syntax Highlighter Theme - Matches site's purple palette */
+/* Custom Syntax Highlighter Theme - Matches site's primary palette */
 .custom-syntax-theme {
   background: #0a0a0a !important;
   border: 1px solid rgba(147, 51, 234, 0.3) !important;
@@ -399,7 +409,7 @@ body {
   font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono", monospace !important;
 }
 
-/* Override token colors with site's purple palette */
+/* Override token colors with site's primary palette */
 .custom-syntax-theme .token.comment {
   color: #a3a3a3 !important;
   font-style: italic !important;

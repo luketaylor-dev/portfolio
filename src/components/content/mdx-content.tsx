@@ -69,7 +69,7 @@ const components = {
 
     return (
       <code
-        className="bg-purple-900/30 text-purple-300 px-2 py-1 rounded text-sm"
+        className="bg-primary-900/30 text-primary-300 px-2 py-1 rounded text-sm"
         {...props}
       >
         {children}

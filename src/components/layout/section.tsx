@@ -25,7 +25,7 @@ export default function Section({
   const backgroundClasses = {
     none: "",
     subtle: "bg-neutral-900/50",
-    gradient: "bg-gradient-to-br from-neutral-950 to-purple-950/50",
+    gradient: "bg-gradient-to-br from-neutral-950 to-primary-950/50",
   };
 
   return (

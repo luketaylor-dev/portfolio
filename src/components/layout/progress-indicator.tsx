@@ -44,11 +44,11 @@ export function ProgressIndicator({
   const getVariantClasses = () => {
     switch (variant) {
       case "gradient":
-        return "bg-gradient-to-r from-purple-500 to-purple-600";
+        return "bg-gradient-to-r from-primary-500 to-primary-600";
       case "pulse":
-        return "bg-purple-500 animate-pulse";
+        return "bg-primary-500 animate-pulse";
       default:
-        return "bg-purple-500";
+        return "bg-primary-500";
     }
   };
 
@@ -91,7 +91,7 @@ export function LoadingSpinner({
     <div className={cn("flex items-center justify-center", className)}>
       <div
         className={cn(
-          "border-2 border-neutral-800 border-t-purple-500 rounded-full animate-spin",
+          "border-2 border-neutral-800 border-t-primary-500 rounded-full animate-spin",
           sizeClasses[size]
         )}
       />
@@ -109,7 +109,7 @@ export function LoadingDots({ className }: LoadingDotsProps) {
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+          className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"
           style={{
             animationDelay: `${i * 0.2}s`,
           }}

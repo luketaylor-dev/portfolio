@@ -35,7 +35,7 @@ export default function BlogPage() {
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
           Project Insights & Updates
         </h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
@@ -54,8 +54,8 @@ export default function BlogPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="w-24 h-24 mx-auto rounded-full bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mb-6">
-              <Tag className="w-12 h-12 text-purple-400" />
+            <div className="w-24 h-24 mx-auto rounded-full bg-primary-600/20 border border-primary-500/30 flex items-center justify-center mb-6">
+              <Tag className="w-12 h-12 text-primary-400" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">
               No Blog Posts Yet
@@ -75,7 +75,7 @@ export default function BlogPage() {
             <a
               href="#"
               aria-disabled
-              className="px-3 py-2 rounded-lg border border-purple-700/40 text-sm opacity-50 pointer-events-none"
+              className="px-3 py-2 rounded-lg border border-primary-700/40 text-sm opacity-50 pointer-events-none"
             >
               Previous
             </a>
@@ -87,10 +87,10 @@ export default function BlogPage() {
                   key={page}
                   href={page === 1 ? "/blog" : `/blog/page/${page}`}
                   aria-current={isActive ? "page" : undefined}
-                  className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+                  className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
                     isActive
-                      ? "bg-purple-600/20 text-purple-200"
-                      : "hover:bg-purple-600/10"
+                      ? "bg-primary-600/20 text-primary-200"
+                      : "hover:bg-primary-600/10"
                   }`}
                 >
                   {page}
@@ -100,10 +100,10 @@ export default function BlogPage() {
             <a
               href={totalPages > 1 ? "/blog/page/2" : "#"}
               aria-disabled={totalPages <= 1}
-              className={`px-3 py-2 rounded-lg border border-purple-700/40 text-sm ${
+              className={`px-3 py-2 rounded-lg border border-primary-700/40 text-sm ${
                 totalPages <= 1
                   ? "opacity-50 pointer-events-none"
-                  : "hover:bg-purple-600/10"
+                  : "hover:bg-primary-600/10"
               }`}
             >
               Next

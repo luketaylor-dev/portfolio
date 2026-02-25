@@ -66,27 +66,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Skip to content link for accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-purple-600 text-white rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-primary-600 text-white rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
         >
           Skip to main content
         </a>
 
         {/* Background gradient for all pages */}
-        <div className="fixed inset-0 bg-gradient-to-br from-purple-950/20 via-neutral-950 to-purple-900/20 pointer-events-none"></div>
+        <div className="fixed inset-0 bg-gradient-to-br from-primary-950/20 via-neutral-950 to-primary-900/20 pointer-events-none"></div>
 
-        <header className="sticky top-0 z-[60] backdrop-blur-md bg-neutral-950/80 border-b border-purple-800/30">
+        <header className="sticky top-0 z-[60] backdrop-blur-md bg-neutral-950/80 border-b border-primary-800/30">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-4">
               {/* Logo */}
               <Link href="/" className="group flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-2 shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 group-hover:scale-110 transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-2 shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 group-hover:scale-110 transition-all duration-300">
                   <span className="text-white font-bold text-lg">LT</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold text-xl text-white group-hover:text-purple-300 transition-colors">
+                  <span className="font-bold text-xl text-white group-hover:text-primary-300 transition-colors">
                     Luke Taylor
                   </span>
-                  <span className="text-xs text-purple-300 opacity-80">
+                  <span className="text-xs text-primary-300 opacity-80">
                     From Brainwaves to Gameplay
                   </span>
                 </div>
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               >
                 <Link
                   href="/"
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Go to homepage"
                 >
                   <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -109,7 +109,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <Link
                   href="/projects"
                   prefetch={true}
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="View all projects"
                 >
                   <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -118,7 +118,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <Link
                   href="/blog"
                   prefetch={false}
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Read blog posts"
                 >
                   <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -127,7 +127,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <Link
                   href="/about"
                   prefetch={false}
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Learn more about Luke Taylor"
                 >
                   <User className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -136,7 +136,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <Link
                   href="/contact"
                   prefetch={false}
-                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                  className="flex items-center gap-2 group hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-lg p-2 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                   aria-label="Get in touch with Luke Taylor"
                 >
                   <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -166,13 +166,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </Suspense>
         </main>
 
-        <footer className="relative z-10 border-t border-purple-800/30 mt-20">
+        <footer className="relative z-10 border-t border-primary-800/30 mt-20">
           <div className="container mx-auto px-4 py-12">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Brand */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                     <span className="text-white font-bold text-lg">LT</span>
                   </div>
                   <span className="font-bold text-xl text-white">
@@ -192,28 +192,28 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <Link
                     href="/projects"
                     prefetch={false}
-                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="block text-neutral-400 hover:text-primary-300 transition-colors"
                   >
                     View Projects
                   </Link>
                   <Link
                     href="/blog"
                     prefetch={false}
-                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="block text-neutral-400 hover:text-primary-300 transition-colors"
                   >
                     Blog
                   </Link>
                   <Link
                     href="/about"
                     prefetch={false}
-                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="block text-neutral-400 hover:text-primary-300 transition-colors"
                   >
                     About Me
                   </Link>
                   <Link
                     href="/contact"
                     prefetch={false}
-                    className="block text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="block text-neutral-400 hover:text-primary-300 transition-colors"
                   >
                     Get in Touch
                   </Link>
@@ -228,7 +228,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     href="https://www.linkedin.com/in/luke-taylor-ab5080166/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="flex items-center gap-2 text-neutral-400 hover:text-primary-300 transition-colors"
                   >
                     <svg
                       className="w-4 h-4"
@@ -243,7 +243,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     href="https://github.com/luketaylor-dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-neutral-400 hover:text-purple-300 transition-colors"
+                    className="flex items-center gap-2 text-neutral-400 hover:text-primary-300 transition-colors"
                   >
                     <svg
                       className="w-4 h-4"
@@ -270,7 +270,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
 
-            <div className="border-t border-purple-800/30 mt-8 pt-8 text-center">
+            <div className="border-t border-primary-800/30 mt-8 pt-8 text-center">
               <p className="text-sm text-neutral-400">
                 © {new Date().getFullYear()} Luke Taylor. All rights reserved.
                 Built with Next.js, React, and a lot of purple.

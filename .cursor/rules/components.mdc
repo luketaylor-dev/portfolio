@@ -9,7 +9,7 @@
 ### Text Component Import:
 
 ```typescript
-import { Text } from "@/components/atoms/text";
+import { Text } from "@/components/atoms";
 ```
 
 ### Text Variants:
@@ -26,7 +26,7 @@ import { Text } from "@/components/atoms/text";
 
 - `variant` - The text variant (heading1, heading2, heading3, heading4, paragraph, small, mini)
 - `as` - The HTML element type (h1, h2, h3, h4, p, span) - defaults to 'p'
-- `color` - Text color (primary, secondary, error, success, warning, black, white) - defaults to 'black'
+- `color` - Text color (primary, secondary, muted, error, success, warning, black, white) - defaults to 'white'
 - `weight` - Font weight (bold, regular, medium, semibold) - defaults based on variant
 - `className` - Additional CSS classes (optional)
 
@@ -101,13 +101,14 @@ export interface ComponentNameProps {
 ### Complete Example:
 
 ```typescript
-export type StyleCardProps = {
-  style: Style;
-  imageUrl?: string;
+export type ProjectCardProps = {
+  title: string;
+  slug: string;
+  description?: string;
   className?: string;
 };
 
-export const StyleCard = ({ style, imageUrl, className }: StyleCardProps) => {
+export const ProjectCard = ({ title, slug, description, className }: ProjectCardProps) => {
   return <div className={className}>{/* component content */}</div>;
 };
 ```
@@ -119,179 +120,6 @@ export const StyleCard = ({ style, imageUrl, className }: StyleCardProps) => {
 3. **Exception**: Next.js page components (`app/` directory) may use `export default function` as per Next.js conventions
 4. When extending React types, use `type` with intersection: `type Props = React.HTMLAttributes<HTMLDivElement> & { customProp: string }`
 
-## Dialog Components
-
-- **ALWAYS create separate dialog components** - Never inline Dialog components directly in other components
-- **ALWAYS place dialog components in the `molecules/` folder** - Dialogs are reusable UI components
-- **ALWAYS follow the dialog component naming pattern** - Use descriptive names ending with `-dialog` (e.g., `image-delete-dialog`, `enquiry-delete-dialog`)
-- **NEVER use Dialog primitives directly in feature components** - Extract dialog logic into dedicated dialog components
-
-### Dialog Component Structure:
-
-```
-components/
-  molecules/
-    image-delete-dialog/
-      index.ts
-      image-delete-dialog.tsx
-    enquiry-delete-dialog/
-      index.ts
-      enquiry-delete-dialog.tsx
-```
-
-### Dialog Component Pattern:
-
-```typescript
-// molecules/image-delete-dialog/image-delete-dialog.tsx
-export type ImageDeleteDialogProps = {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  onConfirm: () => void;
-};
-
-export const ImageDeleteDialog = ({
-  open,
-  onOpenChange,
-  onConfirm,
-}: ImageDeleteDialogProps) => {
-  const handleConfirm = () => {
-    onConfirm();
-    onOpenChange(false);
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>{/* Dialog content */}</DialogContent>
-    </Dialog>
-  );
-};
-```
-
-### Usage in Components:
-
-```typescript
-// Good: Using separate dialog component
-import { ImageDeleteDialog } from "@/src/components/molecules/image-delete-dialog";
-
-const MyComponent = () => {
-  const [showDialog, setShowDialog] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setShowDialog(true)}>Delete</Button>
-      <ImageDeleteDialog
-        open={showDialog}
-        onOpenChange={setShowDialog}
-        onConfirm={handleDelete}
-      />
-    </>
-  );
-};
-
-// Bad: Inline dialog
-const MyComponent = () => {
-  return (
-    <Dialog open={showDialog} onOpenChange={setShowDialog}>
-      <DialogContent>{/* Dialog content */}</DialogContent>
-    </Dialog>
-  );
-};
-```
-
-### Rules:
-
-1. **ALWAYS** create a separate component file for each dialog
-2. **ALWAYS** place dialog components in `src/components/molecules/`
-3. **ALWAYS** use kebab-case for dialog component folder and file names
-4. **ALWAYS** export dialog components from an `index.ts` file
-5. **ALWAYS** include `open`, `onOpenChange`, and `onConfirm` props in dialog components
-6. **NEVER** inline Dialog components in feature/organism components
-7. **NEVER** use Dialog primitives directly outside of dialog component files
-
-## Form Field Wrapper Usage
-
-- **ALWAYS use FormFieldWrapper for form fields** - Never manually combine Label + Input components
-- **FormFieldWrapper provides consistent styling** for labels, descriptions, info text, and error messages
-- **Located at** `@/src/components/atoms/form-field-wrapper`
-
-### FormFieldWrapper Import:
-
-```typescript
-import { FormFieldWrapper } from "@/src/components/atoms/form-field-wrapper";
-```
-
-### FormFieldWrapper Props:
-
-- `fieldId` (required) - Unique identifier that links the label to the input via `htmlFor`
-- `label` - Label text displayed above the input
-- `infoLabel` - Additional info text displayed below the label (vertical layout)
-- `description` - Description text displayed next to the label (horizontal layout)
-- `error` - Error message to display below the input
-- `required` - Shows a red asterisk next to the label
-- `layout` - `'vertical'` (default) or `'horizontal'` (for switches/toggles)
-- `children` - The input element(s) to render
-
-### Usage Examples:
-
-**Basic Input Field:**
-
-```typescript
-<FormFieldWrapper fieldId="email" label="Email Address" required>
-  <Input id="email" type="email" value={email} onChange={handleChange} />
-</FormFieldWrapper>
-```
-
-**With Info Label:**
-
-```typescript
-<FormFieldWrapper
-  fieldId="bio"
-  label="Bio"
-  infoLabel="Tell us about yourself (max 500 characters)"
->
-  <Textarea id="bio" value={bio} onChange={handleChange} />
-</FormFieldWrapper>
-```
-
-**With Error Message:**
-
-```typescript
-<FormFieldWrapper
-  fieldId="password"
-  label="Password"
-  required
-  error={errors.password}
->
-  <Input id="password" type="password" value={password} onChange={handleChange} />
-</FormFieldWrapper>
-```
-
-**Horizontal Layout (for switches/toggles):**
-
-```typescript
-<FormFieldWrapper
-  fieldId="notifications"
-  label="Enable Notifications"
-  description="Receive email updates about your account"
-  layout="horizontal"
->
-  <Switch id="notifications" checked={enabled} onCheckedChange={setEnabled} />
-</FormFieldWrapper>
-```
-
-### Rules:
-
-1. **ALWAYS** use FormFieldWrapper when creating any Label + Input combination
-2. **ALWAYS** ensure the `fieldId` prop matches the `id` prop on the input element
-3. **ALWAYS** use the `required` prop when the field is mandatory (shows asterisk)
-4. **ALWAYS** pass validation errors via the `error` prop for consistent error display
-5. **NEVER** manually combine `<Label>` and `<Input>` components outside of FormFieldWrapper
-6. **NEVER** create custom label/input wrapper patterns - use FormFieldWrapper instead
-7. Use `layout="horizontal"` for Switch, Toggle, and Checkbox components where label appears beside the input
-
 ## Scope
 
-These rules apply to:
-- All files in `src/Client.Operations/src/components/` and subdirectories
-- All component-related files (`.tsx`, `.ts`, `.css`, etc.)
-- All text content throughout the front-end application
+Applies to: All components in `src/components/` and `src/app/`

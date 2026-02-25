@@ -22,6 +22,7 @@ import {
   SkillCard,
   GitHubCard,
 } from "@/components/content";
+import { Text } from "@/components/atoms";
 import { InteractiveButton, Card } from "@/components/ui";
 
 // Route segment config for performance
@@ -48,16 +49,16 @@ export default function HomePage() {
         >
           {/* Floating elements with parallax */}
           <ParallaxBackground speed={0.3}>
-            <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
+            <div className="absolute top-20 left-10 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
           </ParallaxBackground>
           <ParallaxBackground speed={0.2}>
-            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none delay-1000"></div>
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none delay-1000"></div>
           </ParallaxBackground>
 
           <div className="space-y-8 max-w-4xl mx-auto px-4 relative z-10">
             {/* Avatar */}
             <ScrollAnimation direction="up" delay={200}>
-              <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/25">
+              <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 p-1 shadow-2xl shadow-primary-500/25">
                 <Image
                   src="/images/luke-taylor-dev.webp"
                   alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
@@ -71,16 +72,22 @@ export default function HomePage() {
 
             <div className="space-y-6">
               <ScrollAnimation direction="up" delay={400}>
-                <h1
+                <Text
+                  variant="heading1"
+                  as="h1"
                   id="hero-heading"
-                  className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent hover:scale-105 motion-reduce:transform-none transition-transform duration-300 leading-tight pb-2"
+                  className="md:text-7xl tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent hover:scale-105 motion-reduce:transform-none transition-transform duration-300 leading-tight pb-2"
                 >
                   <TypingAnimation text="Luke Taylor" speed={150} delay={600} />
-                </h1>
+                </Text>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={600}>
-                <p className="text-xl md:text-3xl font-medium">
-                  <span className="md:hidden bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                <Text
+                  variant="heading3"
+                  as="p"
+                  className="text-xl md:text-3xl font-medium"
+                >
+                  <span className="md:hidden bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
                     From Brainwaves to Gameplay – Unity Innovation
                   </span>
                   <span className="hidden md:inline">
@@ -88,28 +95,33 @@ export default function HomePage() {
                       From Brainwaves to Gameplay – Unity Innovation
                     </AnimatedGradientText>
                   </span>
-                </p>
+                </Text>
               </ScrollAnimation>
               <ScrollAnimation direction="up" delay={800}>
-                <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+                <Text
+                  variant="paragraph"
+                  as="p"
+                  color="muted"
+                  className="text-lg max-w-3xl mx-auto leading-relaxed"
+                >
                   A Manchester-based Unity Developer building immersive projects
                   that push boundaries, from{" "}
                   <a
                     href="/projects?tags=EEG"
-                    className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                    className="text-primary-300 hover:text-primary-200 transition-colors underline"
                   >
                     EEG‑driven visualisations
                   </a>{" "}
                   and{" "}
                   <a
                     href="/projects?tags=VR"
-                    className="text-purple-300 hover:text-purple-200 transition-colors underline"
+                    className="text-primary-300 hover:text-primary-200 transition-colors underline"
                   >
                     multiplayer VR experiences
                   </a>{" "}
                   to high‑revenue free‑to‑play poker & casino games. Serving
                   clients across the UK and beyond.
-                </p>
+                </Text>
               </ScrollAnimation>
             </div>
 
@@ -137,9 +149,11 @@ export default function HomePage() {
         <section className="py-24 space-y-12" aria-labelledby="skills-heading">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
-              <h2
+              <Text
+                variant="heading2"
+                as="h2"
                 id="skills-heading"
-                className="text-3xl md:text-4xl font-bold text-white"
+                className="md:text-4xl"
               >
                 <CharacterReveal
                   text="What I Do Best"
@@ -147,11 +161,16 @@ export default function HomePage() {
                   staggerDelay={30}
                   delay={100}
                 />
-              </h2>
-              <p className="text-neutral-400 max-w-2xl mx-auto">
+              </Text>
+              <Text
+                variant="paragraph"
+                as="p"
+                color="secondary"
+                className="max-w-2xl mx-auto"
+              >
                 Specialized in cutting-edge Unity development with a focus on
                 immersive experiences
-              </p>
+              </Text>
             </div>
           </ScrollAnimation>
 
@@ -189,15 +208,19 @@ export default function HomePage() {
         <section className="py-24 space-y-12">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white flex items-center justify-center gap-3">
-                <Star className="w-8 h-8 text-purple-400" />
+              <Text
+                variant="heading2"
+                as="h2"
+                className="md:text-4xl flex items-center justify-center gap-3"
+              >
+                <Star className="w-8 h-8 text-primary-400" />
                 Featured Blogs & Projects
-                <Star className="w-8 h-8 text-purple-400" />
-              </h2>
-              <p className="text-neutral-400">
+                <Star className="w-8 h-8 text-primary-400" />
+              </Text>
+              <Text variant="paragraph" as="p" color="secondary">
                 My best work and latest insights that showcase innovation and
                 technical excellence
-              </p>
+              </Text>
             </div>
           </ScrollAnimation>
 
@@ -227,21 +250,21 @@ export default function HomePage() {
 
           {featured.length === 0 && featuredBlog.length === 0 && (
             <div className="col-span-3 text-center py-12">
-              <p className="text-neutral-400">
+              <Text variant="paragraph" as="p" color="secondary">
                 Add{" "}
-                <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
+                <code className="bg-primary-900/30 px-2 py-1 rounded text-primary-300">
                   featured: true
                 </code>{" "}
                 to projects in{" "}
-                <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
+                <code className="bg-primary-900/30 px-2 py-1 rounded text-primary-300">
                   /content/projects
                 </code>{" "}
                 or create blog posts in{" "}
-                <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
+                <code className="bg-primary-900/30 px-2 py-1 rounded text-primary-300">
                   /content/blog
                 </code>
                 .
-              </p>
+              </Text>
             </div>
           )}
         </section>
@@ -250,12 +273,12 @@ export default function HomePage() {
         <section className="py-24 space-y-12">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <Text variant="heading2" as="h2" className="md:text-4xl">
                 Latest Work
-              </h2>
-              <p className="text-neutral-400">
+              </Text>
+              <Text variant="paragraph" as="p" color="secondary">
                 Fresh projects hot off the Unity engine
-              </p>
+              </Text>
             </div>
           </ScrollAnimation>
 
@@ -273,13 +296,13 @@ export default function HomePage() {
             {recent.length === 0 && (
               <ScrollAnimation direction="up" delay={200}>
                 <div className="col-span-full text-center py-12">
-                  <p className="text-neutral-400">
+                  <Text variant="paragraph" as="p" color="secondary">
                     No projects yet - create one in{" "}
-                    <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
+                    <code className="bg-primary-900/30 px-2 py-1 rounded text-primary-300">
                       /content/projects
                     </code>
                     .
-                  </p>
+                  </Text>
                 </div>
               </ScrollAnimation>
             )}
@@ -293,15 +316,20 @@ export default function HomePage() {
               variant="default"
               className="text-center space-y-8 py-20 rounded-3xl"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <Text variant="heading2" as="h2" className="md:text-4xl">
                 Ready to Build Something Amazing?
-              </h2>
-              <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
+              </Text>
+              <Text
+                variant="paragraph"
+                as="p"
+                color="muted"
+                className="text-lg max-w-2xl mx-auto"
+              >
                 Let's collaborate on your next Unity project. Whether it's VR,
                 EEG visualization, or game development, I'm here to bring your
                 vision to life. Available for projects across the UK and remote
                 collaboration worldwide.
-              </p>
+              </Text>
               <InteractiveButton href="/contact" variant="primary" size="lg">
                 Start a Project
                 <ArrowRight className="w-5 h-5" />
@@ -314,15 +342,24 @@ export default function HomePage() {
         <section className="py-24 space-y-12">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white flex items-center justify-center gap-3">
-                <GitBranch className="w-8 h-8 text-purple-400" />
+              <Text
+                variant="heading2"
+                as="h2"
+                className="md:text-4xl flex items-center justify-center gap-3"
+              >
+                <GitBranch className="w-8 h-8 text-primary-400" />
                 Open Source & Experiments
-                <GitBranch className="w-8 h-8 text-purple-400" />
-              </h2>
-              <p className="text-neutral-400 max-w-2xl mx-auto">
+                <GitBranch className="w-8 h-8 text-primary-400" />
+              </Text>
+              <Text
+                variant="paragraph"
+                as="p"
+                color="secondary"
+                className="max-w-2xl mx-auto"
+              >
                 Check out some of my open source projects and experimental work
                 on GitHub
-              </p>
+              </Text>
             </div>
           </ScrollAnimation>
 
@@ -334,7 +371,7 @@ export default function HomePage() {
             >
               <GitHubCard
                 href="https://github.com/luketaylor-dev"
-                icon={<Gamepad2 className="w-8 h-8 text-purple-400" />}
+                icon={<Gamepad2 className="w-8 h-8 text-primary-400" />}
                 title="Tower Defence RPG"
                 description="Indie RPG prototype with tower defence mechanics and branching dialogue"
               />
@@ -347,7 +384,7 @@ export default function HomePage() {
             >
               <GitHubCard
                 href="https://github.com/luketaylor-dev/DialogueSystem"
-                icon={<Code className="w-8 h-8 text-purple-400" />}
+                icon={<Code className="w-8 h-8 text-primary-400" />}
                 title="Unity Dialogue System"
                 description="Custom node-based conversation editor built with Unity Graph View"
               />
@@ -362,7 +399,7 @@ export default function HomePage() {
                 href="https://github.com/luketaylor-dev/Portal-Chess"
                 icon={
                   <svg
-                    className="w-8 h-8 text-purple-400"
+                    className="w-8 h-8 text-primary-400"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >

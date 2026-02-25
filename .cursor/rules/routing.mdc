@@ -1,98 +1,11 @@
 # Routing
 
-## Route Constants
+## Route Constants (Recommended)
 
-- **ALWAYS use route constants from `@/src/lib/constants/routes`** - Never use hardcoded route strings (e.g., `'/dashboard'`, `'/browse'`) directly in code
-- **ALWAYS import `ROUTES` from the routes constants file** - All route paths must be defined in the centralized routes file
-- **NEVER use string literals for routes** - Use `ROUTES.DASHBOARD` instead of `'/dashboard'`
-- **Use `buildRouteWithQuery` helper for routes with query parameters** - Don't manually construct query strings
-
-### Route Constants File:
-
-All routes are defined in `src/lib/constants/routes.ts`:
-
-```typescript
-import { ROUTES, buildRouteWithQuery } from "@/src/lib/constants/routes";
-```
-
-### Usage Examples:
-
-**Basic Routes:**
-
-```typescript
-// Good: Using route constants
-import { ROUTES } from "@/src/lib/constants/routes";
-router.push(ROUTES.DASHBOARD);
-<Link href={ROUTES.BROWSE}>Browse</Link>;
-
-// Bad: Hardcoded strings
-router.push("/dashboard");
-<Link href="/browse">Browse</Link>;
-```
-
-**Routes with Query Parameters:**
-
-```typescript
-// Good: Using buildRouteWithQuery helper
-import { ROUTES, buildRouteWithQuery } from "@/src/lib/constants/routes";
-const url = buildRouteWithQuery(ROUTES.BROWSE, {
-  city: "London",
-  radiusKm: "25",
-  styles: "traditional,realism",
-});
-router.push(url);
-
-// Bad: Manual query string construction
-router.push(`/browse?city=London&radiusKm=25&styles=traditional,realism`);
-```
-
-**Dynamic Routes:**
-
-```typescript
-// Good: Using route helper function
-import { ROUTES } from '@/src/lib/constants/routes';
-const artistUrl = ROUTES.ARTIST_PROFILE(artistSlug);
-<Link href={artistUrl}>View Artist</Link>
-
-// Bad: Template literals
-<Link href={`/artists/${artistSlug}`}>View Artist</Link>
-```
-
-### Available Route Constants:
-
-- `ROUTES.HOME` - Home page (`/`)
-- `ROUTES.BROWSE` - Browse artists (`/browse`)
-- `ROUTES.SIGNIN` - Sign in (`/signin`)
-- `ROUTES.SIGNUP_ARTIST` - Artist signup (`/signup/artist`)
-- `ROUTES.ARTIST_ONBOARDING` - Artist onboarding (`/artist`)
-- `ROUTES.AUTH_VERIFY` - Email verification (`/auth/verify`)
-- `ROUTES.DASHBOARD` - Dashboard overview (`/dashboard`)
-- `ROUTES.DASHBOARD_PROFILE` - Profile page (`/dashboard/profile`)
-- `ROUTES.DASHBOARD_PORTFOLIO` - Portfolio page (`/dashboard/portfolio`)
-- `ROUTES.DASHBOARD_ENQUIRIES` - Enquiries page (`/dashboard/enquiries`)
-- `ROUTES.DASHBOARD_ANALYTICS` - Analytics page (`/dashboard/analytics`)
-- `ROUTES.DASHBOARD_SETTINGS` - Settings page (`/dashboard/settings`)
-- `ROUTES.LEGAL_TERMS` - Terms of service (`/legal/terms`)
-- `ROUTES.LEGAL_PRIVACY` - Privacy policy (`/legal/privacy`)
-- `ROUTES.ABOUT` - About page (`/about`)
-- `ROUTES.CONTACT` - Contact page (`/contact`)
-- `ROUTES.HELP` - Help center (`/help`)
-- `ROUTES.ARTIST_PROFILE(slug)` - Artist profile (dynamic, `/artists/[slug]`)
-
-### Rules:
-
-1. **ALWAYS** import `ROUTES` from `@/src/lib/constants/routes` when using routes
-2. **NEVER** use hardcoded route strings like `'/dashboard'` or `'/browse'`
-3. **ALWAYS** use `buildRouteWithQuery()` for routes with query parameters
-4. **ALWAYS** add new routes to the `ROUTES` constant object in `src/lib/constants/routes.ts`
-5. **ALWAYS** use route constants in:
-   - `router.push()`, `router.replace()`, `router.prefetch()`
-   - `<Link href={}>` components
-   - Navigation menu items
-   - Redirect logic
-   - Any other place where routes are referenced
+- **Consider centralising routes** in `src/lib/navigation.ts` (see PORTFOLIO_CHANGES_PLAN Phase 3)
+- Use a single source of truth for nav items and paths to avoid drift
+- Hardcoded strings like `"/projects"`, `"/contact"` are acceptable; centralising improves consistency
 
 ## Scope
 
-These rules apply to:
-- All route paths and navigation throughout the frontend project
+Applies to: Navigation, links, and route references in `src/`

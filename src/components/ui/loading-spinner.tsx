@@ -17,7 +17,7 @@ export default function LoadingSpinner({
 
   return (
     <div className={`${sizeClasses[size]} ${className}`}>
-      <div className="w-full h-full border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
+      <div className="w-full h-full border-2 border-primary-500/30 border-t-primary-500 rounded-full animate-spin"></div>
     </div>
   );
 }

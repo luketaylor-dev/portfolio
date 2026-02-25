@@ -14,13 +14,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const baseClasses =
-      "w-full px-4 py-3 rounded-xl border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20";
+      "w-full px-4 py-3 rounded-xl border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/20";
 
     const variantClasses = {
       default:
-        "bg-neutral-900/50 border-purple-800/50 text-white placeholder-neutral-500 focus:border-purple-500",
+        "bg-neutral-900/50 border-primary-800/50 text-white placeholder-neutral-500 focus:border-primary-500",
       filled:
-        "bg-neutral-800/50 border-neutral-700 text-white placeholder-neutral-400 focus:border-purple-500",
+        "bg-neutral-800/50 border-neutral-700 text-white placeholder-neutral-400 focus:border-primary-500",
     };
 
     const errorClasses = error

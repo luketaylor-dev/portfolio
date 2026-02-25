@@ -160,7 +160,7 @@ export default async function BlogPostPage({
         )}
 
         {/* Article Content */}
-        <div className="prose prose-invert prose-purple max-w-none">
+        <div className="prose prose-invert prose-primary max-w-none">
           <MdxContent source={post.body.raw} />
         </div>
 

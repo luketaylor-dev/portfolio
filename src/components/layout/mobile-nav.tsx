@@ -42,7 +42,7 @@ export default function MobileNav() {
   // Don't render anything until mounted to avoid hydration issues
   if (!mounted) {
     return (
-      <button className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors">
+      <button className="md:hidden p-2 rounded-lg border border-primary-800/50 text-primary-300 hover:bg-primary-900/20 transition-colors">
         <Menu className="w-5 h-5" />
       </button>
     );
@@ -53,7 +53,7 @@ export default function MobileNav() {
       {/* Mobile Menu Button */}
       <button
         onClick={handleToggleMenu}
-        className="md:hidden p-2 rounded-lg border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+        className="md:hidden p-2 rounded-lg border border-primary-800/50 text-primary-300 hover:bg-primary-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
         aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"

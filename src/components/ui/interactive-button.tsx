@@ -31,11 +31,11 @@ export default function InteractiveButton({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
+      "bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
     secondary:
-      "border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
+      "border-2 border-primary-500/50 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
     ghost:
-      "text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
+      "text-primary-300 hover:text-primary-200 hover:bg-primary-500/10 hover:scale-105 hover:rotate-1 transition-all duration-300 ease-out",
   };
 
   const sizeClasses = {
@@ -51,7 +51,7 @@ export default function InteractiveButton({
   const buttonContent = (
     <>
       {/* Ripple effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-400/20 to-primary-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Content */}
       <span className="relative z-10 flex items-center gap-2 group-hover:scale-105 transition-transform duration-300">
@@ -62,7 +62,7 @@ export default function InteractiveButton({
       </span>
 
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 group-hover:scale-100"></div>
+      <div className="absolute inset-0 bg-primary-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 group-hover:scale-100"></div>
     </>
   );
 

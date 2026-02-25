@@ -13,7 +13,7 @@ export default function InquirePage() {
     <div className="space-y-16">
       {/* Hero Section */}
       <section className="text-center space-y-8">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
           Project Inquiry
         </h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">

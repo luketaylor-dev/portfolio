@@ -32,7 +32,7 @@ export default function TouchButton({
     inline-flex items-center justify-center
     font-medium rounded-xl
     transition-all duration-200
-    focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-neutral-950
+    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950
     disabled:opacity-50 disabled:cursor-not-allowed
     ${fullWidth ? "w-full" : ""}
     ${touchTarget ? "min-h-[44px] min-w-[44px]" : ""}
@@ -40,10 +40,10 @@ export default function TouchButton({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 active:scale-95",
+      "bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 active:scale-95",
     secondary:
-      "border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 active:scale-95",
-    ghost: "text-purple-300 hover:bg-purple-900/20 active:scale-95",
+      "border-2 border-primary-500/50 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400 active:scale-95",
+    ghost: "text-primary-300 hover:bg-primary-900/20 active:scale-95",
     danger: "bg-red-600 text-white hover:bg-red-700 active:scale-95",
   };
 
@@ -129,7 +129,7 @@ export function TouchFloatingButton({ children, ...props }: TouchButtonProps) {
       <TouchButton
         {...props}
         size="lg"
-        className="w-14 h-14 rounded-full shadow-lg shadow-purple-500/25"
+        className="w-14 h-14 rounded-full shadow-lg shadow-primary-500/25"
         touchTarget={true}
       >
         {children}

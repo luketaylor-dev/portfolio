@@ -8,7 +8,7 @@ describe("Card", () => {
 
     const card = screen.getByText("Card content").closest("div");
     expect(card).toBeInTheDocument();
-    expect(card).toHaveClass("rounded-2xl", "border", "border-purple-800/50");
+    expect(card).toHaveClass("rounded-2xl", "border", "border-primary-800/50");
   });
 
   it("renders different variants correctly", () => {
@@ -16,21 +16,21 @@ describe("Card", () => {
     expect(screen.getByText("Default").closest("div")).toHaveClass(
       "bg-gradient-to-br",
       "from-neutral-900",
-      "to-purple-900/20"
+      "to-primary-900/20"
     );
 
     rerender(<Card variant="elevated">Elevated</Card>);
     expect(screen.getByText("Elevated").closest("div")).toHaveClass(
       "bg-gradient-to-br",
       "from-neutral-900",
-      "to-purple-900/30"
+      "to-primary-900/30"
     );
 
     rerender(<Card variant="outlined">Outlined</Card>);
     expect(screen.getByText("Outlined").closest("div")).toHaveClass(
       "bg-neutral-900/50",
       "border-2",
-      "border-purple-500/30"
+      "border-primary-500/30"
     );
   });
 
@@ -39,8 +39,8 @@ describe("Card", () => {
 
     const card = screen.getByText("Hover Card").closest("div");
     expect(card).toHaveClass(
-      "hover:border-purple-600/50",
-      "hover:bg-purple-900/30",
+      "hover:border-primary-600/50",
+      "hover:bg-primary-900/30",
       "hover:scale-105"
     );
   });
@@ -91,11 +91,11 @@ describe("Card", () => {
     expect(card).toHaveClass(
       "bg-gradient-to-br",
       "from-neutral-900",
-      "to-purple-900/30",
+      "to-primary-900/30",
       "border",
-      "border-purple-600/50",
-      "hover:border-purple-600/50",
-      "hover:bg-purple-900/30",
+      "border-primary-600/50",
+      "hover:border-primary-600/50",
+      "hover:bg-primary-900/30",
       "hover:scale-105",
       "p-8",
       "test-class"

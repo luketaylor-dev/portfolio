@@ -39,10 +39,10 @@ export default function ResumeDownload({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40",
+      "bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40",
     secondary:
-      "bg-neutral-900/50 text-purple-300 border border-purple-800/50 hover:bg-purple-900/20 hover:border-purple-600/50",
-    ghost: "text-purple-400 hover:text-purple-300 hover:bg-purple-900/10",
+      "bg-neutral-900/50 text-primary-300 border border-primary-800/50 hover:bg-primary-900/20 hover:border-primary-600/50",
+    ghost: "text-primary-400 hover:text-primary-300 hover:bg-primary-900/10",
   };
 
   const sizeClasses = {

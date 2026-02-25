@@ -34,20 +34,20 @@
 
 ```typescript
 // app/page.tsx (Server Component - no "use client")
-import { HeroSearch } from "@/components/pages/landing/hero-search";
+import { ContactForm } from "@/components/forms/contact-form";
 
-export default function Home() {
+export default function ContactPage() {
   return (
     <div>
-      <h1>Welcome</h1>
-      <HeroSearch /> {/* Client component for interactivity */}
+      <h1>Contact</h1>
+      <ContactForm /> {/* Client component for interactivity */}
     </div>
   );
 }
 
-// components/pages/landing/hero-search.tsx (Client Component)
-("use client");
-export function HeroSearch() {
+// components/forms/contact-form.tsx (Client Component)
+"use client";
+export function ContactForm() {
   const [value, setValue] = useState("");
   // ... interactive logic
 }
@@ -151,7 +151,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 ## Scope
 
-These rules apply to:
-
-- All page files in `app/` directory
-- All React imports and hooks usage throughout the frontend project
+Applies to: All pages in `src/app/`, components in `src/components/`, and React imports

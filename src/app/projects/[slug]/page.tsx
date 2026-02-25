@@ -251,7 +251,7 @@ export default async function ProjectPage({
       <section className="max-w-4xl mx-auto space-y-8">
         <div className="space-y-6">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
               {project.title}
             </h1>
             <p className="text-xl text-neutral-300 max-w-4xl leading-relaxed">
@@ -289,7 +289,7 @@ export default async function ProjectPage({
 
         {/* Project Media */}
         {project.video ? (
-          <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
+          <div className="aspect-video rounded-2xl border border-primary-800/50 overflow-hidden relative">
             <VideoWithPlayButton
               videoSrc={project.video}
               posterSrc={project.cover || ""}
@@ -298,7 +298,7 @@ export default async function ProjectPage({
             />
           </div>
         ) : project.cover ? (
-          <div className="aspect-video rounded-2xl border border-purple-800/50 overflow-hidden relative">
+          <div className="aspect-video rounded-2xl border border-primary-800/50 overflow-hidden relative">
             <Image
               src={project.cover || ""}
               alt={
@@ -313,17 +313,17 @@ export default async function ProjectPage({
             />
           </div>
         ) : (
-          <div className="aspect-video rounded-2xl bg-gradient-to-br from-purple-800/30 to-neutral-800 border border-purple-800/50 overflow-hidden relative">
+          <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-800/30 to-neutral-800 border border-primary-800/50 overflow-hidden relative">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center space-y-4">
-                <div className="w-24 h-24 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-                  <ImageIcon className="w-12 h-12 text-purple-400" />
+                <div className="w-24 h-24 mx-auto rounded-2xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center">
+                  <ImageIcon className="w-12 h-12 text-primary-400" />
                 </div>
                 <div className="space-y-2">
-                  <p className="text-lg text-purple-300 font-medium">
+                  <p className="text-lg text-primary-300 font-medium">
                     Project Media
                   </p>
-                  <p className="text-sm text-purple-400">
+                  <p className="text-sm text-primary-400">
                     Add a cover image or video to your project
                   </p>
                 </div>
@@ -354,7 +354,7 @@ export default async function ProjectPage({
                 "A key feature that enhances the project's capabilities.";
               return (
                 <Card key={i} variant="default">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4">
                     <IconComponent className="w-full h-full text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
@@ -379,7 +379,7 @@ export default async function ProjectPage({
                 variant="default"
                 className="text-center h-20 flex items-center justify-center"
               >
-                <span className="text-purple-300 font-medium">{tech}</span>
+                <span className="text-primary-300 font-medium">{tech}</span>
               </Card>
             ))}
           </div>

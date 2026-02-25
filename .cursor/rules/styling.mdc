@@ -8,10 +8,9 @@
 - Selected items indicate an active/current state (e.g., selected filters, active tabs, checked items)
 
 **Examples:**
-- Selected style tags: `bg-primary-500 text-primary-foreground`
-- Selected dropdown items: `bg-primary-500 text-primary-foreground`
-- Active filter buttons: `bg-primary-500 text-primary-foreground`
-- Selected toggle buttons: `bg-primary-500 text-primary-foreground`
+
+- Selected filter buttons: `bg-primary-500 text-white`
+- Active nav items: `bg-primary-500 text-white`
 
 ### Hovered Interactables
 
@@ -19,6 +18,7 @@
 - Hover states provide visual feedback when users interact with clickable elements
 
 **Examples:**
+
 - Hovered menu items: `hover:bg-primary-600/90`
 - Hovered buttons: `hover:bg-primary-600/90`
 - Hovered links: `hover:bg-primary-600/90`
@@ -33,8 +33,4 @@
 
 ## Scope
 
-These rules apply to:
-- All interactive UI elements throughout the front-end application
-- Buttons, menu items, dropdown items, tabs, toggles, cards, links
-- Filter selections, navigation states, form controls
-- Any element that responds to user interaction
+Applies to: `src/` – buttons, links, nav, cards, form controls, interactive elements

@@ -1,6 +1,13 @@
 "use client";
 import { Send, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
-import React, { useRef, useState } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  type ChangeEvent,
+  type FormEvent,
+  type KeyboardEvent,
+} from "react";
 import { ResumeDownload } from "@/components/content";
 import { FormErrorBoundary } from "@/components/feedback";
 import {
@@ -41,7 +48,7 @@ export default function ContactForm() {
   const [honeypotValue, setHoneypotValue] = useState("");
 
   // Set mounted state to prevent hydration issues
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 
@@ -67,7 +74,7 @@ export default function ContactForm() {
 
   // Handle input changes
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -91,7 +98,7 @@ export default function ContactForm() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
@@ -144,7 +151,7 @@ export default function ContactForm() {
   };
 
   // Handle key down for accessibility
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" && e.ctrlKey) {
       handleSubmit(e as any);
     }
@@ -157,7 +164,7 @@ export default function ContactForm() {
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
           Let's Connect
         </h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
@@ -403,7 +410,7 @@ export default function ContactForm() {
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-purple-300">
+            <h3 className="text-lg font-semibold text-primary-300">
               Unity Development
             </h3>
             <p className="text-neutral-300 text-sm">
@@ -412,7 +419,7 @@ export default function ContactForm() {
             </p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-purple-300">
+            <h3 className="text-lg font-semibold text-primary-300">
               VR & EEG Projects
             </h3>
             <p className="text-neutral-300 text-sm">
@@ -420,7 +427,7 @@ export default function ContactForm() {
             </p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-purple-300">
+            <h3 className="text-lg font-semibold text-primary-300">
               Game Development
             </h3>
             <p className="text-neutral-300 text-sm">

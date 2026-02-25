@@ -51,7 +51,7 @@ export default function SocialShare({
       <div className="flex items-center gap-2">
         <button
           onClick={() => handleShare("twitter")}
-          className="p-2 rounded-lg bg-neutral-900/50 border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 hover:border-purple-600/50 transition-all duration-200 hover:scale-105"
+          className="p-2 rounded-lg bg-neutral-900/50 border border-primary-800/50 text-primary-300 hover:bg-primary-900/20 hover:border-primary-600/50 transition-all duration-200 hover:scale-105"
           aria-label="Share on Twitter"
         >
           <Twitter className="w-4 h-4" />
@@ -59,7 +59,7 @@ export default function SocialShare({
 
         <button
           onClick={() => handleShare("linkedin")}
-          className="p-2 rounded-lg bg-neutral-900/50 border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 hover:border-purple-600/50 transition-all duration-200 hover:scale-105"
+          className="p-2 rounded-lg bg-neutral-900/50 border border-primary-800/50 text-primary-300 hover:bg-primary-900/20 hover:border-primary-600/50 transition-all duration-200 hover:scale-105"
           aria-label="Share on LinkedIn"
         >
           <Linkedin className="w-4 h-4" />
@@ -67,7 +67,7 @@ export default function SocialShare({
 
         <button
           onClick={() => handleShare("facebook")}
-          className="p-2 rounded-lg bg-neutral-900/50 border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 hover:border-purple-600/50 transition-all duration-200 hover:scale-105"
+          className="p-2 rounded-lg bg-neutral-900/50 border border-primary-800/50 text-primary-300 hover:bg-primary-900/20 hover:border-primary-600/50 transition-all duration-200 hover:scale-105"
           aria-label="Share on Facebook"
         >
           <Facebook className="w-4 h-4" />
@@ -76,7 +76,7 @@ export default function SocialShare({
         {typeof navigator !== "undefined" && "share" in navigator && (
           <button
             onClick={handleNativeShare}
-            className="p-2 rounded-lg bg-neutral-900/50 border border-purple-800/50 text-purple-300 hover:bg-purple-900/20 hover:border-purple-600/50 transition-all duration-200 hover:scale-105"
+            className="p-2 rounded-lg bg-neutral-900/50 border border-primary-800/50 text-primary-300 hover:bg-primary-900/20 hover:border-primary-600/50 transition-all duration-200 hover:scale-105"
             aria-label="Share using native share"
           >
             <Share2 className="w-4 h-4" />

@@ -20,10 +20,10 @@ export default function Card({
 
   const variantClasses = {
     default:
-      "bg-gradient-to-br from-neutral-900 to-purple-900/20 border border-purple-800/50",
+      "bg-gradient-to-br from-neutral-900 to-primary-900/20 border border-primary-800/50",
     elevated:
-      "bg-gradient-to-br from-neutral-900 to-purple-900/30 border border-purple-600/50 shadow-lg shadow-purple-500/25",
-    outlined: "bg-neutral-900/50 border-2 border-purple-500/30",
+      "bg-gradient-to-br from-neutral-900 to-primary-900/30 border border-primary-600/50 shadow-lg shadow-primary-500/25",
+    outlined: "bg-neutral-900/50 border-2 border-primary-500/30",
   };
 
   const paddingClasses = {
@@ -33,7 +33,7 @@ export default function Card({
   };
 
   const hoverClasses = hover
-    ? "hover:border-purple-600/50 hover:bg-purple-900/30 hover:scale-105"
+    ? "hover:border-primary-600/50 hover:bg-primary-900/30 hover:scale-105"
     : "";
 
   return (

@@ -1,94 +1,11 @@
-# Documentation Organization
+# Documentation
 
-- **ALWAYS organize documentation files in dedicated `documentation/` folders**
-- **Project-level documentation** (business, strategy, requirements) goes in `documentation/` at the project root
-- **Frontend/client-specific documentation** (architecture, design, technical) goes in `src/Client.Operations/documentation/`
-- **NEVER place documentation files in the root directory** (except README.md)
-- **NEVER place documentation files directly in `src/Client.Operations/`** (except README.md)
+## Structure
 
-### Documentation Structure:
-
-```
-/project-root
-  /documentation/                    # Project-level documentation
-    - elevator-pitch.md
-    - mvp-requirements-tattoo-marketplace.md
-    - customer-acquisition-strategy.md
-    - monetization-strategy.md
-    - membership-tiers-pricing.md
-    - pre-build-checklist.md
-    - mvp-cost-analysis.md
-    - etc.
-  /src
-    /Client.Operations
-      /documentation/                # Frontend/client-specific documentation
-        - FRONTEND_ARCHITECTURE.md
-        - API_ARCHITECTURE.md
-        - ARCHITECTURE.md
-        - DATA_FETCHING_STRATEGY.md
-        - HOME_PAGE_DESIGN.md
-        - BROWSE_PAGE_DESIGN.md
-      README.md                      # Client.Operations README (stays in root of Client.Operations)
-  README.md                          # Project README (stays in project root)
-```
-
-### Rules:
-
-1. **Project-level documentation** → `documentation/` at project root
-
-   - Business strategy documents
-   - MVP requirements
-   - Monetization and pricing
-   - Customer acquisition strategy
-   - Cost analysis
-   - Phase overviews
-   - Model improvements
-   - Brand suggestions
-
-2. **Frontend/client documentation** → `src/Client.Operations/documentation/`
-
-   - Frontend architecture
-   - API architecture
-   - Design documents (home page, browse page, etc.)
-   - Data fetching strategies
-   - Technical implementation guides
-
-3. **README files** → Stay in their respective directories
-
-   - `README.md` stays at project root
-   - `src/Client.Operations/README.md` stays in Client.Operations root
-
-4. **When creating new documentation:**
-
-   - Determine if it's project-level or frontend-specific
-   - Place in appropriate `documentation/` folder
-   - Update README.md links to reflect new location
-   - Use kebab-case for file names (e.g., `elevator-pitch.md`, `customer-acquisition-strategy.md`)
-
-5. **When referencing documentation in README:**
-   - Use relative paths from README location
-   - Project README: `./documentation/filename.md`
-   - Client.Operations README: `./documentation/filename.md` (if referencing frontend docs)
-
-### Example:
-
-**Creating a new project-level document:**
-
-```bash
-# Create in project root documentation folder
-touch documentation/new-strategy-doc.md
-# Update README.md with link: [New Strategy](./documentation/new-strategy-doc.md)
-```
-
-**Creating a new frontend document:**
-
-```bash
-# Create in Client.Operations documentation folder
-touch src/Client.Operations/documentation/new-design-doc.md
-# Update README.md with link: [New Design](./src/Client.Operations/documentation/new-design-doc.md)
-```
+- **Project-level docs** – README.md, plan files (e.g. PORTFOLIO_CHANGES_PLAN.md) can live at repo root
+- **Optional**: Use a `documentation/` folder for additional project docs
+- **File names**: Use kebab-case (e.g. `email-setup.md`)
 
 ## Scope
 
-These rules apply to:
-- All documentation files (`.md` files) throughout the project
+Applies to: `.md` files in the project

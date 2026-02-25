@@ -34,7 +34,7 @@ export default function BlogCard({
       >
         <div className="space-y-4 flex flex-col h-full">
           {/* Blog Image */}
-          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-purple-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500">
+          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-primary-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-primary-500/20 transition-all duration-500">
             {post.image ? (
               <Image
                 src={post.image}
@@ -48,9 +48,9 @@ export default function BlogCard({
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center space-y-2">
-                  <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                  <div className="w-16 h-16 mx-auto rounded-2xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center">
                     <svg
-                      className="w-8 h-8 text-purple-400"
+                      className="w-8 h-8 text-primary-400"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -63,7 +63,7 @@ export default function BlogCard({
                       />
                     </svg>
                   </div>
-                  <p className="text-sm text-purple-300 font-medium">
+                  <p className="text-sm text-primary-300 font-medium">
                     Blog Post
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export default function BlogCard({
           {/* Blog Content */}
           <div className="space-y-3 flex flex-col flex-grow">
             <div className="space-y-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
+              <h3 className="text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
                 {post.title}
               </h3>
               <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 flex-grow">
@@ -96,7 +96,7 @@ export default function BlogCard({
                   </div>
                 )}
               </div>
-              <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300 ease-out" />
+              <ArrowRight className="w-4 h-4 text-primary-400 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300 ease-out" />
             </div>
           </div>
         </div>

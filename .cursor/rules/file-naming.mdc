@@ -1,48 +1,11 @@
-# File Naming and Component Structure
+# File Naming
 
-## File Naming Convention
+## Convention
 
-- **ALWAYS use kebab-case (lowercase with hyphens) for all file and folder names in the front-end project**
-- Example: `style-badge.tsx`, `search-input.tsx`, `artist-card.tsx`
-- Never use PascalCase, camelCase, or snake_case for file/folder names
-
-## Component Structure
-
-- **Each component MUST be in its own folder directory**
-- **Each component folder MUST contain an `index.ts` (or `index.tsx`) file**
-- The component file itself should be named using kebab-case
-
-### Example Structure:
-
-```
-components/
-  molecules/
-    style-badge/
-      index.tsx
-      style-badge.tsx
-    search-input/
-      index.tsx
-      search-input.tsx
-```
-
-### Implementation Rules:
-
-1. Component folders: Use kebab-case (e.g., `style-badge/`, `search-input/`)
-2. Component files: Use kebab-case (e.g., `style-badge.tsx`, `search-input.tsx`)
-3. Index files: Always named `index.ts` or `index.tsx` (kebab-case)
-4. The index file should export the component from the component file
-5. All imports should reference the component folder (which will resolve to the index file)
-
-### Example Index File:
-
-```typescript
-export { StyleBadge } from "./style-badge";
-export type { StyleBadgeProps } from "./style-badge";
-```
+- **ALWAYS use kebab-case** for file and folder names
+- Example: `project-card.tsx`, `skill-card.tsx`, `mobile-nav.tsx`
+- Never use PascalCase, camelCase, or snake_case
 
 ## Scope
 
-These rules apply to:
-- All files in `src/Client.Operations/src/components/` and subdirectories
-- All component-related files (`.tsx`, `.ts`, `.css`, etc.)
-- All folder names in the front-end project
+Applies to: All files in `src/` and `content/`

@@ -77,7 +77,4 @@ The project uses ESLint rules to enforce this:
 
 ## Scope
 
-These rules apply to:
-
-- All files in `src/Client.Operations/src/components/` and subdirectories
-- All component-related files (`.tsx`, `.ts`, `.css`, etc.)
+Applies to: All files in `src/`

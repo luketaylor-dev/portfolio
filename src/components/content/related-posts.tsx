@@ -25,7 +25,7 @@ export default function RelatedPosts({
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {relatedPosts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <article className="group overflow-hidden rounded-xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-purple-900/10 hover:border-purple-600/50 hover:bg-purple-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <article className="group overflow-hidden rounded-xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-primary-900/10 hover:border-primary-600/50 hover:bg-primary-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
               {/* Featured Image */}
               {post.image && (
                 <div className="aspect-video overflow-hidden">
@@ -56,7 +56,7 @@ export default function RelatedPosts({
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors line-clamp-2">
+                <h3 className="text-lg font-semibold text-white group-hover:text-primary-300 transition-colors line-clamp-2">
                   {post.title}
                 </h3>
 
@@ -66,7 +66,7 @@ export default function RelatedPosts({
                 </p>
 
                 {/* Read More */}
-                <div className="flex items-center gap-1 text-purple-400 group-hover:text-purple-300 transition-colors">
+                <div className="flex items-center gap-1 text-primary-400 group-hover:text-primary-300 transition-colors">
                   <span className="text-sm font-medium">Read More</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>
