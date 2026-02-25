@@ -1,0 +1,150 @@
+# React Hooks
+
+## Mutation Hooks Side Effects
+
+- **ALWAYS handle side effects in mutation hooks** - Query invalidation and toast notifications should be handled in the hook's `onSuccess` and `onError` callbacks, not in components
+- **ALWAYS use `useQueryClient` and `toast` in mutation hooks** - Mutation hooks should encapsulate all side effects related to the mutation
+- **NEVER manually call `invalidateQueries` or `toast` in components** - Components should only call `mutateAsync()` and handle UI-specific logic via optional callbacks
+- **ALWAYS provide optional callbacks for customization** - Allow components to pass `onSuccess`, `onError`, `successMessage`, and `errorMessage` options when needed
+
+### Mutation Hook Pattern:
+
+```typescript
+// Good: Side effects in hook
+export function useImageDelete(
+  artistId: string,
+  id?: string,
+  options?: {
+    onSuccess?: () => void;
+    onError?: (error: Error) => void;
+    successMessage?: string;
+    errorMessage?: string;
+  }
+) {
+  const queryClient = useQueryClient();
+  const {
+    onSuccess: onSuccessCallback,
+    successMessage = "Image deleted successfully",
+  } = options || {};
+
+  const mutation = useMutation({
+    ...imageMutations.delete(artistId, id ?? ""),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["artists", "me"] });
+      toast.success(successMessage);
+      onSuccessCallback?.();
+    },
+    onError: (error: Error) => {
+      const message =
+        errorMessage ||
+        extractErrorMessage(error) ||
+        "Failed to delete image. Please try again.";
+      toast.error(message);
+      onErrorCallback?.(error);
+    },
+  });
+
+  return {
+    mutateAsync: mutation.mutateAsync,
+    isPending: mutation.isPending,
+    // ... other mutation state
+  };
+}
+
+// Component usage
+const deleteImage = useImageDelete(artistId, image.id, {
+  onSuccess: () => {
+    setShowDeleteDialog(false);
+    onDelete?.();
+  },
+});
+
+const handleDelete = async () => {
+  await deleteImage.mutateAsync();
+};
+```
+
+### Bad Examples:
+
+```typescript
+// Bad: Side effects in component
+const handleDelete = async () => {
+  try {
+    await deleteImage.mutateAsync();
+    queryClient.invalidateQueries({ queryKey: ["artists", "me"] });
+    toast.success("Image deleted successfully");
+  } catch (error) {
+    toast.error("Failed to delete image");
+  }
+};
+
+// Bad: Hook without side effects
+export function useImageDelete(artistId: string, id?: string) {
+  const mutation = useMutation({
+    ...imageMutations.delete(artistId, id ?? ""),
+  });
+  return { mutateAsync: mutation.mutateAsync };
+}
+```
+
+### Rules:
+
+1. **ALWAYS** handle `invalidateQueries` in the hook's `onSuccess` callback
+2. **ALWAYS** handle toast notifications in the hook's `onSuccess` and `onError` callbacks
+3. **ALWAYS** provide sensible default messages for success and error cases
+4. **ALWAYS** allow customization via optional `onSuccess`, `onError`, `successMessage`, and `errorMessage` options
+5. **NEVER** require components to manually call `invalidateQueries` or `toast` after mutations
+6. **NEVER** leave mutation hooks without side effect handling when they affect cached data
+7. Components should only handle UI-specific logic (closing dialogs, navigation, etc.) via optional callbacks
+8. For mutations that affect multiple query keys, invalidate all relevant queries in the hook
+
+## useEffect and State Updates
+
+- **NEVER use `setState` inside `useEffect`** - Avoid calling `useState` setters directly inside `useEffect` hooks
+- **ALWAYS use `useReducer` for complex state updates in effects** - When state updates are needed in `useEffect`, prefer `useReducer` with `dispatch` over `useState` with `setState`
+- **ALWAYS use `useMemo` or `useCallback` for derived state** - Derive computed values from existing state rather than setting them in effects
+
+### Good Pattern:
+
+```typescript
+// Good: Using useReducer for state updates in useEffect
+const [state, dispatch] = useReducer(reducer, initialState);
+
+useEffect(() => {
+  if (condition) {
+    dispatch({ type: "UPDATE", payload: value });
+  }
+}, [condition]);
+
+// Good: Using useMemo for derived state
+const isLoading = useMemo(() => {
+  return contextLoading || localLoading;
+}, [contextLoading, localLoading]);
+```
+
+### Bad Pattern:
+
+```typescript
+// Bad: Using setState in useEffect
+const [value, setValue] = useState(null);
+
+useEffect(() => {
+  if (condition) {
+    setValue(newValue); // ❌ Forbidden
+  }
+}, [condition]);
+```
+
+### Rules:
+
+1. **NEVER** call `setState` (from `useState`) directly inside `useEffect`
+2. **ALWAYS** use `useReducer` with `dispatch` when state updates are needed in `useEffect`
+3. **ALWAYS** use `useMemo` or `useCallback` to derive computed values from existing state
+4. **ALWAYS** structure effects to avoid conditional state updates that could cause infinite loops
+
+## Scope
+
+These rules apply to:
+
+- All mutation hooks in `src/lib/hooks/` and subdirectories
+- All custom hooks that use `useEffect` with state updates

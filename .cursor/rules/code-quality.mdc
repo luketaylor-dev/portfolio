@@ -1,0 +1,83 @@
+# Code Quality
+
+## Code Comments
+
+**General Principle:** Code should be self-documenting. Comments should only be used when necessary to explain "why" something is done, not "what" the code does.
+
+### Rules:
+
+- **Avoid obvious comments** - Don't comment on what the code clearly shows
+- **Prefer self-documenting code** - Use descriptive variable names, clear function names, and well-structured code instead of comments
+- **Only comment when necessary** - Comments should explain:
+  - Complex business logic or non-obvious decisions
+  - Workarounds for bugs or limitations
+  - Performance optimizations that aren't obvious
+  - References to external documentation or specifications
+
+### Bad Examples:
+
+```typescript
+{
+  /* Hero Section */
+}
+<section>...</section>;
+
+{
+  /* Search Input */
+}
+<SearchInput />;
+
+// Set the value
+setValue(value);
+
+// If still loading auth state, wait
+if (isAuthLoading) {
+  return;
+}
+
+// If not authenticated, redirect to sign-in
+if (!isAuthenticated) {
+  router.push("/signin");
+}
+```
+
+### Good Examples:
+
+```typescript
+<section>...</section>;
+
+<SearchInput />;
+
+setValue(value);
+
+if (isAuthLoading) {
+  return;
+}
+
+if (!isAuthenticated) {
+  router.push('/signin');
+}
+
+// Mock data for MVP (will be replaced with API data)
+const popularStyles = [...];
+
+// Calculate budget band from minSpend (rough estimate)
+const budgetBand = artist.minSpend < 200 ? 1 : 2;
+
+// Workaround for Next.js Image optimization issue
+<Image unoptimized {...props} />
+```
+
+### ESLint Enforcement:
+
+The project uses ESLint rules to enforce this:
+
+- `capitalized-comments`: Enforces capitalization for meaningful comments
+- `no-warning-comments`: Warns about TODO/FIXME comments
+
+## Scope
+
+These rules apply to:
+
+- All files in `src/Client.Operations/src/components/` and subdirectories
+- All component-related files (`.tsx`, `.ts`, `.css`, etc.)

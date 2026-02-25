@@ -1,0 +1,157 @@
+# React Patterns
+
+## Server Components & Client Components
+
+- **ALWAYS prefer Server Components by default** - Next.js App Router uses Server Components by default
+- **ONLY use `"use client"` when absolutely necessary** - Client components should be minimal and isolated
+- **Extract interactive parts into separate client components** - Keep pages as server components, extract interactive UI into small client components
+- **Use client components for**: Event handlers (onClick, onChange), useState/useEffect hooks, browser APIs, third-party libraries that require client-side rendering
+
+### When to Use Client Components:
+
+- Interactive forms with state management
+- Components using React hooks (useState, useEffect, useContext, etc.)
+- Components using browser APIs (localStorage, window, etc.)
+- Components with event handlers that need client-side interactivity
+- Third-party libraries that require client-side rendering
+
+### When to Use Server Components:
+
+- Static content and layouts
+- Data fetching (can use async/await directly)
+- Components that don't need interactivity
+- Page components (unless they need interactivity)
+- Components that render other server components
+
+### Best Practices:
+
+1. **Start with Server Components** - Default to server components, only add `"use client"` when needed
+2. **Extract interactivity** - If a page needs some interactivity, extract that part into a small client component
+3. **Keep client boundaries minimal** - Only mark the specific component that needs client features, not the entire page
+4. **Compose server and client components** - Server components can import and render client components
+
+### Example Pattern:
+
+```typescript
+// app/page.tsx (Server Component - no "use client")
+import { HeroSearch } from "@/components/pages/landing/hero-search";
+
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <HeroSearch /> {/* Client component for interactivity */}
+    </div>
+  );
+}
+
+// components/pages/landing/hero-search.tsx (Client Component)
+("use client");
+export function HeroSearch() {
+  const [value, setValue] = useState("");
+  // ... interactive logic
+}
+```
+
+## React Imports
+
+- **ALWAYS use named imports from React** - Import specific modules (useState, useEffect, etc.) instead of using `import * as React`
+- **NEVER use `import * as React from 'react'`** - Use named imports for better tree-shaking and clarity
+- **Use type imports for TypeScript types** - Import React types using `type` keyword when only used for type annotations
+
+### Import Examples:
+
+**Good: Named imports**
+
+```typescript
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { forwardRef, type ComponentProps, type ReactNode } from "react";
+```
+
+**Bad: Namespace import**
+
+```typescript
+import * as React from "react";
+// Then using React.useState, React.useEffect, etc.
+```
+
+### Usage Examples:
+
+**Good: Direct usage**
+
+```typescript
+import { useState, useEffect, useMemo } from "react";
+
+const Component = () => {
+  const [value, setValue] = useState("");
+  const memoized = useMemo(() => compute(), []);
+  useEffect(() => {
+    // effect
+  }, []);
+};
+```
+
+**Bad: Namespace usage**
+
+```typescript
+import * as React from "react";
+
+const Component = () => {
+  const [value, setValue] = React.useState("");
+  const memoized = React.useMemo(() => compute(), []);
+  React.useEffect(() => {
+    // effect
+  }, []);
+};
+```
+
+**Good: Type imports**
+
+```typescript
+import {
+  forwardRef,
+  type ComponentProps,
+  type ButtonHTMLAttributes,
+} from "react";
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: string;
+};
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  // ...
+});
+```
+
+**Bad: Namespace for types**
+
+```typescript
+import * as React from "react";
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: string;
+};
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    // ...
+  }
+);
+```
+
+### Rules:
+
+1. **ALWAYS** use named imports: `import { useState, useEffect } from 'react'`
+2. **NEVER** use namespace imports: `import * as React from 'react'`
+3. **ALWAYS** use direct hook calls: `useState()` instead of `React.useState()`
+4. **ALWAYS** use direct type references: `ComponentProps` instead of `React.ComponentProps`
+5. **ALWAYS** use `type` keyword for type-only imports: `import { type ReactNode } from 'react'`
+6. Import only what you need - this improves tree-shaking and bundle size
+7. For React types (ReactNode, ComponentProps, HTMLAttributes, etc.), import them directly as named exports
+
+## Scope
+
+These rules apply to:
+
+- All page files in `app/` directory
+- All React imports and hooks usage throughout the frontend project

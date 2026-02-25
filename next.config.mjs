@@ -1,6 +1,7 @@
 const nextConfig = {
   // Turbopack configuration for Next.js 16
   turbopack: {},
+  transpilePackages: ["next-mdx-remote"],
   // experimental: {
   //   mdxRs: true, // Disabled for next-mdx-remote compatibility
   // },

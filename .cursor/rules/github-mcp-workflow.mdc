@@ -1,0 +1,241 @@
+---
+alwaysApply: true
+---
+# GitHub MCP Workflow
+
+## Branch Naming Convention
+
+**ALWAYS** follow the conventional naming pattern for branches (if using feature branches):
+
+```text
+{type}/{issue-number}-{kebab-case-issue-name}
+```
+
+### Examples
+
+- `fix/42-image-size-discrepancy`
+- `feat/15-add-user-authentication`
+- `refactor/8-improve-search-performance`
+- `docs/23-update-api-documentation`
+
+### Branch Type Prefixes
+
+- `fix/` - Bug fixes
+- `feat/` - New features
+- `refactor/` - Code refactoring
+- `docs/` - Documentation changes
+- `test/` - Test additions/changes
+- `chore/` - Maintenance tasks
+
+## Issue Lifecycle
+
+### 1. Issue Creation
+
+When an issue is opened, it automatically goes into the Tatfindr GitHub Project via configured GitHub Project automation.
+
+**Note:** GitHub Project automation is configured to automatically add new issues to the Tatfindr GitHub Project, so no manual steps are required when creating issues.
+
+### 2. Issue Triage
+
+After creation, tickets go through triage:
+
+- Additional information may be requested/added until the ticket is ready to be worked on
+- Team is assigned (Engineering, Design, Product, Marketing, etc.)
+- Ticket is added to a sprint with a priority group (P0, P1, P2), or Backlog if it's for the future
+
+### 3. Work Begins
+
+When a ticket is picked up to be worked on, it is moved to **In Progress** status (automatically via Cursor/MCP).
+
+## Complete Issue-to-Completion Workflow
+
+When working on a GitHub issue, follow this workflow:
+
+### 1. Read and Understand the Issue
+
+```typescript
+// Use MCP to read the issue
+mcp_github_issue_read({
+  owner: "jakemhill",
+  repo: "tatfindr",
+  issue_number: 42,
+  method: "get"
+})
+```
+
+### 2. Start Work (Optional: Create Branch)
+
+If using a feature branch, create it with proper naming:
+
+- Extract issue number from the issue
+- Convert issue title to kebab-case
+- Use appropriate type prefix (`fix/`, `feat/`, etc.)
+
+```bash
+# Example: For issue #42 "Image size discrepancies on artist profile creation"
+git checkout -b fix/42-image-size-discrepancy
+```
+
+Or use MCP:
+
+```typescript
+mcp_github_create_branch({
+  owner: "jakemhill",
+  repo: "tatfindr",
+  branch: "fix/42-image-size-discrepancy",
+  from_branch: "develop"
+})
+```
+
+**Note:** You can also work directly on `develop` if preferred.
+
+### 3. Implement the Fix
+
+- Write code following project conventions
+- Write tests if applicable
+- Ensure linting passes
+- Commit with descriptive messages using lowercase conventional commit format
+
+### 4. Commit and Push to Develop
+
+```bash
+# If working on a feature branch, merge to develop
+git checkout develop
+git merge fix/42-image-size-discrepancy
+git push origin develop
+
+# Or if working directly on develop
+git push origin develop
+```
+
+When code is committed and pushed to `develop`:
+
+- Status automatically changes to **Waiting for QA Approval** (via MCP automation)
+
+## Commit Message Format
+
+**ALWAYS** use lowercase conventional commit format for commit messages:
+
+```text
+{type}: {description}
+```
+
+### Format Rules
+
+- Use lowercase for the type prefix
+- Use lowercase for the description (except proper nouns)
+- Keep descriptions concise but descriptive
+- Include issue number in description when applicable
+
+### Commit Message Examples
+
+```bash
+fix: replace view public profile button with preview profile when not published
+
+fix: standardize image upload size limit to 10mb
+
+feat: add user authentication flow
+
+refactor: improve search performance
+
+docs: update api documentation
+```
+
+### Commit Types
+
+- `fix:` - Bug fixes
+- `feat:` - New features
+- `refactor:` - Code refactoring
+- `docs:` - Documentation changes
+- `test:` - Test additions/changes
+- `chore:` - Maintenance tasks
+- `style:` - Code style changes (formatting, etc.)
+- `perf:` - Performance improvements
+
+## Status Synchronization
+
+### When Starting Work
+
+1. Issue status automatically changes to **In Progress** (via Cursor/MCP automation)
+2. Optionally add issue comment: "Starting work on this..."
+
+### When Code is Committed and Pushed
+
+1. Code is committed and pushed to `develop`
+2. Issue status automatically changes to **Waiting for QA Approval** (via MCP automation)
+
+### When QA Completes Testing
+
+1. QA tests the changes on `dev.tatfindr.app`
+2. If QA is happy the work is complete, mark the issue status as **Done**
+3. If issues are found, add comments to the issue with details
+
+### Issue Status Flow
+
+- **Backlog** → Future work, not in current sprint
+- **Sprint (P0/P1/P2)** → In current sprint with priority
+- **In Progress** → Work is being done (auto-updated by Cursor/MCP)
+- **Waiting for QA Approval** → Code pushed to develop, waiting for QA testing (auto-updated by MCP)
+- **Done** → QA has tested and approved the work
+
+## MCP Tools Available
+
+### Issue Management
+
+- `mcp_github_issue_read` - Read issue details
+- `mcp_github_issue_write` - Create/update issues
+- `mcp_github_add_issue_comment` - Add comments to issues
+- `mcp_github_list_issues` - List issues
+- `mcp_github_search_issues` - Search for issues
+
+### Branch Management
+
+- `mcp_github_create_branch` - Create new branch
+- `mcp_github_list_branches` - List branches
+
+### Code Search
+
+- `mcp_github_search_code` - Search code across repos
+- `mcp_github_get_file_contents` - Get file contents
+
+## Best Practices
+
+1. **ALWAYS** create issues using MCP tools - they will automatically be added to the Tatfindr GitHub Project via automation
+2. **ALWAYS** use the branch naming convention if creating feature branches: `{type}/{issue-number}-{kebab-case-name}`
+3. **ALWAYS** use lowercase conventional commit format for commit messages (e.g., `fix: replace button with preview profile`)
+4. **ALWAYS** commit and push directly to `develop` branch
+5. **ALWAYS** update issue with progress comments when helpful
+6. **ALWAYS** let MCP automation handle status updates (In Progress → Waiting for QA Approval)
+
+## Workflow Checklist
+
+When working on an issue:
+
+- [ ] Read issue details using `mcp_github_issue_read`
+- [ ] Issue status automatically changes to **In Progress** (via Cursor/MCP)
+- [ ] Optionally create branch with proper naming convention (or work directly on develop)
+- [ ] Implement the fix/feature
+- [ ] **Backend (C#):** Ensure all C# projects in `src/Api.Operations` compile with no errors (e.g. `dotnet build src/Api.Operations/Tatfindr.sln` or build the relevant project). Work is not complete if there are compilation errors.
+- [ ] Commit changes with descriptive messages using lowercase conventional commit format
+- [ ] Push code to `develop` branch
+- [ ] Issue status automatically changes to **Waiting for QA Approval** (via MCP)
+- [ ] QA tests the changes on `dev.tatfindr.app`
+- [ ] QA marks issue as **Done** when testing is complete
+- [ ] **Testing: Manually tested / QA approved** ✅
+
+## When is work complete?
+
+Before considering work complete (and before committing/pushing):
+
+- **Backend (C#):** All C# files in the backend must compile successfully with **no compilation errors**. Run a full build of the API solution (e.g. from repo root: `dotnet build src/Api.Operations/Tatfindr.sln`). Resolve any build errors before marking work done or pushing.
+
+## Scope
+
+These rules apply to:
+
+- All GitHub issue triage and management
+- Optional branch creation and naming (if using feature branches)
+- Direct commits to `develop` branch
+- Issue status synchronization ("In Progress" → "Waiting for QA Approval" → "Done")
+- QA workflow and approval process
+- Using GitHub MCP tools for automation

@@ -1,0 +1,40 @@
+# Styling Conventions
+
+## Interactive Element States
+
+### Selected Items
+
+- **ALWAYS use `bg-primary-500` for selected items** - Unless explicitly told otherwise
+- Selected items indicate an active/current state (e.g., selected filters, active tabs, checked items)
+
+**Examples:**
+- Selected style tags: `bg-primary-500 text-primary-foreground`
+- Selected dropdown items: `bg-primary-500 text-primary-foreground`
+- Active filter buttons: `bg-primary-500 text-primary-foreground`
+- Selected toggle buttons: `bg-primary-500 text-primary-foreground`
+
+### Hovered Interactables
+
+- **ALWAYS use `bg-primary-600/90` for hovered interactable elements** - Unless explicitly told otherwise
+- Hover states provide visual feedback when users interact with clickable elements
+
+**Examples:**
+- Hovered menu items: `hover:bg-primary-600/90`
+- Hovered buttons: `hover:bg-primary-600/90`
+- Hovered links: `hover:bg-primary-600/90`
+- Hovered dropdown items: `hover:bg-primary-600/90`
+
+### Rules:
+
+1. **ALWAYS** use `bg-primary-500` for selected/active states unless told otherwise
+2. **ALWAYS** use `bg-primary-600/90` for hover states unless told otherwise
+3. When both selected and hovered, selected state takes precedence
+4. These defaults apply to all interactive elements: buttons, menu items, dropdown items, tabs, toggles, etc.
+
+## Scope
+
+These rules apply to:
+- All interactive UI elements throughout the front-end application
+- Buttons, menu items, dropdown items, tabs, toggles, cards, links
+- Filter selections, navigation states, form controls
+- Any element that responds to user interaction

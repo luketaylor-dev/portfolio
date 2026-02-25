@@ -1,0 +1,74 @@
+---
+alwaysApply: true
+---
+
+# Prop Drilling Best Practices
+
+## General Principles
+
+- **Pass only what is needed**: Don't pass entire objects if only specific fields are required
+- **Avoid deep prop drilling**: If props need to pass through 3+ levels, consider using Context API or component composition
+- **Use Context for shared state**: Use React Context for state that needs to be accessed by multiple components at different levels
+- **Component composition over prop drilling**: Prefer component composition patterns (children, render props) when possible
+
+## When to Use Context
+
+Use Context API when:
+
+- State needs to be shared across multiple components at different nesting levels
+- State is frequently accessed by many components
+- State is relatively stable (doesn't change frequently)
+
+Examples:
+
+- Search/filter state (browse page)
+- Auth state (user, token)
+- Theme preferences
+- Toast notifications
+
+## When to Pass Props
+
+Pass props directly when:
+
+- Props are only needed by immediate children (1-2 levels deep)
+- Props are specific to a component's functionality
+- Props are not shared across multiple unrelated components
+
+## Component Patterns
+
+**Good**: Pass only needed fields
+
+```typescript
+<ArtistCard
+  name={artist.name}
+  city={artist.city}
+  styles={artist.styles}
+/>
+```
+
+**Avoid**: Passing entire objects unnecessarily
+
+```typescript
+<ArtistCard artist={artist} /> // Only if all fields are needed
+```
+
+**Good**: Use Context for shared state
+
+```typescript
+// contexts/browse/search-context.tsx
+const SearchContext = createContext();
+
+// Use in components
+const { filters, updateFilters } = useSearchContext();
+```
+
+**Good**: Component composition
+
+```typescript
+<Card>
+  <CardHeader>
+    <CardTitle>{title}</CardTitle>
+  </CardHeader>
+  <CardContent>{children}</CardContent>
+</Card>
+```

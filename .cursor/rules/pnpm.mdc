@@ -1,0 +1,16 @@
+# Package Manager: pnpm
+
+Always use **pnpm** for all Node.js package management tasks in this project.
+
+## Rules
+
+- **Always use pnpm** instead of npm or yarn
+- Use `pnpm install` instead of `npm install`
+- Use `pnpm add <package>` instead of `npm install <package>`
+- Use `pnpm run <script>` instead of `npm run <script>`
+- Use `pnpm exec <command>` instead of `npx <command>`
+- Never use npm or yarn commands
+
+## Frontend
+
+The frontend project uses pnpm as the package manager. All package management commands should use pnpm.

@@ -225,6 +225,45 @@ A larger refactor is being considered — changing the site's looks significantl
 
 ---
 
+## Phase 10: Portfolio Best Practices & Nice Additions
+
+Recommendations gathered from common portfolio patterns and gaps identified in the current site.
+
+### 10.1 Portfolio basics (higher impact)
+
+| Item | Notes |
+|------|-------|
+| **Testimonials / recommendations** | Add 2–3 short quotes from clients or colleagues. "What people say" block on homepage or About. Builds trust. |
+| **Availability badge** | "Currently available" or "Booked until X" in header/hero. Optional: Calendly link for booking calls. |
+| **RSS feed** | Add `/feed.xml` or `/rss.xml` route. Dev audiences expect it. Include `<link rel="alternate" type="application/rss+xml">` in layout. |
+| **Custom 404 page** | Replace default Next.js 404 with branded page + clear nav. Low effort, good polish. |
+
+### 10.2 Nice additions
+
+| Item | Notes |
+|------|-------|
+| **Now / Uses page** | `/now` or `/uses` – what you're working on, tools, setup. Popular with dev portfolios. |
+| **Blog enhancements** | TOC for long posts, reading progress bar, surface read time in UI, copy-link on headings. |
+| **Search** | Cmd+K search modal for projects + blog posts. Project filter exists; full search would help. |
+| **Human sitemap** | `/sitemap` page listing main sections in a readable way (not just XML for crawlers). |
+
+### 10.3 Tech / package considerations
+
+| Item | Notes |
+|------|-------|
+| **Syntax highlighting** | `react-syntax-highlighter` is heavy. Consider Shiki, rehype-pretty-code, or Prism for smaller bundle. |
+| **Content pipeline** | Gray-matter + next-mdx-remote works. Velite or @next/mdx only if you want typed content or native MDX. |
+| **Analytics** | Vercel Analytics + plausible-tracker – check both are used; one privacy-focused stack may be enough. |
+| **Tailwind v4** | Plan migration when stable; could align with Phase 9 visual overhaul. |
+
+### 10.4 Priority (impact vs effort)
+
+- **Low effort, high impact:** Testimonials, RSS feed
+- **Low effort, medium impact:** Custom 404, availability badge, Now/Uses page
+- **Medium effort:** Blog TOC + read time, search (Cmd+K), lighter syntax highlighter
+
+---
+
 ## Checklist Summary
 
 - [ ] Create `src/lib/logger.ts` with env-gated debug logging
@@ -251,3 +290,12 @@ A larger refactor is being considered — changing the site's looks significantl
 - [ ] **Phase 8:** Add "Beyond code" / "Creative pipeline" section (homepage or About)
 - [ ] **Phase 8:** Optional: Create `/personal` gallery for Blender work
 - [ ] **Phase 9 (Future):** Visual overhaul — consider shadcn/ui migration as part of it
+- [ ] **Phase 10:** Add testimonials section (homepage or About)
+- [ ] **Phase 10:** Add availability badge (header/hero)
+- [ ] **Phase 10:** Add RSS feed (`/feed.xml` or `/rss.xml`)
+- [ ] **Phase 10:** Create custom 404 page
+- [ ] **Phase 10:** Optional: Add `/now` or `/uses` page
+- [ ] **Phase 10:** Optional: Blog TOC, reading progress, read time in UI
+- [ ] **Phase 10:** Optional: Cmd+K search for projects + blog
+- [ ] **Phase 10:** Optional: Human-readable `/sitemap` page
+- [ ] **Phase 10:** Optional: Swap syntax highlighter for lighter option (Shiki/Prism)

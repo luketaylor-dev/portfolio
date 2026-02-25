@@ -1,0 +1,320 @@
+# API Regeneration Workflow
+
+## Overview
+
+When the backend API is changed (endpoints, DTOs, request/response models, etc.), you **MUST** follow a specific workflow to ensure the frontend client stays in sync with the backend changes.
+
+## Critical Rules
+
+### ⚠️ NEVER Edit Generated Code
+
+**NEVER** manually edit any files in `src/lib/api/generated/`. These files are auto-generated and will be overwritten on the next regeneration.
+
+**What this means:**
+- ❌ **NEVER** edit `src/lib/api/generated/api.ts`
+- ❌ **NEVER** edit `src/lib/api/generated/data-contracts.ts`
+- ❌ **NEVER** edit any other files in `src/lib/api/generated/`
+- ✅ **ALWAYS** regenerate the API client when changes are needed
+- ✅ **ALWAYS** make customizations in mappers, queries, mutations, or hooks (not in generated files)
+
+**If you need to customize behavior:**
+- Use mappers (`src/lib/api/mappers/`) to transform DTOs to UI models
+- Use query/mutation factories (`src/lib/api/{resource}/`) to wrap generated API calls
+- Use hooks (`src/lib/hooks/{resource}/`) to add React Query logic
+
+### ⚠️ NEVER Run Staging or Production Startup Configurations
+
+**NEVER** automatically run or use staging or production startup configurations. **ONLY** use `http-localdev` configuration.
+
+**What this means:**
+- ✅ **ALWAYS** use `http-localdev` configuration for local development
+- ❌ **NEVER** run `http-staging` configuration
+- ❌ **NEVER** run production configurations
+- ❌ **NEVER** use any startup configuration other than `http-localdev` for local development
+
+**Why this is critical:**
+- Running staging/production configurations can connect to live databases
+- Database migrations may run automatically on application startup
+- This could **accidentally migrate live production/staging database tables**
+- This could cause **data loss, downtime, or corruption** in production/staging environments
+
+**Available configurations:**
+- ✅ `http-localdev` - **ONLY USE THIS** - Development environment, local database
+- ❌ `http-staging` - **NEVER USE** - Staging environment, staging database
+- ❌ Production configurations - **NEVER USE** - Production environment, production database
+
+### ⚠️ ALWAYS Regenerate Against Running Local Dev Instance
+
+**ALWAYS** regenerate the API client against the running local development instance using the `http-localdev` configuration.
+
+**What this means:**
+- ✅ **ALWAYS** start the backend API with `http-localdev` configuration first
+- ✅ **ALWAYS** verify the API is running at `http://localhost:5121` before regenerating
+- ✅ **ALWAYS** run `pnpm generate-api` which fetches from the running local instance
+- ❌ **NEVER** regenerate against staging, production, or any other environment
+- ❌ **NEVER** use cached or stale Swagger specs
+
+**Why this matters:**
+- The local dev instance reflects the latest backend changes
+- Regenerating against the wrong environment can cause type mismatches
+- The generated code must match the actual running API
+
+## Workflow Steps
+
+### 1. Start Backend API with http-localdev Configuration
+
+**ALWAYS** start the backend API using the `http-localdev` startup configuration before regenerating the API client.
+
+**⚠️ CRITICAL:** Only use `http-localdev` configuration. **NEVER** use `http-staging` or any production configuration, as this could accidentally migrate live database tables.
+
+The `http-localdev` configuration:
+- Runs the API on `http://localhost:5121`
+- Enables Swagger/OpenAPI documentation
+- Sets environment to `Development`
+- Connects to local development database (safe for migrations)
+
+**How to start:**
+- In VS Code: Use the launch configuration **"http-localdev"** from the Run and Debug panel
+- Or via command line:
+  ```bash
+  cd src/Api.Operations
+  dotnet run --project Tatfindr.Api --launch-profile http-localdev
+  ```
+
+**⚠️ WARNING:** Do NOT use:
+- ❌ `http-staging` - This connects to staging database and could migrate live tables
+- ❌ Any production configuration - This could cause catastrophic data loss
+
+**Verify the API is running:**
+- Check that Swagger UI is accessible at `http://localhost:5121/swagger`
+- Verify the Swagger JSON spec is available at `http://localhost:5121/swagger/v1/swagger.json`
+- Verify the environment is `Development` (not `Staging` or `Production`)
+
+### 2. Regenerate Client API
+
+**ALWAYS** regenerate the client API after backend changes using:
+
+```bash
+cd src/Client.Operations
+pnpm generate-api
+```
+
+This command:
+- Fetches the Swagger spec from the **running local dev instance** at `http://localhost:5121/swagger/v1/swagger.json`
+- Generates TypeScript client code using `swagger-typescript-api`
+- Outputs to `src/lib/api/generated/`
+- Cleans and regenerates all API client files (overwrites any manual edits)
+
+**Critical Requirements:**
+- ✅ The API **MUST** be running with `http-localdev` configuration before running this command
+- ✅ The API **MUST** be accessible at `http://localhost:5121`
+- ✅ **NEVER** regenerate against staging, production, or any other environment
+- ⚠️ **NEVER** manually edit the generated files - they will be overwritten on the next regeneration
+
+### 3. Review Generated Changes
+
+After regeneration, **ALWAYS** review the generated files in `src/lib/api/generated/` to understand what changed:
+
+- **New endpoints** - Check `api.ts` for new API methods
+- **New/changed DTOs** - Check `data-contracts.ts` for type changes
+- **Breaking changes** - Look for removed properties, changed types, or renamed endpoints
+
+### 4. Check Mappings, Queries, and Mutations
+
+**ALWAYS** check and update the following layers after API regeneration:
+
+#### 4.1. Mappers (`src/lib/api/mappers/`)
+
+- **Check existing mappers** - Verify that mapper functions still work with new DTO structures
+- **Update mappers** - If DTOs changed, update the mapping logic in mapper files (e.g., `artist.mapper.ts`, `enquiry.mapper.ts`)
+- **Add new mappers** - If new DTOs were added, create corresponding mapper files
+
+**Example:**
+```typescript
+// src/lib/api/mappers/artist.mapper.ts
+export function mapArtistDtoToModel(dto: ArtistDto): Artist {
+  return {
+    id: dto.id,
+    name: dto.name,
+    // If DTO structure changed, update mapping here
+  };
+}
+```
+
+#### 4.2. Query Factories (`src/lib/api/{resource}/{resource}.queries.ts`)
+
+- **Check existing queries** - Verify query factories still work with new API methods
+- **Update queries** - If API methods changed (parameters, return types), update query factories
+- **Add new queries** - If new endpoints were added, create corresponding query factories
+
+**Example:**
+```typescript
+// src/lib/api/artists/artists.queries.ts
+export const artistQueries = {
+  item: (id: string) =>
+    queryOptions({
+      queryKey: ['artists', 'item', id] as const,
+      queryFn: async (): Promise<Artist> => {
+        // If API method signature changed, update here
+        const response = await artistsApi.artistsDetail({ id });
+        return mapArtistDtoToModel(response);
+      },
+    }),
+};
+```
+
+#### 4.3. Mutation Factories (`src/lib/api/{resource}/{resource}.mutations.ts`)
+
+- **Check existing mutations** - Verify mutation factories still work with new API methods
+- **Update mutations** - If API methods changed (parameters, request/response types), update mutation factories
+- **Add new mutations** - If new endpoints were added, create corresponding mutation factories
+
+**Example:**
+```typescript
+// src/lib/api/artists/artists.mutations.ts
+export const artistMutations = {
+  update: (id: string) => ({
+    mutationFn: async (data: UpdateArtistDto): Promise<Artist> => {
+      // If API method signature changed, update here
+      const response = await artistsApi.artistsUpdate({ id }, data);
+      return mapArtistDtoToModel(response);
+    },
+  }),
+};
+```
+
+### 5. Check Hook Implementations
+
+**ALWAYS** check hooks that consume queries and mutations:
+
+#### 5.1. Query Hooks (`src/lib/hooks/{resource}/`)
+
+- **Check existing hooks** - Verify hooks still work with updated query factories
+- **Update hooks** - If query factories changed (return types, parameters), update hooks
+- **Add new hooks** - If new queries were added, create corresponding hooks
+
+**Example:**
+```typescript
+// src/lib/hooks/artists/use-artist.ts
+export function useArtist(id: string) {
+  const query = useQuery({
+    ...artistQueries.item(id),
+  });
+
+  return {
+    artist: query.data,
+    isLoading: query.isLoading,
+    // If query return type changed, update return type here
+  };
+}
+```
+
+#### 5.2. Mutation Hooks (`src/lib/hooks/{resource}/`)
+
+- **Check existing hooks** - Verify hooks still work with updated mutation factories
+- **Update hooks** - If mutation factories changed (parameters, return types), update hooks
+- **Add new hooks** - If new mutations were added, create corresponding hooks
+
+**Example:**
+```typescript
+// src/lib/hooks/artists/use-artist-update.ts
+export function useArtistUpdate(id: string) {
+  const mutation = useMutation({
+    ...artistMutations.update(id),
+  });
+
+  return {
+    mutateAsync: mutation.mutateAsync,
+    // If mutation signature changed, update here
+  };
+}
+```
+
+### 6. Check Component Usage
+
+**ALWAYS** check components that consume hooks:
+
+- **Check component imports** - Verify hooks are still imported correctly
+- **Check component usage** - Verify hook return values match component expectations
+- **Update components** - If hooks changed (return types, parameters), update components
+
+### 7. Notify Developer of Issues
+
+**ALWAYS** notify the developer if:
+
+- **Breaking changes detected** - If API changes break existing functionality
+- **Unclear mappings** - If it's unclear how to map new DTOs to UI models
+- **Missing implementations** - If new endpoints need query/mutation factories or hooks
+- **Type mismatches** - If generated types don't match expected usage patterns
+- **Deprecated patterns** - If API changes suggest deprecated patterns need updating
+
+**How to notify:**
+- Add clear comments in the code where issues are found
+- Document the specific problem and what needs to be addressed
+- If critical, create a GitHub issue or notify the developer directly
+
+**Example notification comment:**
+```typescript
+// TODO: API REGENERATION ISSUE
+// The ArtistDto now includes a new 'verified' field that needs to be mapped
+// to the Artist model. Update mapArtistDtoToModel() in artist.mapper.ts
+// and add the 'verified' field to the Artist type in src/types/artist.types.ts
+```
+
+## Complete Checklist
+
+When backend API changes are made, follow this checklist:
+
+- [ ] **Verify you are using `http-localdev` configuration (NOT staging/production)**
+- [ ] Start backend API with `http-localdev` configuration
+- [ ] Verify API is running and Swagger is accessible
+- [ ] Verify environment is `Development` (not `Staging` or `Production`)
+- [ ] Run `pnpm generate-api` to regenerate client
+- [ ] Review generated files in `src/lib/api/generated/`
+- [ ] Check and update mappers in `src/lib/api/mappers/`
+- [ ] Check and update query factories in `src/lib/api/{resource}/`
+- [ ] Check and update mutation factories in `src/lib/api/{resource}/`
+- [ ] Check and update query hooks in `src/lib/hooks/{resource}/`
+- [ ] Check and update mutation hooks in `src/lib/hooks/{resource}/`
+- [ ] Check component usage of hooks
+- [ ] Document any issues or unclear changes
+- [ ] Notify developer if action is needed
+
+## When to Follow This Workflow
+
+**ALWAYS** follow this workflow when:
+
+- Backend API endpoints are added, modified, or removed
+- DTOs (Data Transfer Objects) are changed
+- Request/response models are updated
+- Swagger/OpenAPI documentation is updated
+- API versioning changes occur
+- Before committing backend API changes
+
+## Rules Summary
+
+1. **NEVER** manually edit any files in `src/lib/api/generated/` - they will be overwritten
+2. **NEVER** run staging or production startup configurations (`http-staging`, production configs) - this could accidentally migrate live database tables
+3. **ALWAYS** use only `http-localdev` configuration for local development
+4. **ALWAYS** regenerate the API client against the running local dev instance (`http-localdev`)
+5. **ALWAYS** start the backend API with `http-localdev` configuration before regenerating
+6. **ALWAYS** verify the API is running at `http://localhost:5121` before running `pnpm generate-api`
+7. **ALWAYS** verify the environment is `Development` (not `Staging` or `Production`) before starting
+8. **ALWAYS** run `pnpm generate-api` after backend API changes
+9. **ALWAYS** review generated files to understand what changed
+10. **ALWAYS** check mappers, queries, mutations, and hooks after regeneration
+11. **ALWAYS** verify component usage still works correctly
+12. **ALWAYS** notify the developer if issues are found or action is needed
+13. **NEVER** skip the regeneration step after backend changes
+14. **NEVER** regenerate against staging, production, or any environment other than local dev
+
+## Scope
+
+These rules apply to:
+
+- All backend API changes in `src/Api.Operations/`
+- All API client generation in `src/Client.Operations/src/lib/api/generated/`
+- All query/mutation factories in `src/Client.Operations/src/lib/api/{resource}/`
+- All mapper functions in `src/Client.Operations/src/lib/api/mappers/`
+- All hooks in `src/Client.Operations/src/lib/hooks/`
+- All components that consume API hooks

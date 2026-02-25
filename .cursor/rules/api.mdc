@@ -1,0 +1,162 @@
+# API and Error Handling
+
+## API Client Generation
+
+### ⚠️ Critical Rules
+
+- **NEVER run staging or production startup configurations** - Only use `http-localdev` configuration to prevent accidentally migrating live database tables
+- **NEVER manually edit files in `src/lib/api/generated/`** - These files are auto-generated and will be overwritten on the next regeneration
+- **ALWAYS regenerate against the running local dev instance** - Use the `http-localdev` configuration, never regenerate against staging/production
+- **ALWAYS use the autogen script for API client generation** - Never manually create or modify files in `src/lib/api/generated/`
+- **ALWAYS run `pnpm generate-api` after backend API changes** - This script generates TypeScript client code from the running Swagger/OpenAPI spec
+
+### API Generation Process
+
+1. **⚠️ CRITICAL: Start backend API with `http-localdev` configuration ONLY** - Never use `http-staging` or production configurations, as this could accidentally migrate live database tables
+2. **Verify you are using `http-localdev`** - Check that the environment is `Development` (not `Staging` or `Production`)
+3. **Verify API is running** - Check that Swagger UI is accessible at `http://localhost:5121/swagger`
+4. **Run the generation script**:
+
+   ```bash
+   cd src/Client.Operations
+   pnpm generate-api
+   ```
+
+5. **The script will**:
+   - Fetch the Swagger spec from the **running local dev instance** at `http://localhost:5121/swagger/v1/swagger.json`
+   - Generate TypeScript client code using `swagger-typescript-api`
+   - Output to `src/lib/api/generated/`
+   - **Clean and regenerate all API client files** (overwrites any manual edits)
+
+**Important:**
+
+- ✅ **ALWAYS** use `http-localdev` configuration ONLY for local development
+- ❌ **NEVER** run `http-staging` or production configurations - this could accidentally migrate live database tables
+- ✅ **ALWAYS** regenerate against the local dev instance (`http-localdev` configuration)
+- ❌ **NEVER** regenerate against staging, production, or any other environment
+- ❌ **NEVER** manually edit generated files - they will be overwritten
+
+### When to Regenerate
+
+- After adding new API endpoints
+- After modifying existing API endpoints
+- After changing DTOs or request/response models
+- After updating Swagger/OpenAPI documentation
+- Before committing backend API changes
+
+### Rules
+
+1. **NEVER** run staging or production startup configurations (`http-staging`, production configs) - this could accidentally migrate live database tables
+2. **ALWAYS** use only `http-localdev` configuration for local development
+3. **ALWAYS** verify the environment is `Development` (not `Staging` or `Production`) before starting the API
+4. **NEVER** manually edit any files in `src/lib/api/generated/` - they will be overwritten on the next regeneration
+5. **ALWAYS** regenerate against the running local dev instance using `http-localdev` configuration
+6. **ALWAYS** use `pnpm generate-api` to regenerate API client after backend changes
+7. **ALWAYS** ensure the backend API is running with `http-localdev` configuration before generating
+8. **ALWAYS** verify the API is accessible at `http://localhost:5121/swagger` before regenerating
+9. **NEVER** regenerate against staging, production, or any environment other than local dev
+10. **ALWAYS** commit the generated API files along with backend changes
+11. If the API is not running, start it first with `http-localdev`, then run the generation script
+12. **ALWAYS** use `--union-enums` flag to generate string literal union types instead of TypeScript enums (already configured in package.json)
+
+## Error Handling
+
+- **ALWAYS use `ApiError` type from `@/src/types/common.types`** - Never use `ProblemDetails` directly from generated API types outside of the generated API folder
+- **ALWAYS use `extractErrorMessage` utility function** - Never manually destructure error objects or cast errors with messy inline types
+- **NEVER use `ProblemDetails` type directly in components or hooks** - Use `ApiError` type alias instead for clarity and consistency
+- **NEVER manually destructure error response data** - Use the `extractErrorMessage` utility function from `@/src/lib/utils/error-utils`
+
+### Error Utility Function:
+
+All error message extraction should use the centralized utility:
+
+```typescript
+import { extractErrorMessage } from "@/src/lib/utils/error-utils";
+import { ApiError } from "@/src/types/common.types";
+```
+
+### Usage Examples:
+
+**Good: Using extractErrorMessage utility**
+
+```typescript
+import { extractErrorMessage } from "@/src/lib/utils/error-utils";
+
+try {
+  await mutation.mutateAsync(data);
+} catch (error: unknown) {
+  const message = extractErrorMessage(
+    error,
+    "Failed to perform action. Please try again."
+  );
+  toast.error(message);
+}
+```
+
+**Bad: Manual error destructuring**
+
+```typescript
+try {
+  await mutation.mutateAsync(data);
+} catch (error: unknown) {
+  const message =
+    (error as { response?: { data?: { detail?: string } } })?.response?.data
+      ?.detail || "Failed to perform action. Please try again.";
+  toast.error(message);
+}
+```
+
+**Bad: Using ProblemDetails directly**
+
+```typescript
+import { ProblemDetails } from "@/src/lib/api/generated/data-contracts";
+
+try {
+  await mutation.mutateAsync(data);
+} catch (error: unknown) {
+  const message =
+    (error as ProblemDetails)?.response?.data?.detail ||
+    "Failed to perform action. Please try again.";
+  toast.error(message);
+}
+```
+
+**Good: Using ApiError type when needed**
+
+```typescript
+import { ApiError } from "@/src/types/common.types";
+import { extractErrorMessage } from "@/src/lib/utils/error-utils";
+
+try {
+  await mutation.mutateAsync(data);
+} catch (error: unknown) {
+  const errorMessage = extractErrorMessage(error, "Failed to send request.");
+
+  // Access status code if needed
+  const apiError = error as ApiError & {
+    response?: { status?: number };
+  };
+  if (apiError?.response?.status === 400) {
+    // Handle specific status code
+  }
+
+  toast.error(errorMessage);
+}
+```
+
+### Rules:
+
+1. **ALWAYS** import `extractErrorMessage` from `@/src/lib/utils/error-utils` for error message extraction
+2. **ALWAYS** use `ApiError` type from `@/src/types/common.types` instead of `ProblemDetails` when typing errors
+3. **NEVER** manually destructure error objects like `(error as { response?: { data?: { detail?: string } } })?.response?.data?.detail`
+4. **NEVER** import `ProblemDetails` from generated API types in components or hooks (only use in generated API folder)
+5. **ALWAYS** provide a sensible default message as the second parameter to `extractErrorMessage`
+6. The `extractErrorMessage` function handles both API errors (with `response.data.detail`) and standard Error objects
+7. When checking error status codes, cast to `ApiError & { response?: { status?: number } }` for type safety
+
+## Scope
+
+These rules apply to:
+
+- All API client generation and `src/lib/api/generated/` files
+- All error handling throughout the frontend project

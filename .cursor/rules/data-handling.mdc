@@ -1,0 +1,187 @@
+# Data Handling
+
+## Date Handling
+
+- **ALWAYS use day.js for all date operations** - Never use JavaScript's native `Date` object directly
+- **ALWAYS import date utilities from `@/src/lib/utils/date-utils`** - Use the centralized date utility functions
+- **NEVER use `new Date()`** - Use `dayjs()` or date utility functions instead
+- **NEVER use `.toISOString()` directly on Date objects** - Use `toISOString()` from date-utils
+- **NEVER use `.getFullYear()`, `.getMonth()`, `.getDate()`, etc.** - Use day.js methods instead
+
+### Date Utility Functions:
+
+All date operations should use functions from `@/src/lib/utils/date-utils`:
+
+```typescript
+import {
+  dayjs,
+  toDate,
+  toISOString,
+  formatDate,
+  formatDateLong,
+  sortDates,
+} from "@/src/lib/utils/date-utils";
+
+// Current date/time
+const now = dayjs();
+
+// Convert to Date object (when needed for APIs)
+const dateObj = toDate("2024-01-01");
+
+// Convert to ISO string
+const isoString = toISOString(dateObj);
+
+// Format dates
+const formatted = formatDateLong(dateObj); // "January 1, 2024"
+const short = formatDate(dateObj, "MMM D, YYYY"); // "Jan 1, 2024"
+
+// Sort dates
+const sorted = sortDates([date1, date2, date3]);
+```
+
+### Common Patterns:
+
+**Instead of:**
+
+```typescript
+const now = new Date().toISOString();
+const year = new Date().getFullYear();
+const date = new Date(dateString);
+```
+
+**Use:**
+
+```typescript
+const now = toISOString() || "";
+const year = dayjs().year();
+const date = toDate(dateString);
+```
+
+### Rules:
+
+1. **ALWAYS** import date utilities from `@/src/lib/utils/date-utils`
+2. **NEVER** use `new Date()` - use `dayjs()` or utility functions
+3. **NEVER** call `.toISOString()` on Date objects - use `toISOString()` utility
+4. **NEVER** use Date methods like `.getFullYear()`, `.getMonth()`, etc. - use day.js methods
+5. All date formatting should use `formatDate()`, `formatDateLong()`, etc. from date-utils
+6. Date comparisons should use day.js methods (`.isBefore()`, `.isAfter()`, `.isSame()`, etc.)
+
+## Data Mapping and Transformation
+
+- **ALWAYS extract data mapping/transformation logic from UI components** - Mapping logic between form data, API DTOs, and UI models should never be in component files
+- **ALWAYS place mapper functions in `src/lib/api/mappers/`** - All data transformation functions belong in dedicated mapper files
+- **NEVER use `any` type for API data** - Always use proper types (DTOs, extended types, or union types)
+- **NEVER inline complex data transformations in component handlers** - Extract transformation logic into reusable mapper functions
+
+### Mapper Function Location:
+
+All data mapping functions should be in `src/lib/api/mappers/`:
+
+```
+src/lib/api/mappers/
+  artist.mapper.ts      # Artist-related mappings
+  enquiry.mapper.ts     # Enquiry-related mappings
+  studio.mapper.ts      # Studio-related mappings
+  index.ts              # Central exports
+```
+
+### Mapper Function Pattern:
+
+```typescript
+// Good: Mapper function in mapper file
+// src/lib/api/mappers/artist.mapper.ts
+export function mapComplianceStepDataToUpdateDto(
+  data: ComplianceStepData
+): UpdateArtistWithComplianceDto {
+  return {
+    councilRegistrationPractitioner: data.councilRegistrationPractitioner
+      ?.hasRegistration
+      ? true
+      : false,
+    // ... mapping logic
+  };
+}
+
+// Component uses mapper
+// src/components/organisms/profile-editor/compliance-editor.tsx
+import { mapComplianceStepDataToUpdateDto } from "@/src/lib/api/mappers";
+
+const onSubmit = async (data: ComplianceStepData) => {
+  const updateData = mapComplianceStepDataToUpdateDto(data);
+  await updateArtist.mutateAsync(updateData);
+};
+```
+
+### Bad Examples:
+
+```typescript
+// Bad: Mapping logic in component
+const onSubmit = async (data: ComplianceStepData) => {
+  const updateData: any = {
+    councilRegistrationPractitioner: data.councilRegistrationPractitioner
+      ?.hasRegistration
+      ? true
+      : false,
+    councilRegistrationPractitionerNumber: data.councilRegistrationPractitioner
+      ?.hasRegistration
+      ? data.councilRegistrationPractitioner.registrationNumber || null
+      : null,
+    // ... 50+ lines of transformation logic
+  };
+  await updateArtist.mutateAsync(updateData);
+};
+
+// Bad: Using any type
+const updateData: any = {
+  /* ... */
+};
+
+// Bad: Inline complex transformations
+const transformed = data.map((item) => ({
+  // complex transformation logic
+}));
+```
+
+### Good Examples:
+
+```typescript
+// Good: Mapper function
+export function mapFormDataToApiDto(formData: FormData): ApiDto {
+  return {
+    field1: transformField1(formData.field1),
+    field2: transformField2(formData.field2),
+  };
+}
+
+// Good: Proper typing
+export type ExtendedUpdateDto = UpdateDto & {
+  customField?: string | null;
+};
+
+// Good: Component uses mapper
+const onSubmit = async (data: FormData) => {
+  const apiData = mapFormDataToApiDto(data);
+  await mutation.mutateAsync(apiData);
+};
+```
+
+### Rules:
+
+1. **ALWAYS** extract data transformation logic into mapper functions
+2. **ALWAYS** place mapper functions in `src/lib/api/mappers/`
+3. **ALWAYS** export mapper functions from `src/lib/api/mappers/index.ts`
+4. **NEVER** use `any` type for API data - create proper types or extend existing DTOs
+5. **NEVER** inline complex data transformations in component handlers (onSubmit, onChange, etc.)
+6. **ALWAYS** use mapper functions when converting between:
+   - Form data to API DTOs
+   - API DTOs to UI models
+   - UI models to API DTOs
+   - Any other data format transformations
+7. Mapper functions should be pure functions (no side effects, predictable output)
+8. Mapper functions should be well-typed with proper TypeScript types
+
+## Scope
+
+These rules apply to:
+- All date operations throughout the frontend project
+- All data mapping and transformation logic throughout the frontend project
