@@ -20,14 +20,15 @@ Create `src/lib/logger.ts` (or `Logger.ts` if you prefer that naming):
 
 ### 1.2 Replace console calls
 
-| File | Current | Action |
-|------|---------|--------|
-| `src/lib/performance.ts` | `console.log("LCP:", ...)`, `console.log("Page load time:", ...)` | Remove or route through logger (debug-only) |
-| `src/components/content/social-share.tsx` | `console.log("Error sharing:", error)` | Use `logger.error()` or `logger.warn()` (always useful for real errors) |
+| File                                      | Current                                                           | Action                                                                  |
+| ----------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `src/lib/performance.ts`                  | `console.log("LCP:", ...)`, `console.log("Page load time:", ...)` | Remove or route through logger (debug-only)                             |
+| `src/components/content/social-share.tsx` | `console.log("Error sharing:", error)`                            | Use `logger.error()` or `logger.warn()` (always useful for real errors) |
 
 Keep `console.error` in error boundaries and API routes for stack traces, unless you prefer routing those through the logger too (then use `logger.error()`).
 
 **Env variable**: Add to `.env.example`:
+
 ```
 # Set to "true" to enable debug logging (LCP, page load, etc.)
 DEBUG=false
@@ -110,11 +111,7 @@ In `src/components/ui/interactive-button.tsx`:
 - Update tech stack (Next.js 16, gray-matter, next-mdx-remote)
 - Remove Contentlayer references and `pnpm content` instructions
 
-### 5.2 .cursorrules
-
-- Replace React Native guidance with Next.js / TypeScript / Tailwind rules for this project
-
-### 5.3 Next.js config
+### 5.2 Next.js config
 
 - Set `productionBrowserSourceMaps: false` in `next.config.mjs` unless you need source maps in production
 
@@ -257,30 +254,30 @@ Recommendations gathered from common portfolio patterns and gaps identified in t
 
 ### 10.1 Portfolio basics (higher impact)
 
-| Item | Notes |
-|------|-------|
-| **Testimonials / recommendations** | Add 2–3 short quotes from clients or colleagues. "What people say" block on homepage or About. Builds trust. |
-| **Availability badge** | "Currently available" or "Booked until X" in header/hero. Optional: Calendly link for booking calls. |
-| **RSS feed** | Add `/feed.xml` or `/rss.xml` route. Dev audiences expect it. Include `<link rel="alternate" type="application/rss+xml">` in layout. |
-| **Custom 404 page** | Replace default Next.js 404 with branded page + clear nav. Low effort, good polish. |
+| Item                               | Notes                                                                                                                                |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Testimonials / recommendations** | Add 2–3 short quotes from clients or colleagues. "What people say" block on homepage or About. Builds trust.                         |
+| **Availability badge**             | "Currently available" or "Booked until X" in header/hero. Optional: Calendly link for booking calls.                                 |
+| **RSS feed**                       | Add `/feed.xml` or `/rss.xml` route. Dev audiences expect it. Include `<link rel="alternate" type="application/rss+xml">` in layout. |
+| **Custom 404 page**                | Replace default Next.js 404 with branded page + clear nav. Low effort, good polish.                                                  |
 
 ### 10.2 Nice additions
 
-| Item | Notes |
-|------|-------|
-| **Now / Uses page** | `/now` or `/uses` – what you're working on, tools, setup. Popular with dev portfolios. |
-| **Blog enhancements** | TOC for long posts, reading progress bar, surface read time in UI, copy-link on headings. |
-| **Search** | Cmd+K search modal for projects + blog posts. Project filter exists; full search would help. |
-| **Human sitemap** | `/sitemap` page listing main sections in a readable way (not just XML for crawlers). |
+| Item                  | Notes                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------- |
+| **Now / Uses page**   | `/now` or `/uses` – what you're working on, tools, setup. Popular with dev portfolios.       |
+| **Blog enhancements** | TOC for long posts, reading progress bar, surface read time in UI, copy-link on headings.    |
+| **Search**            | Cmd+K search modal for projects + blog posts. Project filter exists; full search would help. |
+| **Human sitemap**     | `/sitemap` page listing main sections in a readable way (not just XML for crawlers).         |
 
 ### 10.3 Tech / package considerations
 
-| Item | Notes |
-|------|-------|
-| **Syntax highlighting** | `react-syntax-highlighter` is heavy. Consider Shiki, rehype-pretty-code, or Prism for smaller bundle. |
-| **Content pipeline** | Gray-matter + next-mdx-remote works. Velite or @next/mdx only if you want typed content or native MDX. |
-| **Analytics** | Vercel Analytics + plausible-tracker – check both are used; one privacy-focused stack may be enough. |
-| **Tailwind v4** | Plan migration when stable; could align with Phase 9 visual overhaul. |
+| Item                    | Notes                                                                                                  |
+| ----------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Syntax highlighting** | `react-syntax-highlighter` is heavy. Consider Shiki, rehype-pretty-code, or Prism for smaller bundle.  |
+| **Content pipeline**    | Gray-matter + next-mdx-remote works. Velite or @next/mdx only if you want typed content or native MDX. |
+| **Analytics**           | Vercel Analytics + plausible-tracker – check both are used; one privacy-focused stack may be enough.   |
+| **Tailwind v4**         | Plan migration when stable; could align with Phase 9 visual overhaul.                                  |
 
 ### 10.4 Priority (impact vs effort)
 
@@ -334,29 +331,29 @@ Recommendations gathered from common portfolio patterns and gaps identified in t
 
 ### A.1 Rules that DON'T apply (project-specific)
 
-| Rule file | Why it doesn't apply |
-|-----------|----------------------|
-| **components.mdc** | References `Text` component, `FormFieldWrapper`, `Dialog` in `molecules/` — none exist. Portfolio uses raw `h1`/`h2`/`p` and different structure. |
-| **styling.mdc** | Requires `bg-primary-500` / `bg-primary-600/90`. Portfolio uses `purple-500`, `purple-600` — no `primary` abstraction. |
-| **routing.mdc** | Requires `ROUTES` from constants — portfolio uses hardcoded paths. |
-| **api.mdc** | API client generation, Swagger — portfolio has no generated API client. |
-| **data-handling.mdc** | Requires `day.js`, mappers in `api/mappers/` — portfolio uses `new Date()`, no mappers. |
-| **hooks.mdc** | React Query mutation hooks — portfolio doesn't use React Query. |
-| **api-regeneration-workflow**, **ef-migrations**, **after-backend-api-changes** | Backend-specific; no relevance. |
-| **documentation.mdc** | References `Client.Operations/documentation/` — doesn't exist. |
+| Rule file                                                                       | Why it doesn't apply                                                                                                                              |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **components.mdc**                                                              | References `Text` component, `FormFieldWrapper`, `Dialog` in `molecules/` — none exist. Portfolio uses raw `h1`/`h2`/`p` and different structure. |
+| **styling.mdc**                                                                 | Requires `bg-primary-500` / `bg-primary-600/90`. Portfolio uses `purple-500`, `purple-600` — no `primary` abstraction.                            |
+| **routing.mdc**                                                                 | Requires `ROUTES` from constants — portfolio uses hardcoded paths.                                                                                |
+| **api.mdc**                                                                     | API client generation, Swagger — portfolio has no generated API client.                                                                           |
+| **data-handling.mdc**                                                           | Requires `day.js`, mappers in `api/mappers/` — portfolio uses `new Date()`, no mappers.                                                           |
+| **hooks.mdc**                                                                   | React Query mutation hooks — portfolio doesn't use React Query.                                                                                   |
+| **api-regeneration-workflow**, **ef-migrations**, **after-backend-api-changes** | Backend-specific; no relevance.                                                                                                                   |
+| **documentation.mdc**                                                           | References `Client.Operations/documentation/` — doesn't exist.                                                                                    |
 
 ### A.2 Rules that apply — current compliance
 
-| Rule | Requirement | Status |
-|------|-------------|--------|
-| **react-patterns: Server/Client** | Prefer server components | OK — pages are server; interactive parts isolated |
-| **react-patterns: Named imports** | Use `import { useState } from "react"`, never `import * as React` | Violation: `contact-form.tsx` uses `import React, { useRef, useState }` |
-| **types: No enums** | Use union types instead of `enum` | OK — no enums |
-| **code-quality: Comments** | Avoid obvious comments | Violation: Many `{/* Hero Section */}` etc. in about, skeleton-loader |
-| **file-naming: kebab-case** | Files in kebab-case | OK — most files follow |
-| **file-naming: Component folders** | Each component in own folder with index | N/A — portfolio uses flat structure; large refactor to adopt |
-| **components: const + type** | Use `const ComponentName = () => {}` and `type` for props | N/A — portfolio uses `function` and `interface`; Next.js pages may use `export default function` |
-| **data-handling: new Date()** | Use day.js | Violation: `layout.tsx` uses `new Date().getFullYear()` |
+| Rule                               | Requirement                                                       | Status                                                                                           |
+| ---------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **react-patterns: Server/Client**  | Prefer server components                                          | OK — pages are server; interactive parts isolated                                                |
+| **react-patterns: Named imports**  | Use `import { useState } from "react"`, never `import * as React` | Violation: `contact-form.tsx` uses `import React, { useRef, useState }`                          |
+| **types: No enums**                | Use union types instead of `enum`                                 | OK — no enums                                                                                    |
+| **code-quality: Comments**         | Avoid obvious comments                                            | Violation: Many `{/* Hero Section */}` etc. in about, skeleton-loader                            |
+| **file-naming: kebab-case**        | Files in kebab-case                                               | OK — most files follow                                                                           |
+| **file-naming: Component folders** | Each component in own folder with index                           | N/A — portfolio uses flat structure; large refactor to adopt                                     |
+| **components: const + type**       | Use `const ComponentName = () => {}` and `type` for props         | N/A — portfolio uses `function` and `interface`; Next.js pages may use `export default function` |
+| **data-handling: new Date()**      | Use day.js                                                        | Violation: `layout.tsx` uses `new Date().getFullYear()`                                          |
 
 ### A.3 Recommended actions
 

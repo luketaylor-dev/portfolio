@@ -124,8 +124,15 @@ export default function ContactForm() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to send message");
+        const text = await response.text();
+        let errorMessage = "Failed to send message";
+        try {
+          const errorData = JSON.parse(text);
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = text || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
       setIsSubmitSuccessful(true);

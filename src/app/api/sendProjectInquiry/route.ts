@@ -128,13 +128,16 @@ export async function POST(request: NextRequest) {
     );
 
     if (!emailjsResponse.ok) {
-      const errorData = await emailjsResponse.json().catch(() => ({}));
-      console.error("EmailJS API error:", errorData);
-      throw new Error(
-        `EmailJS API error: ${emailjsResponse.status} ${
-          errorData.message || "Unknown error"
-        }`
-      );
+      const text = await emailjsResponse.text();
+      let errorMessage = "Unknown error";
+      try {
+        const errorData = JSON.parse(text);
+        errorMessage = errorData.message || errorMessage;
+      } catch {
+        errorMessage = text || errorMessage;
+      }
+      console.error("EmailJS API error:", errorMessage);
+      throw new Error(`EmailJS API error: ${emailjsResponse.status} ${errorMessage}`);
     }
 
     // Log the inquiry for your records

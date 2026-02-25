@@ -36,8 +36,15 @@ export async function POST(request: NextRequest) {
     );
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Failed to send email");
+      const text = await response.text();
+      let errorMessage = "Failed to send email";
+      try {
+        const errorData = JSON.parse(text);
+        errorMessage = errorData.message || errorMessage;
+      } catch {
+        errorMessage = text || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
 
     return NextResponse.json({
