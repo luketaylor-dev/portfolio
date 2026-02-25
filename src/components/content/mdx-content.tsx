@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -5,8 +6,24 @@ import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
+interface MDXImgProps extends React.ComponentPropsWithoutRef<"img"> {
+  src: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  priority?: boolean;
+}
+
+interface MDXPreProps extends React.ComponentPropsWithoutRef<"pre"> {
+  children?: React.ReactNode;
+}
+
+interface MDXCodeProps extends React.ComponentPropsWithoutRef<"code"> {
+  children?: React.ReactNode;
+}
+
 const components = {
-  img: ({ src, alt, width = 800, height = 600, priority, ...props }: any) => (
+  img: ({ src, alt, width = 800, height = 600, priority }: MDXImgProps) => (
     <Image
       src={src}
       alt={alt || "Image"}
@@ -14,32 +31,29 @@ const components = {
       height={height}
       sizes="(max-width: 768px) 100vw, 800px"
       className="rounded-lg shadow-lg my-8"
-      priority={priority}
-      {...props}
+      priority={priority === true}
     />
   ),
-  pre: ({ children, ...props }: any) => {
-    // Check if this is a code block with syntax highlighting
-    if (children && children.props && children.props.className) {
-      const match = /language-(\w+)/.exec(children.props.className);
-      const language = match ? match[1] : "";
+  pre: ({ children, ...props }: MDXPreProps) => {
+    const child = React.isValidElement(children) ? children : null;
+    const childProps = child?.props as { className?: string; children?: string } | undefined;
+    const childClassName = childProps?.className;
+    const match = childClassName ? /language-(\w+)/.exec(childClassName) : null;
+    const language = match ? match[1] : "";
 
-      if (language) {
-        return (
-          <SyntaxHighlighter
-            style={tomorrow}
-            language={language}
-            PreTag="div"
-            className="rounded-lg my-8 custom-syntax-theme"
-            {...props}
-          >
-            {String(children.props.children).replace(/\n$/, "")}
-          </SyntaxHighlighter>
-        );
-      }
+    if (language && childProps?.children != null) {
+      return (
+        <SyntaxHighlighter
+          style={tomorrow}
+          language={language}
+          PreTag="div"
+          className="rounded-lg my-8 custom-syntax-theme"
+        >
+          {String(childProps.children).replace(/\n$/, "")}
+        </SyntaxHighlighter>
+      );
     }
 
-    // Fallback for regular pre blocks
     return (
       <pre
         className="relative bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-8"
@@ -49,7 +63,7 @@ const components = {
       </pre>
     );
   },
-  code: ({ children, className, ...props }: any) => {
+  code: ({ children, className, ...props }: MDXCodeProps) => {
     const match = /language-(\w+)/.exec(className || "");
     const language = match ? match[1] : "";
 
@@ -60,7 +74,6 @@ const components = {
           language={language}
           PreTag="div"
           className="rounded-lg my-8 custom-syntax-theme"
-          {...props}
         >
           {String(children).replace(/\n$/, "")}
         </SyntaxHighlighter>

@@ -15,9 +15,10 @@ Create `.env.local` in your project root:
 
 ```bash
 # EmailJS Configuration (PRIVATE - never commit this file!)
-EMAILJS_SERVICE_ID=service_qh1u4en
-EMAILJS_TEMPLATE_ID=template_edpqe7d
-EMAILJS_PUBLIC_KEY=0R38CMI9hHG0Y6Pm_
+# Copy from EmailJS dashboard: https://dashboard.emailjs.com
+EMAILJS_SERVICE_ID=your_service_id_here
+EMAILJS_TEMPLATE_ID=your_template_id_here
+EMAILJS_PUBLIC_KEY=your_public_key_here
 ```
 
 ### **2. Vercel Production**
@@ -25,10 +26,10 @@ EMAILJS_PUBLIC_KEY=0R38CMI9hHG0Y6Pm_
 In your Vercel dashboard:
 
 1. **Go to Project Settings** → **Environment Variables**
-2. **Add these variables:**
-   - `EMAILJS_SERVICE_ID` = `service_qh1u4en`
-   - `EMAILJS_TEMPLATE_ID` = `template_edpqe7d`
-   - `EMAILJS_PUBLIC_KEY` = `0R38CMI9hHG0Y6Pm_`
+2. **Add these variables** (use your actual credentials — never commit them):
+   - `EMAILJS_SERVICE_ID` = `your_service_id_here`
+   - `EMAILJS_TEMPLATE_ID` = `your_template_id_here`
+   - `EMAILJS_PUBLIC_KEY` = `your_public_key_here`
 3. **Deploy** to apply changes
 
 ## 🔐 **Security Benefits**

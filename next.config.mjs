@@ -5,8 +5,8 @@ const nextConfig = {
   // experimental: {
   //   mdxRs: true, // Disabled for next-mdx-remote compatibility
   // },
-  // Disable source maps in development to suppress warnings
-  productionBrowserSourceMaps: true,
+  // Disable source maps in production (use ANALYZE=true for debugging)
+  productionBrowserSourceMaps: false,
   // Note: Source map warnings in dev are harmless - they don't affect functionality
   images: {
     formats: ["image/webp", "image/avif"],

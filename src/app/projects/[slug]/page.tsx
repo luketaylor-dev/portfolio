@@ -1,4 +1,4 @@
-import { getAllProjects, getProjectBySlug } from "@/lib/content";
+import { getAllProjects, getProjectBySlug, type Project } from "@/lib/content";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
 import { InteractiveButton, Card, Badge, Breadcrumbs } from "@/components/ui";
@@ -38,7 +38,7 @@ import {
 } from "lucide-react";
 
 // Helper function to generate structured data for projects
-const generateProjectStructuredData = (project: any) => {
+const generateProjectStructuredData = (project: Project) => {
   // Base CreativeWork schema
   const baseStructuredData = {
     "@context": "https://schema.org",
