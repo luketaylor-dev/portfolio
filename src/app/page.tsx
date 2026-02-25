@@ -202,6 +202,15 @@ export default function HomePage() {
               ariaLabel="View game development projects"
             />
           </div>
+          <a
+            href="/web-development"
+            className="block text-center text-sm text-neutral-500 mt-6 hover:text-primary-400 transition-colors"
+            aria-label="Also experienced in .NET web development and React, including this portfolio. View web projects."
+          >
+            Also experienced in .NET web development and React{" "}
+            <span className="text-neutral-600">(including this portfolio)</span>
+            . View web projects
+          </a>
         </section>
 
         {/* Featured Blogs & Projects */}

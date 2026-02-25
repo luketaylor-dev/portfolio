@@ -35,7 +35,7 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            I'm Luke Taylor, a{" "}
+            I&apos;m Luke Taylor, a{" "}
             <strong className="text-primary-300">
               Manchester-based Unity Developer
             </strong>{" "}
@@ -43,7 +43,12 @@ export default function AboutPage() {
             brainwave-driven visuals to scalable free-to-play systems. My work
             spans experimental prototypes, immersive VR experiences, and
             commercial game development, always with a focus on building tools
-            and systems that push ideas further and empower creative teams.
+            and systems that push ideas further and empower creative teams. I
+            also have a background in{" "}
+            <strong className="text-primary-300">.NET web development</strong>{" "}
+            and work with{" "}
+            <strong className="text-primary-300">React</strong>—this portfolio
+            is built with Next.js.
           </p>
         </div>
 
@@ -129,7 +134,7 @@ export default function AboutPage() {
         </div>
         <div className="max-w-4xl mx-auto space-y-6 text-lg text-neutral-300 leading-relaxed">
           <p>
-            My path into Unity began after starting out in web and mobile
+            My path into Unity began after starting out in .NET web and mobile
             development, but I quickly gravitated toward it out of a passion for{" "}
             <strong className="text-primary-300">game development</strong> and
             creating interactive experiences. Over the years, I’ve worked across

@@ -11,6 +11,8 @@ const gradientByPath: Record<string, string> = {
   "/inquire": "bg-gradient-to-tl from-primary-900/20 via-neutral-950 to-primary-950/20",
   "/manchester-services":
     "bg-gradient-to-r from-primary-950/20 via-neutral-950 to-primary-900/25",
+  "/web-development":
+    "bg-gradient-to-t from-primary-950/20 via-neutral-950 to-primary-900/20",
 };
 
 const defaultGradient =
@@ -19,11 +21,14 @@ const defaultGradient =
 export function PageGradient() {
   const pathname = usePathname();
 
-  const basePath = pathname === "/" ? "/" : pathname.startsWith("/projects")
-    ? "/projects"
-    : pathname.startsWith("/blog")
-      ? "/blog"
-      : pathname;
+  const basePath =
+    pathname === "/"
+      ? "/"
+      : pathname.startsWith("/projects")
+        ? "/projects"
+        : pathname.startsWith("/blog")
+          ? "/blog"
+          : pathname;
 
   const gradient = gradientByPath[basePath] ?? defaultGradient;
 

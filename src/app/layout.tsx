@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { ReactNode, Suspense } from "react";
 import Link from "next/link";
 import { navItems, socialLinks, footerLinks, contactEmail } from "@/lib/navigation";
-import { MobileNavEnhanced, PageGradient } from "@/components/layout";
+import { MobileNavEnhanced, PageGradientClient } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/seo";
@@ -75,8 +75,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to main content
         </a>
 
-        {/* Background gradient — varies by page */}
-        <PageGradient />
+        {/* Background gradient — varies by page (client-only to avoid hydration mismatch) */}
+        <PageGradientClient />
 
         <header className="sticky top-0 z-[60] backdrop-blur-md bg-neutral-950/80 border-b border-primary-800/30">
           <div className="container mx-auto px-4">
