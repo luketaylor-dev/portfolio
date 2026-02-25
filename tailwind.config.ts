@@ -20,8 +20,8 @@ export default {
     extend: {
       container: { center: true, padding: "1rem" },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "DM Sans", "system-ui", "sans-serif"],
+        display: ["var(--font-dm-sans)", "DM Sans", "system-ui", "sans-serif"],
       },
       colors: {
         primary: primaryColors,

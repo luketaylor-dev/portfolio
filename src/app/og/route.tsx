@@ -2,9 +2,17 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
+async function loadDMSans() {
+  const res = await fetch(
+    "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHTWEBlw.woff2"
+  );
+  return res.arrayBuffer();
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "Luke Taylor - Unity Developer";
+  const fontData = await loadDMSans();
 
   return new ImageResponse(
     (
@@ -28,7 +36,7 @@ export async function GET(request: Request) {
             height: "100%",
             padding: "80px",
             color: "#fff",
-            fontFamily: "Inter, ui-sans-serif, system-ui",
+            fontFamily: "DM Sans, ui-sans-serif, system-ui",
           }}
         >
           <div
@@ -74,6 +82,14 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: "DM Sans",
+          data: fontData,
+          style: "normal",
+          weight: 400,
+        },
+      ],
     }
   );
 }

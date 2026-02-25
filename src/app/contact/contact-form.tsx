@@ -17,6 +17,7 @@ import {
   Card,
   Breadcrumbs,
 } from "@/components/ui";
+import { contactEmail } from "@/lib/navigation";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -371,6 +372,16 @@ export default function ContactForm() {
                 {/* Keyboard shortcut hint */}
                 <p className="text-xs text-neutral-500 text-center">
                   Press Ctrl+Enter to submit
+                </p>
+                <p className="text-sm text-neutral-400 text-center pt-2">
+                  Or email me directly at{" "}
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="text-primary-300 hover:text-primary-200 transition-colors underline"
+                    aria-label={`Email Luke Taylor at ${contactEmail}`}
+                  >
+                    {contactEmail}
+                  </a>
                 </p>
               </form>
             </FormErrorBoundary>

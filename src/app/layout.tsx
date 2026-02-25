@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 import { ReactNode, Suspense } from "react";
 import Link from "next/link";
-import { navItems, socialLinks, footerLinks } from "@/lib/navigation";
-import { MobileNavEnhanced } from "@/components/layout";
+import { navItems, socialLinks, footerLinks, contactEmail } from "@/lib/navigation";
+import { MobileNavEnhanced, PageGradient } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/seo";
@@ -13,9 +13,13 @@ import { ResumeDownload } from "@/components/content";
 import InteractiveText from "@/components/interactive-text";
 import { ErrorBoundary } from "@/components/feedback";
 import { InteractiveButton } from "@/components/ui";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+});
 
 export const metadata = {
   ...defaultMetadata,
@@ -40,7 +44,7 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.className} scroll-smooth`}>
+    <html lang="en" className={`${dmSans.variable} ${dmSans.className} scroll-smooth`}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -71,8 +75,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to main content
         </a>
 
-        {/* Background gradient for all pages */}
-        <div className="fixed inset-0 bg-gradient-to-br from-primary-950/20 via-neutral-950 to-primary-900/20 pointer-events-none"></div>
+        {/* Background gradient — varies by page */}
+        <PageGradient />
 
         <header className="sticky top-0 z-[60] backdrop-blur-md bg-neutral-950/80 border-b border-primary-800/30">
           <div className="container mx-auto px-4">
@@ -198,11 +202,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
               {/* Contact Info */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-white">Let's Connect</h3>
+                <h3 className="font-semibold text-white">Let&apos;s Connect</h3>
                 <p className="text-neutral-400">
-                  Ready to build something amazing together? Let's discuss your
+                  Ready to build something amazing together? Let&apos;s discuss your
                   next Unity project.
                 </p>
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="block text-primary-300 hover:text-primary-200 transition-colors text-sm"
+                  aria-label={`Email Luke Taylor at ${contactEmail}`}
+                >
+                  {contactEmail}
+                </a>
                 <InteractiveButton href="/contact" variant="primary" size="md">
                   Start a Project
                 </InteractiveButton>

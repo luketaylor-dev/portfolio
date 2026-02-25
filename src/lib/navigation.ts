@@ -76,6 +76,9 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
+/** Contact email (mailto links). Update when address changes. */
+export const contactEmail = "me@luke-taylor.dev";
+
 /** Footer quick links. Manchester Services linked here and from About, not in main nav. */
 export const footerLinks: { href: string; label: string }[] = [
   { href: "/projects", label: "View Projects" },
