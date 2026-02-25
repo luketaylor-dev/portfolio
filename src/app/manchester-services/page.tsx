@@ -243,7 +243,7 @@ export default function ManchesterServicesPage() {
               What industries do you support?
             </h3>
             <p className="text-neutral-400">
-              Games, research, education, events, and creative tech—especially
+              Games, research, education, events, and creative tech, especially
               projects involving Unity, EEG/BCI, or VR.
             </p>
           </Card>
@@ -289,7 +289,7 @@ export default function ManchesterServicesPage() {
                 name: "What industries do you support?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Games, research, education, events, and creative tech—especially projects involving Unity, EEG/BCI, or VR.",
+                  text: "Games, research, education, events, and creative tech, especially projects involving Unity, EEG/BCI, or VR.",
                 },
               },
               {

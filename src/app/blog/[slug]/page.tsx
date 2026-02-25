@@ -78,7 +78,7 @@ export default async function BlogPostPage({
             author: { "@type": "Person", name: "Luke Taylor" },
             publisher: {
               "@type": "Organization",
-              name: "Luke Taylor — Portfolio",
+              name: "Luke Taylor - Portfolio",
               logo: {
                 "@type": "ImageObject",
                 url: "https://www.dibza.co.uk/icons/favicon.png",

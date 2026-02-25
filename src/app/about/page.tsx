@@ -133,7 +133,7 @@ export default function AboutPage() {
             development, but I quickly gravitated toward it out of a passion for{" "}
             <strong className="text-purple-300">game development</strong> and
             creating interactive experiences. Over the years, I’ve worked across
-            genres and platforms — shipping{" "}
+            genres and platforms, shipping{" "}
             <strong className="text-purple-300">mobile casino titles</strong> to
             large audiences, prototyping VR collaboration spaces, and
             experimenting with{" "}
@@ -148,7 +148,7 @@ export default function AboutPage() {
             that help others create faster, smarter, and more engaging
             experiences. Every project is an opportunity to learn, push
             technical boundaries, and craft something that hasn’t been done
-            before — whether that’s{" "}
+            before, whether that’s{" "}
             <strong className="text-purple-300">VR development</strong>,{" "}
             <strong className="text-purple-300">game systems</strong>, or new
             forms of{" "}

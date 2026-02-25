@@ -130,17 +130,17 @@ export async function generateMetadata({
     : `https://www.dibza.co.uk/og?title=${encodeURIComponent(project.title)}`;
 
   return {
-    title: `${project.title} — Luke Taylor`,
+    title: `${project.title} - Luke Taylor`,
     description: seoDescription,
     openGraph: {
-      title: `${project.title} — Luke Taylor`,
+      title: `${project.title} - Luke Taylor`,
       description: seoDescription,
       type: "article",
       images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} — Luke Taylor`,
+      title: `${project.title} - Luke Taylor`,
       description: seoDescription,
       images: [ogImage],
     },
@@ -293,7 +293,7 @@ export default async function ProjectPage({
             <VideoWithPlayButton
               videoSrc={project.video}
               posterSrc={project.cover || ""}
-              alt={project.altText || `${project.title} — project video`}
+              alt={project.altText || `${project.title} - project video`}
               className="w-full h-full"
             />
           </div>
@@ -303,7 +303,7 @@ export default async function ProjectPage({
               src={project.cover || ""}
               alt={
                 project.altText ||
-                `${project.title} — project preview and interface`
+                `${project.title} - project preview and interface`
               }
               width={1200}
               height={675}

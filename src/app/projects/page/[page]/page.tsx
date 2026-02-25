@@ -25,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const pageNum = Number(params.page) || 1;
   return generatePageMetadata(
-    `Projects - Page ${pageNum} — Luke Taylor`,
+    `Projects - Page ${pageNum} - Luke Taylor`,
     `Explore Unity projects (page ${pageNum}) including EEG visualisation, VR experiences, and game development.`,
     `/projects/page/${pageNum}`
   );

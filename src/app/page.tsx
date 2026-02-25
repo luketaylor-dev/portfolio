@@ -93,7 +93,7 @@ export default function HomePage() {
               <ScrollAnimation direction="up" delay={800}>
                 <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                   A Manchester-based Unity Developer building immersive projects
-                  that push boundaries — from{" "}
+                  that push boundaries, from{" "}
                   <a
                     href="/projects?tags=EEG"
                     className="text-purple-300 hover:text-purple-200 transition-colors underline"
@@ -274,7 +274,7 @@ export default function HomePage() {
               <ScrollAnimation direction="up" delay={200}>
                 <div className="col-span-full text-center py-12">
                   <p className="text-neutral-400">
-                    No projects yet — create one in{" "}
+                    No projects yet - create one in{" "}
                     <code className="bg-purple-900/30 px-2 py-1 rounded text-purple-300">
                       /content/projects
                     </code>

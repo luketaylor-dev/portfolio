@@ -4,7 +4,7 @@ export const runtime = "edge";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const title = searchParams.get("title") || "Luke Taylor — Unity Developer";
+  const title = searchParams.get("title") || "Luke Taylor - Unity Developer";
 
   return new ImageResponse(
     (
@@ -64,7 +64,7 @@ export async function GET(request: Request) {
             >
               <div style={{ fontSize: 60, fontWeight: 800 }}>{title}</div>
               <div style={{ fontSize: 28, color: "#c4b5fd" }}>
-                Unity • EEG • VR — Manchester, UK
+                Unity • EEG • VR - Manchester, UK
               </div>
             </div>
           </div>
