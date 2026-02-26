@@ -23,14 +23,14 @@ interface MDXCodeProps extends React.ComponentPropsWithoutRef<"code"> {
 }
 
 const components = {
-  img: ({ src, alt, width = 800, height = 600, priority }: MDXImgProps) => (
+  img: ({ src, alt, width = 896, height = 600, priority }: MDXImgProps) => (
     <Image
       src={src}
       alt={alt || "Image"}
       width={width}
       height={height}
-      sizes="(max-width: 768px) 100vw, 800px"
-      className="rounded-lg shadow-lg my-8"
+      sizes="(max-width: 896px) 100vw, 896px"
+      className="w-full max-w-full h-auto rounded-lg shadow-lg my-8 object-contain"
       priority={priority === true}
     />
   ),

@@ -41,7 +41,7 @@ export function BlogToc({ items }: BlogTocProps) {
 
   return (
     <nav
-      className="sticky top-24 space-y-2"
+      className="space-y-2"
       aria-label="Table of contents"
     >
       <Text variant="small" as="p" className="font-semibold text-primary-300 mb-4">

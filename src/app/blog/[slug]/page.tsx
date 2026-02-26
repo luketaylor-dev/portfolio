@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { generateMetadata as generatePageMetadata } from "@/lib/metadata";
 import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { Calendar, Clock, ArrowLeft, Rss } from "lucide-react";
 
 import {
   MdxContent,
@@ -67,7 +68,7 @@ export default async function BlogPostPage({
   const tocItems = extractHeadings(post.body.raw);
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 -mt-4">
       <ReadingProgressBar />
       {/* Structured Data: BlogPosting */}
       <script
@@ -99,20 +100,21 @@ export default async function BlogPostPage({
         }}
         suppressHydrationWarning={true}
       />
-      {/* Breadcrumbs */}
-      <div className="max-w-4xl mx-auto">
-        <Breadcrumbs
-          items={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
-          className="mb-8"
-        />
-      </div>
-
-      {/* Back to Blog */}
-      <div className="max-w-4xl mx-auto">
-        <InteractiveButton href="/blog" variant="ghost" size="sm">
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Blog</span>
-        </InteractiveButton>
+      {/* Breadcrumbs + Back to Blog */}
+      <div className="max-w-6xl mx-auto flex gap-12">
+        <div className="min-w-0 flex-1 max-w-4xl space-y-3">
+          <Breadcrumbs
+            items={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
+            className="mb-0"
+          />
+          <InteractiveButton href="/blog" variant="ghost" size="sm">
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Blog</span>
+          </InteractiveButton>
+        </div>
+        {tocItems.length > 0 && (
+          <div className="hidden lg:block w-56 flex-shrink-0" aria-hidden />
+        )}
       </div>
 
       {/* Article + TOC */}
@@ -164,8 +166,8 @@ export default async function BlogPostPage({
               alt={post.title}
               width={1200}
               height={400}
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="max-h-[400px] w-auto object-contain"
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="w-full max-h-[400px] object-contain"
               priority
             />
           </div>
@@ -186,7 +188,17 @@ export default async function BlogPostPage({
         </article>
         {tocItems.length > 0 && (
           <aside className="hidden lg:block flex-shrink-0 w-56">
-            <BlogToc items={tocItems} />
+            <div className="sticky top-24 space-y-6">
+              <BlogToc items={tocItems} />
+              <Link
+                href="/feed.xml"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-primary-300 hover:text-primary-200 hover:bg-primary-500/10 border border-primary-500/30 hover:border-primary-400/50 transition-colors w-fit"
+                aria-label="Subscribe to blog RSS feed"
+              >
+                <Rss className="w-4 h-4" />
+                RSS
+              </Link>
+            </div>
           </aside>
         )}
       </div>
@@ -195,11 +207,16 @@ export default async function BlogPostPage({
       <RelatedPosts currentPostSlug={post.slug} allPosts={getAllBlogPosts()} />
 
       {/* Navigation */}
-      <div className="max-w-4xl mx-auto pt-8 border-t border-neutral-800">
-        <InteractiveButton href="/blog" variant="ghost" size="sm">
+      <div className="max-w-6xl mx-auto flex gap-12 pt-4 border-t border-neutral-800">
+        <div className="min-w-0 flex-1 max-w-4xl">
+          <InteractiveButton href="/blog" variant="ghost" size="sm">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Blog</span>
         </InteractiveButton>
+        </div>
+        {tocItems.length > 0 && (
+          <div className="hidden lg:block w-56 flex-shrink-0" aria-hidden />
+        )}
       </div>
     </div>
   );

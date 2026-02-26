@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
 import { getAllBlogPosts } from "@/lib/content";
@@ -5,6 +6,7 @@ import { BlogPostsGrid } from "@/components/content";
 import { Text } from "@/components/atoms";
 import { Breadcrumbs } from "@/components/ui";
 import { Suspense } from "react";
+import { Rss } from "lucide-react";
 
 export const metadata: Metadata = generateMetadata(
   "Blog - Luke Taylor | Unity Development Insights & Project Updates",
@@ -42,8 +44,16 @@ export default function BlogPage() {
           className="text-xl max-w-3xl mx-auto leading-relaxed"
         >
           Deep dives into my Unity projects, development challenges, and the
-          creative process behind building immersive           experiences.
+          creative process behind building immersive experiences.
         </Text>
+        <Link
+          href="/feed.xml"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-primary-300 hover:text-primary-200 hover:bg-primary-500/10 border border-primary-500/30 hover:border-primary-400/50 transition-colors"
+          aria-label="Subscribe to blog RSS feed"
+        >
+          <Rss className="w-5 h-5" />
+          RSS Feed
+        </Link>
       </section>
 
       <Suspense
