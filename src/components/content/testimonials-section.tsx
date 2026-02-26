@@ -6,13 +6,13 @@ import { ScrollAnimation } from "@/components/animation";
 const testimonials = [
   {
     name: "Jake",
-    role: "Tatfindr",
+    role: "Founder/Director, Tatfindr",
     quote:
       "Luke has been a fantastic addition to the Tatfindr team, not only helping us build a quality product, but also contributing with additional insight, collaboration, and effort outside of his remit.",
   },
   {
     name: "Dave",
-    role: "Brainrave",
+    role: "Founder/Director, Brainrave",
     quote:
       "Luke brought real technical depth to the Brainrave project, turning complex EEG integration into something that actually worked in the real world. Great communicator and a pleasure to work with.",
   },
