@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ArrowRight, Gamepad2, Star } from "lucide-react";
 import { Card } from "@/components/ui";
+import { Text } from "@/components/atoms";
 import Image from "next/image";
 
 interface Project {
@@ -56,9 +57,9 @@ export default function ProjectCard({
                   <div className="w-16 h-16 mx-auto rounded-2xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center">
                     <Gamepad2 className="w-8 h-8 text-primary-400" />
                   </div>
-                  <p className="text-sm text-primary-300 font-medium">
+                  <Text as="p" variant="small" className="text-primary-300 font-medium">
                     Project Image
-                  </p>
+                  </Text>
                 </div>
               </div>
             )}
@@ -67,12 +68,12 @@ export default function ProjectCard({
           {/* Project Content */}
           <div className="space-y-3 flex flex-col flex-grow">
             <div className="space-y-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
+              <Text variant="heading4" as="h3" className="font-bold group-hover:text-primary-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
                 {project.title}
-              </h3>
-              <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 flex-grow">
+              </Text>
+              <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 flex-grow">
                 {project.description}
-              </p>
+              </Text>
             </div>
 
             {/* Project Meta */}

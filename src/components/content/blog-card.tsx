@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { formatDate } from "@/lib/blog-utils";
 import { Card } from "@/components/ui";
+import { Text } from "@/components/atoms";
 
 interface BlogPost {
   slug: string;
@@ -63,9 +64,9 @@ export default function BlogCard({
                       />
                     </svg>
                   </div>
-                  <p className="text-sm text-primary-300 font-medium">
+                  <Text as="p" variant="small" className="text-primary-300 font-medium">
                     Blog Post
-                  </p>
+                  </Text>
                 </div>
               </div>
             )}
@@ -74,12 +75,12 @@ export default function BlogCard({
           {/* Blog Content */}
           <div className="space-y-3 flex flex-col flex-grow">
             <div className="space-y-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
+              <Text variant="heading4" as="h3" className="font-bold group-hover:text-primary-300 transition-colors duration-300 group-hover:scale-105 transform origin-left">
                 {post.title}
-              </h3>
-              <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 flex-grow">
+              </Text>
+              <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed group-hover:text-neutral-300 transition-colors duration-300 flex-grow">
                 {post.description}
-              </p>
+              </Text>
             </div>
 
             {/* Blog Meta */}

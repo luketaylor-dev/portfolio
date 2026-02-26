@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { BlogCard } from "@/components/content";
+import { Text } from "@/components/atoms";
 import { Tag } from "lucide-react";
 import type { BlogPost } from "@/lib/content";
 
@@ -27,9 +28,9 @@ export function BlogPostsGrid({ posts }: BlogPostsGridProps) {
   return (
     <section className="space-y-12">
       {activeTags.length > 0 && (
-        <p className="text-center text-neutral-400 text-sm">
+        <Text as="p" variant="small" color="secondary" className="text-center">
           Filtering by: {activeTags.join(", ")}
-        </p>
+        </Text>
       )}
 
       {filteredPosts.length > 0 ? (
@@ -43,14 +44,14 @@ export function BlogPostsGrid({ posts }: BlogPostsGridProps) {
           <div className="w-24 h-24 mx-auto rounded-full bg-primary-600/20 border border-primary-500/30 flex items-center justify-center mb-6">
             <Tag className="w-12 h-12 text-primary-400" />
           </div>
-          <h3 className="text-2xl font-bold text-white mb-4">
+          <Text variant="heading3" as="h3" className="mb-4">
             {activeTags.length > 0 ? "No matching posts" : "No Blog Posts Yet"}
-          </h3>
-          <p className="text-neutral-400 max-w-md mx-auto">
+          </Text>
+          <Text variant="paragraph" as="p" color="secondary" className="max-w-md mx-auto">
             {activeTags.length > 0
               ? `No posts tagged with ${activeTags.join(", ")}.`
               : "Your first blog post will appear here. Start writing about your projects and development experiences!"}
-          </p>
+          </Text>
         </div>
       )}
     </section>

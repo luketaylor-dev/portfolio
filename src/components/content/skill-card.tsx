@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Card } from "@/components/ui";
+import { Text } from "@/components/atoms";
 import InteractiveText from "@/components/interactive-text";
 
 interface SkillCardProps {
@@ -45,9 +46,9 @@ export default function SkillCard({
             <InteractiveText variant="heading">{title}</InteractiveText>
           </h3>
 
-          <p className="text-neutral-300 leading-relaxed text-lg flex-grow">
+          <Text variant="paragraph" as="p" color="muted" className="leading-relaxed text-lg flex-grow">
             {description}
-          </p>
+          </Text>
 
           <div className="pt-4 mt-auto">
             <div className="flex items-center gap-2 text-primary-300 text-sm font-medium">

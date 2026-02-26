@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 
 import { MdxContent, SocialShare, RelatedPosts } from "@/components/content";
+import { Text } from "@/components/atoms";
 import { InteractiveButton, Badge, Breadcrumbs } from "@/components/ui";
 import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 
@@ -108,9 +109,9 @@ export default async function BlogPostPage({
       <article className="max-w-4xl mx-auto space-y-8">
         {/* Title & Meta */}
         <header className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+          <Text variant="heading1" as="h1" className="md:text-5xl leading-tight">
             {post.title}
-          </h1>
+          </Text>
 
           <div className="flex items-center gap-6 text-neutral-400">
             <div className="flex items-center gap-2">
@@ -138,9 +139,9 @@ export default async function BlogPostPage({
 
           {/* Description */}
           {post.description && (
-            <p className="text-xl text-neutral-300 leading-relaxed">
+            <Text variant="paragraph" as="p" color="muted" className="text-xl leading-relaxed">
               {post.description}
-            </p>
+            </Text>
           )}
         </header>
 

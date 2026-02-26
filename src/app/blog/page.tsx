@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
 import { getAllBlogPosts } from "@/lib/content";
 import { BlogPostsGrid } from "@/components/content";
+import { Text } from "@/components/atoms";
 import { Breadcrumbs } from "@/components/ui";
 import { Suspense } from "react";
 
@@ -27,13 +28,22 @@ export default function BlogPage() {
       <Breadcrumbs items={[{ label: "Blog" }]} className="mb-8" />
 
       <section className="text-center space-y-8">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
+        <Text
+          variant="heading1"
+          as="h1"
+          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+        >
           Project Insights & Updates
-        </h1>
-        <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+        </Text>
+        <Text
+          variant="paragraph"
+          as="p"
+          color="muted"
+          className="text-xl max-w-3xl mx-auto leading-relaxed"
+        >
           Deep dives into my Unity projects, development challenges, and the
-          creative process behind building immersive experiences.
-        </p>
+          creative process behind building immersive           experiences.
+        </Text>
       </section>
 
       <Suspense

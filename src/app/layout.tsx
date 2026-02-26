@@ -10,6 +10,7 @@ import { PerformanceMonitor } from "@/components/performance";
 
 import { defaultMetadata } from "@/lib/metadata";
 import { ResumeDownload } from "@/components/content";
+import { Text } from "@/components/atoms";
 import InteractiveText from "@/components/interactive-text";
 import { ErrorBoundary } from "@/components/feedback";
 import { InteractiveButton } from "@/components/ui";
@@ -154,15 +155,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     Luke Taylor
                   </span>
                 </div>
-                <p className="text-neutral-400 max-w-xs">
+                <Text variant="paragraph" as="p" color="secondary" className="max-w-xs">
                   Unity Developer crafting immersive experiences in VR, EEG
                   visualization, and game development.
-                </p>
+                </Text>
               </div>
 
               {/* Quick Links */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-white">Quick Links</h3>
+                <Text variant="heading4" as="h3">Quick Links</Text>
                 <div className="space-y-2">
                   {footerLinks.map((link) => (
                     <Link
@@ -179,7 +180,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
               {/* Social Links */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-white">Connect</h3>
+                <Text variant="heading4" as="h3">Connect</Text>
                 <div className="space-y-2">
                   {socialLinks.map((link) => {
                     const Icon = link.icon;
@@ -202,11 +203,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
               {/* Contact Info */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-white">Let&apos;s Connect</h3>
-                <p className="text-neutral-400">
+                <Text variant="heading4" as="h3">Let&apos;s Connect</Text>
+                <Text variant="paragraph" as="p" color="secondary">
                   Ready to build something amazing together? Let&apos;s discuss your
                   next Unity project.
-                </p>
+                </Text>
                 <a
                   href={`mailto:${contactEmail}`}
                   className="block text-primary-300 hover:text-primary-200 transition-colors text-sm"
@@ -221,10 +222,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
 
             <div className="border-t border-primary-800/30 mt-8 pt-8 text-center">
-              <p className="text-sm text-neutral-400">
+              <Text as="p" variant="small" color="secondary">
                 © {new Date().getFullYear()} Luke Taylor. All rights reserved.
                 Built with Next.js, React, and a lot of purple.
-              </p>
+              </Text>
             </div>
           </div>
         </footer>

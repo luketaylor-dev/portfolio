@@ -10,6 +10,7 @@ import {
 } from "react";
 import { ResumeDownload } from "@/components/content";
 import { FormErrorBoundary } from "@/components/feedback";
+import { Text } from "@/components/atoms";
 import {
   InteractiveButton,
   Input,
@@ -172,14 +173,23 @@ export default function ContactForm() {
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
+        <Text
+          variant="heading1"
+          as="h1"
+          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+        >
           Let's Connect
-        </h1>
-        <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+        </Text>
+        <Text
+          variant="paragraph"
+          as="p"
+          color="muted"
+          className="text-xl max-w-3xl mx-auto leading-relaxed"
+        >
           Ready to bring your Unity project to life? Whether you're looking for
           EEG visualization, VR development, or game development expertise, I'm
-          here to help. Let's discuss your vision and make it a reality.
-        </p>
+          here to help. Let's discuss your vision and make it a           reality.
+        </Text>
       </section>
 
       {/* Contact Form */}
@@ -196,13 +206,13 @@ export default function ContactForm() {
                 <CheckCircle className="w-8 h-8 text-green-400" />
               </div>
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-white">
+                <Text variant="heading3" as="h2">
                   Message Sent Successfully!
-                </h2>
-                <p className="text-neutral-300">
+                </Text>
+                <Text variant="paragraph" as="p" color="muted">
                   Thank you for reaching out. I'll get back to you within 24
                   hours.
-                </p>
+                </Text>
               </div>
               <InteractiveButton
                 onClick={() => setIsSubmitSuccessful(false)}
@@ -236,12 +246,14 @@ export default function ContactForm() {
 
                 {/* Name Field */}
                 <div className="space-y-2">
-                  <label
+                  <Text
+                    as="label"
                     htmlFor="name"
-                    className="block text-sm font-medium text-white"
+                    variant="small"
+                    className="block font-medium"
                   >
                     Name *
-                  </label>
+                  </Text>
                   <Input
                     id="name"
                     name="name"
@@ -262,20 +274,22 @@ export default function ContactForm() {
                     }
                   />
                   {touched.name && !validateName(formData.name) && (
-                    <p id="name-error" className="text-sm text-red-400">
+                      <Text id="name-error" as="p" variant="small" color="error">
                       Name must be at least 2 characters long
-                    </p>
+                    </Text>
                   )}
                 </div>
 
                 {/* Email Field */}
                 <div className="space-y-2">
-                  <label
+                  <Text
+                    as="label"
                     htmlFor="email"
-                    className="block text-sm font-medium text-white"
+                    variant="small"
+                    className="block font-medium"
                   >
                     Email *
-                  </label>
+                  </Text>
                   <Input
                     id="email"
                     name="email"
@@ -296,20 +310,22 @@ export default function ContactForm() {
                     }
                   />
                   {touched.email && !validateEmail(formData.email) && (
-                    <p id="email-error" className="text-sm text-red-400">
+                      <Text id="email-error" as="p" variant="small" color="error">
                       Please enter a valid email address
-                    </p>
+                    </Text>
                   )}
                 </div>
 
                 {/* Message Field */}
                 <div className="space-y-2">
-                  <label
+                  <Text
+                    as="label"
                     htmlFor="message"
-                    className="block text-sm font-medium text-white"
+                    variant="small"
+                    className="block font-medium"
                   >
                     Message *
-                  </label>
+                  </Text>
                   <Textarea
                     id="message"
                     name="message"
@@ -330,9 +346,9 @@ export default function ContactForm() {
                     }
                   />
                   {touched.message && !validateMessage(formData.message) && (
-                    <p id="message-error" className="text-sm text-red-400">
+                      <Text id="message-error" as="p" variant="small" color="error">
                       Message must be at least 10 characters long
-                    </p>
+                    </Text>
                   )}
                 </div>
 
@@ -340,7 +356,7 @@ export default function ContactForm() {
                 {error && (
                   <div className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
                     <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-                    <p className="text-red-400">{error}</p>
+                    <Text as="p" variant="paragraph" color="error">{error}</Text>
                   </div>
                 )}
 
@@ -370,10 +386,10 @@ export default function ContactForm() {
                 </div>
 
                 {/* Keyboard shortcut hint */}
-                <p className="text-xs text-neutral-500 text-center">
+                <Text as="p" variant="mini" color="secondary" className="text-center">
                   Press Ctrl+Enter to submit
-                </p>
-                <p className="text-sm text-neutral-400 text-center pt-2">
+                </Text>
+                <Text as="p" variant="small" color="secondary" className="text-center pt-2">
                   Or email me directly at{" "}
                   <a
                     href={`mailto:${contactEmail}`}
@@ -382,7 +398,7 @@ export default function ContactForm() {
                   >
                     {contactEmail}
                   </a>
-                </p>
+                </Text>
               </form>
             </FormErrorBoundary>
           )}
@@ -392,26 +408,26 @@ export default function ContactForm() {
       {/* Alternative Contact Methods */}
       <section className="max-w-4xl mx-auto">
         <div className="text-center space-y-8">
-          <h2 className="text-2xl font-bold text-white">
+          <Text variant="heading3" as="h2">
             Prefer a Different Approach?
-          </h2>
+          </Text>
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="p-6 text-center space-y-4">
-              <h3 className="text-lg font-semibold text-white">
+              <Text variant="heading4" as="h3">
                 Download My Resume
-              </h3>
-              <p className="text-neutral-300 text-sm">
+              </Text>
+              <Text variant="small" as="p" color="muted">
                 Get a detailed overview of my experience and skills
-              </p>
+              </Text>
               <ResumeDownload variant="secondary" size="md" />
             </Card>
             <Card className="p-6 text-center space-y-4">
-              <h3 className="text-lg font-semibold text-white">
+              <Text variant="heading4" as="h3">
                 Project Inquiry Form
-              </h3>
-              <p className="text-neutral-300 text-sm">
+              </Text>
+              <Text variant="small" as="p" color="muted">
                 For detailed project discussions and proposals
-              </p>
+              </Text>
               <InteractiveButton href="/inquire" variant="secondary" size="md">
                 <ArrowRight className="w-4 h-4" />
                 Start Inquiry
@@ -423,34 +439,34 @@ export default function ContactForm() {
 
       {/* Contact Information */}
       <section className="max-w-4xl mx-auto text-center space-y-8">
-        <h2 className="text-2xl font-bold text-white">
+        <Text variant="heading3" as="h2">
           Let's Build Something Amazing Together
-        </h2>
+        </Text>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-primary-300">
+            <Text variant="heading4" as="h3" className="text-primary-300">
               Unity Development
-            </h3>
-            <p className="text-neutral-300 text-sm">
+            </Text>
+            <Text variant="small" as="p" color="muted">
               Custom Unity solutions, performance optimization, and
               cross-platform development
-            </p>
+            </Text>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-primary-300">
+            <Text variant="heading4" as="h3" className="text-primary-300">
               VR & EEG Projects
-            </h3>
-            <p className="text-neutral-300 text-sm">
-              Immersive VR experiences and brain-computer interface applications
-            </p>
+            </Text>
+            <Text variant="small" as="p" color="muted">
+              Immersive VR experiences and               brain-computer interface applications
+            </Text>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-primary-300">
+            <Text variant="heading4" as="h3" className="text-primary-300">
               Game Development
-            </h3>
-            <p className="text-neutral-300 text-sm">
-              Free-to-play games, casino games, and interactive entertainment
-            </p>
+            </Text>
+            <Text variant="small" as="p" color="muted">
+              Free-to-play games, casino games, and               interactive entertainment
+            </Text>
           </div>
         </div>
       </section>

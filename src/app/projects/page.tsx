@@ -4,6 +4,7 @@ import { getAllProjects } from "@/lib/content";
 import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
 import { ProjectCard } from "@/components/content";
+import { Text } from "@/components/atoms";
 import { InteractiveButton, Card, Breadcrumbs } from "@/components/ui";
 
 export const metadata: Metadata = generateMetadata(
@@ -41,10 +42,19 @@ const ProjectsContent = () => {
 
         {/* Hero Section */}
         <section className="text-center space-y-8">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
+          <Text
+            variant="heading1"
+            as="h1"
+            className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+          >
             My Projects
-          </h1>
-          <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+          </Text>
+          <Text
+            variant="paragraph"
+            as="p"
+            color="muted"
+            className="text-xl max-w-3xl mx-auto leading-relaxed"
+          >
             A collection of my work in Unity development, from{" "}
             <a
               href="/projects/eeg-visualiser"
@@ -60,8 +70,8 @@ const ProjectsContent = () => {
               VR experiences
             </a>{" "}
             to engaging free-to-play games. Each project represents a unique
-            challenge and learning opportunity.
-          </p>
+            challenge and learning             opportunity.
+          </Text>
         </section>
 
         {/* Projects Grid */}
@@ -130,14 +140,14 @@ const ProjectsContent = () => {
         {/* CTA Section */}
         <section className="text-center space-y-6 py-16">
           <Card variant="default" className="rounded-3xl p-8">
-            <h2 className="text-3xl font-bold text-white mb-6">
+            <Text variant="heading2" as="h2" className="mb-6">
               Have a Project in Mind?
-            </h2>
-            <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
+            </Text>
+            <Text variant="paragraph" as="p" color="muted" className="text-lg max-w-2xl mx-auto mb-8">
               Whether it's a VR experience, EEG visualization, or game
               development project, I'd love to help bring your vision to life.
-              Let's create something amazing together.
-            </p>
+              Let's create something amazing               together.
+            </Text>
             <InteractiveButton href="/contact" variant="primary" size="lg">
               Let's Discuss Your Project
               <ArrowRight className="w-5 h-5" />

@@ -193,7 +193,7 @@ Show Blender as a supporting skill for game dev. Hobby level, not a service offe
 
 ---
 
-## Phase 8.5: Text Component Migration (In Progress)
+## Phase 8.5: Text Component Migration ✓ Complete
 
 Adopted from .cursor rules. Migrate remaining pages to use the Text component.
 
@@ -203,19 +203,8 @@ Adopted from .cursor rules. Migrate remaining pages to use the Text component.
 - Added primary color abstraction (Tailwind + globals.css)
 - Replaced all `purple-*` with `primary-*` across codebase
 - Homepage (`src/app/page.tsx`) fully migrated to Text component
-
-### Remaining
-
-Replace raw `h1`, `h2`, `h3`, `h4`, `p`, `span` with `<Text>` in:
-
-- `src/app/about/page.tsx`
-- `src/app/contact/contact-form.tsx`
-- `src/app/inquire/page.tsx`
-- `src/app/projects/page.tsx`, `[slug]/page.tsx`, `page/[page]/page.tsx`
-- `src/app/blog/page.tsx`, `[slug]/page.tsx`, `page/[page]/page.tsx`
-- `src/app/manchester-services/page.tsx`
-- `src/app/layout.tsx` (footer)
-- Components: project-card, blog-card, skill-card, github-card, breadcrumbs, etc.
+- All pages migrated: about, contact-form, inquire, projects, blog, manchester-services, layout footer
+- All components migrated: project-card, blog-card, skill-card, github-card, blog-posts-grid
 
 ---
 

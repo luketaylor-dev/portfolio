@@ -1,6 +1,7 @@
 import { getAllProjects, getProjectBySlug, type Project } from "@/lib/content";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
+import { Text } from "@/components/atoms";
 import { InteractiveButton, Card, Badge, Breadcrumbs } from "@/components/ui";
 import Image from "next/image";
 import VideoWithPlayButton from "@/components/ui/video-with-play-button";
@@ -251,12 +252,21 @@ export default async function ProjectPage({
       <section className="max-w-4xl mx-auto space-y-8">
         <div className="space-y-6">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
+            <Text
+              variant="heading1"
+              as="h1"
+              className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+            >
               {project.title}
-            </h1>
-            <p className="text-xl text-neutral-300 max-w-4xl leading-relaxed">
+            </Text>
+            <Text
+              variant="paragraph"
+              as="p"
+              color="muted"
+              className="text-xl max-w-4xl leading-relaxed"
+            >
               {project.description}
-            </p>
+            </Text>
           </div>
 
           {/* Project Meta */}
@@ -320,12 +330,12 @@ export default async function ProjectPage({
                   <ImageIcon className="w-12 h-12 text-primary-400" />
                 </div>
                 <div className="space-y-2">
-                  <p className="text-lg text-primary-300 font-medium">
+                  <Text variant="paragraph" as="p" className="text-primary-300 font-medium">
                     Project Media
-                  </p>
-                  <p className="text-sm text-primary-400">
+                  </Text>
+                  <Text variant="small" as="p" color="secondary">
                     Add a cover image or video to your project
-                  </p>
+                  </Text>
                 </div>
               </div>
             </div>
@@ -343,7 +353,7 @@ export default async function ProjectPage({
       {/* Project Features */}
       {project.featureTitles && project.featureTitles.length > 0 && (
         <section className="max-w-4xl mx-auto space-y-8">
-          <h2 className="text-3xl font-bold text-white">Highlights</h2>
+          <Text variant="heading2" as="h2">Highlights</Text>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.featureTitles.slice(0, 3).map((title, i) => {
               const IconComponent = getIconComponent(
@@ -357,10 +367,10 @@ export default async function ProjectPage({
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4">
                     <IconComponent className="w-full h-full text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <Text variant="heading4" as="h3" className="mb-2">
                     {title}
-                  </h3>
-                  <p className="text-neutral-400 text-sm">{description}</p>
+                  </Text>
+                  <Text variant="small" as="p" color="secondary">{description}</Text>
                 </Card>
               );
             })}
@@ -371,7 +381,7 @@ export default async function ProjectPage({
       {/* Technology Stack */}
       {project.technologies && project.technologies.length > 0 && (
         <section className="max-w-4xl mx-auto space-y-8">
-          <h2 className="text-3xl font-bold text-white">Technology Stack</h2>
+          <Text variant="heading2" as="h2">Technology Stack</Text>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {project.technologies.map((tech, i) => (
               <Card
@@ -389,14 +399,14 @@ export default async function ProjectPage({
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto text-center space-y-6 py-16">
         <Card variant="default" className="rounded-3xl p-8">
-          <h2 className="text-3xl font-bold text-white mb-6">
+          <Text variant="heading2" as="h2" className="mb-6">
             Inspired by This Project?
-          </h2>
-          <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
+          </Text>
+          <Text variant="paragraph" as="p" color="muted" className="text-lg max-w-2xl mx-auto mb-8">
             Let's work together to create something equally amazing for your
             next Unity project. Whether it's VR, EEG visualization, or game
             development, I'm here to help.
-          </p>
+          </Text>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <InteractiveButton href="/contact" variant="primary" size="lg">
               Start Your Project
