@@ -9,6 +9,7 @@ import { StructuredData } from "@/components/seo";
 import { PerformanceMonitor } from "@/components/performance";
 
 import { defaultMetadata } from "@/lib/metadata";
+import { siteUrl } from "@/lib/site";
 import { Text } from "@/components/atoms";
 import { ErrorBoundary } from "@/components/feedback";
 import { InteractiveButton } from "@/components/ui";
@@ -22,7 +23,7 @@ const dmSans = DM_Sans({
 
 export const metadata = {
   ...defaultMetadata,
-  metadataBase: new URL("https://www.dibza.co.uk"),
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
@@ -68,7 +69,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link
           rel="alternate"
           type="application/rss+xml"
-          href="https://www.dibza.co.uk/feed.xml"
+          href={`${siteUrl}/feed.xml`}
           title="Luke Taylor - Blog"
         />
 

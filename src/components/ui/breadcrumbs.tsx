@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
+import { siteUrl } from "@/lib/site";
 
 interface BreadcrumbItem {
   label: string;
@@ -61,13 +62,13 @@ export default function Breadcrumbs({
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://www.dibza.co.uk",
+                item: siteUrl,
               },
               ...items.map((it, idx) => ({
                 "@type": "ListItem",
                 position: idx + 2,
                 name: it.label,
-                item: it.href ? `https://www.dibza.co.uk${it.href}` : undefined,
+                item: it.href ? `${siteUrl}${it.href}` : undefined,
               })),
             ],
           }),

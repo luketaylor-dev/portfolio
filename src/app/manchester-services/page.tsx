@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
+import { siteUrl } from "@/lib/site";
 import { Card } from "@/components/ui";
 import { Text } from "@/components/atoms";
 import { Building2, MapPin, Users, Zap } from "lucide-react";
@@ -27,7 +28,7 @@ export default function ManchesterServicesPage() {
             provider: {
               "@type": "Person",
               name: "Luke Taylor",
-              url: "https://www.dibza.co.uk",
+              url: siteUrl,
             },
             areaServed: ["Manchester", "North West", "United Kingdom"],
             serviceType: [
@@ -36,7 +37,7 @@ export default function ManchesterServicesPage() {
               "Unity Development",
               "Game Development",
             ],
-            url: "https://www.dibza.co.uk/manchester-services",
+            url: `${siteUrl}/manchester-services`,
           }),
         }}
         suppressHydrationWarning={true}

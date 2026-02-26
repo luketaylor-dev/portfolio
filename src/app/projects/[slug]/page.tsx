@@ -1,4 +1,5 @@
 import { getAllProjects, getProjectBySlug, type Project } from "@/lib/content";
+import { siteUrl } from "@/lib/site";
 import { notFound } from "next/navigation";
 import { MdxContent } from "@/components/content";
 import { Text } from "@/components/atoms";
@@ -50,7 +51,7 @@ const generateProjectStructuredData = (project: Project) => {
       "@type": "Person",
       name: "Luke Taylor",
       jobTitle: "Unity Developer",
-      url: "https://www.dibza.co.uk",
+      url: siteUrl,
     },
     creator: {
       "@type": "Person",
@@ -59,9 +60,9 @@ const generateProjectStructuredData = (project: Project) => {
     dateCreated: project.date,
     dateModified: project.date,
     image: project.cover
-      ? `https://www.dibza.co.uk${project.cover}`
+      ? `${siteUrl}${project.cover}`
       : undefined,
-    url: `https://www.dibza.co.uk/projects/${project.slug}`,
+    url: `${siteUrl}/projects/${project.slug}`,
     genre: project.tags || [],
     keywords: project.tags?.join(", ") || "",
     inLanguage: "en",
@@ -74,10 +75,10 @@ const generateProjectStructuredData = (project: Project) => {
     return {
       ...baseStructuredData,
       "@type": "VideoObject" as const,
-      contentUrl: `https://www.dibza.co.uk${project.video}`,
-      embedUrl: `https://www.dibza.co.uk${project.video}`,
+      contentUrl: `${siteUrl}${project.video}`,
+      embedUrl: `${siteUrl}${project.video}`,
       thumbnailUrl: project.cover
-        ? `https://www.dibza.co.uk${project.cover}`
+        ? `${siteUrl}${project.cover}`
         : undefined,
       uploadDate: project.date,
       duration: "PT5M", // Default 5 minutes, adjust as needed
@@ -127,8 +128,8 @@ export async function generateMetadata({
   // Use SEO description from MDX if available, otherwise fall back to regular description
   const seoDescription = project.seoDescription || project.description;
   const ogImage = project.cover
-    ? `https://www.dibza.co.uk${project.cover}`
-    : `https://www.dibza.co.uk/og?title=${encodeURIComponent(project.title)}`;
+    ? `${siteUrl}${project.cover}`
+    : `${siteUrl}/og?title=${encodeURIComponent(project.title)}`;
 
   return {
     title: `${project.title} - Luke Taylor`,

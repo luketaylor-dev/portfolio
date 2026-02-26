@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { siteUrl } from "@/lib/site";
 
 export const generateMetadata = (
   title: string,
@@ -6,7 +7,7 @@ export const generateMetadata = (
   path: string,
   image?: string
 ): Metadata => {
-  const baseUrl = "https://www.dibza.co.uk";
+  const baseUrl = siteUrl;
   const url = `${baseUrl}${path}`;
   const imageUrl = image
     ? image.startsWith("http")
@@ -78,14 +79,14 @@ export const defaultMetadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://www.dibza.co.uk",
+    url: siteUrl,
     siteName: "Luke Taylor Portfolio",
     title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
     description:
       "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
     images: [
       {
-        url: "https://www.dibza.co.uk/og?title=Luke%20Taylor%20-%20Unity%20Developer%20Manchester",
+        url: `${siteUrl}/og?title=Luke%20Taylor%20-%20Unity%20Developer%20Manchester`,
         width: 1200,
         height: 630,
         alt: "Luke Taylor - Unity Developer Manchester",
@@ -98,12 +99,12 @@ export const defaultMetadata: Metadata = {
     description:
       "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
     images: [
-      "https://www.dibza.co.uk/og?title=Luke%20Taylor%20%E2%80%94%20Unity%20Developer%20Manchester",
+      `${siteUrl}/og?title=Luke%20Taylor%20%E2%80%94%20Unity%20Developer%20Manchester`,
     ],
     creator: "@luketaylor_dev",
   },
   alternates: {
-    canonical: "https://www.dibza.co.uk",
+    canonical: siteUrl,
   },
   other: {
     "theme-color": "#9333ea", // Primary theme color (primary-600)

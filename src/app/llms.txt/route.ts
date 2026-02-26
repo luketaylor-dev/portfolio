@@ -1,0 +1,62 @@
+import { siteUrl } from "@/lib/site";
+
+export async function GET() {
+  const content = `# Luke Taylor
+
+> Manchester-based Unity Developer specialising in EEG visualisation, VR development, free-to-play game development, and full-stack web development. Building immersive, high-performance projects for clients across the UK and beyond.
+
+## About
+
+Luke Taylor is a Unity Developer with 7+ years of experience bridging neuroscience, interactive technology, and game development. Based in Manchester, UK, with clients worldwide. Core specialisms include EEG-driven visualisations, multiplayer VR experiences, and high-revenue free-to-play games — alongside secondary expertise in .NET and React web development.
+
+- Website: ${siteUrl}
+- Contact: ${siteUrl}/contact
+- Location: Manchester, UK (remote-friendly)
+
+## Pages
+
+- [Home](${siteUrl}): Portfolio overview and featured work
+- [Projects](${siteUrl}/projects): Full list of Unity, VR, and web projects
+- [Blog](${siteUrl}/blog): Articles on Unity, game development, and 3D pipelines
+- [About](${siteUrl}/about): Background, skills, and values
+- [Contact](${siteUrl}/contact): Enquiries for Unity, VR, EEG, and web projects
+- [Web Development](${siteUrl}/web-development): .NET and React/Next.js service details
+- [Manchester Services](${siteUrl}/manchester-services): Local and regional availability
+
+## Projects
+
+- [Free-to-Play Poker Suite](${siteUrl}/projects/poker-suite): Unity-built casino apps with segmented IAP, seasonal pipelines, and cross-promotion systems scaling to millions in annual revenue. Tags: Unity, C#, F2P, IAP, LiveOps, Mobile.
+- [EEG Visualiser — Brainrave](${siteUrl}/projects/eeg-visualiser): A Unity system that transforms EEG signals and live audio into reactive VFX, blending neuroscience and entertainment. Tags: Unity, C#, EEG, VR, Rust, BrainFlow, VFX.
+- [Tatfindr](${siteUrl}/projects/tatfindr): Full-stack web platform for finding tattoo artists by location and style. Next.js frontend, ASP.NET Core API, PostgreSQL. Tags: React, Next.js, ASP.NET Core, TypeScript, PostgreSQL.
+- [Node-Based Dialogue System](${siteUrl}/projects/dialogue-system): Custom Unity editor tool for branching dialogue with a visual node system. Tags: Unity, C#, Editor Tools, Dialogue System.
+- [VR Office](${siteUrl}/projects/vr-office): Proof-of-concept VR workspace with multi-user Netcode sync and physics-based props. Tags: Unity, VR, C#, Netcode, Meta SDK.
+- [VR Space Station Climber](${siteUrl}/projects/vr-space): Unity VR experiment using NASA assets to prototype zero-gravity climbing mechanics. Tags: Unity, VR, C#, Meta SDK, UltimateXR.
+- [Baa Baa Bomber](${siteUrl}/projects/baa-baa-bomber): Comedic mobile game with physics-based puzzles and experimental EEG hands-free controls. Tags: Unity, C#, Mobile, EEG, BrainFlow, Indie.
+- [Portfolio Site](${siteUrl}/projects/portfolio): This portfolio, built with Next.js 16, React, TypeScript, and MDX. Tags: React, Next.js, TypeScript, Tailwind CSS.
+
+## Blog
+
+- [Building a Node-Based Dialogue System in Unity](${siteUrl}/blog/unity-dialogue-system): How to build a scalable visual dialogue system with action integration, ScriptableObjects, and a custom Unity Editor tool.
+- [Making Spaceships in Blender](${siteUrl}/blog/making-spaceships-blender): Workflow for modelling spaceships in Blender — blockout, detailing, and bringing assets into Unity.
+
+## Services
+
+- **EEG Visualisation & Brain-Computer Interfaces** — Real-time EEG processing, BrainFlow integration, reactive VFX pipelines
+- **VR Development** — Immersive Unity VR experiences, multiplayer Netcode, Meta SDK, XR Interaction Toolkit
+- **Game Development** — Free-to-play and casino games, editor tools, physics systems, indie prototypes
+- **Web Development (.NET)** — ASP.NET Core, Entity Framework Core, PostgreSQL, REST APIs, JWT auth
+- **Web Development (React/Next.js)** — Next.js, React, TypeScript, Tailwind CSS, full-stack applications
+- **3D Asset Creation** — Blender modelling and pipeline optimisation for Unity game projects
+
+## Key Technologies
+
+Unity, C#, VR (Meta SDK, XR Interaction Toolkit, UltimateXR, Netcode), EEG (BrainFlow), Rust, Blender, Next.js, React, TypeScript, ASP.NET Core, PostgreSQL, Tailwind CSS
+`;
+
+  return new Response(content, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=3600, s-maxage=3600",
+    },
+  });
+}

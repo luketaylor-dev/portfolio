@@ -17,6 +17,7 @@ import { Text } from "@/components/atoms";
 import { InteractiveButton, Badge, Breadcrumbs } from "@/components/ui";
 import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
 import { extractHeadings } from "@/lib/headings";
+import { siteUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   try {
@@ -82,18 +83,18 @@ export default async function BlogPostPage({
               post.description ||
               `Insights from Luke Taylor's Unity development: ${post.title}`,
             image: post.image
-              ? [`https://www.dibza.co.uk${post.image}`]
+              ? [`${siteUrl}${post.image}`]
               : undefined,
             datePublished: post.date,
             dateModified: post.date,
-            url: `https://www.dibza.co.uk/blog/${post.slug}`,
+            url: `${siteUrl}/blog/${post.slug}`,
             author: { "@type": "Person", name: "Luke Taylor" },
             publisher: {
               "@type": "Organization",
               name: "Luke Taylor - Portfolio",
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.dibza.co.uk/icons/favicon.png",
+                url: `${siteUrl}/icons/favicon.png`,
               },
             },
           }),
@@ -181,7 +182,7 @@ export default async function BlogPostPage({
         {/* Social Sharing */}
         <div className="pt-8 border-t border-neutral-800">
           <SocialShare
-            url={`https://www.dibza.co.uk/blog/${post.slug}`}
+            url={`${siteUrl}/blog/${post.slug}`}
             title={post.title}
           />
         </div>
