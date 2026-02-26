@@ -13,7 +13,8 @@ const testimonials = [
   {
     name: "Dave",
     role: "Brainrave",
-    quote: "Placeholder text – testimonial to be added.",
+    quote:
+      "Luke brought real technical depth to the Brainrave project, turning complex EEG integration into something that actually worked in the real world. Great communicator and a pleasure to work with.",
   },
 ];
 

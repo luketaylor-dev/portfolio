@@ -50,13 +50,6 @@ featured: false
 Older blog body.
 `;
 
-const MALFORMED_MDX = `---
-title: Bad
----
-
-Body.
-`;
-
 beforeEach(() => {
   jest.resetAllMocks();
   jest.spyOn(console, "error").mockImplementation(() => {});
@@ -69,7 +62,7 @@ afterEach(() => {
 describe("getAllProjects()", () => {
   it("returns parsed projects sorted newest-first", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx", "older-project.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx", "older-project.mdx"] as any);
     mockFs.readFileSync
       .mockReturnValueOnce(PROJECT_MDX_A)
       .mockReturnValueOnce(PROJECT_MDX_B);
@@ -77,12 +70,12 @@ describe("getAllProjects()", () => {
     const projects = getAllProjects();
 
     expect(projects).toHaveLength(2);
-    expect(projects[0].slug).toBe("tatfindr");
-    expect(projects[0].title).toBe("TatFindr");
-    expect(projects[1].slug).toBe("older-project");
+    expect(projects[0]!.slug).toBe("tatfindr");
+    expect(projects[0]!.title).toBe("TatFindr");
+    expect(projects[1]!.slug).toBe("older-project");
     // Newest first
-    expect(new Date(projects[0].date).getTime()).toBeGreaterThan(
-      new Date(projects[1].date).getTime()
+    expect(new Date(projects[0]!.date).getTime()).toBeGreaterThan(
+      new Date(projects[1]!.date).getTime()
     );
   });
 
@@ -96,28 +89,28 @@ describe("getAllProjects()", () => {
 
   it("skips non-.mdx files", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx", "README.md", ".DS_Store"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx", "README.md", ".DS_Store"] as any);
     mockFs.readFileSync.mockReturnValue(PROJECT_MDX_A);
 
     const projects = getAllProjects();
 
     expect(projects).toHaveLength(1);
-    expect(projects[0].slug).toBe("tatfindr");
+    expect(projects[0]!.slug).toBe("tatfindr");
   });
 
   it("includes body.raw from MDX content", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx"] as any);
     mockFs.readFileSync.mockReturnValue(PROJECT_MDX_A);
 
     const projects = getAllProjects();
 
-    expect(projects[0].body.raw).toContain("TatFindr");
+    expect(projects[0]!.body.raw).toContain("TatFindr");
   });
 
   it("skips files that throw on readFileSync and logs error", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["bad.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["bad.mdx"] as any);
     mockFs.readFileSync.mockImplementation(() => {
       throw new Error("read error");
     });
@@ -132,7 +125,7 @@ describe("getAllProjects()", () => {
 describe("getProjectBySlug()", () => {
   it("returns the correct project for a valid slug", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx", "older-project.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx", "older-project.mdx"] as any);
     mockFs.readFileSync
       .mockReturnValueOnce(PROJECT_MDX_A)
       .mockReturnValueOnce(PROJECT_MDX_B);
@@ -146,7 +139,7 @@ describe("getProjectBySlug()", () => {
 
   it("returns undefined for a nonexistent slug", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["tatfindr.mdx"] as any);
     mockFs.readFileSync.mockReturnValue(PROJECT_MDX_A);
 
     const project = getProjectBySlug("nonexistent");
@@ -158,7 +151,7 @@ describe("getProjectBySlug()", () => {
 describe("getAllBlogPosts()", () => {
   it("returns parsed posts sorted newest-first", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["first-post.mdx", "older-post.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["first-post.mdx", "older-post.mdx"] as any);
     mockFs.readFileSync
       .mockReturnValueOnce(BLOG_MDX_A)
       .mockReturnValueOnce(BLOG_MDX_B);
@@ -166,10 +159,10 @@ describe("getAllBlogPosts()", () => {
     const posts = getAllBlogPosts();
 
     expect(posts).toHaveLength(2);
-    expect(posts[0].slug).toBe("first-post");
-    expect(posts[0].title).toBe("First Post");
-    expect(new Date(posts[0].date).getTime()).toBeGreaterThan(
-      new Date(posts[1].date).getTime()
+    expect(posts[0]!.slug).toBe("first-post");
+    expect(posts[0]!.title).toBe("First Post");
+    expect(new Date(posts[0]!.date).getTime()).toBeGreaterThan(
+      new Date(posts[1]!.date).getTime()
     );
   });
 
@@ -183,7 +176,7 @@ describe("getAllBlogPosts()", () => {
 
   it("skips non-.mdx files", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["first-post.mdx", "notes.txt"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["first-post.mdx", "notes.txt"] as any);
     mockFs.readFileSync.mockReturnValue(BLOG_MDX_A);
 
     const posts = getAllBlogPosts();
@@ -193,19 +186,19 @@ describe("getAllBlogPosts()", () => {
 
   it("includes body.raw from MDX content", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["first-post.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["first-post.mdx"] as any);
     mockFs.readFileSync.mockReturnValue(BLOG_MDX_A);
 
     const posts = getAllBlogPosts();
 
-    expect(posts[0].body.raw).toContain("Blog body");
+    expect(posts[0]!.body.raw).toContain("Blog body");
   });
 });
 
 describe("getBlogPostBySlug()", () => {
   it("returns the correct post for a valid slug", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["first-post.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["first-post.mdx"] as any);
     mockFs.readFileSync.mockReturnValue(BLOG_MDX_A);
 
     const post = getBlogPostBySlug("first-post");
@@ -217,7 +210,7 @@ describe("getBlogPostBySlug()", () => {
 
   it("returns undefined for a missing slug", () => {
     mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(["first-post.mdx"] as unknown as fs.Dirent[]);
+    mockFs.readdirSync.mockReturnValue(["first-post.mdx"] as any);
     mockFs.readFileSync.mockReturnValue(BLOG_MDX_A);
 
     const post = getBlogPostBySlug("does-not-exist");

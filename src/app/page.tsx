@@ -149,7 +149,10 @@ export default function HomePage() {
         </section>
 
         {/* Skills Section */}
-        <section className="pt-12 pb-24 space-y-12" aria-labelledby="skills-heading">
+        <section
+          className="pt-12 pb-24 space-y-12"
+          aria-labelledby="skills-heading"
+        >
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
               <Text
