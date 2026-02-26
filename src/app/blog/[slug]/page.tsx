@@ -5,10 +5,17 @@ import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 
-import { MdxContent, SocialShare, RelatedPosts } from "@/components/content";
+import {
+  MdxContent,
+  SocialShare,
+  RelatedPosts,
+  ReadingProgressBar,
+  BlogToc,
+} from "@/components/content";
 import { Text } from "@/components/atoms";
 import { InteractiveButton, Badge, Breadcrumbs } from "@/components/ui";
 import { formatDate, calculateReadingTime } from "@/lib/blog-utils";
+import { extractHeadings } from "@/lib/headings";
 
 export async function generateStaticParams() {
   try {
@@ -57,8 +64,11 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const tocItems = extractHeadings(post.body.raw);
+
   return (
     <div className="space-y-16">
+      <ReadingProgressBar />
       {/* Structured Data: BlogPosting */}
       <script
         type="application/ld+json"
@@ -105,8 +115,9 @@ export default async function BlogPostPage({
         </InteractiveButton>
       </div>
 
-      {/* Article Header */}
-      <article className="max-w-4xl mx-auto space-y-8">
+      {/* Article + TOC */}
+      <div className="max-w-6xl mx-auto flex gap-12">
+        <article className="min-w-0 flex-1 max-w-4xl space-y-8">
         {/* Title & Meta */}
         <header className="space-y-6">
           <Text variant="heading1" as="h1" className="md:text-5xl leading-tight">
@@ -172,7 +183,13 @@ export default async function BlogPostPage({
             title={post.title}
           />
         </div>
-      </article>
+        </article>
+        {tocItems.length > 0 && (
+          <aside className="hidden lg:block flex-shrink-0 w-56">
+            <BlogToc items={tocItems} />
+          </aside>
+        )}
+      </div>
 
       {/* Related Posts */}
       <RelatedPosts currentPostSlug={post.slug} allPosts={getAllBlogPosts()} />

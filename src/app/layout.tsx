@@ -64,6 +64,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icons/favicon.png" />
 
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href="https://www.dibza.co.uk/feed.xml"
+          title="Luke Taylor - Blog"
+        />
+
         {/* Structured data */}
         <StructuredData />
       </head>
@@ -83,19 +90,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-4">
               {/* Logo */}
-              <Link href="/" className="group flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-2 shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 group-hover:scale-110 transition-all duration-300">
-                  <span className="text-white font-bold text-lg">LT</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-bold text-xl text-white group-hover:text-primary-300 transition-colors">
-                    Luke Taylor
-                  </span>
-                  <span className="text-xs text-primary-300 opacity-80">
-                    From Brainwaves to Gameplay
-                  </span>
-                </div>
-              </Link>
+              <div className="flex items-center gap-4">
+                <Link href="/" className="group flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-2 shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40 group-hover:scale-110 transition-all duration-300">
+                    <span className="text-white font-bold text-lg">LT</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-bold text-xl text-white group-hover:text-primary-300 transition-colors">
+                      Luke Taylor
+                    </span>
+                    <span className="text-xs text-primary-300 opacity-80">
+                      From Brainwaves to Gameplay
+                    </span>
+                  </div>
+                </Link>
+                <span
+                  className="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-600/20 text-primary-300 border border-primary-500/30"
+                  aria-label="Availability status"
+                >
+                  Currently Available
+                </span>
+              </div>
 
               {/* Desktop Navigation */}
               <nav

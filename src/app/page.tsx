@@ -23,6 +23,7 @@ import {
   BlogCard,
   SkillCard,
   GitHubCard,
+  TestimonialsSection,
 } from "@/components/content";
 import { Text } from "@/components/atoms";
 import { InteractiveButton, Card } from "@/components/ui";
@@ -45,7 +46,7 @@ export default function HomePage() {
       <div className="relative z-10">
         {/* Hero Section */}
         <section
-          className="min-h-screen flex items-center justify-center text-center relative pb-20"
+          className="min-h-screen flex items-center justify-center text-center relative pb-12"
           role="banner"
           aria-labelledby="hero-heading"
         >
@@ -148,7 +149,7 @@ export default function HomePage() {
         </section>
 
         {/* Skills Section */}
-        <section className="py-24 space-y-12" aria-labelledby="skills-heading">
+        <section className="pt-12 pb-24 space-y-12" aria-labelledby="skills-heading">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">
               <Text
@@ -367,6 +368,9 @@ export default function HomePage() {
             )}
           </div>
         </section>
+
+        {/* Testimonials */}
+        <TestimonialsSection />
 
         {/* CTA Section */}
         <section className="py-24">
