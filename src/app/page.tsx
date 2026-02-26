@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { getAllProjects, getAllBlogPosts } from "@/lib/content";
 import {
   ArrowRight,
@@ -8,6 +9,7 @@ import {
   Gamepad2,
   Brain,
   GitBranch,
+  Box,
 } from "lucide-react";
 import {
   ScrollAnimation,
@@ -276,6 +278,54 @@ export default function HomePage() {
               </Text>
             </div>
           )}
+        </section>
+
+        {/* Beyond code — Creative pipeline */}
+        <section className="py-24 space-y-12">
+          <ScrollAnimation direction="up">
+            <div className="text-center space-y-4">
+              <Text
+                variant="heading2"
+                as="h2"
+                className="md:text-4xl flex items-center justify-center gap-3"
+              >
+                <Box className="w-8 h-8 text-primary-400" />
+                Beyond Code
+                <Box className="w-8 h-8 text-primary-400" />
+              </Text>
+              <Text variant="paragraph" as="p" color="secondary">
+                3D asset creation, modelling, and the creative pipeline beyond
+                code
+              </Text>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation direction="up" delay={200}>
+            <Link
+              href="/blog?tags=Blender"
+              className="block max-w-2xl mx-auto"
+              aria-label="See creative work: Blender and 3D pipeline"
+            >
+              <Card
+                variant="default"
+                hover={true}
+                className="group cursor-pointer text-center py-12 px-8 border-2 border-primary-800/50 hover:border-primary-600/50 transition-colors"
+              >
+                <div className="space-y-4">
+                  <Text variant="heading3" as="h3" className="text-xl">
+                    See some of my more creative work
+                  </Text>
+                  <Text variant="paragraph" as="p" color="muted">
+                    Blender, 3D modelling, and asset creation for games
+                  </Text>
+                  <span className="inline-flex items-center gap-2 text-primary-400 group-hover:gap-3 transition-all">
+                    View Blender posts
+                    <ArrowRight className="w-5 h-5" />
+                  </span>
+                </div>
+              </Card>
+            </Link>
+          </ScrollAnimation>
         </section>
 
         {/* Recent Projects */}

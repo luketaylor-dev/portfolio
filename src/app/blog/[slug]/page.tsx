@@ -146,14 +146,14 @@ export default async function BlogPostPage({
 
         {/* Featured Image */}
         {post.image && (
-          <div className="aspect-video overflow-hidden rounded-2xl">
+          <div className="w-full max-h-[400px] flex items-center justify-center overflow-hidden rounded-2xl bg-neutral-900/50">
             <Image
               src={post.image || ""}
               alt={post.title}
               width={1200}
-              height={675}
+              height={400}
               sizes="(max-width: 768px) 100vw, 1200px"
-              className="w-full h-full object-cover"
+              className="max-h-[400px] w-auto object-contain"
               priority
             />
           </div>

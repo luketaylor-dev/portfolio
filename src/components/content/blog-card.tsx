@@ -34,7 +34,7 @@ export default function BlogCard({
       >
         <div className="space-y-4 flex flex-col h-full">
           {/* Blog Image */}
-          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-primary-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-primary-500/20 transition-all duration-500">
+          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-primary-800/20 overflow-hidden rounded-xl relative group-hover:shadow-2xl group-hover:shadow-primary-500/20 transition-all duration-500 flex items-center justify-center">
             {post.image ? (
               <Image
                 src={post.image}
@@ -42,7 +42,7 @@ export default function BlogCard({
                 width={400}
                 height={225}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
+                className="max-w-full max-h-full object-contain group-hover:scale-110 transition-all duration-500 ease-out"
                 priority={priority}
               />
             ) : (
