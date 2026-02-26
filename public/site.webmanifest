@@ -3,7 +3,7 @@
   "short_name": "Luke Taylor",
   "description": "Unity developer portfolio showcasing VR experiences, EEG visualizations, and game development projects",
   "start_url": "/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#0a0a0a",
   "theme_color": "#9333ea",
   "icons": [
