@@ -20,7 +20,7 @@ import Breadcrumbs from "@/components/ui/breadcrumbs";
 export const metadata: Metadata = generateMetadata(
   "About Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
   "Learn about Luke Taylor, a Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces and immersive experiences.",
-  "/about"
+  "/about",
 );
 
 export default function AboutPage() {
@@ -56,9 +56,8 @@ export default function AboutPage() {
             and systems that push ideas further and empower creative teams. I
             also have a background in{" "}
             <strong className="text-primary-300">.NET web development</strong>{" "}
-            and work with{" "}
-            <strong className="text-primary-300">React</strong>—this portfolio
-            is built with Next.js.
+            and work with <strong className="text-primary-300">React</strong>,
+            this portfolio is built with Next.js.
           </Text>
         </div>
 
@@ -86,7 +85,12 @@ export default function AboutPage() {
               Based in Manchester
             </Text>
           </div>
-          <Text variant="paragraph" as="p" color="muted" className="text-lg leading-relaxed">
+          <Text
+            variant="paragraph"
+            as="p"
+            color="muted"
+            className="text-lg leading-relaxed"
+          >
             I'm proud to be part of Manchester's thriving tech scene. The city's
             innovative spirit and collaborative community make it the perfect
             place for cutting-edge{" "}
@@ -155,8 +159,8 @@ export default function AboutPage() {
             <strong className="text-primary-300">game development</strong> and
             creating interactive experiences. Over the years, I’ve worked across
             genres and platforms, shipping{" "}
-            <strong className="text-primary-300">mobile casino titles</strong> to
-            large audiences, prototyping VR collaboration spaces, and
+            <strong className="text-primary-300">mobile casino titles</strong>{" "}
+            to large audiences, prototyping VR collaboration spaces, and
             experimenting with{" "}
             <strong className="text-primary-300">
               EEG-driven visual performance
@@ -198,7 +202,12 @@ export default function AboutPage() {
             <Text variant="heading4" as="h3" className="mb-3">
               EEG Visualization
             </Text>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               Transform complex brainwave data into intuitive, beautiful visual
               experiences. I've worked with various EEG devices and created
               real-time visualization systems that make brain-computer
@@ -220,7 +229,12 @@ export default function AboutPage() {
             <Text variant="heading4" as="h3" className="mb-3">
               VR Development
             </Text>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               Create immersive virtual reality experiences that transport users
               to new worlds. From educational simulations to entertainment
               experiences, I focus on performance, comfort, and creating truly
@@ -242,7 +256,12 @@ export default function AboutPage() {
             <Text variant="heading4" as="h3" className="mb-3">
               Game Development
             </Text>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               Build high-performance games that millions can enjoy. Specializing
               in free-to-play and casino games, I focus on creating engaging
               gameplay loops, monetization strategies, and scalable
@@ -270,9 +289,16 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Trophy className="w-full h-full text-white" />
               </div>
-              <Text variant="heading4" as="h3">Excellence</Text>
+              <Text variant="heading4" as="h3">
+                Excellence
+              </Text>
             </div>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               I believe in delivering work that exceeds expectations. Every
               project is an opportunity to create something exceptional that
               users will love and remember.
@@ -284,9 +310,16 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Zap className="w-full h-full text-white" />
               </div>
-              <Text variant="heading4" as="h3">Innovation</Text>
+              <Text variant="heading4" as="h3">
+                Innovation
+              </Text>
             </div>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               Pushing boundaries and exploring new technologies is what excites
               me. I love taking on challenges that haven't been solved before
               and finding creative solutions.
@@ -302,7 +335,12 @@ export default function AboutPage() {
                 Collaboration
               </Text>
             </div>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               The best projects come from great teamwork. I value open
               communication, feedback, and working together to bring the best
               ideas to life.
@@ -314,9 +352,16 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
                 <Code className="w-full h-full text-white" />
               </div>
-              <Text variant="heading4" as="h3">Quality</Text>
+              <Text variant="heading4" as="h3">
+                Quality
+              </Text>
             </div>
-            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+            <Text
+              variant="paragraph"
+              as="p"
+              color="secondary"
+              className="leading-relaxed"
+            >
               Clean, maintainable code and smooth user experiences are
               non-negotiable. I believe in building things that last and can
               evolve with your needs.
@@ -331,11 +376,16 @@ export default function AboutPage() {
           <Text variant="heading2" as="h2" className="mb-6">
             Ready to Work Together?
           </Text>
-          <Text variant="paragraph" as="p" color="muted" className="text-lg max-w-2xl mx-auto mb-8">
+          <Text
+            variant="paragraph"
+            as="p"
+            color="muted"
+            className="text-lg max-w-2xl mx-auto mb-8"
+          >
             Whether you have a specific project in mind or just want to explore
             possibilities, I'd love to hear from you. Let's create something
             amazing together. Available for projects across the UK and remote
-            collaboration             worldwide.
+            collaboration worldwide.
           </Text>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <InteractiveButton href="/contact" variant="primary" size="lg">

@@ -281,7 +281,7 @@ export default function HomePage() {
           )}
         </section>
 
-        {/* Beyond code — Creative pipeline */}
+        {/* Beyond code - Creative pipeline */}
         <section className="py-24 space-y-12">
           <ScrollAnimation direction="up">
             <div className="text-center space-y-4">

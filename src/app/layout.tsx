@@ -43,7 +43,10 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmSans.className} scroll-smooth`}>
+    <html
+      lang="en"
+      className={`${dmSans.variable} ${dmSans.className} scroll-smooth`}
+    >
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -81,24 +84,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to main content
         </a>
 
-        {/* Background gradient — varies by page (client-only to avoid hydration mismatch) */}
+        {/* Background gradient, varies by page (client-only to avoid hydration mismatch) */}
         <PageGradientClient />
 
         <ScrollAwareHeader>
-        <main
-          id="main-content"
-          className="relative z-10 container mx-auto px-4 py-10"
-        >
-          <Suspense
-            fallback={
-              <div className="min-h-screen flex items-center justify-center">
-                Loading...
-              </div>
-            }
+          <main
+            id="main-content"
+            className="relative z-10 container mx-auto px-4 py-10"
           >
-            <ErrorBoundary>{children}</ErrorBoundary>
-          </Suspense>
-        </main>
+            <Suspense
+              fallback={
+                <div className="min-h-screen flex items-center justify-center">
+                  Loading...
+                </div>
+              }
+            >
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </Suspense>
+          </main>
         </ScrollAwareHeader>
 
         <footer className="relative z-10 border-t border-primary-800/30 mt-20">
@@ -114,7 +117,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     Luke Taylor
                   </span>
                 </div>
-                <Text variant="paragraph" as="p" color="secondary" className="max-w-xs">
+                <Text
+                  variant="paragraph"
+                  as="p"
+                  color="secondary"
+                  className="max-w-xs"
+                >
                   Unity Developer crafting immersive experiences in VR, EEG
                   visualization, and game development.
                 </Text>
@@ -122,7 +130,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
               {/* Quick Links */}
               <div className="space-y-4">
-                <Text variant="heading4" as="h3">Quick Links</Text>
+                <Text variant="heading4" as="h3">
+                  Quick Links
+                </Text>
                 <div className="space-y-2">
                   {footerLinks.map((link) => (
                     <Link
@@ -139,7 +149,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
               {/* Social Links */}
               <div className="space-y-4">
-                <Text variant="heading4" as="h3">Connect</Text>
+                <Text variant="heading4" as="h3">
+                  Connect
+                </Text>
                 <div className="space-y-2">
                   {socialLinks.map((link) => {
                     const Icon = link.icon;
@@ -162,10 +174,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
               {/* Contact Info */}
               <div className="space-y-4">
-                <Text variant="heading4" as="h3">Let&apos;s Connect</Text>
+                <Text variant="heading4" as="h3">
+                  Let&apos;s Connect
+                </Text>
                 <Text variant="paragraph" as="p" color="secondary">
-                  Ready to build something amazing together? Let&apos;s discuss your
-                  next Unity project.
+                  Ready to build something amazing together? Let&apos;s discuss
+                  your next Unity project.
                 </Text>
                 <a
                   href={`mailto:${contactEmail}`}
