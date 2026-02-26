@@ -1,9 +1,11 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Search, Filter, X } from "lucide-react";
 import { Badge } from "@/components/ui";
 
 import { Project } from "@/lib/content";
+
+const FILTER_TAGS = ["EEG", "Game Development", "VR", "Web Development"] as const;
 
 interface ProjectFilterProps {
   projects: Project[];
@@ -21,13 +23,13 @@ export default function ProjectFilter({
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [selectedTags, setSelectedTags] = useState<string[]>(initialTags);
 
-  // Get all unique tags from projects
+  // Only show whitelisted tags that exist in at least one project
   const allTags = useMemo(() => {
-    const tags = new Set<string>();
+    const projectTags = new Set<string>();
     projects.forEach((project) => {
-      project.tags?.forEach((tag) => tags.add(tag));
+      project.tags?.forEach((tag) => projectTags.add(tag));
     });
-    return Array.from(tags).sort();
+    return FILTER_TAGS.filter((tag) => projectTags.has(tag));
   }, [projects]);
 
   // Filter projects based on search term and selected tags
@@ -47,7 +49,7 @@ export default function ProjectFilter({
   }, [projects, searchTerm, selectedTags]);
 
   // Update parent component with filtered projects
-  useMemo(() => {
+  useEffect(() => {
     onFilteredProjects(filteredProjects);
   }, [filteredProjects, onFilteredProjects]);
 
