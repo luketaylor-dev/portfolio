@@ -79,12 +79,23 @@ export const socialLinks: SocialLink[] = [
 /** Contact email (mailto links). Update when address changes. */
 export const contactEmail = "me@luke-taylor.dev";
 
-/** Footer quick links. Manchester Services and Web Development linked here, not main nav. */
-export const footerLinks: { href: string; label: string }[] = [
-  { href: "/projects", label: "View Projects" },
+/** Primary footer links — shown in the main footer row. */
+export const primaryFooterLinks: { href: string; label: string }[] = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About Me" },
-  { href: "/contact", label: "Get in Touch" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+/** SEO-only pages — surfaced in a secondary muted line, not main nav. */
+export const seoFooterLinks: { href: string; label: string }[] = [
   { href: "/manchester-services", label: "Manchester Services" },
   { href: "/web-development", label: "Web Development" },
+];
+
+/** @deprecated use primaryFooterLinks + seoFooterLinks */
+export const footerLinks: { href: string; label: string }[] = [
+  ...primaryFooterLinks,
+  ...seoFooterLinks,
 ];

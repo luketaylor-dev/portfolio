@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { isValidEmail } from "@/lib/validation";
 import { Send, CheckCircle, AlertCircle, Upload, X } from "lucide-react";
 import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
 
@@ -143,12 +144,6 @@ export default function ProjectInquiryForm({
     },
   ];
 
-  // Validation functions
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   const validateField = (field: string, value: string) => {
     switch (field) {
       case "name":
@@ -156,7 +151,7 @@ export default function ProjectInquiryForm({
           ? null
           : "Name must be at least 2 characters";
       case "email":
-        return validateEmail(value)
+        return isValidEmail(value)
           ? null
           : "Please enter a valid email address";
       case "projectType":
@@ -188,7 +183,7 @@ export default function ProjectInquiryForm({
     switch (step) {
       case 1:
         if (!formData.name.trim()) errors.push("Name is required");
-        if (!validateEmail(formData.email))
+        if (!isValidEmail(formData.email))
           errors.push("Valid email is required");
         break;
       case 2:

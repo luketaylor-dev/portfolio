@@ -14,6 +14,7 @@ export interface Project {
   altText?: string;
   date: string;
   featured: boolean;
+  workType: "game" | "web";
   tags: string[];
   cover?: string;
   video?: string;

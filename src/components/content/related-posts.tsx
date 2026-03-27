@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { getRelatedPosts, formatDate } from "@/lib/blog-utils";
+import type { BlogPost } from "@/lib/content";
 
 interface RelatedPostsProps {
   currentPostSlug: string;
-  allPosts: any[];
+  allPosts: BlogPost[];
 }
 
 export default function RelatedPosts({
@@ -25,7 +26,7 @@ export default function RelatedPosts({
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {relatedPosts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <article className="group overflow-hidden rounded-xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-primary-900/10 hover:border-primary-600/50 hover:bg-primary-900/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <article className="group overflow-hidden rounded-xl border border-neutral-800 bg-[#1a1a1a] hover:border-neutral-700 transition-colors duration-200 cursor-pointer">
               {/* Featured Image */}
               {post.image && (
                 <div className="aspect-video overflow-hidden">
@@ -35,6 +36,7 @@ export default function RelatedPosts({
                     width={400}
                     height={225}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
               )}

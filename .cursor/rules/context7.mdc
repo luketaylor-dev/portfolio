@@ -1,5 +1,6 @@
 ---
+description: Use Context7 for library and framework documentation
 alwaysApply: true
 ---
 
-always use context7 to understand documentation for libraries, frameworks and other third party systems.
+Always use Context7 to verify documentation for libraries, frameworks, SDKs, CLIs, and third-party APIs before implementing or changing integration code.

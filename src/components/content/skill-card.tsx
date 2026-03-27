@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { Card } from "@/components/ui";
 import { Text } from "@/components/atoms";
-import InteractiveText from "@/components/interactive-text";
 
 interface SkillCardProps {
   href: string;
@@ -32,27 +31,24 @@ export default function SkillCard({
       <Card
         variant="default"
         hover={true}
-        className="relative overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/10 h-full flex flex-col"
+        className="h-full flex flex-col"
       >
-        {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        <div className="relative z-10 space-y-4 flex flex-col h-full">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-4 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/40">
+        <div className="space-y-4 flex flex-col h-full">
+          <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 flex items-center justify-center">
             {icon}
           </div>
 
-          <h3 className="text-2xl font-bold mb-3 transition-colors duration-300">
-            <InteractiveText variant="heading">{title}</InteractiveText>
+          <h3 className="text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-200">
+            {title}
           </h3>
 
-          <Text variant="paragraph" as="p" color="muted" className="leading-relaxed text-lg flex-grow">
+          <Text variant="paragraph" as="p" color="muted" className="leading-relaxed flex-grow">
             {description}
           </Text>
 
-          <div className="pt-4 mt-auto">
-            <div className="flex items-center gap-2 text-primary-300 text-sm font-medium">
-              <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse" />
+          <div className="pt-2 mt-auto">
+            <div className="flex items-center gap-2 text-primary-400 text-sm font-medium">
+              <div className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
               {feature}
             </div>
           </div>

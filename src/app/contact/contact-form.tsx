@@ -19,6 +19,7 @@ import {
   Breadcrumbs,
 } from "@/components/ui";
 import { contactEmail } from "@/lib/navigation";
+import { isValidEmail } from "@/lib/validation";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -55,11 +56,6 @@ export default function ContactForm() {
   }, []);
 
   // Validation functions
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   const validateName = (name: string) => {
     return name.trim().length >= 2;
   };
@@ -71,7 +67,7 @@ export default function ContactForm() {
   // Form validation state
   const isFormValid =
     validateName(formData.name) &&
-    validateEmail(formData.email) &&
+    isValidEmail(formData.email) &&
     validateMessage(formData.message);
 
   // Handle input changes
@@ -167,16 +163,16 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[{ label: "Contact" }]} className="mb-8" />
+      <Breadcrumbs items={[{ label: "Contact" }]} className="mb-0" />
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <Text
           variant="heading1"
           as="h1"
-          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+          className="tracking-tight text-white"
         >
           Let's Connect
         </Text>
@@ -238,9 +234,16 @@ export default function ContactForm() {
                     name="website"
                     value={honeypotValue}
                     onChange={(e) => setHoneypotValue(e.target.value)}
-                    style={{ display: "none" }}
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: "1px",
+                      height: "1px",
+                      overflow: "hidden",
+                    }}
                     tabIndex={-1}
                     autoComplete="off"
+                    aria-hidden="true"
                   />
                 )}
 
@@ -299,17 +302,17 @@ export default function ContactForm() {
                     placeholder="your.email@example.com"
                     required
                     className={`${
-                      touched.email && !validateEmail(formData.email)
+                      touched.email && !isValidEmail(formData.email)
                         ? "border-red-500 focus:border-red-500"
                         : ""
                     }`}
                     aria-describedby={
-                      touched.email && !validateEmail(formData.email)
+                      touched.email && !isValidEmail(formData.email)
                         ? "email-error"
                         : undefined
                     }
                   />
-                  {touched.email && !validateEmail(formData.email) && (
+                  {touched.email && !isValidEmail(formData.email) && (
                       <Text id="email-error" as="p" variant="small" color="error">
                       Please enter a valid email address
                     </Text>

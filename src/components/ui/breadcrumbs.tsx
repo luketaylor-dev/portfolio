@@ -10,12 +10,17 @@ interface BreadcrumbItem {
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
   className?: string;
+  colorScheme?: "default" | "web";
 }
 
 export default function Breadcrumbs({
   items,
   className = "",
+  colorScheme = "default",
 }: BreadcrumbsProps) {
+  const hoverClass =
+    colorScheme === "web" ? "hover:text-blue-300" : "hover:text-primary-300";
+
   return (
     <>
       <nav
@@ -24,7 +29,7 @@ export default function Breadcrumbs({
       >
         <Link
           href="/"
-          className="flex items-center hover:text-primary-300 transition-colors"
+          className={`flex items-center ${hoverClass} transition-colors`}
           aria-label="Home"
         >
           <Home className="w-4 h-4" />
@@ -36,7 +41,7 @@ export default function Breadcrumbs({
             {item.href ? (
               <Link
                 href={item.href}
-                className="hover:text-primary-300 transition-colors"
+                className={`${hoverClass} transition-colors`}
               >
                 {item.label}
               </Link>

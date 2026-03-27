@@ -6,6 +6,7 @@ interface BadgeProps {
   variant?:
     | "default"
     | "primary"
+    | "web"
     | "secondary"
     | "success"
     | "warning"
@@ -26,6 +27,7 @@ export default function Badge({
   const variantClasses = {
     default: "bg-neutral-800 text-neutral-300 border border-neutral-700",
     primary: "bg-primary-600/20 text-primary-300 border border-primary-500/30",
+    web: "bg-blue-600/20 text-blue-300 border border-blue-500/30",
     secondary: "bg-neutral-700 text-neutral-200 border border-neutral-600",
     success: "bg-green-600/20 text-green-300 border border-green-500/30",
     warning: "bg-yellow-600/20 text-yellow-300 border border-yellow-500/30",

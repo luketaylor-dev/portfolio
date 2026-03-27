@@ -1,31 +1,30 @@
-# Cursor Project Rules
+# Cursor project rules
 
-This directory contains Project Rules for the Cursor IDE, organized by domain.
+Rules for this repository: **Next.js App Router**, React, TypeScript, Tailwind, Jest, **pnpm**.
 
-## Migration from .cursorrules
+Each concern lives in a focused `.mdc` file. Files with YAML frontmatter (`alwaysApply`, `globs`) control when Cursor applies them.
 
-The single `.cursorrules` file (1110 lines) has been refactored into focused `.mdc` files following Cursor's latest guidance:
+## Rule files
 
-- Each rule file is under 500 lines
-- Rules are organized by domain/topic
-- Better maintainability and discoverability
+| File | Purpose |
+|------|---------|
+| `code-quality.mdc` | Engineering bar, errors, validation, comments |
+| `pnpm.mdc` | Use pnpm only for install and scripts |
+| `context7.mdc` | Use Context7 for library/framework docs before integrating |
+| `docs-folder.mdc` | `.cursor/docs` is reference-only; do not edit |
+| `documentation.mdc` | Where to put human-written project docs |
+| `file-naming.mdc` | `kebab-case` files and layout under `src/` |
+| `react-patterns.mdc` | Server vs client components, imports |
+| `components.mdc` | `Text`, dialogs, forms, component conventions |
+| `routing.mdc` | Navigation and optional route centralisation |
+| `hooks.mdc` | Custom hooks, effects, derived state |
+| `styling.mdc` | Tailwind and interactive states |
+| `data-handling.mdc` | Mapping, parsing, dates |
+| `types.mdc` | Unions over enums, typing habits |
+| `api.mdc` | `src/app/api` route handlers |
+| `frontend-definition-of-done.mdc` | Lint, type-check, tests before “done” |
+| `prop-drilling.mdc` | Props vs context |
 
-## Rule Files
+## Repo root
 
-- **file-naming.mdc** - File naming (kebab-case)
-- **components.mdc** - Component patterns (Text component, syntax)
-- **react-patterns.mdc** - Server/Client components, React imports
-- **code-quality.mdc** - Code comments and quality guidelines
-- **documentation.mdc** - Documentation organization
-- **data-handling.mdc** - Types, form data, mapping
-- **types.mdc** - TypeScript conventions (union types over enums)
-- **routing.mdc** - Route constants and navigation
-- **hooks.mdc** - useEffect and useMemo guidance
-- **styling.mdc** - Styling conventions (primary palette, selected/hover)
-- **prop-drilling.mdc** - Prop passing and Context usage
-- **context7.mdc** - Use Context7 for library/framework docs
-- **pnpm.mdc** - Package manager (pnpm only)
-
-## Reference
-
-The old `.cursorrules` file has been backed up as `.cursorrules.old` for reference.
+See **`CLAUDE.md`** for the same standards for Claude Code and other agents.

@@ -26,14 +26,14 @@ export default function BlogPage() {
     : [];
 
   return (
-    <div className="space-y-16">
-      <Breadcrumbs items={[{ label: "Blog" }]} className="mb-8" />
+    <div className="space-y-8 pt-8">
+      <Breadcrumbs items={[{ label: "Blog" }]} className="mb-0" />
 
       <section className="text-center space-y-8">
         <Text
           variant="heading1"
           as="h1"
-          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+          className="tracking-tight text-white"
         >
           Project Insights & Updates
         </Text>

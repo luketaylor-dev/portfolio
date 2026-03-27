@@ -16,14 +16,12 @@ export default function Card({
   padding = "md",
   hover = false,
 }: CardProps) {
-  const baseClasses = "rounded-2xl transition-all duration-300";
+  const baseClasses = "rounded-2xl transition-colors duration-200";
 
   const variantClasses = {
-    default:
-      "bg-gradient-to-br from-neutral-900 to-primary-900/20 border border-primary-800/50",
-    elevated:
-      "bg-gradient-to-br from-neutral-900 to-primary-900/30 border border-primary-600/50 shadow-lg shadow-primary-500/25",
-    outlined: "bg-neutral-900/50 border-2 border-primary-500/30",
+    default: "bg-[#1a1a1a] border border-neutral-800",
+    elevated: "bg-[#1a1a1a] border border-neutral-700 shadow-lg",
+    outlined: "bg-transparent border-2 border-neutral-700",
   };
 
   const paddingClasses = {
@@ -33,7 +31,7 @@ export default function Card({
   };
 
   const hoverClasses = hover
-    ? "hover:border-primary-600/50 hover:bg-primary-900/30 hover:scale-105"
+    ? "hover:border-primary-600/50 hover:bg-[#1f1f1f]"
     : "";
 
   return (

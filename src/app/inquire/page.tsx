@@ -17,7 +17,7 @@ export default function InquirePage() {
         <Text
           variant="heading1"
           as="h1"
-          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+          className="tracking-tight text-white"
         >
           Project Inquiry
         </Text>

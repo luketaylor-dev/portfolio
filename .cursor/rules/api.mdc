@@ -1,0 +1,27 @@
+---
+description: Next.js App Router API route handlers
+globs: src/app/api/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# API routes (`route.ts`)
+
+## Responsibilities
+
+- Validate body, query, and params before side effects (e.g. with Zod or explicit guards).
+- Keep handlers thin: parse → call helper/service → return JSON with a stable shape.
+- Use appropriate HTTP status codes; avoid leaking stack traces or provider internals.
+
+## Security and privacy
+
+- Never log or return secrets, tokens, or raw third-party error payloads to the client.
+- Treat env vars as sensitive; fail closed when required config is missing.
+
+## Reliability
+
+- Treat external calls (email, HTTP APIs) as fallible; map failures to safe user-facing messages.
+- Prefer explicit timeouts where the runtime allows.
+
+## Scope
+
+Applies to files under `src/app/api/`.

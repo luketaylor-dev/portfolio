@@ -34,20 +34,20 @@ export default function WebDevelopmentPage() {
   );
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[
           { label: "Services", href: "/about" },
           { label: "Web Development" },
         ]}
-        className="mb-8"
+        className="mb-0"
       />
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
             Web Development
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
@@ -67,7 +67,7 @@ export default function WebDevelopmentPage() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Code className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -79,7 +79,7 @@ export default function WebDevelopmentPage() {
             </p>
           </Card>
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Globe className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -90,7 +90,7 @@ export default function WebDevelopmentPage() {
             </p>
           </Card>
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Database className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">

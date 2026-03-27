@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata";
 import {
-  Brain,
   Gamepad2,
   Code,
   Trophy,
@@ -25,9 +24,9 @@ export const metadata: Metadata = generateMetadata(
 
 export default function AboutPage() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[{ label: "About" }]} className="mb-8" />
+      <Breadcrumbs items={[{ label: "About" }]} className="mb-0" />
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
@@ -35,7 +34,7 @@ export default function AboutPage() {
           <Text
             variant="heading1"
             as="h1"
-            className="text-4xl md:text-6xl tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl tracking-tight text-white"
           >
             About Me
           </Text>
@@ -62,7 +61,7 @@ export default function AboutPage() {
         </div>
 
         {/* Avatar */}
-        <div className="mx-auto w-40 h-40 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 p-2 shadow-2xl shadow-primary-500/25">
+        <div className="mx-auto w-40 h-40 rounded-full border-2 border-neutral-700 p-1">
           <Image
             src="/images/luke-taylor-dev.webp"
             alt="Luke Taylor - Manchester-based Unity Developer specializing in EEG visualization and VR development"
@@ -78,7 +77,7 @@ export default function AboutPage() {
       <section className="text-center space-y-6">
         <Card variant="default" className="rounded-2xl p-6 max-w-2xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
+            <div className="w-12 h-12 rounded-xl bg-primary-500 p-3">
               <Building2 className="w-full h-full text-white" />
             </div>
             <Text variant="heading3" as="h2">
@@ -194,87 +193,92 @@ export default function AboutPage() {
         <Text variant="heading2" as="h2" className="text-center">
           Areas of Expertise
         </Text>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
-              <Brain className="w-full h-full text-white" />
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {/* Game Dev card — orange accent */}
+          <a
+            href="/projects?workType=game"
+            className="group block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-2xl"
+            aria-label="View game development projects"
+          >
+            <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-primary-500 p-8 space-y-6 hover:border-neutral-700 transition-colors duration-200">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center shrink-0">
+                  <Gamepad2 className="w-6 h-6 text-white" />
+                </div>
+                <Text variant="heading3" as="h3" className="text-white">
+                  Game Development
+                </Text>
+              </div>
+              <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+                Unity-first across game dev, XR, and brain-computer interfaces. From shipped
+                F2P casino titles to experimental EEG-driven visuals and immersive VR spaces.
+              </Text>
+              <ul className="space-y-2 text-sm text-neutral-400">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                  Unity &amp; C#
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                  XR / VR (Meta SDK, XR Toolkit)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                  EEG Visualisation (BrainFlow, Shader Graph)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                  F2P systems, IAP &amp; LiveOps
+                </li>
+              </ul>
+              <span className="inline-flex items-center gap-1.5 text-sm text-primary-400 group-hover:gap-2.5 transition-all duration-200">
+                View game projects <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
-            <Text variant="heading4" as="h3" className="mb-3">
-              EEG Visualization
-            </Text>
-            <Text
-              variant="paragraph"
-              as="p"
-              color="secondary"
-              className="leading-relaxed"
-            >
-              Transform complex brainwave data into intuitive, beautiful visual
-              experiences. I've worked with various EEG devices and created
-              real-time visualization systems that make brain-computer
-              interfaces accessible and engaging.{" "}
-              <a
-                href="/projects/eeg-visualiser"
-                className="text-primary-300 hover:text-primary-200 transition-colors underline"
-              >
-                See my Brainrave project
-              </a>
-              .
-            </Text>
-          </Card>
+          </a>
 
-          <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
-              <Gamepad2 className="w-full h-full text-white" />
+          {/* Web Dev card — blue accent */}
+          <a
+            href="/projects?workType=web"
+            className="group block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-2xl"
+            aria-label="View web development projects"
+          >
+            <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-blue-500 p-8 space-y-6 hover:border-neutral-700 transition-colors duration-200">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                  <Code className="w-6 h-6 text-white" />
+                </div>
+                <Text variant="heading3" as="h3" className="text-white">
+                  Web Development
+                </Text>
+              </div>
+              <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+                Full-stack web with a focus on React and .NET. Background in building
+                production platforms — from Next.js frontends to ASP.NET Core APIs.
+              </Text>
+              <ul className="space-y-2 text-sm text-neutral-400">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                  Next.js &amp; React (TypeScript)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                  ASP.NET Core, C# &amp; Umbraco
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                  PostgreSQL &amp; REST APIs
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                  Tailwind CSS &amp; modern tooling
+                </li>
+              </ul>
+              <span className="inline-flex items-center gap-1.5 text-sm text-blue-400 group-hover:gap-2.5 transition-all duration-200">
+                View web projects <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
-            <Text variant="heading4" as="h3" className="mb-3">
-              VR Development
-            </Text>
-            <Text
-              variant="paragraph"
-              as="p"
-              color="secondary"
-              className="leading-relaxed"
-            >
-              Create immersive virtual reality experiences that transport users
-              to new worlds. From educational simulations to entertainment
-              experiences, I focus on performance, comfort, and creating truly
-              engaging VR content.{" "}
-              <a
-                href="/projects/vr-office"
-                className="text-primary-300 hover:text-primary-200 transition-colors underline"
-              >
-                Explore my VR Office project
-              </a>
-              .
-            </Text>
-          </Card>
-
-          <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
-              <Code className="w-full h-full text-white" />
-            </div>
-            <Text variant="heading4" as="h3" className="mb-3">
-              Game Development
-            </Text>
-            <Text
-              variant="paragraph"
-              as="p"
-              color="secondary"
-              className="leading-relaxed"
-            >
-              Build high-performance games that millions can enjoy. Specializing
-              in free-to-play and casino games, I focus on creating engaging
-              gameplay loops, monetization strategies, and scalable
-              architectures.{" "}
-              <a
-                href="/projects/poker-suite"
-                className="text-primary-300 hover:text-primary-200 transition-colors underline"
-              >
-                Check out my Ultimate X Poker project
-              </a>
-              .
-            </Text>
-          </Card>
+          </a>
         </div>
       </section>
 
@@ -286,7 +290,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-primary-500 p-3">
                 <Trophy className="w-full h-full text-white" />
               </div>
               <Text variant="heading4" as="h3">
@@ -307,7 +311,7 @@ export default function AboutPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-primary-500 p-3">
                 <Zap className="w-full h-full text-white" />
               </div>
               <Text variant="heading4" as="h3">
@@ -328,7 +332,7 @@ export default function AboutPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-primary-500 p-3">
                 <Users className="w-full h-full text-white" />
               </div>
               <Text variant="heading4" as="h3">
@@ -349,7 +353,7 @@ export default function AboutPage() {
 
           <Card variant="default" className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
+              <div className="w-12 h-12 rounded-xl bg-primary-500 p-3">
                 <Code className="w-full h-full text-white" />
               </div>
               <Text variant="heading4" as="h3">

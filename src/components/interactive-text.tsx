@@ -20,15 +20,15 @@ export default function InteractiveText({
   const getVariantClasses = () => {
     switch (variant) {
       case "link":
-        return "text-neutral-300 hover:text-primary-300 transition-all duration-300 hover:scale-105 hover:drop-shadow-lg hover:drop-shadow-primary-500/25";
+        return "text-neutral-300 hover:text-primary-400 transition-colors duration-200";
       case "heading":
-        return "text-white hover:text-primary-200 transition-all duration-300 hover:scale-105 hover:drop-shadow-lg hover:drop-shadow-primary-500/50";
+        return "text-white hover:text-primary-300 transition-colors duration-200";
       case "glow":
-        return "text-primary-300 hover:text-primary-200 transition-all duration-300 hover:scale-105 hover:drop-shadow-xl hover:drop-shadow-primary-400/75 hover:animate-pulse";
+        return "text-primary-300 hover:text-primary-200 transition-colors duration-200";
       case "scale":
-        return "text-neutral-400 hover:text-primary-300 transition-all duration-300 hover:scale-110 hover:font-semibold";
+        return "text-neutral-400 hover:text-primary-300 transition-colors duration-200";
       default:
-        return "text-neutral-300 hover:text-primary-300 transition-all duration-300 hover:scale-105";
+        return "text-neutral-300 hover:text-primary-400 transition-colors duration-200";
     }
   };
 

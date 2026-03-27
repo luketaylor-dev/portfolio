@@ -3,7 +3,7 @@ import { generateMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/site";
 import { Card } from "@/components/ui";
 import { Text } from "@/components/atoms";
-import { Building2, MapPin, Users, Zap } from "lucide-react";
+import { Brain, Building2, MapPin, Users, Zap } from "lucide-react";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 export const metadata: Metadata = generateMetadata(
@@ -14,7 +14,7 @@ export const metadata: Metadata = generateMetadata(
 
 export default function ManchesterServicesPage() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Structured Data: Service (Manchester services) */}
       <script
         type="application/ld+json"
@@ -48,7 +48,7 @@ export default function ManchesterServicesPage() {
           { label: "Services", href: "/about" },
           { label: "Manchester Services" },
         ]}
-        className="mb-8"
+        className="mb-0"
       />
 
       {/* Hero Section */}
@@ -57,7 +57,7 @@ export default function ManchesterServicesPage() {
           <Text
             variant="heading1"
             as="h1"
-            className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+            className="tracking-tight text-white"
           >
             Manchester Unity Development Services
           </Text>
@@ -86,7 +86,7 @@ export default function ManchesterServicesPage() {
         </Text>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Building2 className="w-full h-full text-white" />
             </div>
             <Text variant="heading4" as="h3" className="mb-3">
@@ -102,7 +102,7 @@ export default function ManchesterServicesPage() {
           </Card>
 
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <MapPin className="w-full h-full text-white" />
             </div>
             <Text variant="heading4" as="h3" className="mb-3">
@@ -117,7 +117,7 @@ export default function ManchesterServicesPage() {
           </Card>
 
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Users className="w-full h-full text-white" />
             </div>
             <Text variant="heading4" as="h3" className="mb-3">
@@ -138,51 +138,86 @@ export default function ManchesterServicesPage() {
         <Text variant="heading2" as="h2" className="text-center">
           Manchester-Based Development Services
         </Text>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <Card variant="default" className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
-                <Zap className="w-full h-full text-white" />
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {/* EEG card */}
+          <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-primary-500 p-8 space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center shrink-0">
+                <Brain className="w-6 h-6 text-white" />
               </div>
-              <Text variant="heading4" as="h3">
-                EEG Visualization
+              <Text variant="heading3" as="h3" className="text-white">
+                EEG Visualisation
               </Text>
             </div>
             <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
               Cutting-edge brain-computer interface development for Manchester's
-              neuroscience and entertainment industries. Real-time EEG data
-              processing and visualization systems.{" "}
-              <a
-                href="/projects/eeg-visualiser"
-                className="text-primary-300 hover:text-primary-200 transition-colors underline"
-              >
-                See my EEG Visualiser project
-              </a>
-              .
+              neuroscience and entertainment industries.
             </Text>
-          </Card>
+            <ul className="space-y-2 text-sm text-neutral-400">
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Real-time EEG data processing
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                BrainFlow &amp; Shader Graph
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Brain-computer interface systems
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Unity visualisation pipelines
+              </li>
+            </ul>
+            <a
+              href="/projects/eeg-visualiser"
+              className="inline-flex items-center gap-1.5 text-sm text-primary-400 hover:gap-2.5 transition-all duration-200"
+            >
+              See the Brainrave project <Zap className="w-4 h-4" />
+            </a>
+          </div>
 
-          <Card variant="default" className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3">
-                <Building2 className="w-full h-full text-white" />
+          {/* VR card */}
+          <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-primary-500 p-8 space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center shrink-0">
+                <Building2 className="w-6 h-6 text-white" />
               </div>
-              <Text variant="heading4" as="h3">
+              <Text variant="heading3" as="h3" className="text-white">
                 VR Development
               </Text>
             </div>
             <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
-              Immersive virtual reality experiences for Manchester's growing VR
-              market. From educational simulations to entertainment experiences.{" "}
-              <a
-                href="/projects/vr-office"
-                className="text-primary-300 hover:text-primary-200 transition-colors underline"
-              >
-                Check out my VR Office project
-              </a>
-              .
+              Immersive virtual reality experiences for Manchester's growing XR
+              and entertainment industries.
             </Text>
-          </Card>
+            <ul className="space-y-2 text-sm text-neutral-400">
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Meta SDK &amp; XR Toolkit
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Educational &amp; enterprise simulations
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Performance-optimised experiences
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                Unity XR development
+              </li>
+            </ul>
+            <a
+              href="/projects/vr-office"
+              className="inline-flex items-center gap-1.5 text-sm text-primary-400 hover:gap-2.5 transition-all duration-200"
+            >
+              See the VR Office project <MapPin className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -339,7 +374,7 @@ export default function ManchesterServicesPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40"
+              className="inline-flex items-center justify-center px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-colors duration-200"
             >
               Get in Touch
             </a>

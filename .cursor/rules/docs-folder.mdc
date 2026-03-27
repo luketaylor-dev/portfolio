@@ -1,0 +1,14 @@
+---
+description: .cursor/docs is AI reference only — do not modify
+alwaysApply: true
+---
+
+# `.cursor/docs` – reference docs only
+
+**Do not edit files in [`.cursor/docs`](.cursor/docs).**
+
+That folder holds reference material for the AI (e.g. `*.llms.txt`). It is not application source.
+
+- **Do not** add, change, or delete files under `.cursor/docs` when implementing features or fixing bugs.
+- **Do** read from `.cursor/docs` when a task points there; treat content as reference only.
+- If a plan says to edit `.cursor/docs`, skip that step.

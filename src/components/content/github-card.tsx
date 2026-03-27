@@ -33,7 +33,7 @@ export default function GitHubCard({
       >
         <div className="space-y-4 flex flex-col h-full">
           {/* Project Icon */}
-          <div className="aspect-video bg-gradient-to-br from-neutral-800 to-primary-800/20 flex items-center justify-center rounded-xl">
+          <div className="aspect-video bg-neutral-800 flex items-center justify-center rounded-xl">
             <div className="text-center space-y-2">
               <div className="w-16 h-16 mx-auto rounded-2xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center">
                 {icon}

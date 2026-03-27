@@ -1,0 +1,25 @@
+---
+description: Quality gates before marking frontend work complete
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Frontend definition of done
+
+Do not mark UI or app behavior work complete until the following are satisfied for the **changed** scope.
+
+## Required checks
+
+1. **`pnpm type-check`** — No new TypeScript errors in touched files (or document pre-existing unrelated failures).
+2. **`pnpm lint`** — No new lint issues in touched files.
+3. **Tests** — New or updated tests pass (`pnpm test`, or a targeted test path when appropriate).
+4. **Accessibility (changed UI)** — Interactive controls keyboard-reachable; form fields have labels or accessible names.
+
+## Scope
+
+- **Default:** Validate what you changed; fix regressions you introduce.
+- **Broader run:** If you touch shared foundations (`src/app/layout.tsx`, root providers, `src/lib` utilities used widely, Tailwind/Next config), prefer a full `type-check` and `lint` on the project.
+
+## Reporting
+
+When handing off, state which commands you ran and note any failures that are **pre-existing** and unrelated to your edits.
