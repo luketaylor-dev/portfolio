@@ -49,7 +49,7 @@ export const generateMetadata = (
 export const defaultMetadata: Metadata = {
   title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
   description:
-    "Unity Developer Manchester with 7+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
+    "Unity Developer Manchester with 8+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
   keywords: [
     "Unity Developer Manchester",
     "EEG Visualization",
@@ -83,7 +83,7 @@ export const defaultMetadata: Metadata = {
     siteName: "Luke Taylor Portfolio",
     title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
     description:
-      "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
+      "Manchester-based Unity Developer with 8+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
     images: [
       {
         url: `${siteUrl}/og?title=Luke%20Taylor%20-%20Unity%20Developer%20Manchester`,
@@ -97,7 +97,7 @@ export const defaultMetadata: Metadata = {
     card: "summary_large_image",
     title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
     description:
-      "Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
+      "Manchester-based Unity Developer with 8+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
     images: [
       `${siteUrl}/og?title=Luke%20Taylor%20%E2%80%94%20Unity%20Developer%20Manchester`,
     ],

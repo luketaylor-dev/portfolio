@@ -131,7 +131,7 @@ export default function SelectedWorksClient({ projects }: SelectedWorksClientPro
             Selected Works
           </Text>
           <Text variant="paragraph" as="p" color="secondary">
-            A curated showcase of digital architecture.
+            Unity games, full-stack web, and experimental work I&apos;m especially proud of.
           </Text>
         </div>
 

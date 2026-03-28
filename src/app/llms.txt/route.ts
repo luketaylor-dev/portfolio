@@ -7,7 +7,7 @@ export async function GET() {
 
 ## About
 
-Luke Taylor is a Unity Developer with 7+ years of experience bridging neuroscience, interactive technology, and game development. Based in Manchester, UK, with clients worldwide. Core specialisms include EEG-driven visualisations, multiplayer VR experiences, and high-revenue free-to-play games — alongside secondary expertise in .NET and React web development.
+Luke Taylor is a Unity Developer with 8+ years of experience bridging neuroscience, interactive technology, and game development. Based in Manchester, UK, with clients worldwide. Core specialisms include EEG-driven visualisations, multiplayer VR experiences, and high-revenue free-to-play games — alongside secondary expertise in .NET and React web development.
 
 - Website: ${siteUrl}
 - Contact: ${siteUrl}/contact

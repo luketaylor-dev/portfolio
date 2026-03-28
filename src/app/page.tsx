@@ -49,7 +49,12 @@ export default function HomePage() {
             <p className="text-lg md:text-xl text-neutral-300 font-medium">
               From Brainwaves to Gameplay
             </p>
-            <p className="text-sm text-neutral-400">Currently available</p>
+            <p className="text-sm md:text-base text-neutral-400 max-w-2xl leading-relaxed">
+              Eight-plus years shipping Unity games and live systems, building full-stack web products with
+              .NET and React, and prototyping VR and brain–computer interfaces. I build software that stays
+              playful under real-world constraints.
+            </p>
+            <p className="text-sm text-neutral-500">Currently available</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">

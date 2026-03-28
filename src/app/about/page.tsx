@@ -18,7 +18,7 @@ import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 export const metadata: Metadata = generateMetadata(
   "About Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
-  "Learn about Luke Taylor, a Manchester-based Unity Developer with 7+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces and immersive experiences.",
+  "Learn about Luke Taylor, a Manchester-based Unity Developer with 8+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces and immersive experiences.",
   "/about",
 );
 
