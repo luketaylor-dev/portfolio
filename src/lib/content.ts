@@ -13,9 +13,13 @@ export interface Project {
   seoDescription?: string;
   altText?: string;
   date: string;
-  featured: boolean;
+  /** Positive number = featured (lower wins); false/boolean true treated as unfeatured in curated sections */
+  featured: number | boolean;
+  workType: "game" | "web";
   tags: string[];
   cover?: string;
+  /** Portrait-oriented art: home Selected Works **large** tile uses this when set; elsewhere used below `md` with `cover` via `<picture>`. */
+  coverPortrait?: string;
   video?: string;
   url?: string;
   featureTitles?: string[];

@@ -10,6 +10,7 @@ interface InteractiveButtonProps
   onClick?: (() => void) | undefined;
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
+  colorScheme?: "default" | "web";
   className?: string;
   disabled?: boolean;
   loading?: boolean;
@@ -21,21 +22,28 @@ export default function InteractiveButton({
   onClick,
   variant = "primary",
   size = "md",
+  colorScheme = "default",
   className = "",
   disabled = false,
   loading = false,
   ...buttonProps
 }: InteractiveButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 relative overflow-hidden group";
+    "inline-flex items-center justify-center font-semibold rounded-xl transition-colors duration-200 relative overflow-hidden";
 
   const variantClasses = {
-    primary:
-      "bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:scale-[1.02] transition-all duration-300 ease-out",
-    secondary:
-      "border-2 border-primary-500/50 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400 hover:scale-[1.02] transition-all duration-300 ease-out",
-    ghost:
-      "text-primary-300 hover:text-primary-200 hover:bg-primary-500/10 hover:scale-[1.02] transition-all duration-300 ease-out",
+    default: {
+      primary: "bg-primary-500 hover:bg-primary-600 text-white",
+      secondary:
+        "border-2 border-primary-500/50 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400",
+      ghost: "text-primary-300 hover:text-primary-200 hover:bg-primary-500/10",
+    },
+    web: {
+      primary: "bg-blue-600 hover:bg-blue-700 text-white",
+      secondary:
+        "border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400",
+      ghost: "text-blue-300 hover:text-blue-200 hover:bg-blue-500/10",
+    },
   };
 
   const sizeClasses = {
@@ -44,33 +52,24 @@ export default function InteractiveButton({
     lg: "px-8 py-4 text-lg",
   };
 
-  const disabledClasses = disabled
-    ? "opacity-50 cursor-not-allowed hover:scale-100"
-    : "";
+  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";
 
   const buttonContent = (
-    <>
-      {/* Ripple effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-400/20 to-primary-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-      {/* Content */}
-      <span className="relative z-10 flex items-center gap-2 group-hover:scale-[1.02] transition-transform duration-300">
-        {loading && (
-          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
-        )}
-        {children}
-      </span>
-
-      {/* Glow effect */}
-      <div className="absolute inset-0 bg-primary-500/15 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 group-hover:scale-100"></div>
-    </>
+    <span className="flex items-center gap-2">
+      {loading && (
+        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+      )}
+      {children}
+    </span>
   );
+
+  const resolvedVariant = variantClasses[colorScheme][variant];
 
   if (href) {
     return (
       <Link
         href={href}
-        className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
+        className={`${baseClasses} ${resolvedVariant} ${sizeClasses[size]} ${disabledClasses} ${className}`}
         {...(onClick && { onClick })}
       >
         {buttonContent}
@@ -80,7 +79,7 @@ export default function InteractiveButton({
 
   return (
     <button
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
+      className={`${baseClasses} ${resolvedVariant} ${sizeClasses[size]} ${disabledClasses} ${className}`}
       onClick={onClick}
       disabled={disabled || loading}
       {...buttonProps}

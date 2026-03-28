@@ -23,7 +23,7 @@ export async function GET(request: Request) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0b0b0f 0%, #3b0764 100%)",
+          background: "#0f0f0f",
         }}
       >
         <div
@@ -35,10 +35,22 @@ export async function GET(request: Request) {
             width: "100%",
             height: "100%",
             padding: "80px",
-            color: "#fff",
+            color: "#f5f5f5",
             fontFamily: "DM Sans, ui-sans-serif, system-ui",
           }}
         >
+          {/* Orange accent line */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 6,
+              background: "#f97316",
+            }}
+          />
+
           <div
             style={{
               display: "flex",
@@ -53,12 +65,11 @@ export async function GET(request: Request) {
                 justifyContent: "center",
                 width: 96,
                 height: 96,
-                borderRadius: 20,
-                background:
-                  "linear-gradient(135deg, rgba(147,51,234,1) 0%, rgba(126,34,206,1) 100%)",
-                boxShadow: "0 20px 60px rgba(147,51,234,0.35)",
+                borderRadius: 16,
+                background: "#f97316",
                 fontWeight: 800,
                 fontSize: 36,
+                color: "#fff",
               }}
             >
               LT
@@ -70,9 +81,11 @@ export async function GET(request: Request) {
                 gap: 8,
               }}
             >
-              <div style={{ fontSize: 60, fontWeight: 800 }}>{title}</div>
-              <div style={{ fontSize: 28, color: "#c4b5fd" }}>
-                Unity • EEG • VR - Manchester, UK
+              <div style={{ fontSize: 56, fontWeight: 800, color: "#f5f5f5" }}>
+                {title}
+              </div>
+              <div style={{ fontSize: 26, color: "#a3a3a3" }}>
+                Unity · EEG · VR — Manchester, UK
               </div>
             </div>
           </div>

@@ -1,80 +1,50 @@
+---
+description: Core code quality, comments, and engineering standards
+alwaysApply: true
+---
+
 # Code Quality
 
-## Code Comments
+## Standards
 
-**General Principle:** Code should be self-documenting. Comments should only be used when necessary to explain "why" something is done, not "what" the code does.
+- Keep behavior changes intentional; avoid unrelated refactors in feature work.
+- Prefer small, focused functions and components with clear names.
+- Avoid `any`; if unavoidable, narrow quickly and document why.
+- Handle errors explicitly at boundaries (route handlers, external calls, parsing).
+- Validate untrusted input (params, query, body, env-driven values).
+- Do not swallow errors silently.
 
-### Rules:
+## Code comments
 
-- **Avoid obvious comments** - Don't comment on what the code clearly shows
-- **Prefer self-documenting code** - Use descriptive variable names, clear function names, and well-structured code instead of comments
-- **Only comment when necessary** - Comments should explain:
-  - Complex business logic or non-obvious decisions
-  - Workarounds for bugs or limitations
-  - Performance optimizations that aren't obvious
-  - References to external documentation or specifications
+**Principle:** Prefer self-documenting code. Comments explain *why*, not *what*.
 
-### Bad Examples:
+### Rules
+
+- Avoid obvious comments that restate the code.
+- Comment for non-obvious business rules, tradeoffs, workarounds, or external specs.
+- Remove stale TODO/FIXME when you touch the related code.
+
+### Examples to avoid
 
 ```typescript
-{
-  /* Hero Section */
-}
-<section>...</section>;
-
-{
-  /* Search Input */
-}
-<SearchInput />;
-
 // Set the value
 setValue(value);
 
-// If still loading auth state, wait
-if (isAuthLoading) {
-  return;
-}
-
-// If not authenticated, redirect to sign-in
-if (!isAuthenticated) {
-  router.push("/signin");
-}
+// Hero section
+<section>...</section>
 ```
 
-### Good Examples:
+### Examples that help
 
 ```typescript
-<section>...</section>;
-
-<SearchInput />;
-
-setValue(value);
-
-if (isAuthLoading) {
-  return;
-}
-
-if (!isAuthenticated) {
-  router.push('/signin');
-}
-
-// Mock data for MVP (will be replaced with API data)
-const popularStyles = [...];
-
-// Calculate budget band from minSpend (rough estimate)
-const budgetBand = artist.minSpend < 200 ? 1 : 2;
-
-// Workaround for Next.js Image optimization issue
-<Image unoptimized {...props} />
+// Umami loads via deferred script in layout head
+// Workaround: Next Image remotePatterns omit this host in dev
 ```
 
-### ESLint Enforcement:
+## Linting
 
-The project uses ESLint rules to enforce this:
-
-- `capitalized-comments`: Enforces capitalization for meaningful comments
-- `no-warning-comments`: Warns about TODO/FIXME comments
+This repo uses ESLint via `next/core-web-vitals` and `@typescript-eslint/recommended` (see `.eslintrc.json`). Comment style is **not** enforced by custom ESLint rules beyond what those presets provide.
 
 ## Scope
 
-Applies to: All files in `src/`
+Applies to all project source, especially `src/`.

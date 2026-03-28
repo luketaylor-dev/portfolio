@@ -6,6 +6,7 @@ import { Text } from "@/components/atoms";
 import { InteractiveButton, Card, Badge, Breadcrumbs } from "@/components/ui";
 import Image from "next/image";
 import VideoWithPlayButton from "@/components/ui/video-with-play-button";
+import type { ComponentType } from "react";
 import {
   ArrowLeft,
   Calendar,
@@ -168,7 +169,7 @@ export default async function ProjectPage({
 
   // Function to get icon component from icon name
   const getIconComponent = (iconName: string) => {
-    const iconMap: { [key: string]: any } = {
+    const iconMap: Record<string, ComponentType<{ className?: string }>> = {
       // Performance & Optimization
       zap: Zap,
       trendingUp: TrendingUp,
@@ -219,8 +220,16 @@ export default async function ProjectPage({
     return iconMap[iconName.toLowerCase()] || Play;
   };
 
+  const theme = {
+    accentBg: "bg-primary-500",
+    accentText: "text-primary-300",
+    badgeVariant: "primary" as const,
+    techText: "text-primary-300",
+    colorScheme: "default" as const,
+  };
+
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 -mt-4">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -230,20 +239,17 @@ export default async function ProjectPage({
         suppressHydrationWarning={true}
       />
 
-      {/* Breadcrumbs */}
-      <div className="max-w-4xl mx-auto">
+      {/* Breadcrumbs + Back Navigation */}
+      <div className="max-w-4xl mx-auto space-y-3">
         <Breadcrumbs
           items={[
             { label: "Projects", href: "/projects" },
             { label: project.title },
           ]}
-          className="mb-8"
+          className="mb-0"
+          colorScheme={theme.colorScheme}
         />
-      </div>
-
-      {/* Back Navigation */}
-      <div className="max-w-4xl mx-auto">
-        <InteractiveButton href="/projects" variant="ghost" size="sm">
+        <InteractiveButton href="/projects" variant="ghost" size="sm" colorScheme={theme.colorScheme}>
           <ArrowLeft className="w-5 h-5" />
           Back to Projects
         </InteractiveButton>
@@ -256,7 +262,7 @@ export default async function ProjectPage({
             <Text
               variant="heading1"
               as="h1"
-              className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+              className="tracking-tight text-white"
             >
               {project.title}
             </Text>
@@ -288,7 +294,7 @@ export default async function ProjectPage({
                 <Tag className="w-4 h-4" />
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
-                    <Badge key={i} variant="primary" size="sm">
+                    <Badge key={i} variant={theme.badgeVariant} size="sm">
                       {tag}
                     </Badge>
                   ))}
@@ -300,7 +306,7 @@ export default async function ProjectPage({
 
         {/* Project Media */}
         {project.video ? (
-          <div className="aspect-video rounded-2xl border border-primary-800/50 overflow-hidden relative">
+          <div className="aspect-video rounded-2xl border border-neutral-800 overflow-hidden relative">
             <VideoWithPlayButton
               videoSrc={project.video}
               posterSrc={project.cover || ""}
@@ -309,7 +315,7 @@ export default async function ProjectPage({
             />
           </div>
         ) : project.cover ? (
-          <div className="aspect-video rounded-2xl border border-primary-800/50 overflow-hidden relative">
+          <div className="aspect-video rounded-2xl border border-neutral-800 overflow-hidden relative">
             <Image
               src={project.cover || ""}
               alt={
@@ -324,14 +330,14 @@ export default async function ProjectPage({
             />
           </div>
         ) : (
-          <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-800/30 to-neutral-800 border border-primary-800/50 overflow-hidden relative">
+          <div className="aspect-video rounded-2xl bg-neutral-900 border border-neutral-800 overflow-hidden relative">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center space-y-4">
-                <div className="w-24 h-24 mx-auto rounded-2xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center">
-                  <ImageIcon className="w-12 h-12 text-primary-400" />
+                <div className="w-24 h-24 mx-auto rounded-2xl bg-neutral-800 border border-neutral-700 flex items-center justify-center">
+                  <ImageIcon className={`w-12 h-12 ${theme.accentText}`} />
                 </div>
                 <div className="space-y-2">
-                  <Text variant="paragraph" as="p" className="text-primary-300 font-medium">
+                  <Text variant="paragraph" as="p" className={`${theme.accentText} font-medium`}>
                     Project Media
                   </Text>
                   <Text variant="small" as="p" color="secondary">
@@ -365,7 +371,7 @@ export default async function ProjectPage({
                 "A key feature that enhances the project's capabilities.";
               return (
                 <Card key={i} variant="default">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4">
+                  <div className={`w-12 h-12 rounded-xl ${theme.accentBg} p-3 mb-4`}>
                     <IconComponent className="w-full h-full text-white" />
                   </div>
                   <Text variant="heading4" as="h3" className="mb-2">
@@ -390,7 +396,7 @@ export default async function ProjectPage({
                 variant="default"
                 className="text-center h-20 flex items-center justify-center"
               >
-                <span className="text-primary-300 font-medium">{tech}</span>
+                <span className={`${theme.techText} font-medium`}>{tech}</span>
               </Card>
             ))}
           </div>
@@ -409,11 +415,11 @@ export default async function ProjectPage({
             development, I'm here to help.
           </Text>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <InteractiveButton href="/contact" variant="primary" size="lg">
+            <InteractiveButton href="/contact" variant="primary" size="lg" colorScheme={theme.colorScheme}>
               Start Your Project
               <ArrowRight className="w-5 h-5" />
             </InteractiveButton>
-            <InteractiveButton href="/projects" variant="secondary" size="lg">
+            <InteractiveButton href="/projects" variant="secondary" size="lg" colorScheme={theme.colorScheme}>
               View More Projects
             </InteractiveButton>
           </div>

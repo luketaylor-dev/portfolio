@@ -11,7 +11,7 @@ export default function StructuredData() {
         name: "Luke Taylor",
         jobTitle: "Unity Developer",
         description:
-          "Unity Developer Manchester with 7+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
+          "Unity Developer Manchester with 8+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
         url: siteUrl,
         image: `${siteUrl}/images/luke-taylor-dev.webp`,
         address: {

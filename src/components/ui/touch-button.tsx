@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode, ButtonHTMLAttributes } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface TouchButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,7 +12,7 @@ interface TouchButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   disabled?: boolean;
   className?: string;
-  touchTarget?: boolean; // Ensures minimum 44px touch target
+  touchTarget?: boolean;
 }
 
 export default function TouchButton({
@@ -31,7 +30,7 @@ export default function TouchButton({
   const baseClasses = `
     inline-flex items-center justify-center
     font-medium rounded-xl
-    transition-all duration-200
+    transition-colors duration-200
     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950
     disabled:opacity-50 disabled:cursor-not-allowed
     ${fullWidth ? "w-full" : ""}
@@ -40,10 +39,10 @@ export default function TouchButton({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 active:scale-95",
+      "bg-primary-500 hover:bg-primary-600 text-white active:scale-95",
     secondary:
       "border-2 border-primary-500/50 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400 active:scale-95",
-    ghost: "text-primary-300 hover:bg-primary-900/20 active:scale-95",
+    ghost: "text-primary-300 hover:bg-neutral-800 active:scale-95",
     danger: "bg-red-600 text-white hover:bg-red-700 active:scale-95",
   };
 
@@ -60,17 +59,10 @@ export default function TouchButton({
     ${className}
   `.trim();
 
-  const MotionButton = motion.button;
-  const MotionLink = motion.create(Link);
-
   const content = (
     <>
       {loading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"
-        />
+        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
       )}
       {children}
     </>
@@ -78,33 +70,23 @@ export default function TouchButton({
 
   if (href) {
     return (
-      <MotionLink
-        href={href}
-        className={buttonClasses}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ duration: 0.2 }}
-      >
+      <Link href={href} className={buttonClasses}>
         {content}
-      </MotionLink>
+      </Link>
     );
   }
 
   return (
-    <MotionButton
+    <button
       className={buttonClasses}
       disabled={disabled || loading}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.2 }}
       {...(props as any)}
     >
       {content}
-    </MotionButton>
+    </button>
   );
 }
 
-// Specialized touch button components
 export function TouchIconButton({ children, ...props }: TouchButtonProps) {
   return (
     <TouchButton
@@ -120,21 +102,16 @@ export function TouchIconButton({ children, ...props }: TouchButtonProps) {
 
 export function TouchFloatingButton({ children, ...props }: TouchButtonProps) {
   return (
-    <motion.div
-      className="fixed bottom-6 right-6 z-40"
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.5, type: "spring" }}
-    >
+    <div className="fixed bottom-6 right-6 z-40">
       <TouchButton
         {...props}
         size="lg"
-        className="w-14 h-14 rounded-full shadow-lg shadow-primary-500/25"
+        className="w-14 h-14 rounded-full shadow-lg"
         touchTarget={true}
       >
         {children}
       </TouchButton>
-    </motion.div>
+    </div>
   );
 }
 

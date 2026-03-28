@@ -8,7 +8,6 @@ import {
   type FormEvent,
   type KeyboardEvent,
 } from "react";
-import { ResumeDownload } from "@/components/content";
 import { FormErrorBoundary } from "@/components/feedback";
 import { Text } from "@/components/atoms";
 import {
@@ -19,6 +18,7 @@ import {
   Breadcrumbs,
 } from "@/components/ui";
 import { contactEmail } from "@/lib/navigation";
+import { isValidEmail } from "@/lib/validation";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -55,11 +55,6 @@ export default function ContactForm() {
   }, []);
 
   // Validation functions
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   const validateName = (name: string) => {
     return name.trim().length >= 2;
   };
@@ -71,7 +66,7 @@ export default function ContactForm() {
   // Form validation state
   const isFormValid =
     validateName(formData.name) &&
-    validateEmail(formData.email) &&
+    isValidEmail(formData.email) &&
     validateMessage(formData.message);
 
   // Handle input changes
@@ -167,16 +162,16 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[{ label: "Contact" }]} className="mb-8" />
+      <Breadcrumbs items={[{ label: "Contact" }]} className="mb-0" />
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <Text
           variant="heading1"
           as="h1"
-          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+          className="tracking-tight text-white"
         >
           Let's Connect
         </Text>
@@ -238,9 +233,16 @@ export default function ContactForm() {
                     name="website"
                     value={honeypotValue}
                     onChange={(e) => setHoneypotValue(e.target.value)}
-                    style={{ display: "none" }}
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: "1px",
+                      height: "1px",
+                      overflow: "hidden",
+                    }}
                     tabIndex={-1}
                     autoComplete="off"
+                    aria-hidden="true"
                   />
                 )}
 
@@ -299,17 +301,17 @@ export default function ContactForm() {
                     placeholder="your.email@example.com"
                     required
                     className={`${
-                      touched.email && !validateEmail(formData.email)
+                      touched.email && !isValidEmail(formData.email)
                         ? "border-red-500 focus:border-red-500"
                         : ""
                     }`}
                     aria-describedby={
-                      touched.email && !validateEmail(formData.email)
+                      touched.email && !isValidEmail(formData.email)
                         ? "email-error"
                         : undefined
                     }
                   />
-                  {touched.email && !validateEmail(formData.email) && (
+                  {touched.email && !isValidEmail(formData.email) && (
                       <Text id="email-error" as="p" variant="small" color="error">
                       Please enter a valid email address
                     </Text>
@@ -405,71 +407,25 @@ export default function ContactForm() {
         </Card>
       </section>
 
-      {/* Alternative Contact Methods */}
-      <section className="max-w-4xl mx-auto">
-        <div className="text-center space-y-8">
+      {/* Project Inquiry CTA */}
+      <section className="max-w-2xl mx-auto">
+        <Card className="p-8 space-y-4 text-center">
           <Text variant="heading3" as="h2">
-            Prefer a Different Approach?
+            Got a specific project in mind?
           </Text>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="p-6 text-center space-y-4">
-              <Text variant="heading4" as="h3">
-                Download My Resume
-              </Text>
-              <Text variant="small" as="p" color="muted">
-                Get a detailed overview of my experience and skills
-              </Text>
-              <ResumeDownload variant="secondary" size="md" />
-            </Card>
-            <Card className="p-6 text-center space-y-4">
-              <Text variant="heading4" as="h3">
-                Project Inquiry Form
-              </Text>
-              <Text variant="small" as="p" color="muted">
-                For detailed project discussions and proposals
-              </Text>
-              <InteractiveButton href="/inquire" variant="secondary" size="md">
-                <ArrowRight className="w-4 h-4" />
-                Start Inquiry
-              </InteractiveButton>
-            </Card>
+          <Text variant="paragraph" as="p" color="muted">
+            Use the project brief form for detailed enquiries — covers scope,
+            timeline, budget, and technical requirements.
+          </Text>
+          <div className="flex justify-center">
+            <InteractiveButton href="/inquire" variant="secondary" size="md">
+              Start a Project Brief
+              <ArrowRight className="w-4 h-4" />
+            </InteractiveButton>
           </div>
-        </div>
+        </Card>
       </section>
 
-      {/* Contact Information */}
-      <section className="max-w-4xl mx-auto text-center space-y-8">
-        <Text variant="heading3" as="h2">
-          Let's Build Something Amazing Together
-        </Text>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <Text variant="heading4" as="h3" className="text-primary-300">
-              Unity Development
-            </Text>
-            <Text variant="small" as="p" color="muted">
-              Custom Unity solutions, performance optimization, and
-              cross-platform development
-            </Text>
-          </div>
-          <div className="space-y-4">
-            <Text variant="heading4" as="h3" className="text-primary-300">
-              VR & EEG Projects
-            </Text>
-            <Text variant="small" as="p" color="muted">
-              Immersive VR experiences and               brain-computer interface applications
-            </Text>
-          </div>
-          <div className="space-y-4">
-            <Text variant="heading4" as="h3" className="text-primary-300">
-              Game Development
-            </Text>
-            <Text variant="small" as="p" color="muted">
-              Free-to-play games, casino games, and               interactive entertainment
-            </Text>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

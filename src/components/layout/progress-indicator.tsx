@@ -44,7 +44,7 @@ export function ProgressIndicator({
   const getVariantClasses = () => {
     switch (variant) {
       case "gradient":
-        return "bg-gradient-to-r from-primary-500 to-primary-600";
+        return "bg-primary-500";
       case "pulse":
         return "bg-primary-500 animate-pulse";
       default:

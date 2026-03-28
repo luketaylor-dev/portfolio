@@ -7,7 +7,7 @@ export async function GET() {
 
 ## About
 
-Luke Taylor is a Unity Developer with 7+ years of experience bridging neuroscience, interactive technology, and game development. Based in Manchester, UK, with clients worldwide. Core specialisms include EEG-driven visualisations, multiplayer VR experiences, and high-revenue free-to-play games — alongside secondary expertise in .NET and React web development.
+Luke Taylor is a Unity Developer with 8+ years of experience bridging neuroscience, interactive technology, and game development. Based in Manchester, UK, with clients worldwide. Core specialisms include EEG-driven visualisations, multiplayer VR experiences, and high-revenue free-to-play games — alongside secondary expertise in .NET and React web development.
 
 - Website: ${siteUrl}
 - Contact: ${siteUrl}/contact
@@ -33,6 +33,8 @@ Luke Taylor is a Unity Developer with 7+ years of experience bridging neuroscien
 - [VR Space Station Climber](${siteUrl}/projects/vr-space): Unity VR experiment using NASA assets to prototype zero-gravity climbing mechanics. Tags: Unity, VR, C#, Meta SDK, UltimateXR.
 - [Baa Baa Bomber](${siteUrl}/projects/baa-baa-bomber): Comedic mobile game with physics-based puzzles and experimental EEG hands-free controls. Tags: Unity, C#, Mobile, EEG, BrainFlow, Indie.
 - [Portfolio Site](${siteUrl}/projects/portfolio): This portfolio, built with Next.js 16, React, TypeScript, and MDX. Tags: React, Next.js, TypeScript, Tailwind CSS.
+- [Zoflora — Umbraco & Campaign Platform](${siteUrl}/projects/zoflora): Umbraco and .NET for the Zoflora brand; bespoke campaign manager for mini-games, surveys, and competitions with entry and email data. Tags: Umbraco, .NET, C#, CMS, Campaign Management.
+- [Insurance Broker Systems](${siteUrl}/projects/insurance-broker-systems): Large .NET broker platform for quotes, renewals, and claims across LV, One Call, Policywise, Greenlight, and other schemes. Tags: .NET, C#, Insurance, Enterprise.
 
 ## Blog
 

@@ -35,14 +35,14 @@ export default function ResumeDownload({
   };
 
   const baseClasses =
-    "inline-flex items-center gap-2 font-medium transition-all duration-300 hover:scale-105";
+    "inline-flex items-center gap-2 font-medium transition-colors duration-200";
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40",
+      "bg-primary-500 hover:bg-primary-600 text-white",
     secondary:
-      "bg-neutral-900/50 text-primary-300 border border-primary-800/50 hover:bg-primary-900/20 hover:border-primary-600/50",
-    ghost: "text-primary-400 hover:text-primary-300 hover:bg-primary-900/10",
+      "text-primary-300 border border-neutral-700 hover:border-neutral-600 hover:bg-neutral-800",
+    ghost: "text-primary-400 hover:text-primary-300",
   };
 
   const sizeClasses = {

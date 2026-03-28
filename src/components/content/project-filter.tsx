@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui";
 
 import { Project } from "@/lib/content";
 
-const FILTER_TAGS = ["EEG", "Game Development", "VR", "Web Development"] as const;
+const FILTER_TAGS = ["EEG", "Game Development", "VR", "Web & Mobile"] as const;
 
 interface ProjectFilterProps {
   projects: Project[];

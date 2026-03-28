@@ -1,11 +1,25 @@
+---
+description: Where to put project documentation
+alwaysApply: true
+---
+
 # Documentation
 
-## Structure
+## Placement
 
-- **Project-level docs** – README.md, plan files (e.g. PORTFOLIO_CHANGES_PLAN.md) can live at repo root
-- **Optional**: Use a `documentation/` folder for additional project docs
-- **File names**: Use kebab-case (e.g. `email-setup.md`)
+- **`README.md`** — Quick start and repo overview at the root.
+- **Longer project docs** — Prefer a root `docs/` folder for new material (or existing root plan files like `PORTFOLIO_CHANGES_PLAN.md` if that is your convention).
+- Avoid scattering many loose `.md` files at the repo root unless they are entry-point docs.
+
+## Naming
+
+- Use **kebab-case** for new doc filenames (e.g. `email-setup.md`).
+
+## Quality
+
+- Use short titles and scannable headings.
+- Update docs when setup or behavior changes.
 
 ## Scope
 
-Applies to: `.md` files in the project
+Applies to markdown and similar docs you add or edit for this project.

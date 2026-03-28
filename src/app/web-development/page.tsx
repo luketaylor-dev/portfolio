@@ -34,28 +34,30 @@ export default function WebDevelopmentPage() {
   );
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[
           { label: "Services", href: "/about" },
           { label: "Web Development" },
         ]}
-        className="mb-8"
+        className="mb-0"
       />
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent">
-            Web Development
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+            Web &amp; Mobile Development
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            Beyond Unity, I build full-stack web applications with{" "}
-            <strong className="text-primary-300">.NET</strong> and{" "}
-            <strong className="text-primary-300">React</strong>. From API
-            design and database architecture to modern frontend experiences with
-            Next.js and TypeScript.
+            Beyond Unity, I build full-stack web and mobile applications with{" "}
+            <strong className="text-primary-300">.NET</strong>,{" "}
+            <strong className="text-primary-300">React</strong>,{" "}
+            <strong className="text-primary-300">React Native</strong>, and{" "}
+            <strong className="text-primary-300">Flutter</strong>. From API
+            design and database architecture to cross-platform mobile apps and
+            modern frontend experiences with Next.js and TypeScript.
           </p>
         </div>
       </section>
@@ -67,7 +69,7 @@ export default function WebDevelopmentPage() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Code className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -79,18 +81,18 @@ export default function WebDevelopmentPage() {
             </p>
           </Card>
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Globe className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
               Frontend
             </h3>
             <p className="text-neutral-400 leading-relaxed text-sm">
-              React, Next.js, TypeScript, Tailwind CSS, and shadcn/ui.
+              React, Next.js, React Native, Flutter, TypeScript, and Tailwind CSS.
             </p>
           </Card>
           <Card variant="default" hover={true} className="group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 p-3 mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-primary-500 p-3 mb-4 transition-transform">
               <Database className="w-full h-full text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">
@@ -142,8 +144,8 @@ export default function WebDevelopmentPage() {
       {/* CTA */}
       <section className="text-center space-y-6 max-w-2xl mx-auto">
         <p className="text-neutral-400">
-          Interested in a .NET or React project? I&apos;m available for
-          full-stack web work alongside Unity development.
+          Interested in a web or mobile project? I&apos;m available for
+          full-stack web and React Native / Flutter work alongside Unity development.
         </p>
         <InteractiveButton href="/contact" variant="primary" size="lg">
           Get in Touch

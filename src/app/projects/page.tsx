@@ -22,16 +22,16 @@ const ProjectsContent = () => {
     : [];
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 pt-8">
       {/* Breadcrumbs */}
-      <Breadcrumbs items={[{ label: "Projects" }]} className="mb-8" />
+      <Breadcrumbs items={[{ label: "Projects" }]} className="mb-0" />
 
       {/* Hero Section */}
       <section className="text-center space-y-8">
         <Text
           variant="heading1"
           as="h1"
-          className="tracking-tight bg-gradient-to-r from-white via-primary-100 to-primary-300 bg-clip-text text-transparent"
+          className="tracking-tight text-white"
         >
           My Projects
         </Text>

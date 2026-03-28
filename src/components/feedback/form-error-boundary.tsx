@@ -1,6 +1,6 @@
 "use client";
 
-import { Component, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { InteractiveButton } from "@/components/ui";
 
@@ -27,7 +27,7 @@ export class FormErrorBoundary extends Component<
     return { hasError: true, error };
   }
 
-  override componentDidCatch(error: Error, errorInfo: any) {
+  override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Form error caught by boundary:", error, errorInfo);
   }
 

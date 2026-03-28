@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { isValidEmail } from "@/lib/validation";
 import { Send, CheckCircle, AlertCircle, Upload, X } from "lucide-react";
 import { InteractiveButton, Input, Textarea, Card } from "@/components/ui";
 
@@ -56,34 +57,34 @@ export default function ProjectInquiryForm({
   // Project options
   const projectTypes = [
     {
-      value: "vr-development",
-      label: "VR Development",
-      description: "Virtual reality experiences and applications",
+      value: "unity-game-dev",
+      label: "Unity / Game Dev",
+      description: "Games, prototypes, and interactive experiences in Unity",
     },
     {
-      value: "eeg-visualization",
-      label: "EEG Visualization",
-      description: "Brainwave data visualization and analysis",
+      value: "vr-xr",
+      label: "VR / XR",
+      description: "Virtual and extended reality experiences",
     },
     {
-      value: "game-development",
-      label: "Game Development",
-      description: "Unity games and interactive experiences",
+      value: "eeg-bci",
+      label: "EEG / BCI",
+      description: "Brainwave data, visualisation, and brain-computer interfaces",
     },
     {
-      value: "mobile-app",
-      label: "Mobile App",
-      description: "Mobile applications with Unity",
+      value: "web-mobile",
+      label: "Web & Mobile",
+      description: "React, React Native, Flutter, .NET, or full-stack web",
     },
     {
       value: "interactive-installation",
       label: "Interactive Installation",
-      description: "Interactive exhibits and installations",
+      description: "Interactive exhibits, events, and physical installations",
     },
     {
       value: "other",
       label: "Other",
-      description: "Custom Unity development project",
+      description: "Something else — describe it in the next step",
     },
   ];
 
@@ -143,12 +144,6 @@ export default function ProjectInquiryForm({
     },
   ];
 
-  // Validation functions
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   const validateField = (field: string, value: string) => {
     switch (field) {
       case "name":
@@ -156,7 +151,7 @@ export default function ProjectInquiryForm({
           ? null
           : "Name must be at least 2 characters";
       case "email":
-        return validateEmail(value)
+        return isValidEmail(value)
           ? null
           : "Please enter a valid email address";
       case "projectType":
@@ -188,7 +183,7 @@ export default function ProjectInquiryForm({
     switch (step) {
       case 1:
         if (!formData.name.trim()) errors.push("Name is required");
-        if (!validateEmail(formData.email))
+        if (!isValidEmail(formData.email))
           errors.push("Valid email is required");
         break;
       case 2:

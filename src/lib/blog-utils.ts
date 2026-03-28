@@ -1,3 +1,5 @@
+import type { BlogPost } from "@/lib/content";
+
 // Calculate reading time based on word count
 export const calculateReadingTime = (content: string): string => {
   const wordsPerMinute = 200;
@@ -23,25 +25,27 @@ export const formatDate = (date: string): string => {
 // Get related posts based on tags
 export const getRelatedPosts = (
   currentPostSlug: string,
-  allPosts: any[],
+  allPosts: BlogPost[],
   maxPosts: number = 3
-): any[] => {
+): BlogPost[] => {
   const currentPost = allPosts.find((post) => post.slug === currentPostSlug);
   if (!currentPost || !currentPost.tags) return [];
+
+  const currentTags = currentPost.tags;
 
   const relatedPosts = allPosts
     .filter(
       (post) =>
         post.slug !== currentPostSlug &&
         post.tags &&
-        post.tags.some((tag: string) => currentPost.tags.includes(tag))
+        post.tags.some((tag: string) => currentTags.includes(tag))
     )
     .sort((a, b) => {
-      const aCommonTags = a.tags.filter((tag: string) =>
-        currentPost.tags.includes(tag)
+      const aCommonTags = (a.tags ?? []).filter((tag: string) =>
+        currentTags.includes(tag)
       ).length;
-      const bCommonTags = b.tags.filter((tag: string) =>
-        currentPost.tags.includes(tag)
+      const bCommonTags = (b.tags ?? []).filter((tag: string) =>
+        currentTags.includes(tag)
       ).length;
       return bCommonTags - aCommonTags;
     })
