@@ -10,7 +10,7 @@ type WorkTab = "all" | "game" | "web";
 const WORK_TABS: { id: WorkTab; label: string }[] = [
   { id: "all", label: "All" },
   { id: "game", label: "Game Dev" },
-  { id: "web", label: "Web Dev" },
+  { id: "web", label: "Web & Mobile" },
 ];
 
 const TAB_ACTIVE_CLASS: Record<WorkTab, string> = {

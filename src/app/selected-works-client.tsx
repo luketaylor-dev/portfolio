@@ -11,7 +11,7 @@ type Tab = "all" | "game" | "web";
 const TABS: { id: Tab; label: string }[] = [
   { id: "all", label: "All" },
   { id: "game", label: "Unity" },
-  { id: "web", label: "Web" },
+  { id: "web", label: "Web & Mobile" },
 ];
 
 const HIGHLIGHT_TAGS = ["VR", "Mobile", "F2P", "EEG", "Tools", "VFX", "Full-Stack", "SaaS", "Portfolio"];

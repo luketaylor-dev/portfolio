@@ -134,7 +134,7 @@ export default function HomePage() {
                   <Code className="w-6 h-6 text-white" />
                 </div>
                 <Text variant="heading3" as="h3" className="text-white">
-                  Web Development
+                  Web &amp; Mobile
                 </Text>
               </div>
               <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">

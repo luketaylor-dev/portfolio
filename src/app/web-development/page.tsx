@@ -48,7 +48,7 @@ export default function WebDevelopmentPage() {
       <section className="text-center space-y-8">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
-            Web Development
+            Web &amp; Mobile Development
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             Beyond Unity, I build full-stack web applications with{" "}
