@@ -57,34 +57,34 @@ export default function ProjectInquiryForm({
   // Project options
   const projectTypes = [
     {
-      value: "vr-development",
-      label: "VR Development",
-      description: "Virtual reality experiences and applications",
+      value: "unity-game-dev",
+      label: "Unity / Game Dev",
+      description: "Games, prototypes, and interactive experiences in Unity",
     },
     {
-      value: "eeg-visualization",
-      label: "EEG Visualization",
-      description: "Brainwave data visualization and analysis",
+      value: "vr-xr",
+      label: "VR / XR",
+      description: "Virtual and extended reality experiences",
     },
     {
-      value: "game-development",
-      label: "Game Development",
-      description: "Unity games and interactive experiences",
+      value: "eeg-bci",
+      label: "EEG / BCI",
+      description: "Brainwave data, visualisation, and brain-computer interfaces",
     },
     {
-      value: "mobile-app",
-      label: "Mobile App",
-      description: "Mobile applications with Unity",
+      value: "web-mobile",
+      label: "Web & Mobile",
+      description: "React, React Native, Flutter, .NET, or full-stack web",
     },
     {
       value: "interactive-installation",
       label: "Interactive Installation",
-      description: "Interactive exhibits and installations",
+      description: "Interactive exhibits, events, and physical installations",
     },
     {
       value: "other",
       label: "Other",
-      description: "Custom Unity development project",
+      description: "Something else — describe it in the next step",
     },
   ];
 

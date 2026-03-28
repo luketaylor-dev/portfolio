@@ -50,9 +50,7 @@ export default function HomePage() {
               From Brainwaves to Gameplay
             </p>
             <p className="text-sm md:text-base text-neutral-400 max-w-2xl leading-relaxed">
-              Eight-plus years shipping Unity games and live systems, building full-stack web products with
-              .NET and React, and prototyping VR and brain–computer interfaces. I build software that stays
-              playful under real-world constraints.
+              I build software that stays playful under real-world constraints.
             </p>
             <p className="text-sm text-neutral-500">Currently available</p>
           </div>
@@ -98,39 +96,18 @@ export default function HomePage() {
                 Unity-first across game dev, XR, and brain-computer interfaces. From shipped
                 F2P casino titles to experimental EEG-driven visuals and immersive VR spaces.
               </Text>
-              <ul className="space-y-2 text-sm text-neutral-400">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
-                  Unity &amp; C#
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
-                  XR / VR (Meta SDK, XR Toolkit)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
-                  EEG Visualisation (BrainFlow, Shader Graph)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
-                  F2P systems, IAP &amp; LiveOps
-                </li>
-              </ul>
-              <span className="inline-flex items-center gap-1.5 text-sm text-primary-400 group-hover:gap-2.5 transition-all duration-200">
-                View game projects <ArrowRight className="w-4 h-4" />
-              </span>
             </div>
           </a>
 
           {/* Web Dev card — blue accent */}
           <a
             href="/projects?workType=web"
-            className="group block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-2xl"
-            aria-label="View web development projects"
+            className="group block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-2xl"
+            aria-label="View web and mobile projects"
           >
-            <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-blue-500 p-8 space-y-6 hover:border-neutral-700 transition-colors duration-200">
+            <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-primary-500 p-8 space-y-6 hover:border-neutral-700 transition-colors duration-200">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center shrink-0">
                   <Code className="w-6 h-6 text-white" />
                 </div>
                 <Text variant="heading3" as="h3" className="text-white">
@@ -138,30 +115,9 @@ export default function HomePage() {
                 </Text>
               </div>
               <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
-                Full-stack web with a focus on React and .NET. Background in building
-                production platforms — from Next.js frontends to ASP.NET Core APIs.
+                Full-stack web and mobile with React, React Native, Flutter, and .NET.
+                From Next.js frontends and ASP.NET Core APIs to cross-platform mobile apps.
               </Text>
-              <ul className="space-y-2 text-sm text-neutral-400">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                  Next.js &amp; React (TypeScript)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                  ASP.NET Core, C# &amp; Umbraco
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                  PostgreSQL &amp; REST APIs
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                  Tailwind CSS &amp; modern tooling
-                </li>
-              </ul>
-              <span className="inline-flex items-center gap-1.5 text-sm text-blue-400 group-hover:gap-2.5 transition-all duration-200">
-                View web projects <ArrowRight className="w-4 h-4" />
-              </span>
             </div>
           </a>
         </div>

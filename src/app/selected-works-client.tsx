@@ -95,9 +95,6 @@ function CuratedCard({ project, size }: { project: Project; size: CardSize }) {
           >
             {project.title}
           </h3>
-          {size === "large" && (
-            <p className="text-sm text-neutral-300 line-clamp-2 pt-0.5">{project.description}</p>
-          )}
         </div>
       </div>
     </Link>
@@ -126,7 +123,7 @@ export default function SelectedWorksClient({ projects }: SelectedWorksClientPro
             variant="heading2"
             as="h2"
             id="works-heading"
-            className="md:text-4xl uppercase tracking-wider"
+            className="md:text-4xl"
           >
             Selected Works
           </Text>

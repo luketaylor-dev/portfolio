@@ -8,7 +8,6 @@ import {
   type FormEvent,
   type KeyboardEvent,
 } from "react";
-import { ResumeDownload } from "@/components/content";
 import { FormErrorBoundary } from "@/components/feedback";
 import { Text } from "@/components/atoms";
 import {
@@ -408,71 +407,25 @@ export default function ContactForm() {
         </Card>
       </section>
 
-      {/* Alternative Contact Methods */}
-      <section className="max-w-4xl mx-auto">
-        <div className="text-center space-y-8">
+      {/* Project Inquiry CTA */}
+      <section className="max-w-2xl mx-auto">
+        <Card className="p-8 space-y-4 text-center">
           <Text variant="heading3" as="h2">
-            Prefer a Different Approach?
+            Got a specific project in mind?
           </Text>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="p-6 text-center space-y-4">
-              <Text variant="heading4" as="h3">
-                Download My Resume
-              </Text>
-              <Text variant="small" as="p" color="muted">
-                Get a detailed overview of my experience and skills
-              </Text>
-              <ResumeDownload variant="secondary" size="md" />
-            </Card>
-            <Card className="p-6 text-center space-y-4">
-              <Text variant="heading4" as="h3">
-                Project Inquiry Form
-              </Text>
-              <Text variant="small" as="p" color="muted">
-                For detailed project discussions and proposals
-              </Text>
-              <InteractiveButton href="/inquire" variant="secondary" size="md">
-                <ArrowRight className="w-4 h-4" />
-                Start Inquiry
-              </InteractiveButton>
-            </Card>
+          <Text variant="paragraph" as="p" color="muted">
+            Use the project brief form for detailed enquiries — covers scope,
+            timeline, budget, and technical requirements.
+          </Text>
+          <div className="flex justify-center">
+            <InteractiveButton href="/inquire" variant="secondary" size="md">
+              Start a Project Brief
+              <ArrowRight className="w-4 h-4" />
+            </InteractiveButton>
           </div>
-        </div>
+        </Card>
       </section>
 
-      {/* Contact Information */}
-      <section className="max-w-4xl mx-auto text-center space-y-8">
-        <Text variant="heading3" as="h2">
-          Let's Build Something Amazing Together
-        </Text>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <Text variant="heading4" as="h3" className="text-primary-300">
-              Unity Development
-            </Text>
-            <Text variant="small" as="p" color="muted">
-              Custom Unity solutions, performance optimization, and
-              cross-platform development
-            </Text>
-          </div>
-          <div className="space-y-4">
-            <Text variant="heading4" as="h3" className="text-primary-300">
-              VR & EEG Projects
-            </Text>
-            <Text variant="small" as="p" color="muted">
-              Immersive VR experiences and               brain-computer interface applications
-            </Text>
-          </div>
-          <div className="space-y-4">
-            <Text variant="heading4" as="h3" className="text-primary-300">
-              Game Development
-            </Text>
-            <Text variant="small" as="p" color="muted">
-              Free-to-play games, casino games, and               interactive entertainment
-            </Text>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

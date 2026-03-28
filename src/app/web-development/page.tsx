@@ -51,11 +51,13 @@ export default function WebDevelopmentPage() {
             Web &amp; Mobile Development
           </h1>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            Beyond Unity, I build full-stack web applications with{" "}
-            <strong className="text-primary-300">.NET</strong> and{" "}
-            <strong className="text-primary-300">React</strong>. From API
-            design and database architecture to modern frontend experiences with
-            Next.js and TypeScript.
+            Beyond Unity, I build full-stack web and mobile applications with{" "}
+            <strong className="text-primary-300">.NET</strong>,{" "}
+            <strong className="text-primary-300">React</strong>,{" "}
+            <strong className="text-primary-300">React Native</strong>, and{" "}
+            <strong className="text-primary-300">Flutter</strong>. From API
+            design and database architecture to cross-platform mobile apps and
+            modern frontend experiences with Next.js and TypeScript.
           </p>
         </div>
       </section>
@@ -86,7 +88,7 @@ export default function WebDevelopmentPage() {
               Frontend
             </h3>
             <p className="text-neutral-400 leading-relaxed text-sm">
-              React, Next.js, TypeScript, Tailwind CSS, and shadcn/ui.
+              React, Next.js, React Native, Flutter, TypeScript, and Tailwind CSS.
             </p>
           </Card>
           <Card variant="default" hover={true} className="group">
@@ -142,8 +144,8 @@ export default function WebDevelopmentPage() {
       {/* CTA */}
       <section className="text-center space-y-6 max-w-2xl mx-auto">
         <p className="text-neutral-400">
-          Interested in a .NET or React project? I&apos;m available for
-          full-stack web work alongside Unity development.
+          Interested in a web or mobile project? I&apos;m available for
+          full-stack web and React Native / Flutter work alongside Unity development.
         </p>
         <InteractiveButton href="/contact" variant="primary" size="lg">
           Get in Touch
