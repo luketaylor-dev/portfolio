@@ -40,12 +40,13 @@ export default function AboutPage() {
             color="muted"
             className="text-xl max-w-3xl mx-auto leading-relaxed"
           >
-            I&apos;m Luke Taylor, a Manchester-based Unity developer exploring
-            the space between technology and creativity. From brainwave-driven
-            visuals to scalable free-to-play systems — my work spans
-            experimental prototypes, immersive VR experiences, and commercial
-            game development. I also have a background in .NET web development,
-            React, React Native, and Flutter; this portfolio is built with Next.js.
+            I&apos;m Luke Taylor, a Manchester-based Unity developer with 8+
+            years of industry experience exploring the space between technology
+            and creativity. From brainwave-driven visuals to scalable
+            free-to-play systems — my work spans experimental prototypes,
+            immersive VR experiences, and commercial game development. I also
+            have a background in .NET web development, React, React Native, and
+            Flutter; this portfolio is built with Next.js.
           </Text>
         </div>
 
