@@ -3,16 +3,17 @@ import Link from "next/link";
 import { ArrowRight, Gamepad2 } from "lucide-react";
 import { Card } from "@/components/ui";
 import { Text } from "@/components/atoms";
-import Image from "next/image";
+import { ResponsiveProjectCover } from "./responsive-project-cover";
 
 interface Project {
   slug: string;
   title: string;
   description: string;
-  cover?: string | undefined;
-  altText?: string | undefined;
+  cover?: string;
+  coverPortrait?: string;
+  altText?: string;
   date: string;
-  featured?: boolean | undefined;
+  featured?: number | boolean;
   workType?: "game" | "web";
 }
 
@@ -40,14 +41,12 @@ export default function ProjectCard({
         <div className="flex flex-col h-full">
           {/* Project Image */}
           <div className="aspect-video bg-neutral-800 overflow-hidden rounded-xl relative">
-            {project.cover ? (
-              <Image
-                src={project.cover}
-                alt={project.altText || `${project.title} - project preview`}
-                width={400}
-                height={225}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="w-full h-full object-cover"
+            {project.cover || project.coverPortrait ? (
+              <ResponsiveProjectCover
+                project={project}
+                sizesLandscape="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizesPortrait="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

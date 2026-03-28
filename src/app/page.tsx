@@ -163,16 +163,7 @@ export default function HomePage() {
       </section>
 
       {/* Selected Works */}
-      <section className="py-24 space-y-10" aria-labelledby="works-heading">
-        <div className="text-center space-y-2">
-          <Text variant="heading2" as="h2" id="works-heading" className="md:text-4xl">
-            Selected Works
-          </Text>
-          <Text variant="paragraph" as="p" color="secondary">
-            A cross-section of game dev and web projects
-          </Text>
-        </div>
-
+      <section className="py-24" aria-labelledby="works-heading">
         <SelectedWorksClient projects={allProjects} />
       </section>
 

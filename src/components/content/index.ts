@@ -7,6 +7,7 @@ export { TestimonialsSection } from "./testimonials-section";
 export { ReadingProgressBar } from "./reading-progress-bar";
 export { BlogToc } from "./blog-toc";
 export { default as ProjectCard } from "./project-card";
+export { ResponsiveProjectCover } from "./responsive-project-cover";
 export { default as BlogCard } from "./blog-card";
 export { BlogPostsGrid } from "./blog-posts-grid";
 export { default as SkillCard } from "./skill-card";

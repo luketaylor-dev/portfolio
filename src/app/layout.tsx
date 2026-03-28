@@ -9,8 +9,6 @@ import {
   contactEmail,
 } from "@/lib/navigation";
 import { ScrollAwareHeader } from "@/components/layout";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/seo";
 import { PerformanceMonitor } from "@/components/performance";
 
@@ -49,6 +47,8 @@ export const viewport = {
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+const umamiWebsiteId = process.env.UMAMI_WEBSITE_ID?.trim();
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
@@ -80,6 +80,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
 
         <StructuredData />
+
+        {umamiWebsiteId ? (
+          <script
+            defer
+            src="https://analytics.luke-taylor.dev/script.js"
+            data-website-id={umamiWebsiteId}
+          />
+        ) : null}
       </head>
       <body className="bg-[#0f0f0f] text-white min-h-screen antialiased">
         {/* Skip to content */}
@@ -182,8 +190,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </footer>
 
-        <Analytics />
-        <SpeedInsights />
         <PerformanceMonitor />
       </body>
     </html>

@@ -37,7 +37,7 @@ setValue(value);
 ### Examples that help
 
 ```typescript
-// Plausible is loaded client-only; skip during SSR
+// Umami loads via deferred script in layout head
 // Workaround: Next Image remotePatterns omit this host in dev
 ```
 
