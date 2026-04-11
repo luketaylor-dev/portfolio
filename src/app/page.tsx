@@ -16,10 +16,9 @@ export default function HomePage() {
     <div className="space-y-0">
       {/* Hero — full-width bleed */}
       <section
-        className="relative overflow-hidden"
+        className="relative min-h-[440px] overflow-hidden md:min-h-[400px] xl:min-h-0"
         style={{
           aspectRatio: "21/9",
-          minHeight: 320,
           width: "100vw",
           marginLeft: "calc(50% - 50vw)",
         }}
@@ -36,13 +35,13 @@ export default function HomePage() {
         {/* Dark scrim */}
         <div className="absolute inset-0 bg-black/60" />
 
-        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 space-y-4">
-          <div className="space-y-2">
+        <div className="absolute inset-0 flex flex-col justify-end space-y-3 px-6 pb-8 pt-[max(1rem,env(safe-area-inset-top))] md:space-y-4 md:p-12">
+          <div className="space-y-1.5 md:space-y-2">
             <Text
               variant="heading1"
               as="h1"
               id="hero-heading"
-              className="text-white text-4xl md:text-6xl font-bold leading-tight"
+              className="text-white text-3xl font-bold leading-tight md:text-6xl"
             >
               Luke Taylor
             </Text>

@@ -44,8 +44,9 @@ export default function MobileNavEnhanced() {
   return (
     <>
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 rounded-lg border border-neutral-700 text-neutral-400 hover:text-white hover:border-neutral-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
+        className="shrink-0 md:hidden rounded-lg border border-neutral-700 p-2 text-neutral-400 transition-colors duration-200 hover:border-neutral-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950"
         aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
