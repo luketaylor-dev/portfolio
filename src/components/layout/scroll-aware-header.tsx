@@ -41,14 +41,23 @@ export function ScrollAwareHeader({ children }: { children: React.ReactNode }) {
         }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-3">
-            <Link href="/" className="group flex items-center gap-3">
-              <Image src="/icons/favicon.png" alt="Luke Taylor logo" width={36} height={36} className="rounded-lg" />
-              <div className="flex flex-col">
-                <span className="font-bold text-base text-white group-hover:text-primary-300 transition-colors duration-200">
+          <div className="flex items-center justify-between gap-3 py-3 pr-[max(0.25rem,env(safe-area-inset-right))]">
+            <Link
+              href="/"
+              className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-3 md:flex-none md:min-w-0"
+            >
+              <Image
+                src="/icons/favicon.png"
+                alt="Luke Taylor logo"
+                width={36}
+                height={36}
+                className="shrink-0 rounded-lg"
+              />
+              <div className="min-w-0 flex flex-col">
+                <span className="truncate font-bold text-base text-white transition-colors duration-200 group-hover:text-primary-300">
                   Luke Taylor
                 </span>
-                <span className="text-xs text-neutral-500 leading-none">
+                <span className="hidden text-xs leading-none text-neutral-500 sm:block">
                   From Brainwaves to Gameplay
                 </span>
               </div>
@@ -76,7 +85,9 @@ export function ScrollAwareHeader({ children }: { children: React.ReactNode }) {
               })}
             </nav>
 
-            <MobileNavEnhanced />
+            <div className="shrink-0">
+              <MobileNavEnhanced />
+            </div>
           </div>
         </div>
       </header>

@@ -116,9 +116,9 @@ export default function SelectedWorksClient({ projects }: SelectedWorksClientPro
 
   return (
     <div className="space-y-8">
-      {/* Header row: title + subtitle left, filter tabs right */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="space-y-1">
+      {/* Mobile: title + copy, then full-width tabs; md+: title left, tabs right */}
+      <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-4">
+        <div className="w-full space-y-1">
           <Text
             variant="heading2"
             as="h2"
@@ -132,12 +132,13 @@ export default function SelectedWorksClient({ projects }: SelectedWorksClientPro
           </Text>
         </div>
 
-        <div className="inline-flex shrink-0 rounded-xl border border-neutral-800 bg-[#1a1a1a] p-1 gap-1 mt-1">
+        <div className="grid w-full grid-cols-3 gap-1 rounded-xl border border-neutral-800 bg-[#1a1a1a] p-1 md:mt-1 md:inline-flex md:w-auto md:shrink-0">
           {TABS.map((tab) => (
             <button
               key={tab.id}
+              type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+              className={`rounded-lg px-2 py-2 text-center text-xs font-medium transition-colors duration-200 sm:text-sm md:px-5 ${
                 activeTab === tab.id
                   ? "bg-neutral-600 text-white"
                   : "text-neutral-400 hover:text-neutral-200"

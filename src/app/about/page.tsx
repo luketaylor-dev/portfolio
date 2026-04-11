@@ -7,7 +7,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import { ResumeDownload } from "@/components/content";
 import { Text } from "@/components/atoms";
 import { InteractiveButton, Card } from "@/components/ui";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
@@ -239,7 +238,6 @@ export default function AboutPage() {
               Get in Touch
               <ArrowRight className="w-5 h-5" />
             </InteractiveButton>
-            <ResumeDownload variant="secondary" size="lg" />
             <InteractiveButton href="/projects" variant="secondary" size="lg">
               View My Work
             </InteractiveButton>
