@@ -56,22 +56,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${dmSans.variable} ${dmSans.className} scroll-smooth`}
     >
       <head>
-        <link rel="icon" href="/icons/favicon.ico" sizes="32x32" />
-        <link
-          rel="icon"
-          href="/icons/favicon-16x16.png"
-          sizes="16x16"
-          type="image/png"
-        />
-        <link
-          rel="icon"
-          href="/icons/favicon-32x32.png"
-          sizes="32x32"
-          type="image/png"
-        />
-        <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/icons/favicon.png" />
-
         <link
           rel="alternate"
           type="application/rss+xml"

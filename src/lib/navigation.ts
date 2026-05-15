@@ -88,8 +88,11 @@ export const primaryFooterLinks: { href: string; label: string }[] = [
   { href: "/contact", label: "Contact" },
 ];
 
-/** SEO-only pages — not surfaced in footer nav; discoverable via sitemap. */
-export const seoFooterLinks: { href: string; label: string }[] = [];
+/** SEO-only pages — surfaced in footer for crawlability and discovery. */
+export const seoFooterLinks: { href: string; label: string }[] = [
+  { href: "/manchester-services", label: "Manchester Unity Services" },
+  { href: "/web-development", label: "Web Development" },
+];
 
 /** @deprecated use primaryFooterLinks + seoFooterLinks */
 export const footerLinks: { href: string; label: string }[] = [

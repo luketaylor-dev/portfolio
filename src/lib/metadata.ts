@@ -47,21 +47,10 @@ export const generateMetadata = (
 };
 
 export const defaultMetadata: Metadata = {
-  title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
+  title:
+    "Unity Developer Manchester — Luke Taylor | Games, VR, EEG & Full-Stack Web",
   description:
-    "Unity Developer Manchester with 8+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
-  keywords: [
-    "Unity Developer Manchester",
-    "EEG Visualization",
-    "VR Development",
-    "Game Development",
-    "Brain-Computer Interface",
-    "Unity3D",
-    "C#",
-    "Immersive Experiences",
-    "Manchester",
-    "UK",
-  ],
+    "Manchester-based Unity Developer with 8+ years' experience in game development, VR, EEG visualization, and full-stack web (Next.js, React, .NET). Available for freelance and contract work across the UK.",
   authors: [{ name: "Luke Taylor" }],
   creator: "Luke Taylor",
   publisher: "Luke Taylor",
@@ -81,9 +70,10 @@ export const defaultMetadata: Metadata = {
     locale: "en_GB",
     url: siteUrl,
     siteName: "Luke Taylor Portfolio",
-    title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
+    title:
+      "Unity Developer Manchester — Luke Taylor | Games, VR, EEG & Full-Stack Web",
     description:
-      "Manchester-based Unity Developer with 8+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
+      "Manchester-based Unity Developer with 8+ years' experience in game development, VR, EEG visualization, and full-stack web (Next.js, React, .NET). Available for freelance and contract work across the UK.",
     images: [
       {
         url: `${siteUrl}/og?title=Luke%20Taylor%20-%20Unity%20Developer%20Manchester`,
@@ -95,19 +85,18 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Luke Taylor - Unity Developer Manchester | EEG & VR Specialist",
+    title:
+      "Unity Developer Manchester — Luke Taylor | Games, VR, EEG & Full-Stack Web",
     description:
-      "Manchester-based Unity Developer with 8+ years' experience in EEG visualization, VR development, and F2P games. Expert in brain-computer interfaces, neuroscience applications, and immersive experiences. Serving clients across the UK.",
+      "Manchester-based Unity Developer with 8+ years' experience in game development, VR, EEG visualization, and full-stack web (Next.js, React, .NET). Available for freelance and contract work across the UK.",
     images: [
       `${siteUrl}/og?title=Luke%20Taylor%20%E2%80%94%20Unity%20Developer%20Manchester`,
     ],
-    creator: "@luketaylor_dev",
   },
   alternates: {
     canonical: siteUrl,
   },
   other: {
-    "theme-color": "#9333ea", // Primary theme color (primary-600)
     "color-scheme": "dark",
   },
 };

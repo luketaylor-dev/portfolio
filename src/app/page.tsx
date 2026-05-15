@@ -45,6 +45,9 @@ export default function HomePage() {
             >
               Luke Taylor
             </Text>
+            <p className="text-base md:text-lg text-primary-300 font-semibold">
+              Unity Developer in Manchester — Games, VR, EEG &amp; Full-Stack Web
+            </p>
             <p className="text-lg md:text-xl text-neutral-300 font-medium">
               From Brainwaves to Gameplay
             </p>
@@ -78,9 +81,9 @@ export default function HomePage() {
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {/* Game Dev card — orange accent */}
           <a
-            href="/projects?workType=game"
+            href="/manchester-services"
             className="group block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-2xl"
-            aria-label="View game development projects"
+            aria-label="Manchester Unity development services — games, VR, EEG"
           >
             <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-primary-500 p-8 space-y-6 hover:border-neutral-700 transition-colors duration-200">
               <div className="flex items-center gap-4">
@@ -100,9 +103,9 @@ export default function HomePage() {
 
           {/* Web Dev card — blue accent */}
           <a
-            href="/projects?workType=web"
+            href="/web-development"
             className="group block focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded-2xl"
-            aria-label="View web and mobile projects"
+            aria-label="Web and mobile development services — Next.js, React, .NET"
           >
             <div className="h-full rounded-2xl bg-[#1a1a1a] border border-neutral-800 border-l-4 border-l-primary-500 p-8 space-y-6 hover:border-neutral-700 transition-colors duration-200">
               <div className="flex items-center gap-4">
@@ -129,6 +132,103 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <TestimonialsSection />
+
+      {/* FAQ */}
+      <section className="py-24 space-y-12" aria-labelledby="faq-heading">
+        <div className="text-center space-y-2">
+          <Text variant="heading2" as="h2" id="faq-heading" className="md:text-4xl">
+            Frequently Asked Questions
+          </Text>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="rounded-2xl bg-[#1a1a1a] border border-neutral-800 p-6 space-y-3">
+            <Text variant="heading4" as="h3" className="text-white">
+              Where are you based?
+            </Text>
+            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+              Manchester, UK. I work with clients across the North West in
+              person, UK-wide on contract, and remotely with teams worldwide.
+            </Text>
+          </div>
+
+          <div className="rounded-2xl bg-[#1a1a1a] border border-neutral-800 p-6 space-y-3">
+            <Text variant="heading4" as="h3" className="text-white">
+              What do you specialise in?
+            </Text>
+            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+              Unity development for games, VR, and EEG / brain-computer
+              interfaces, plus full-stack web with Next.js, React, and
+              ASP.NET Core.
+            </Text>
+          </div>
+
+          <div className="rounded-2xl bg-[#1a1a1a] border border-neutral-800 p-6 space-y-3">
+            <Text variant="heading4" as="h3" className="text-white">
+              Are you available for freelance or contract work?
+            </Text>
+            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+              Yes — currently available for freelance and contract roles, both
+              short prototypes and longer engagements.
+            </Text>
+          </div>
+
+          <div className="rounded-2xl bg-[#1a1a1a] border border-neutral-800 p-6 space-y-3">
+            <Text variant="heading4" as="h3" className="text-white">
+              How much Unity experience do you have?
+            </Text>
+            <Text variant="paragraph" as="p" color="secondary" className="leading-relaxed">
+              Over 8 years across shipped F2P mobile titles, VR prototypes, and
+              experimental EEG-driven visuals in Unity with C#.
+            </Text>
+          </div>
+        </div>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Where are you based?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Manchester, UK. I work with clients across the North West in person, UK-wide on contract, and remotely with teams worldwide.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What do you specialise in?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Unity development for games, VR, and EEG / brain-computer interfaces, plus full-stack web with Next.js, React, and ASP.NET Core.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Are you available for freelance or contract work?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes — currently available for freelance and contract roles, both short prototypes and longer engagements.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How much Unity experience do you have?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Over 8 years across shipped F2P mobile titles, VR prototypes, and experimental EEG-driven visuals in Unity with C#.",
+                  },
+                },
+              ],
+            }),
+          }}
+          suppressHydrationWarning={true}
+        />
+      </section>
 
       {/* Contact CTA */}
       <section className="py-24">
