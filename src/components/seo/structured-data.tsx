@@ -11,7 +11,7 @@ export default function StructuredData() {
         name: "Luke Taylor",
         jobTitle: "Unity Developer",
         description:
-          "Unity Developer Manchester with 8+ years' experience in EEG visualization, VR development, and F2P games. Manchester-based expert in brain-computer interfaces, neuroscience applications, and immersive experiences.",
+          "Manchester-based Unity Developer with 8+ years' experience in game development, VR, EEG visualization, and full-stack web (Next.js, React, .NET). Available for freelance and contract work across the UK.",
         url: siteUrl,
         image: `${siteUrl}/images/luke-taylor-dev.webp`,
         address: {
@@ -25,22 +25,24 @@ export default function StructuredData() {
         ],
         knowsAbout: [
           "Unity Development",
-          "EEG Visualization",
-          "VR Development",
-          "Brain Computer Interface",
-          "Neuroscience Applications",
           "Game Development",
+          "VR Development",
+          "EEG Visualization",
+          "Brain Computer Interface",
           "C# Programming",
-          "Virtual Reality",
-          "Interactive Media",
+          "Full-Stack Web Development",
+          "Next.js",
+          "React",
+          "ASP.NET Core",
+          "TypeScript",
         ],
         hasOccupation: {
           "@type": "Occupation",
           name: "Unity Developer",
           description:
-            "Specializes in EEG visualization, VR development, and immersive experiences",
+            "Unity development for games, VR, and EEG visualization; full-stack web development with Next.js, React, and .NET.",
           skills:
-            "Unity, C#, EEG, VR, Brain Computer Interface, Game Development",
+            "Unity, C#, VR, EEG, BrainFlow, Game Development, Next.js, React, TypeScript, ASP.NET Core, Node.js",
         },
       },
       // Organization Schema (global)
@@ -49,7 +51,7 @@ export default function StructuredData() {
         "@id": `${siteUrl}/#organization`,
         name: "Luke Taylor - Unity Developer",
         description:
-          "Unity Developer Manchester services specializing in EEG visualization, VR development, and brain-computer interfaces",
+          "Manchester-based Unity development and full-stack web services: games, VR, EEG/BCI, Next.js, React, and .NET.",
         url: siteUrl,
         address: {
           "@type": "PostalAddress",
