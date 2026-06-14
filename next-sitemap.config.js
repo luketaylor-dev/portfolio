@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://www.dibza.co.uk",
+  siteUrl: process.env.SITE_URL || "https://luke-taylor.dev",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -11,7 +11,15 @@ module.exports = {
       },
     ],
   },
-  exclude: ["/admin/*", "/private/*"],
+  exclude: [
+    "/admin/*",
+    "/private/*",
+    "/robots.txt",
+    "/feed.xml",
+    "/llms.txt",
+    "/og",
+    "/api/*",
+  ],
   changefreq: "weekly",
   priority: 0.7,
 };

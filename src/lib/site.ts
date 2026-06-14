@@ -3,4 +3,4 @@
  * Fallback ensures builds work when env is unset (e.g. local dev).
  */
 export const siteUrl =
-  process.env.SITE_URL || "https://www.dibza.co.uk";
+  process.env.SITE_URL || "https://luke-taylor.dev";

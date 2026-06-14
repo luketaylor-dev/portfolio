@@ -72,7 +72,7 @@ Email/inquiry endpoints require secrets. See:
 Common vars (examples):
 
 - Email provider/API credentials
-- SITE_URL (for sitemap)
+- SITE_URL (canonical domain, e.g. `https://luke-taylor.dev`)
 
 ## Development
 
