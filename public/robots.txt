@@ -5,7 +5,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Host
-Host: https://www.luke-taylor.dev/
+Host: https://luke-taylor.dev
 
 # Sitemaps
-Sitemap: https://www.luke-taylor.dev/sitemap.xml
+Sitemap: https://luke-taylor.dev/sitemap.xml
