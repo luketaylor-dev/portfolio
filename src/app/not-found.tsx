@@ -1,16 +1,22 @@
-"use client";
-
-import { Home, ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 import { Text } from "@/components/atoms";
-import { InteractiveButton } from "@/components/ui";
+import { NotFoundActions } from "@/components/feedback";
+
+export const metadata: Metadata = {
+  title: "Page Not Found | Luke Taylor",
+  description:
+    "Sorry, the page you're looking for doesn't exist or has been moved.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16">
       <div className="text-center max-w-lg space-y-6">
-        <div className="text-8xl font-bold text-primary-500">
-          404
-        </div>
+        <div className="text-8xl font-bold text-primary-500">404</div>
         <Text variant="heading2" as="h1">
           Page not found
         </Text>
@@ -18,20 +24,7 @@ export default function NotFound() {
           Sorry, the page you&apos;re looking for doesn&apos;t exist or has been
           moved.
         </Text>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <InteractiveButton href="/" variant="primary" size="lg">
-            <Home className="w-5 h-5" />
-            Back to home
-          </InteractiveButton>
-          <InteractiveButton
-            variant="secondary"
-            size="lg"
-            onClick={() => window.history.back()}
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Go back
-          </InteractiveButton>
-        </div>
+        <NotFoundActions />
       </div>
     </div>
   );

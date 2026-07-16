@@ -147,6 +147,9 @@ export async function generateMetadata({
       description: seoDescription,
       images: [ogImage],
     },
+    alternates: {
+      canonical: `${siteUrl}/projects/${resolvedParams.slug}`,
+    },
   };
 }
 
