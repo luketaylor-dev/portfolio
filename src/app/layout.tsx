@@ -52,7 +52,7 @@ const umamiWebsiteId = process.env.UMAMI_WEBSITE_ID?.trim();
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${dmSans.variable} ${dmSans.className} scroll-smooth`}
     >
       <head>

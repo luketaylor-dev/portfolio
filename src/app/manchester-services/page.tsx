@@ -22,15 +22,24 @@ export default function ManchesterServicesPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Unity Development Services (Manchester)",
+            name: "Unity Developer in Manchester",
+            alternateName: [
+              "Unity Development Services Manchester",
+              "Hire a Unity Developer in Manchester",
+              "Freelance Unity Developer Manchester",
+            ],
             description:
-              "EEG visualization, VR development, and brain-computer interface projects for clients in Manchester and across the UK.",
+              "Hire a freelance Unity developer in Manchester for EEG visualization, VR development, brain-computer interface, and game development projects. Serving Manchester, the North West, and clients across the UK.",
             provider: {
               "@type": "Person",
               name: "Luke Taylor",
               url: siteUrl,
             },
-            areaServed: ["Manchester", "North West", "United Kingdom"],
+            areaServed: [
+              { "@type": "City", name: "Manchester" },
+              { "@type": "AdministrativeArea", name: "North West England" },
+              { "@type": "Country", name: "United Kingdom" },
+            ],
             serviceType: [
               "EEG Visualization",
               "VR Development",
@@ -67,14 +76,18 @@ export default function ManchesterServicesPage() {
             color="muted"
             className="text-xl max-w-3xl mx-auto leading-relaxed"
           >
-            Professional Unity development services in the heart of Manchester's
-            tech scene. Specializing in cutting-edge{" "}
+            Looking to{" "}
+            <strong className="text-primary-300">
+              hire a Unity developer in Manchester
+            </strong>
+            ? I&apos;m a freelance Unity developer based in the heart of
+            Manchester&apos;s tech scene, specialising in cutting-edge{" "}
             <strong className="text-primary-300">EEG visualization</strong>,{" "}
             <strong className="text-primary-300">VR development</strong>, and{" "}
             <strong className="text-primary-300">
               brain-computer interfaces
             </strong>{" "}
-            for clients across the North West, UK-wide, and beyond.
+            for clients across Manchester, the North West, UK-wide, and beyond.
           </Text>
         </div>
       </section>
@@ -277,6 +290,16 @@ export default function ManchesterServicesPage() {
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           <Card variant="default" className="p-6 space-y-3">
             <Text variant="heading4" as="h3">
+              Can I hire a freelance Unity developer in Manchester?
+            </Text>
+            <Text variant="paragraph" as="p" color="secondary">
+              Yes. I&apos;m a freelance Unity developer based in Manchester,
+              available for contract and project work across Manchester and the
+              North West, as well as remotely UK-wide.
+            </Text>
+          </Card>
+          <Card variant="default" className="p-6 space-y-3">
+            <Text variant="heading4" as="h3">
               Do you work with clients outside Manchester?
             </Text>
             <Text variant="paragraph" as="p" color="secondary">
@@ -322,6 +345,14 @@ export default function ManchesterServicesPage() {
             "@context": "https://schema.org",
             "@type": "FAQPage",
             mainEntity: [
+              {
+                "@type": "Question",
+                name: "Can I hire a freelance Unity developer in Manchester?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. I'm a freelance Unity developer based in Manchester, available for contract and project work across Manchester and the North West, as well as remotely UK-wide.",
+                },
+              },
               {
                 "@type": "Question",
                 name: "Do you work with clients outside Manchester?",

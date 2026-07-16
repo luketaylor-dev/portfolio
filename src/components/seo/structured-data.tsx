@@ -4,6 +4,17 @@ export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
+      // WebSite Schema (global)
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: "Luke Taylor - Unity Developer in Manchester",
+        description:
+          "Portfolio of Luke Taylor, a Unity developer in Manchester specialising in game development, VR, EEG visualization, and full-stack web.",
+        inLanguage: "en-GB",
+        publisher: { "@id": `${siteUrl}/#person` },
+      },
       // Person Schema (global)
       {
         "@type": "Person",
@@ -17,8 +28,10 @@ export default function StructuredData() {
         address: {
           "@type": "PostalAddress",
           addressLocality: "Manchester",
-          addressCountry: "United Kingdom",
+          addressRegion: "Greater Manchester",
+          addressCountry: "GB",
         },
+        worksFor: { "@id": `${siteUrl}/#organization` },
         sameAs: [
           "https://github.com/luketaylor-dev",
           "https://www.linkedin.com/in/luke-taylor-ab5080166/",
@@ -45,23 +58,53 @@ export default function StructuredData() {
             "Unity, C#, VR, EEG, BrainFlow, Game Development, Next.js, React, TypeScript, ASP.NET Core, Node.js",
         },
       },
-      // Organization Schema (global)
+      // Organization / local ProfessionalService Schema (global)
       {
-        "@type": "Organization",
+        "@type": ["Organization", "ProfessionalService"],
         "@id": `${siteUrl}/#organization`,
         name: "Luke Taylor - Unity Developer",
+        alternateName: [
+          "Unity Developer Manchester",
+          "Unity Developer in Manchester",
+          "Manchester Unity Developer",
+          "Freelance Unity Developer Manchester",
+        ],
         description:
-          "Manchester-based Unity development and full-stack web services: games, VR, EEG/BCI, Next.js, React, and .NET.",
+          "Freelance Unity developer in Manchester offering Manchester-based Unity development and full-stack web services: games, VR, EEG/BCI, Next.js, React, and .NET, for clients in Manchester and across the UK.",
         url: siteUrl,
+        image: `${siteUrl}/images/luke-taylor-dev.webp`,
+        logo: `${siteUrl}/icons/favicon.png`,
+        priceRange: "££",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Manchester",
-          addressCountry: "United Kingdom",
+          addressRegion: "Greater Manchester",
+          addressCountry: "GB",
         },
-        founder: {
-          "@type": "Person",
-          name: "Luke Taylor",
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 53.4808,
+          longitude: -2.2426,
         },
+        areaServed: [
+          { "@type": "City", name: "Manchester" },
+          { "@type": "AdministrativeArea", name: "Greater Manchester" },
+          { "@type": "AdministrativeArea", name: "North West England" },
+          { "@type": "Country", name: "United Kingdom" },
+        ],
+        knowsAbout: [
+          "Unity Development",
+          "Game Development",
+          "VR Development",
+          "EEG Visualization",
+          "Brain-Computer Interface",
+          "Full-Stack Web Development",
+        ],
+        sameAs: [
+          "https://github.com/luketaylor-dev",
+          "https://www.linkedin.com/in/luke-taylor-ab5080166/",
+        ],
+        founder: { "@id": `${siteUrl}/#person` },
       },
       // Note: Page-specific schema (FAQ, Breadcrumbs, BlogPosting, CreativeWork)
       // should be added in the respective pages/components that render that content.
