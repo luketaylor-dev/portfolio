@@ -38,6 +38,7 @@ import {
   Rocket,
   Cpu,
   HardDrive,
+  ExternalLink,
 } from "lucide-react";
 
 // Helper function to generate structured data for projects
@@ -64,6 +65,7 @@ const generateProjectStructuredData = (project: Project) => {
       ? `${siteUrl}${project.cover}`
       : undefined,
     url: `${siteUrl}/projects/${project.slug}`,
+    ...(project.liveUrl && { sameAs: project.liveUrl }),
     genre: project.tags || [],
     keywords: project.tags?.join(", ") || "",
     inLanguage: "en",
@@ -277,6 +279,17 @@ export default async function ProjectPage({
             >
               {project.description}
             </Text>
+            {project.liveUrl && (
+              <InteractiveButton
+                href={project.liveUrl}
+                variant="primary"
+                size="md"
+                colorScheme={theme.colorScheme}
+              >
+                Visit {new URL(project.liveUrl).hostname}
+                <ExternalLink className="w-4 h-4" />
+              </InteractiveButton>
+            )}
           </div>
 
           {/* Project Meta */}

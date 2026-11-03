@@ -25,6 +25,7 @@ Luke Taylor is a Unity Developer with 8+ years of experience bridging neuroscien
 
 ## Projects
 
+- [Bookbunch](${siteUrl}/projects/bookbunch): Book club app at https://bookbunch.app for Android, iOS and the web, built solo with Expo, React Native and an ASP.NET Core API. Shared reading pace, spoiler-safe notes and live book picks. Tags: React Native, Expo, ASP.NET Core, TypeScript, Mobile, Full-Stack.
 - [Free-to-Play Poker Suite](${siteUrl}/projects/poker-suite): Unity-built casino apps with segmented IAP, seasonal pipelines, and cross-promotion systems scaling to millions in annual revenue. Tags: Unity, C#, F2P, IAP, LiveOps, Mobile.
 - [EEG Visualiser — Brainrave](${siteUrl}/projects/eeg-visualiser): A Unity system that transforms EEG signals and live audio into reactive VFX, blending neuroscience and entertainment. Tags: Unity, C#, EEG, VR, Rust, BrainFlow, VFX.
 - [Tatfindr](${siteUrl}/projects/tatfindr): Full-stack web platform for finding tattoo artists by location and style. Next.js frontend, ASP.NET Core API, PostgreSQL. Tags: React, Next.js, ASP.NET Core, TypeScript, PostgreSQL.

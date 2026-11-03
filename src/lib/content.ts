@@ -22,6 +22,7 @@ export interface Project {
   coverPortrait?: string;
   video?: string;
   url?: string;
+  liveUrl?: string;
   featureTitles?: string[];
   featureDescriptions?: string[];
   featureIcons?: string[];

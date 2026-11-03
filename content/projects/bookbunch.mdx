@@ -1,0 +1,78 @@
+---
+title: "Bookbunch"
+description: "A cosy home for small book clubs at bookbunch.app: a shared pace track, spoiler-safe margin notes, daily prompts and a live pick night, on Android, iOS and the web from one Expo codebase with an ASP.NET Core API."
+seoDescription: "Bookbunch (bookbunch.app) - a book club app I designed and built solo. Expo and React Native for Android, iOS and web, ASP.NET Core API, SQLite, push notifications. Shared reading pace, spoiler-safe notes and live book picks."
+altText: "Bookbunch book club app showing the shared reading pace track on a phone"
+date: "2026-10-09"
+workType: "web"
+liveUrl: "https://bookbunch.app"
+tags:
+  [
+    "Mobile",
+    "Full-Stack",
+    "React Native",
+    "Expo",
+    "ASP.NET Core",
+    "TypeScript",
+    "Web Development",
+  ]
+featured: 1
+cover: /images/bookbunch.png
+coverPortrait: /images/bookbunch-phone.png
+featureTitles: ["One App, Three Platforms", "ASP.NET Core API", "Built for the Bunch"]
+featureDescriptions:
+  [
+    "Expo and Expo Router ship the Android app, the iOS app and the bookbunch.app website from a single React Native codebase, with TanStack Query for data.",
+    ".NET 9 API with Dapper and SQLite, hand-rolled session auth with Argon2, Open Library covers, scheduled jobs, and push through Expo and Web Push.",
+    "Shared pace track, chapter-gated margin notes, daily prompts, reading streaks, badges and a live presentation night with voting.",
+  ]
+featureIcons: ["smartphone", "server", "users"]
+technologies:
+  [
+    "Expo",
+    "React Native",
+    "Expo Router",
+    "TypeScript",
+    "TanStack Query",
+    "ASP.NET Core",
+    "C#",
+    "Dapper",
+    "SQLite",
+    "Web Push",
+    "Docker",
+    "Playwright",
+  ]
+---
+
+# Bookbunch
+
+[Bookbunch](https://bookbunch.app) is a cosy home for small book clubs. I designed and built it on my own, from the database to the design, and it runs at **[bookbunch.app](https://bookbunch.app)** and as Android and iOS apps.
+
+## Overview
+
+Most book clubs live in a group chat, where spoilers slip out and nobody knows who's actually reading. Bookbunch gives each club, or bunch, a place of its own. Anyone can sign up, start a bunch or join one with an invite link, and inside they get:
+
+- **A shared pace track:** everyone's bookmark on one line, showing who's ahead and who's behind the pace.
+- **Margin notes:** notes tagged with a chapter and blurred until your own bookmark gets there, so you can share notes without spoiling anything.
+- **Daily prompts:** a question about the book each day, with answers from the rest of the bunch.
+- **Pick night:** whoever's turn it is brings three books in secret and runs the presentation live on everyone's screen, with ratings, a vote and a wheel to settle ties.
+- **History and stats:** past books, ratings and who picked what.
+
+Your personal reading shelf, yearly goal, reading streak and badges follow you across every bunch, and notifications let you know about new notes, the day's question and a streak about to run out.
+
+## Tech Stack
+
+- **App:** Expo and Expo Router (React Native) for Android, iOS and a static web export, with TanStack Query and theme tokens
+- **API:** ASP.NET Core on .NET 9, Dapper, SQLite with migrations applied on boot
+- **Auth:** Hand-rolled session auth with Argon2 hashing, bearer tokens on phones and cookies on the web
+- **Notifications:** Expo push for the apps, Web Push (VAPID) for browsers
+- **Data:** Open Library for covers and book metadata
+- **DevOps:** Docker Compose, self-hosted on Coolify
+
+## Role
+
+I'm the sole developer and designer. I built the API, the data model and its scheduled jobs, the app across all three platforms, and the tooling around it: seed scripts for realistic demo clubs, characterisation tests that check the C# date and streak logic against the original TypeScript, and a Playwright-driven tool that photographs the running app to make its social posts. Accessibility was a launch requirement, so the app works with screen readers, keyboards and reduced motion.
+
+## Why It Matters
+
+Bookbunch shows the whole arc of a product: a single-club site that grew into a multi-club platform, moved from SvelteKit to one Expo codebase for web and mobile, and shipped with the polish of something people use every day. [Try it at bookbunch.app](https://bookbunch.app).
